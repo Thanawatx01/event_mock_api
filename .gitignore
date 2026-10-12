@@ -1,0 +1,9 @@
+node_modules/
+.DS_Store
+*.log
+database-schema.png
+*.png
+*.jpg
+*.jpeg
+*.webp
+*.gif
