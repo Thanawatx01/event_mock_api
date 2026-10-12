@@ -72,8 +72,9 @@ JSON Server (REST)
 
 | กฎ | ผลกระทบฝั่ง backend |
 |---|---|
-| Event Owner มี active event ที่ published ได้ทีละ 1 งาน | ตรวจอีเวนต์ของ owner ที่ `status=published` และช่วง `startAt`–`endAt` ทับเวลาปัจจุบัน |
-| แต่ละอีเวนต์มีฟอร์มลงทะเบียนและแบบสอบถามที่ active ได้ไม่เกินอย่างละ 1 | นับ `forms` ที่ `eventId` ตรงกัน, `isDeleted=false` แล้วจัดกลุ่มตาม `type` |
+| Event Owner มีอีเวนต์ได้ 1 งาน (`isDeleted=false`) | นับ `events` ของ `ownerId` ที่ยังไม่ soft-delete — ต้องได้ ≤ 1 |
+| Sub-user อยู่ได้ในอีเวนต์ของ owner ต้นสังกัดเพียง 1 งาน | นับ `event_users` ของ `userId` ที่ `isDeleted=false` — ต้องได้ ≤ 1 และ `event.ownerId` ตรงกับ `user.ownerId` |
+| แต่ละอีเวนต์มีฟอร์มลงทะเบียนและแบบสอบถามได้ไม่เกินอย่างละ 1 (หรือไม่มีเลย / มีอย่างใดอย่างหนึ่ง) | นับ `forms` ที่ `eventId` ตรงกัน, `isDeleted=false` แล้วจัดกลุ่มตาม `type` |
 | อีเวนต์ private ต้องมี Access Gate | `events.type=private` ต้องตั้ง `accessGateField` และตรวจกับ `whitelist_entries` |
 | ต้องอนุมัติฟอร์มก่อนเผยแพร่อีเวนต์ | เผยแพร่ได้เมื่อไม่มีฟอร์มผูกอยู่ หรือฟอร์มที่ active ทั้งหมดเป็น `approved` |
 | Soft delete | ใช้ `isDeleted` / `deletedAt`; ฟอร์มที่ลบแล้วไม่นับโควตา |
@@ -120,10 +121,10 @@ JSON Server (REST)
 ```text
 users 1──* roles
 roles 1──* permissions
-users 1──* events (ownerId / createdBy)
-events 1──* event_users *──1 users
+users (event_owner) 1──1 events (ownerId; active ไม่ soft-delete)
+events 1──* event_users *──1 users (sub_user อยู่ได้แค่ 1 อีเวนต์)
 events 1──1 event_branding
-events 1──* forms
+events 1──0..1 forms(registration) + 0..1 forms(survey)
 forms 1──* form_fields 1──* form_field_options
 events 1──* whitelist_uploads 1──* whitelist_entries
 forms 1──* submissions 1──* submission_answers
