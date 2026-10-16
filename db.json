@@ -1124,8 +1124,14 @@
   "events": [
     {
       "id": "1",
-      "name": "Technology Conference 2026",
-      "description": "งานประชุมด้านเว็บและปัญญาประดิษฐ์ เปิดรับลงทะเบียนเมื่อถึงวันงาน",
+      "name": {
+        "th": "Technology Conference 2026",
+        "en": "Technology Conference 2026"
+      },
+      "description": {
+        "th": "งานประชุมด้านเว็บและปัญญาประดิษฐ์ เปิดรับลงทะเบียนเมื่อถึงวันงาน",
+        "en": "A conference on web and AI. Registration opens when the event starts."
+      },
       "ownerId": "2",
       "createdBy": "2",
       "type": "public",
@@ -1142,8 +1148,14 @@
     },
     {
       "id": "2",
-      "name": "Internal Product Workshop",
-      "description": "เวิร์กช็อปปิดสำหรับทีมผลิตภัณฑ์ ต้องผ่าน Access Gate ด้วยรหัสพนักงาน",
+      "name": {
+        "th": "Internal Product Workshop",
+        "en": "Internal Product Workshop"
+      },
+      "description": {
+        "th": "เวิร์กช็อปปิดสำหรับทีมผลิตภัณฑ์ ต้องผ่าน Access Gate ด้วยรหัสพนักงาน",
+        "en": "Closed workshop for the product team. Access Gate requires an employee ID."
+      },
       "ownerId": "2",
       "createdBy": "2",
       "type": "private",
@@ -1160,8 +1172,14 @@
     },
     {
       "id": "3",
-      "name": "Community Night Bangkok",
-      "description": "มีตติ้งชุมชนที่กำลังเปิดรับลงทะเบียนอยู่ในช่วงเวลางาน",
+      "name": {
+        "th": "Community Night Bangkok",
+        "en": "Community Night Bangkok"
+      },
+      "description": {
+        "th": "มีตติ้งชุมชนที่กำลังเปิดรับลงทะเบียนอยู่ในช่วงเวลางาน",
+        "en": "A community meetup currently open for registration during the event window."
+      },
       "ownerId": "3",
       "createdBy": "3",
       "type": "public",
@@ -1178,8 +1196,14 @@
     },
     {
       "id": "4",
-      "name": "Design Critique September",
-      "description": "รอบวิจารณ์งานออกแบบแบบปิด ปิดรับแล้ว",
+      "name": {
+        "th": "Design Critique September",
+        "en": "Design Critique September"
+      },
+      "description": {
+        "th": "รอบวิจารณ์งานออกแบบแบบปิด ปิดรับแล้ว",
+        "en": "A closed design critique round that is no longer accepting submissions."
+      },
       "ownerId": "3",
       "createdBy": "3",
       "type": "private",
@@ -1196,8 +1220,14 @@
     },
     {
       "id": "5",
-      "name": "Campus Hackathon",
-      "description": "แฮกกาธอนร่าง ฟอร์มลงทะเบียนถูกตีกลับให้แก้",
+      "name": {
+        "th": "Campus Hackathon",
+        "en": "Campus Hackathon"
+      },
+      "description": {
+        "th": "แฮกกาธอนร่าง ฟอร์มลงทะเบียนถูกตีกลับให้แก้",
+        "en": "Draft hackathon. The registration form was rejected and needs changes."
+      },
       "ownerId": "4",
       "createdBy": "4",
       "type": "public",
@@ -1214,8 +1244,14 @@
     },
     {
       "id": "6",
-      "name": "Alumni Dinner",
-      "description": "ดินเนอร์ศิษย์เก่าแบบเชิญเท่านั้น เผยแพร่แล้วแต่ยังไม่ถึงวันงาน",
+      "name": {
+        "th": "Alumni Dinner",
+        "en": "Alumni Dinner"
+      },
+      "description": {
+        "th": "ดินเนอร์ศิษย์เก่าแบบเชิญเท่านั้น เผยแพร่แล้วแต่ยังไม่ถึงวันงาน",
+        "en": "Invite-only alumni dinner. Published, but the event date has not started yet."
+      },
       "ownerId": "4",
       "createdBy": "4",
       "type": "private",
@@ -1232,8 +1268,14 @@
     },
     {
       "id": "7",
-      "name": "Old Draft Meetup",
-      "description": "แบบร่างที่ถูกลบแบบซอฟต์ดีลีต เพื่อไม่ให้ติดโควตาฟอร์ม",
+      "name": {
+        "th": "Old Draft Meetup",
+        "en": "Old Draft Meetup"
+      },
+      "description": {
+        "th": "แบบร่างที่ถูกลบแบบซอฟต์ดีลีต เพื่อไม่ให้ติดโควตาฟอร์ม",
+        "en": "A soft-deleted draft so it does not count against the form quota."
+      },
       "ownerId": "2",
       "createdBy": "2",
       "type": "public",
@@ -1250,8 +1292,14 @@
     },
     {
       "id": "8",
-      "name": "Q3 Townhall",
-      "description": "ทาวน์ฮอลล์ไตรมาส 3 ที่ปิดไปแล้ว ใช้ดูรายงานและแดชบอร์ดย้อนหลัง",
+      "name": {
+        "th": "Q3 Townhall",
+        "en": "Q3 Townhall"
+      },
+      "description": {
+        "th": "ทาวน์ฮอลล์ไตรมาส 3 ที่ปิดไปแล้ว ใช้ดูรายงานและแดชบอร์ดย้อนหลัง",
+        "en": "Closed Q3 townhall used for historical reports and dashboards."
+      },
       "ownerId": "3",
       "createdBy": "3",
       "type": "public",
@@ -1487,7 +1535,8 @@
       "deletedAt": null,
       "createdBy": "2",
       "createdAt": "2026-10-01T07:00:00Z",
-      "updatedAt": "2026-10-07T03:00:00Z"
+      "updatedAt": "2026-10-07T03:00:00Z",
+      "branchingMode": "section_by_language"
     },
     {
       "id": "2",
@@ -1508,7 +1557,8 @@
       "deletedAt": null,
       "createdBy": "2",
       "createdAt": "2026-10-01T08:00:00Z",
-      "updatedAt": "2026-10-07T04:00:00Z"
+      "updatedAt": "2026-10-07T04:00:00Z",
+      "branchingMode": "section_by_language"
     },
     {
       "id": "3",
@@ -1529,7 +1579,8 @@
       "deletedAt": "2026-10-09T02:00:00Z",
       "createdBy": "5",
       "createdAt": "2026-10-02T07:00:00Z",
-      "updatedAt": "2026-10-09T02:00:00Z"
+      "updatedAt": "2026-10-09T02:00:00Z",
+      "branchingMode": "section_by_language"
     },
     {
       "id": "4",
@@ -1550,7 +1601,8 @@
       "deletedAt": "2026-10-13T00:00:00Z",
       "createdBy": "5",
       "createdAt": "2026-10-09T03:00:00Z",
-      "updatedAt": "2026-10-13T00:00:00Z"
+      "updatedAt": "2026-10-13T00:00:00Z",
+      "branchingMode": "section_by_language"
     },
     {
       "id": "5",
@@ -1571,7 +1623,8 @@
       "deletedAt": "2026-10-13T00:00:00Z",
       "createdBy": "2",
       "createdAt": "2026-10-09T04:00:00Z",
-      "updatedAt": "2026-10-13T00:00:00Z"
+      "updatedAt": "2026-10-13T00:00:00Z",
+      "branchingMode": "section_by_language"
     },
     {
       "id": "6",
@@ -1592,7 +1645,8 @@
       "deletedAt": null,
       "createdBy": "3",
       "createdAt": "2026-10-02T07:00:00Z",
-      "updatedAt": "2026-10-04T02:10:00Z"
+      "updatedAt": "2026-10-04T02:10:00Z",
+      "branchingMode": "section_by_language"
     },
     {
       "id": "7",
@@ -1613,7 +1667,8 @@
       "deletedAt": null,
       "createdBy": "3",
       "createdAt": "2026-10-02T08:00:00Z",
-      "updatedAt": "2026-10-04T03:10:00Z"
+      "updatedAt": "2026-10-04T03:10:00Z",
+      "branchingMode": "section_by_language"
     },
     {
       "id": "8",
@@ -1634,7 +1689,8 @@
       "deletedAt": "2026-10-13T00:00:00Z",
       "createdBy": "3",
       "createdAt": "2026-08-12T02:00:00Z",
-      "updatedAt": "2026-10-13T00:00:00Z"
+      "updatedAt": "2026-10-13T00:00:00Z",
+      "branchingMode": "section_by_language"
     },
     {
       "id": "9",
@@ -1655,7 +1711,8 @@
       "deletedAt": "2026-10-13T00:00:00Z",
       "createdBy": "3",
       "createdAt": "2026-08-12T03:00:00Z",
-      "updatedAt": "2026-10-13T00:00:00Z"
+      "updatedAt": "2026-10-13T00:00:00Z",
+      "branchingMode": "section_by_language"
     },
     {
       "id": "10",
@@ -1676,7 +1733,8 @@
       "deletedAt": "2026-10-13T00:00:00Z",
       "createdBy": "9",
       "createdAt": "2026-10-08T02:00:00Z",
-      "updatedAt": "2026-10-13T00:00:00Z"
+      "updatedAt": "2026-10-13T00:00:00Z",
+      "branchingMode": "section_by_language"
     },
     {
       "id": "11",
@@ -1697,7 +1755,8 @@
       "deletedAt": "2026-10-13T00:00:00Z",
       "createdBy": "9",
       "createdAt": "2026-10-09T02:00:00Z",
-      "updatedAt": "2026-10-13T00:00:00Z"
+      "updatedAt": "2026-10-13T00:00:00Z",
+      "branchingMode": "section_by_language"
     },
     {
       "id": "12",
@@ -1718,7 +1777,8 @@
       "deletedAt": null,
       "createdBy": "9",
       "createdAt": "2026-10-05T02:00:00Z",
-      "updatedAt": "2026-10-12T01:00:00Z"
+      "updatedAt": "2026-10-12T01:00:00Z",
+      "branchingMode": "section_by_language"
     },
     {
       "id": "13",
@@ -1739,7 +1799,8 @@
       "deletedAt": null,
       "createdBy": "9",
       "createdAt": "2026-10-05T03:00:00Z",
-      "updatedAt": "2026-10-12T01:10:00Z"
+      "updatedAt": "2026-10-12T01:10:00Z",
+      "branchingMode": "section_by_language"
     },
     {
       "id": "14",
@@ -1760,7 +1821,8 @@
       "deletedAt": "2026-10-07T02:00:00Z",
       "createdBy": "2",
       "createdAt": "2026-10-03T04:00:00Z",
-      "updatedAt": "2026-10-07T02:00:00Z"
+      "updatedAt": "2026-10-07T02:00:00Z",
+      "branchingMode": "section_by_language"
     },
     {
       "id": "15",
@@ -1781,7 +1843,8 @@
       "deletedAt": "2026-10-13T00:00:00Z",
       "createdBy": "3",
       "createdAt": "2026-07-21T02:00:00Z",
-      "updatedAt": "2026-10-13T00:00:00Z"
+      "updatedAt": "2026-10-13T00:00:00Z",
+      "branchingMode": "section_by_language"
     },
     {
       "id": "16",
@@ -1802,7 +1865,362 @@
       "deletedAt": "2026-10-13T00:00:00Z",
       "createdBy": "3",
       "createdAt": "2026-07-21T03:00:00Z",
-      "updatedAt": "2026-10-13T00:00:00Z"
+      "updatedAt": "2026-10-13T00:00:00Z",
+      "branchingMode": "section_by_language"
+    }
+  ],
+  "form_sections": [
+    {
+      "id": "2",
+      "formId": "1",
+      "key": "content_th",
+      "title": "แบบฟอร์มภาษาไทย",
+      "description": null,
+      "lang_type": "th",
+      "sortOrder": 0,
+      "isDeleted": false,
+      "deletedAt": null
+    },
+    {
+      "id": "3",
+      "formId": "1",
+      "key": "content_en",
+      "title": "English form",
+      "description": null,
+      "lang_type": "en",
+      "sortOrder": 1,
+      "isDeleted": false,
+      "deletedAt": null
+    },
+    {
+      "id": "5",
+      "formId": "2",
+      "key": "content_th",
+      "title": "แบบสอบถามภาษาไทย",
+      "description": null,
+      "lang_type": "th",
+      "sortOrder": 0,
+      "isDeleted": false,
+      "deletedAt": null
+    },
+    {
+      "id": "6",
+      "formId": "2",
+      "key": "content_en",
+      "title": "English survey",
+      "description": null,
+      "lang_type": "en",
+      "sortOrder": 1,
+      "isDeleted": false,
+      "deletedAt": null
+    },
+    {
+      "id": "8",
+      "formId": "3",
+      "key": "content_th",
+      "title": "แบบฟอร์มภาษาไทย",
+      "description": null,
+      "lang_type": "th",
+      "sortOrder": 0,
+      "isDeleted": false,
+      "deletedAt": null
+    },
+    {
+      "id": "9",
+      "formId": "3",
+      "key": "content_en",
+      "title": "English form",
+      "description": null,
+      "lang_type": "en",
+      "sortOrder": 1,
+      "isDeleted": false,
+      "deletedAt": null
+    },
+    {
+      "id": "11",
+      "formId": "4",
+      "key": "content_th",
+      "title": "แบบฟอร์มภาษาไทย",
+      "description": null,
+      "lang_type": "th",
+      "sortOrder": 0,
+      "isDeleted": false,
+      "deletedAt": null
+    },
+    {
+      "id": "12",
+      "formId": "4",
+      "key": "content_en",
+      "title": "English form",
+      "description": null,
+      "lang_type": "en",
+      "sortOrder": 1,
+      "isDeleted": false,
+      "deletedAt": null
+    },
+    {
+      "id": "14",
+      "formId": "5",
+      "key": "content_th",
+      "title": "แบบสอบถามภาษาไทย",
+      "description": null,
+      "lang_type": "th",
+      "sortOrder": 0,
+      "isDeleted": false,
+      "deletedAt": null
+    },
+    {
+      "id": "15",
+      "formId": "5",
+      "key": "content_en",
+      "title": "English survey",
+      "description": null,
+      "lang_type": "en",
+      "sortOrder": 1,
+      "isDeleted": false,
+      "deletedAt": null
+    },
+    {
+      "id": "17",
+      "formId": "6",
+      "key": "content_th",
+      "title": "แบบฟอร์มภาษาไทย",
+      "description": null,
+      "lang_type": "th",
+      "sortOrder": 0,
+      "isDeleted": false,
+      "deletedAt": null
+    },
+    {
+      "id": "18",
+      "formId": "6",
+      "key": "content_en",
+      "title": "English form",
+      "description": null,
+      "lang_type": "en",
+      "sortOrder": 1,
+      "isDeleted": false,
+      "deletedAt": null
+    },
+    {
+      "id": "20",
+      "formId": "7",
+      "key": "content_th",
+      "title": "แบบสอบถามภาษาไทย",
+      "description": null,
+      "lang_type": "th",
+      "sortOrder": 0,
+      "isDeleted": false,
+      "deletedAt": null
+    },
+    {
+      "id": "21",
+      "formId": "7",
+      "key": "content_en",
+      "title": "English survey",
+      "description": null,
+      "lang_type": "en",
+      "sortOrder": 1,
+      "isDeleted": false,
+      "deletedAt": null
+    },
+    {
+      "id": "23",
+      "formId": "8",
+      "key": "content_th",
+      "title": "แบบฟอร์มภาษาไทย",
+      "description": null,
+      "lang_type": "th",
+      "sortOrder": 0,
+      "isDeleted": false,
+      "deletedAt": null
+    },
+    {
+      "id": "24",
+      "formId": "8",
+      "key": "content_en",
+      "title": "English form",
+      "description": null,
+      "lang_type": "en",
+      "sortOrder": 1,
+      "isDeleted": false,
+      "deletedAt": null
+    },
+    {
+      "id": "26",
+      "formId": "9",
+      "key": "content_th",
+      "title": "แบบสอบถามภาษาไทย",
+      "description": null,
+      "lang_type": "th",
+      "sortOrder": 0,
+      "isDeleted": false,
+      "deletedAt": null
+    },
+    {
+      "id": "27",
+      "formId": "9",
+      "key": "content_en",
+      "title": "English survey",
+      "description": null,
+      "lang_type": "en",
+      "sortOrder": 1,
+      "isDeleted": false,
+      "deletedAt": null
+    },
+    {
+      "id": "29",
+      "formId": "10",
+      "key": "content_th",
+      "title": "แบบฟอร์มภาษาไทย",
+      "description": null,
+      "lang_type": "th",
+      "sortOrder": 0,
+      "isDeleted": false,
+      "deletedAt": null
+    },
+    {
+      "id": "30",
+      "formId": "10",
+      "key": "content_en",
+      "title": "English form",
+      "description": null,
+      "lang_type": "en",
+      "sortOrder": 1,
+      "isDeleted": false,
+      "deletedAt": null
+    },
+    {
+      "id": "32",
+      "formId": "11",
+      "key": "content_th",
+      "title": "แบบสอบถามภาษาไทย",
+      "description": null,
+      "lang_type": "th",
+      "sortOrder": 0,
+      "isDeleted": false,
+      "deletedAt": null
+    },
+    {
+      "id": "33",
+      "formId": "11",
+      "key": "content_en",
+      "title": "English survey",
+      "description": null,
+      "lang_type": "en",
+      "sortOrder": 1,
+      "isDeleted": false,
+      "deletedAt": null
+    },
+    {
+      "id": "35",
+      "formId": "12",
+      "key": "content_th",
+      "title": "แบบฟอร์มภาษาไทย",
+      "description": null,
+      "lang_type": "th",
+      "sortOrder": 0,
+      "isDeleted": false,
+      "deletedAt": null
+    },
+    {
+      "id": "36",
+      "formId": "12",
+      "key": "content_en",
+      "title": "English form",
+      "description": null,
+      "lang_type": "en",
+      "sortOrder": 1,
+      "isDeleted": false,
+      "deletedAt": null
+    },
+    {
+      "id": "38",
+      "formId": "13",
+      "key": "content_th",
+      "title": "แบบสอบถามภาษาไทย",
+      "description": null,
+      "lang_type": "th",
+      "sortOrder": 0,
+      "isDeleted": false,
+      "deletedAt": null
+    },
+    {
+      "id": "39",
+      "formId": "13",
+      "key": "content_en",
+      "title": "English survey",
+      "description": null,
+      "lang_type": "en",
+      "sortOrder": 1,
+      "isDeleted": false,
+      "deletedAt": null
+    },
+    {
+      "id": "41",
+      "formId": "14",
+      "key": "content_th",
+      "title": "แบบฟอร์มภาษาไทย",
+      "description": null,
+      "lang_type": "th",
+      "sortOrder": 0,
+      "isDeleted": false,
+      "deletedAt": null
+    },
+    {
+      "id": "42",
+      "formId": "14",
+      "key": "content_en",
+      "title": "English form",
+      "description": null,
+      "lang_type": "en",
+      "sortOrder": 1,
+      "isDeleted": false,
+      "deletedAt": null
+    },
+    {
+      "id": "44",
+      "formId": "15",
+      "key": "content_th",
+      "title": "แบบฟอร์มภาษาไทย",
+      "description": null,
+      "lang_type": "th",
+      "sortOrder": 0,
+      "isDeleted": false,
+      "deletedAt": null
+    },
+    {
+      "id": "45",
+      "formId": "15",
+      "key": "content_en",
+      "title": "English form",
+      "description": null,
+      "lang_type": "en",
+      "sortOrder": 1,
+      "isDeleted": false,
+      "deletedAt": null
+    },
+    {
+      "id": "47",
+      "formId": "16",
+      "key": "content_th",
+      "title": "แบบสอบถามภาษาไทย",
+      "description": null,
+      "lang_type": "th",
+      "sortOrder": 0,
+      "isDeleted": false,
+      "deletedAt": null
+    },
+    {
+      "id": "48",
+      "formId": "16",
+      "key": "content_en",
+      "title": "English survey",
+      "description": null,
+      "lang_type": "en",
+      "sortOrder": 1,
+      "isDeleted": false,
+      "deletedAt": null
     }
   ],
   "form_fields": [
@@ -1820,7 +2238,8 @@
       "ratingLabels": null,
       "sortOrder": 1,
       "isDeleted": false,
-      "deletedAt": null
+      "deletedAt": null,
+      "sectionId": "2"
     },
     {
       "id": "2",
@@ -1836,7 +2255,8 @@
       "ratingLabels": null,
       "sortOrder": 2,
       "isDeleted": false,
-      "deletedAt": null
+      "deletedAt": null,
+      "sectionId": "2"
     },
     {
       "id": "3",
@@ -1852,7 +2272,8 @@
       "ratingLabels": null,
       "sortOrder": 3,
       "isDeleted": false,
-      "deletedAt": null
+      "deletedAt": null,
+      "sectionId": "2"
     },
     {
       "id": "4",
@@ -1868,7 +2289,8 @@
       "ratingLabels": null,
       "sortOrder": 4,
       "isDeleted": false,
-      "deletedAt": null
+      "deletedAt": null,
+      "sectionId": "2"
     },
     {
       "id": "5",
@@ -1884,7 +2306,8 @@
       "ratingLabels": null,
       "sortOrder": 5,
       "isDeleted": false,
-      "deletedAt": null
+      "deletedAt": null,
+      "sectionId": "2"
     },
     {
       "id": "6",
@@ -1900,7 +2323,8 @@
       "ratingLabels": null,
       "sortOrder": 6,
       "isDeleted": false,
-      "deletedAt": null
+      "deletedAt": null,
+      "sectionId": "2"
     },
     {
       "id": "7",
@@ -1916,7 +2340,8 @@
       "ratingLabels": null,
       "sortOrder": 7,
       "isDeleted": false,
-      "deletedAt": null
+      "deletedAt": null,
+      "sectionId": "2"
     },
     {
       "id": "8",
@@ -1932,7 +2357,8 @@
       "ratingLabels": null,
       "sortOrder": 8,
       "isDeleted": false,
-      "deletedAt": null
+      "deletedAt": null,
+      "sectionId": "2"
     },
     {
       "id": "9",
@@ -1948,7 +2374,8 @@
       "ratingLabels": null,
       "sortOrder": 9,
       "isDeleted": false,
-      "deletedAt": null
+      "deletedAt": null,
+      "sectionId": "2"
     },
     {
       "id": "10",
@@ -1964,7 +2391,8 @@
       "ratingLabels": null,
       "sortOrder": 10,
       "isDeleted": false,
-      "deletedAt": null
+      "deletedAt": null,
+      "sectionId": "2"
     },
     {
       "id": "11",
@@ -1991,7 +2419,8 @@
       ],
       "sortOrder": 1,
       "isDeleted": false,
-      "deletedAt": null
+      "deletedAt": null,
+      "sectionId": "5"
     },
     {
       "id": "12",
@@ -2007,7 +2436,8 @@
       "ratingLabels": null,
       "sortOrder": 2,
       "isDeleted": false,
-      "deletedAt": null
+      "deletedAt": null,
+      "sectionId": "5"
     },
     {
       "id": "13",
@@ -2023,7 +2453,8 @@
       "ratingLabels": null,
       "sortOrder": 3,
       "isDeleted": false,
-      "deletedAt": null
+      "deletedAt": null,
+      "sectionId": "5"
     },
     {
       "id": "14",
@@ -2039,7 +2470,8 @@
       "ratingLabels": null,
       "sortOrder": 4,
       "isDeleted": false,
-      "deletedAt": null
+      "deletedAt": null,
+      "sectionId": "5"
     },
     {
       "id": "15",
@@ -2055,7 +2487,8 @@
       "ratingLabels": null,
       "sortOrder": 5,
       "isDeleted": false,
-      "deletedAt": null
+      "deletedAt": null,
+      "sectionId": "5"
     },
     {
       "id": "16",
@@ -2071,7 +2504,8 @@
       "ratingLabels": null,
       "sortOrder": 6,
       "isDeleted": false,
-      "deletedAt": null
+      "deletedAt": null,
+      "sectionId": "5"
     },
     {
       "id": "17",
@@ -2087,7 +2521,8 @@
       "ratingLabels": null,
       "sortOrder": 7,
       "isDeleted": false,
-      "deletedAt": null
+      "deletedAt": null,
+      "sectionId": "5"
     },
     {
       "id": "18",
@@ -2103,7 +2538,8 @@
       "ratingLabels": null,
       "sortOrder": 1,
       "isDeleted": false,
-      "deletedAt": null
+      "deletedAt": null,
+      "sectionId": "8"
     },
     {
       "id": "19",
@@ -2119,7 +2555,8 @@
       "ratingLabels": null,
       "sortOrder": 2,
       "isDeleted": false,
-      "deletedAt": null
+      "deletedAt": null,
+      "sectionId": "8"
     },
     {
       "id": "20",
@@ -2135,7 +2572,8 @@
       "ratingLabels": null,
       "sortOrder": 1,
       "isDeleted": false,
-      "deletedAt": null
+      "deletedAt": null,
+      "sectionId": "11"
     },
     {
       "id": "21",
@@ -2151,7 +2589,8 @@
       "ratingLabels": null,
       "sortOrder": 2,
       "isDeleted": false,
-      "deletedAt": null
+      "deletedAt": null,
+      "sectionId": "11"
     },
     {
       "id": "22",
@@ -2167,7 +2606,8 @@
       "ratingLabels": null,
       "sortOrder": 3,
       "isDeleted": false,
-      "deletedAt": null
+      "deletedAt": null,
+      "sectionId": "11"
     },
     {
       "id": "23",
@@ -2183,7 +2623,8 @@
       "ratingLabels": null,
       "sortOrder": 4,
       "isDeleted": false,
-      "deletedAt": null
+      "deletedAt": null,
+      "sectionId": "11"
     },
     {
       "id": "24",
@@ -2199,7 +2640,8 @@
       "ratingLabels": null,
       "sortOrder": 5,
       "isDeleted": false,
-      "deletedAt": null
+      "deletedAt": null,
+      "sectionId": "11"
     },
     {
       "id": "25",
@@ -2215,7 +2657,8 @@
       "ratingLabels": null,
       "sortOrder": 6,
       "isDeleted": false,
-      "deletedAt": null
+      "deletedAt": null,
+      "sectionId": "11"
     },
     {
       "id": "26",
@@ -2231,7 +2674,8 @@
       "ratingLabels": null,
       "sortOrder": 7,
       "isDeleted": false,
-      "deletedAt": null
+      "deletedAt": null,
+      "sectionId": "11"
     },
     {
       "id": "27",
@@ -2247,7 +2691,8 @@
       "ratingLabels": null,
       "sortOrder": 8,
       "isDeleted": false,
-      "deletedAt": null
+      "deletedAt": null,
+      "sectionId": "11"
     },
     {
       "id": "28",
@@ -2263,7 +2708,8 @@
       "ratingLabels": null,
       "sortOrder": 9,
       "isDeleted": false,
-      "deletedAt": null
+      "deletedAt": null,
+      "sectionId": "11"
     },
     {
       "id": "29",
@@ -2279,7 +2725,8 @@
       "ratingLabels": null,
       "sortOrder": 10,
       "isDeleted": false,
-      "deletedAt": null
+      "deletedAt": null,
+      "sectionId": "11"
     },
     {
       "id": "30",
@@ -2301,7 +2748,8 @@
       ],
       "sortOrder": 1,
       "isDeleted": false,
-      "deletedAt": null
+      "deletedAt": null,
+      "sectionId": "14"
     },
     {
       "id": "31",
@@ -2317,7 +2765,8 @@
       "ratingLabels": null,
       "sortOrder": 2,
       "isDeleted": false,
-      "deletedAt": null
+      "deletedAt": null,
+      "sectionId": "14"
     },
     {
       "id": "32",
@@ -2333,7 +2782,8 @@
       "ratingLabels": null,
       "sortOrder": 3,
       "isDeleted": false,
-      "deletedAt": null
+      "deletedAt": null,
+      "sectionId": "14"
     },
     {
       "id": "33",
@@ -2349,7 +2799,8 @@
       "ratingLabels": null,
       "sortOrder": 4,
       "isDeleted": false,
-      "deletedAt": null
+      "deletedAt": null,
+      "sectionId": "14"
     },
     {
       "id": "34",
@@ -2365,7 +2816,8 @@
       "ratingLabels": null,
       "sortOrder": 5,
       "isDeleted": false,
-      "deletedAt": null
+      "deletedAt": null,
+      "sectionId": "14"
     },
     {
       "id": "35",
@@ -2381,7 +2833,8 @@
       "ratingLabels": null,
       "sortOrder": 6,
       "isDeleted": false,
-      "deletedAt": null
+      "deletedAt": null,
+      "sectionId": "14"
     },
     {
       "id": "36",
@@ -2397,7 +2850,8 @@
       "ratingLabels": null,
       "sortOrder": 7,
       "isDeleted": false,
-      "deletedAt": null
+      "deletedAt": null,
+      "sectionId": "14"
     },
     {
       "id": "37",
@@ -2413,7 +2867,8 @@
       "ratingLabels": null,
       "sortOrder": 1,
       "isDeleted": false,
-      "deletedAt": null
+      "deletedAt": null,
+      "sectionId": "17"
     },
     {
       "id": "38",
@@ -2429,7 +2884,8 @@
       "ratingLabels": null,
       "sortOrder": 2,
       "isDeleted": false,
-      "deletedAt": null
+      "deletedAt": null,
+      "sectionId": "17"
     },
     {
       "id": "39",
@@ -2445,7 +2901,8 @@
       "ratingLabels": null,
       "sortOrder": 3,
       "isDeleted": false,
-      "deletedAt": null
+      "deletedAt": null,
+      "sectionId": "17"
     },
     {
       "id": "40",
@@ -2461,7 +2918,8 @@
       "ratingLabels": null,
       "sortOrder": 4,
       "isDeleted": false,
-      "deletedAt": null
+      "deletedAt": null,
+      "sectionId": "17"
     },
     {
       "id": "41",
@@ -2477,7 +2935,8 @@
       "ratingLabels": null,
       "sortOrder": 5,
       "isDeleted": false,
-      "deletedAt": null
+      "deletedAt": null,
+      "sectionId": "17"
     },
     {
       "id": "42",
@@ -2493,7 +2952,8 @@
       "ratingLabels": null,
       "sortOrder": 6,
       "isDeleted": false,
-      "deletedAt": null
+      "deletedAt": null,
+      "sectionId": "17"
     },
     {
       "id": "43",
@@ -2509,7 +2969,8 @@
       "ratingLabels": null,
       "sortOrder": 7,
       "isDeleted": false,
-      "deletedAt": null
+      "deletedAt": null,
+      "sectionId": "17"
     },
     {
       "id": "44",
@@ -2525,7 +2986,8 @@
       "ratingLabels": null,
       "sortOrder": 8,
       "isDeleted": false,
-      "deletedAt": null
+      "deletedAt": null,
+      "sectionId": "17"
     },
     {
       "id": "45",
@@ -2541,7 +3003,8 @@
       "ratingLabels": null,
       "sortOrder": 9,
       "isDeleted": false,
-      "deletedAt": null
+      "deletedAt": null,
+      "sectionId": "17"
     },
     {
       "id": "46",
@@ -2557,7 +3020,8 @@
       "ratingLabels": null,
       "sortOrder": 10,
       "isDeleted": false,
-      "deletedAt": null
+      "deletedAt": null,
+      "sectionId": "17"
     },
     {
       "id": "47",
@@ -2579,7 +3043,8 @@
       ],
       "sortOrder": 1,
       "isDeleted": false,
-      "deletedAt": null
+      "deletedAt": null,
+      "sectionId": "20"
     },
     {
       "id": "48",
@@ -2595,7 +3060,8 @@
       "ratingLabels": null,
       "sortOrder": 2,
       "isDeleted": false,
-      "deletedAt": null
+      "deletedAt": null,
+      "sectionId": "20"
     },
     {
       "id": "49",
@@ -2611,7 +3077,8 @@
       "ratingLabels": null,
       "sortOrder": 3,
       "isDeleted": false,
-      "deletedAt": null
+      "deletedAt": null,
+      "sectionId": "20"
     },
     {
       "id": "50",
@@ -2627,7 +3094,8 @@
       "ratingLabels": null,
       "sortOrder": 4,
       "isDeleted": false,
-      "deletedAt": null
+      "deletedAt": null,
+      "sectionId": "20"
     },
     {
       "id": "51",
@@ -2643,7 +3111,8 @@
       "ratingLabels": null,
       "sortOrder": 5,
       "isDeleted": false,
-      "deletedAt": null
+      "deletedAt": null,
+      "sectionId": "20"
     },
     {
       "id": "52",
@@ -2659,7 +3128,8 @@
       "ratingLabels": null,
       "sortOrder": 6,
       "isDeleted": false,
-      "deletedAt": null
+      "deletedAt": null,
+      "sectionId": "20"
     },
     {
       "id": "53",
@@ -2675,7 +3145,8 @@
       "ratingLabels": null,
       "sortOrder": 7,
       "isDeleted": false,
-      "deletedAt": null
+      "deletedAt": null,
+      "sectionId": "20"
     },
     {
       "id": "54",
@@ -2691,7 +3162,8 @@
       "ratingLabels": null,
       "sortOrder": 1,
       "isDeleted": false,
-      "deletedAt": null
+      "deletedAt": null,
+      "sectionId": "23"
     },
     {
       "id": "55",
@@ -2707,7 +3179,8 @@
       "ratingLabels": null,
       "sortOrder": 2,
       "isDeleted": false,
-      "deletedAt": null
+      "deletedAt": null,
+      "sectionId": "23"
     },
     {
       "id": "56",
@@ -2723,7 +3196,8 @@
       "ratingLabels": null,
       "sortOrder": 3,
       "isDeleted": false,
-      "deletedAt": null
+      "deletedAt": null,
+      "sectionId": "23"
     },
     {
       "id": "57",
@@ -2739,7 +3213,8 @@
       "ratingLabels": null,
       "sortOrder": 4,
       "isDeleted": false,
-      "deletedAt": null
+      "deletedAt": null,
+      "sectionId": "23"
     },
     {
       "id": "58",
@@ -2755,7 +3230,8 @@
       "ratingLabels": null,
       "sortOrder": 5,
       "isDeleted": false,
-      "deletedAt": null
+      "deletedAt": null,
+      "sectionId": "23"
     },
     {
       "id": "59",
@@ -2771,7 +3247,8 @@
       "ratingLabels": null,
       "sortOrder": 6,
       "isDeleted": false,
-      "deletedAt": null
+      "deletedAt": null,
+      "sectionId": "23"
     },
     {
       "id": "60",
@@ -2787,7 +3264,8 @@
       "ratingLabels": null,
       "sortOrder": 7,
       "isDeleted": false,
-      "deletedAt": null
+      "deletedAt": null,
+      "sectionId": "23"
     },
     {
       "id": "61",
@@ -2803,7 +3281,8 @@
       "ratingLabels": null,
       "sortOrder": 8,
       "isDeleted": false,
-      "deletedAt": null
+      "deletedAt": null,
+      "sectionId": "23"
     },
     {
       "id": "62",
@@ -2819,7 +3298,8 @@
       "ratingLabels": null,
       "sortOrder": 9,
       "isDeleted": false,
-      "deletedAt": null
+      "deletedAt": null,
+      "sectionId": "23"
     },
     {
       "id": "63",
@@ -2835,7 +3315,8 @@
       "ratingLabels": null,
       "sortOrder": 10,
       "isDeleted": false,
-      "deletedAt": null
+      "deletedAt": null,
+      "sectionId": "23"
     },
     {
       "id": "64",
@@ -2862,7 +3343,8 @@
       ],
       "sortOrder": 1,
       "isDeleted": false,
-      "deletedAt": null
+      "deletedAt": null,
+      "sectionId": "26"
     },
     {
       "id": "65",
@@ -2878,7 +3360,8 @@
       "ratingLabels": null,
       "sortOrder": 2,
       "isDeleted": false,
-      "deletedAt": null
+      "deletedAt": null,
+      "sectionId": "26"
     },
     {
       "id": "66",
@@ -2894,7 +3377,8 @@
       "ratingLabels": null,
       "sortOrder": 3,
       "isDeleted": false,
-      "deletedAt": null
+      "deletedAt": null,
+      "sectionId": "26"
     },
     {
       "id": "67",
@@ -2910,7 +3394,8 @@
       "ratingLabels": null,
       "sortOrder": 4,
       "isDeleted": false,
-      "deletedAt": null
+      "deletedAt": null,
+      "sectionId": "26"
     },
     {
       "id": "68",
@@ -2926,7 +3411,8 @@
       "ratingLabels": null,
       "sortOrder": 5,
       "isDeleted": false,
-      "deletedAt": null
+      "deletedAt": null,
+      "sectionId": "26"
     },
     {
       "id": "69",
@@ -2942,7 +3428,8 @@
       "ratingLabels": null,
       "sortOrder": 6,
       "isDeleted": false,
-      "deletedAt": null
+      "deletedAt": null,
+      "sectionId": "26"
     },
     {
       "id": "70",
@@ -2958,7 +3445,8 @@
       "ratingLabels": null,
       "sortOrder": 7,
       "isDeleted": false,
-      "deletedAt": null
+      "deletedAt": null,
+      "sectionId": "26"
     },
     {
       "id": "71",
@@ -2974,7 +3462,8 @@
       "ratingLabels": null,
       "sortOrder": 1,
       "isDeleted": false,
-      "deletedAt": null
+      "deletedAt": null,
+      "sectionId": "29"
     },
     {
       "id": "72",
@@ -2990,7 +3479,8 @@
       "ratingLabels": null,
       "sortOrder": 2,
       "isDeleted": false,
-      "deletedAt": null
+      "deletedAt": null,
+      "sectionId": "29"
     },
     {
       "id": "73",
@@ -3006,7 +3496,8 @@
       "ratingLabels": null,
       "sortOrder": 3,
       "isDeleted": false,
-      "deletedAt": null
+      "deletedAt": null,
+      "sectionId": "29"
     },
     {
       "id": "74",
@@ -3022,7 +3513,8 @@
       "ratingLabels": null,
       "sortOrder": 4,
       "isDeleted": false,
-      "deletedAt": null
+      "deletedAt": null,
+      "sectionId": "29"
     },
     {
       "id": "75",
@@ -3038,7 +3530,8 @@
       "ratingLabels": null,
       "sortOrder": 5,
       "isDeleted": false,
-      "deletedAt": null
+      "deletedAt": null,
+      "sectionId": "29"
     },
     {
       "id": "76",
@@ -3054,7 +3547,8 @@
       "ratingLabels": null,
       "sortOrder": 6,
       "isDeleted": false,
-      "deletedAt": null
+      "deletedAt": null,
+      "sectionId": "29"
     },
     {
       "id": "77",
@@ -3070,7 +3564,8 @@
       "ratingLabels": null,
       "sortOrder": 7,
       "isDeleted": false,
-      "deletedAt": null
+      "deletedAt": null,
+      "sectionId": "29"
     },
     {
       "id": "78",
@@ -3086,7 +3581,8 @@
       "ratingLabels": null,
       "sortOrder": 8,
       "isDeleted": false,
-      "deletedAt": null
+      "deletedAt": null,
+      "sectionId": "29"
     },
     {
       "id": "79",
@@ -3102,7 +3598,8 @@
       "ratingLabels": null,
       "sortOrder": 9,
       "isDeleted": false,
-      "deletedAt": null
+      "deletedAt": null,
+      "sectionId": "29"
     },
     {
       "id": "80",
@@ -3118,7 +3615,8 @@
       "ratingLabels": null,
       "sortOrder": 10,
       "isDeleted": false,
-      "deletedAt": null
+      "deletedAt": null,
+      "sectionId": "29"
     },
     {
       "id": "81",
@@ -3145,7 +3643,8 @@
       ],
       "sortOrder": 1,
       "isDeleted": false,
-      "deletedAt": null
+      "deletedAt": null,
+      "sectionId": "32"
     },
     {
       "id": "82",
@@ -3161,7 +3660,8 @@
       "ratingLabels": null,
       "sortOrder": 2,
       "isDeleted": false,
-      "deletedAt": null
+      "deletedAt": null,
+      "sectionId": "32"
     },
     {
       "id": "83",
@@ -3177,7 +3677,8 @@
       "ratingLabels": null,
       "sortOrder": 3,
       "isDeleted": false,
-      "deletedAt": null
+      "deletedAt": null,
+      "sectionId": "32"
     },
     {
       "id": "84",
@@ -3193,7 +3694,8 @@
       "ratingLabels": null,
       "sortOrder": 4,
       "isDeleted": false,
-      "deletedAt": null
+      "deletedAt": null,
+      "sectionId": "32"
     },
     {
       "id": "85",
@@ -3209,7 +3711,8 @@
       "ratingLabels": null,
       "sortOrder": 5,
       "isDeleted": false,
-      "deletedAt": null
+      "deletedAt": null,
+      "sectionId": "32"
     },
     {
       "id": "86",
@@ -3225,7 +3728,8 @@
       "ratingLabels": null,
       "sortOrder": 6,
       "isDeleted": false,
-      "deletedAt": null
+      "deletedAt": null,
+      "sectionId": "32"
     },
     {
       "id": "87",
@@ -3241,7 +3745,8 @@
       "ratingLabels": null,
       "sortOrder": 7,
       "isDeleted": false,
-      "deletedAt": null
+      "deletedAt": null,
+      "sectionId": "32"
     },
     {
       "id": "88",
@@ -3257,7 +3762,8 @@
       "ratingLabels": null,
       "sortOrder": 1,
       "isDeleted": false,
-      "deletedAt": null
+      "deletedAt": null,
+      "sectionId": "35"
     },
     {
       "id": "89",
@@ -3273,7 +3779,8 @@
       "ratingLabels": null,
       "sortOrder": 2,
       "isDeleted": false,
-      "deletedAt": null
+      "deletedAt": null,
+      "sectionId": "35"
     },
     {
       "id": "90",
@@ -3289,7 +3796,8 @@
       "ratingLabels": null,
       "sortOrder": 3,
       "isDeleted": false,
-      "deletedAt": null
+      "deletedAt": null,
+      "sectionId": "35"
     },
     {
       "id": "91",
@@ -3305,7 +3813,8 @@
       "ratingLabels": null,
       "sortOrder": 4,
       "isDeleted": false,
-      "deletedAt": null
+      "deletedAt": null,
+      "sectionId": "35"
     },
     {
       "id": "92",
@@ -3321,7 +3830,8 @@
       "ratingLabels": null,
       "sortOrder": 5,
       "isDeleted": false,
-      "deletedAt": null
+      "deletedAt": null,
+      "sectionId": "35"
     },
     {
       "id": "93",
@@ -3337,7 +3847,8 @@
       "ratingLabels": null,
       "sortOrder": 6,
       "isDeleted": false,
-      "deletedAt": null
+      "deletedAt": null,
+      "sectionId": "35"
     },
     {
       "id": "94",
@@ -3353,7 +3864,8 @@
       "ratingLabels": null,
       "sortOrder": 7,
       "isDeleted": false,
-      "deletedAt": null
+      "deletedAt": null,
+      "sectionId": "35"
     },
     {
       "id": "95",
@@ -3369,7 +3881,8 @@
       "ratingLabels": null,
       "sortOrder": 8,
       "isDeleted": false,
-      "deletedAt": null
+      "deletedAt": null,
+      "sectionId": "35"
     },
     {
       "id": "96",
@@ -3385,7 +3898,8 @@
       "ratingLabels": null,
       "sortOrder": 9,
       "isDeleted": false,
-      "deletedAt": null
+      "deletedAt": null,
+      "sectionId": "35"
     },
     {
       "id": "97",
@@ -3401,7 +3915,8 @@
       "ratingLabels": null,
       "sortOrder": 10,
       "isDeleted": false,
-      "deletedAt": null
+      "deletedAt": null,
+      "sectionId": "35"
     },
     {
       "id": "98",
@@ -3423,7 +3938,8 @@
       ],
       "sortOrder": 1,
       "isDeleted": false,
-      "deletedAt": null
+      "deletedAt": null,
+      "sectionId": "38"
     },
     {
       "id": "99",
@@ -3439,7 +3955,8 @@
       "ratingLabels": null,
       "sortOrder": 2,
       "isDeleted": false,
-      "deletedAt": null
+      "deletedAt": null,
+      "sectionId": "38"
     },
     {
       "id": "100",
@@ -3455,7 +3972,8 @@
       "ratingLabels": null,
       "sortOrder": 3,
       "isDeleted": false,
-      "deletedAt": null
+      "deletedAt": null,
+      "sectionId": "38"
     },
     {
       "id": "101",
@@ -3471,7 +3989,8 @@
       "ratingLabels": null,
       "sortOrder": 4,
       "isDeleted": false,
-      "deletedAt": null
+      "deletedAt": null,
+      "sectionId": "38"
     },
     {
       "id": "102",
@@ -3487,7 +4006,8 @@
       "ratingLabels": null,
       "sortOrder": 5,
       "isDeleted": false,
-      "deletedAt": null
+      "deletedAt": null,
+      "sectionId": "38"
     },
     {
       "id": "103",
@@ -3503,7 +4023,8 @@
       "ratingLabels": null,
       "sortOrder": 6,
       "isDeleted": false,
-      "deletedAt": null
+      "deletedAt": null,
+      "sectionId": "38"
     },
     {
       "id": "104",
@@ -3519,7 +4040,8 @@
       "ratingLabels": null,
       "sortOrder": 7,
       "isDeleted": false,
-      "deletedAt": null
+      "deletedAt": null,
+      "sectionId": "38"
     },
     {
       "id": "105",
@@ -3535,7 +4057,8 @@
       "ratingLabels": null,
       "sortOrder": 1,
       "isDeleted": false,
-      "deletedAt": null
+      "deletedAt": null,
+      "sectionId": "41"
     },
     {
       "id": "106",
@@ -3551,7 +4074,8 @@
       "ratingLabels": null,
       "sortOrder": 2,
       "isDeleted": false,
-      "deletedAt": null
+      "deletedAt": null,
+      "sectionId": "41"
     },
     {
       "id": "107",
@@ -3567,7 +4091,8 @@
       "ratingLabels": null,
       "sortOrder": 1,
       "isDeleted": false,
-      "deletedAt": null
+      "deletedAt": null,
+      "sectionId": "44"
     },
     {
       "id": "108",
@@ -3583,7 +4108,8 @@
       "ratingLabels": null,
       "sortOrder": 2,
       "isDeleted": false,
-      "deletedAt": null
+      "deletedAt": null,
+      "sectionId": "44"
     },
     {
       "id": "109",
@@ -3599,7 +4125,8 @@
       "ratingLabels": null,
       "sortOrder": 3,
       "isDeleted": false,
-      "deletedAt": null
+      "deletedAt": null,
+      "sectionId": "44"
     },
     {
       "id": "110",
@@ -3615,7 +4142,8 @@
       "ratingLabels": null,
       "sortOrder": 4,
       "isDeleted": false,
-      "deletedAt": null
+      "deletedAt": null,
+      "sectionId": "44"
     },
     {
       "id": "111",
@@ -3631,7 +4159,8 @@
       "ratingLabels": null,
       "sortOrder": 5,
       "isDeleted": false,
-      "deletedAt": null
+      "deletedAt": null,
+      "sectionId": "44"
     },
     {
       "id": "112",
@@ -3647,7 +4176,8 @@
       "ratingLabels": null,
       "sortOrder": 6,
       "isDeleted": false,
-      "deletedAt": null
+      "deletedAt": null,
+      "sectionId": "44"
     },
     {
       "id": "113",
@@ -3663,7 +4193,8 @@
       "ratingLabels": null,
       "sortOrder": 7,
       "isDeleted": false,
-      "deletedAt": null
+      "deletedAt": null,
+      "sectionId": "44"
     },
     {
       "id": "114",
@@ -3679,7 +4210,8 @@
       "ratingLabels": null,
       "sortOrder": 8,
       "isDeleted": false,
-      "deletedAt": null
+      "deletedAt": null,
+      "sectionId": "44"
     },
     {
       "id": "115",
@@ -3695,7 +4227,8 @@
       "ratingLabels": null,
       "sortOrder": 9,
       "isDeleted": false,
-      "deletedAt": null
+      "deletedAt": null,
+      "sectionId": "44"
     },
     {
       "id": "116",
@@ -3711,7 +4244,8 @@
       "ratingLabels": null,
       "sortOrder": 10,
       "isDeleted": false,
-      "deletedAt": null
+      "deletedAt": null,
+      "sectionId": "44"
     },
     {
       "id": "117",
@@ -3738,7 +4272,8 @@
       ],
       "sortOrder": 1,
       "isDeleted": false,
-      "deletedAt": null
+      "deletedAt": null,
+      "sectionId": "47"
     },
     {
       "id": "118",
@@ -3754,7 +4289,8 @@
       "ratingLabels": null,
       "sortOrder": 2,
       "isDeleted": false,
-      "deletedAt": null
+      "deletedAt": null,
+      "sectionId": "47"
     },
     {
       "id": "119",
@@ -3770,7 +4306,8 @@
       "ratingLabels": null,
       "sortOrder": 3,
       "isDeleted": false,
-      "deletedAt": null
+      "deletedAt": null,
+      "sectionId": "47"
     },
     {
       "id": "120",
@@ -3786,7 +4323,8 @@
       "ratingLabels": null,
       "sortOrder": 4,
       "isDeleted": false,
-      "deletedAt": null
+      "deletedAt": null,
+      "sectionId": "47"
     },
     {
       "id": "121",
@@ -3802,7 +4340,8 @@
       "ratingLabels": null,
       "sortOrder": 5,
       "isDeleted": false,
-      "deletedAt": null
+      "deletedAt": null,
+      "sectionId": "47"
     },
     {
       "id": "122",
@@ -3818,7 +4357,8 @@
       "ratingLabels": null,
       "sortOrder": 6,
       "isDeleted": false,
-      "deletedAt": null
+      "deletedAt": null,
+      "sectionId": "47"
     },
     {
       "id": "123",
@@ -3834,7 +4374,2161 @@
       "ratingLabels": null,
       "sortOrder": 7,
       "isDeleted": false,
-      "deletedAt": null
+      "deletedAt": null,
+      "sectionId": "47"
+    },
+    {
+      "id": "125",
+      "formId": "1",
+      "name": "fullName",
+      "label": "Full name",
+      "type": "text",
+      "required": true,
+      "sensitive": true,
+      "placeholder": "First and last name",
+      "ratingMin": null,
+      "ratingMax": null,
+      "ratingLabels": null,
+      "sortOrder": 1,
+      "isDeleted": false,
+      "deletedAt": null,
+      "sectionId": "3"
+    },
+    {
+      "id": "126",
+      "formId": "1",
+      "name": "email",
+      "label": "Email",
+      "type": "text",
+      "required": true,
+      "sensitive": true,
+      "placeholder": "name@email.com",
+      "ratingMin": null,
+      "ratingMax": null,
+      "ratingLabels": null,
+      "sortOrder": 2,
+      "isDeleted": false,
+      "deletedAt": null,
+      "sectionId": "3"
+    },
+    {
+      "id": "127",
+      "formId": "1",
+      "name": "phone",
+      "label": "Phone number",
+      "type": "text",
+      "required": true,
+      "sensitive": true,
+      "placeholder": "08xxxxxxxx",
+      "ratingMin": null,
+      "ratingMax": null,
+      "ratingLabels": null,
+      "sortOrder": 3,
+      "isDeleted": false,
+      "deletedAt": null,
+      "sectionId": "3"
+    },
+    {
+      "id": "128",
+      "formId": "1",
+      "name": "track",
+      "label": "Track of interest",
+      "type": "radio",
+      "required": true,
+      "sensitive": false,
+      "placeholder": null,
+      "ratingMin": null,
+      "ratingMax": null,
+      "ratingLabels": null,
+      "sortOrder": 4,
+      "isDeleted": false,
+      "deletedAt": null,
+      "sectionId": "3"
+    },
+    {
+      "id": "129",
+      "formId": "1",
+      "name": "interests",
+      "label": "Topics of interest",
+      "type": "checkbox",
+      "required": true,
+      "sensitive": false,
+      "placeholder": null,
+      "ratingMin": null,
+      "ratingMax": null,
+      "ratingLabels": null,
+      "sortOrder": 5,
+      "isDeleted": false,
+      "deletedAt": null,
+      "sectionId": "3"
+    },
+    {
+      "id": "130",
+      "formId": "1",
+      "name": "tshirt",
+      "label": "T-shirt size",
+      "type": "dropdown",
+      "required": true,
+      "sensitive": false,
+      "placeholder": null,
+      "ratingMin": null,
+      "ratingMax": null,
+      "ratingLabels": null,
+      "sortOrder": 6,
+      "isDeleted": false,
+      "deletedAt": null,
+      "sectionId": "3"
+    },
+    {
+      "id": "131",
+      "formId": "1",
+      "name": "attendDate",
+      "label": "Attendance date",
+      "type": "date",
+      "required": true,
+      "sensitive": false,
+      "placeholder": null,
+      "ratingMin": null,
+      "ratingMax": null,
+      "ratingLabels": null,
+      "sortOrder": 7,
+      "isDeleted": false,
+      "deletedAt": null,
+      "sectionId": "3"
+    },
+    {
+      "id": "132",
+      "formId": "1",
+      "name": "attendTime",
+      "label": "Arrival time",
+      "type": "time",
+      "required": true,
+      "sensitive": false,
+      "placeholder": null,
+      "ratingMin": null,
+      "ratingMax": null,
+      "ratingLabels": null,
+      "sortOrder": 8,
+      "isDeleted": false,
+      "deletedAt": null,
+      "sectionId": "3"
+    },
+    {
+      "id": "133",
+      "formId": "1",
+      "name": "experience",
+      "label": "Experience (years)",
+      "type": "number",
+      "required": true,
+      "sensitive": false,
+      "placeholder": "0",
+      "ratingMin": null,
+      "ratingMax": null,
+      "ratingLabels": null,
+      "sortOrder": 9,
+      "isDeleted": false,
+      "deletedAt": null,
+      "sectionId": "3"
+    },
+    {
+      "id": "134",
+      "formId": "1",
+      "name": "note",
+      "label": "Notes",
+      "type": "long_text",
+      "required": false,
+      "sensitive": false,
+      "placeholder": null,
+      "ratingMin": null,
+      "ratingMax": null,
+      "ratingLabels": null,
+      "sortOrder": 10,
+      "isDeleted": false,
+      "deletedAt": null,
+      "sectionId": "3"
+    },
+    {
+      "id": "136",
+      "formId": "2",
+      "name": "overall",
+      "label": "Overall satisfaction",
+      "type": "rating",
+      "required": true,
+      "sensitive": false,
+      "placeholder": null,
+      "ratingMin": 1,
+      "ratingMax": 10,
+      "ratingLabels": [
+        "Terrible",
+        "Bad",
+        "Poor",
+        "Fair",
+        "Medium",
+        "Good",
+        "Good",
+        "Very good",
+        "Excellent",
+        "Outstanding"
+      ],
+      "sortOrder": 1,
+      "isDeleted": false,
+      "deletedAt": null,
+      "sectionId": "6"
+    },
+    {
+      "id": "137",
+      "formId": "2",
+      "name": "favorite",
+      "label": "Favorite session",
+      "type": "radio",
+      "required": true,
+      "sensitive": false,
+      "placeholder": null,
+      "ratingMin": null,
+      "ratingMax": null,
+      "ratingLabels": null,
+      "sortOrder": 2,
+      "isDeleted": false,
+      "deletedAt": null,
+      "sectionId": "6"
+    },
+    {
+      "id": "138",
+      "formId": "2",
+      "name": "topics",
+      "label": "Topics to continue",
+      "type": "checkbox",
+      "required": false,
+      "sensitive": false,
+      "placeholder": null,
+      "ratingMin": null,
+      "ratingMax": null,
+      "ratingLabels": null,
+      "sortOrder": 3,
+      "isDeleted": false,
+      "deletedAt": null,
+      "sectionId": "6"
+    },
+    {
+      "id": "139",
+      "formId": "2",
+      "name": "comment",
+      "label": "Feedback",
+      "type": "long_text",
+      "required": false,
+      "sensitive": false,
+      "placeholder": null,
+      "ratingMin": null,
+      "ratingMax": null,
+      "ratingLabels": null,
+      "sortOrder": 4,
+      "isDeleted": false,
+      "deletedAt": null,
+      "sectionId": "6"
+    },
+    {
+      "id": "140",
+      "formId": "2",
+      "name": "returnIntent",
+      "label": "Would you attend again?",
+      "type": "dropdown",
+      "required": true,
+      "sensitive": false,
+      "placeholder": null,
+      "ratingMin": null,
+      "ratingMax": null,
+      "ratingLabels": null,
+      "sortOrder": 5,
+      "isDeleted": false,
+      "deletedAt": null,
+      "sectionId": "6"
+    },
+    {
+      "id": "141",
+      "formId": "2",
+      "name": "nps",
+      "label": "Likelihood to recommend (0-10)",
+      "type": "number",
+      "required": true,
+      "sensitive": false,
+      "placeholder": "0",
+      "ratingMin": null,
+      "ratingMax": null,
+      "ratingLabels": null,
+      "sortOrder": 6,
+      "isDeleted": false,
+      "deletedAt": null,
+      "sectionId": "6"
+    },
+    {
+      "id": "142",
+      "formId": "2",
+      "name": "email",
+      "label": "Email",
+      "type": "text",
+      "required": false,
+      "sensitive": true,
+      "placeholder": null,
+      "ratingMin": null,
+      "ratingMax": null,
+      "ratingLabels": null,
+      "sortOrder": 7,
+      "isDeleted": false,
+      "deletedAt": null,
+      "sectionId": "6"
+    },
+    {
+      "id": "144",
+      "formId": "3",
+      "name": "employeeId",
+      "label": "รหัสพนักงาน (EN)",
+      "type": "text",
+      "required": true,
+      "sensitive": true,
+      "placeholder": null,
+      "ratingMin": null,
+      "ratingMax": null,
+      "ratingLabels": null,
+      "sortOrder": 1,
+      "isDeleted": false,
+      "deletedAt": null,
+      "sectionId": "9"
+    },
+    {
+      "id": "145",
+      "formId": "3",
+      "name": "fullName",
+      "label": "Full name",
+      "type": "text",
+      "required": true,
+      "sensitive": true,
+      "placeholder": null,
+      "ratingMin": null,
+      "ratingMax": null,
+      "ratingLabels": null,
+      "sortOrder": 2,
+      "isDeleted": false,
+      "deletedAt": null,
+      "sectionId": "9"
+    },
+    {
+      "id": "147",
+      "formId": "4",
+      "name": "employeeId",
+      "label": "รหัสพนักงาน (EN)",
+      "type": "text",
+      "required": true,
+      "sensitive": true,
+      "placeholder": "EMP001",
+      "ratingMin": null,
+      "ratingMax": null,
+      "ratingLabels": null,
+      "sortOrder": 1,
+      "isDeleted": false,
+      "deletedAt": null,
+      "sectionId": "12"
+    },
+    {
+      "id": "148",
+      "formId": "4",
+      "name": "fullName",
+      "label": "Full name",
+      "type": "text",
+      "required": true,
+      "sensitive": true,
+      "placeholder": "First and last name",
+      "ratingMin": null,
+      "ratingMax": null,
+      "ratingLabels": null,
+      "sortOrder": 2,
+      "isDeleted": false,
+      "deletedAt": null,
+      "sectionId": "12"
+    },
+    {
+      "id": "149",
+      "formId": "4",
+      "name": "email",
+      "label": "Email",
+      "type": "text",
+      "required": true,
+      "sensitive": true,
+      "placeholder": "name@email.com",
+      "ratingMin": null,
+      "ratingMax": null,
+      "ratingLabels": null,
+      "sortOrder": 3,
+      "isDeleted": false,
+      "deletedAt": null,
+      "sectionId": "12"
+    },
+    {
+      "id": "150",
+      "formId": "4",
+      "name": "department",
+      "label": "แผนก (EN)",
+      "type": "dropdown",
+      "required": true,
+      "sensitive": false,
+      "placeholder": null,
+      "ratingMin": null,
+      "ratingMax": null,
+      "ratingLabels": null,
+      "sortOrder": 4,
+      "isDeleted": false,
+      "deletedAt": null,
+      "sectionId": "12"
+    },
+    {
+      "id": "151",
+      "formId": "4",
+      "name": "session",
+      "label": "รอบที่เข้าร่วม (EN)",
+      "type": "radio",
+      "required": true,
+      "sensitive": false,
+      "placeholder": null,
+      "ratingMin": null,
+      "ratingMax": null,
+      "ratingLabels": null,
+      "sortOrder": 5,
+      "isDeleted": false,
+      "deletedAt": null,
+      "sectionId": "12"
+    },
+    {
+      "id": "152",
+      "formId": "4",
+      "name": "diet",
+      "label": "ข้อจำกัดด้านอาหาร (EN)",
+      "type": "checkbox",
+      "required": false,
+      "sensitive": false,
+      "placeholder": null,
+      "ratingMin": null,
+      "ratingMax": null,
+      "ratingLabels": null,
+      "sortOrder": 6,
+      "isDeleted": false,
+      "deletedAt": null,
+      "sectionId": "12"
+    },
+    {
+      "id": "153",
+      "formId": "4",
+      "name": "visitDate",
+      "label": "วันที่เข้าร่วม (EN)",
+      "type": "date",
+      "required": true,
+      "sensitive": false,
+      "placeholder": null,
+      "ratingMin": null,
+      "ratingMax": null,
+      "ratingLabels": null,
+      "sortOrder": 7,
+      "isDeleted": false,
+      "deletedAt": null,
+      "sectionId": "12"
+    },
+    {
+      "id": "154",
+      "formId": "4",
+      "name": "visitTime",
+      "label": "เวลาที่เดินทางถึง (EN)",
+      "type": "time",
+      "required": true,
+      "sensitive": false,
+      "placeholder": null,
+      "ratingMin": null,
+      "ratingMax": null,
+      "ratingLabels": null,
+      "sortOrder": 8,
+      "isDeleted": false,
+      "deletedAt": null,
+      "sectionId": "12"
+    },
+    {
+      "id": "155",
+      "formId": "4",
+      "name": "guests",
+      "label": "จำนวนผู้ติดตาม (EN)",
+      "type": "number",
+      "required": false,
+      "sensitive": false,
+      "placeholder": "0",
+      "ratingMin": null,
+      "ratingMax": null,
+      "ratingLabels": null,
+      "sortOrder": 9,
+      "isDeleted": false,
+      "deletedAt": null,
+      "sectionId": "12"
+    },
+    {
+      "id": "156",
+      "formId": "4",
+      "name": "note",
+      "label": "Notes",
+      "type": "long_text",
+      "required": false,
+      "sensitive": false,
+      "placeholder": null,
+      "ratingMin": null,
+      "ratingMax": null,
+      "ratingLabels": null,
+      "sortOrder": 10,
+      "isDeleted": false,
+      "deletedAt": null,
+      "sectionId": "12"
+    },
+    {
+      "id": "158",
+      "formId": "5",
+      "name": "overall",
+      "label": "Overall satisfaction",
+      "type": "rating",
+      "required": true,
+      "sensitive": false,
+      "placeholder": null,
+      "ratingMin": 1,
+      "ratingMax": 5,
+      "ratingLabels": [
+        "Terrible",
+        "Fair",
+        "Medium",
+        "Good",
+        "Outstanding"
+      ],
+      "sortOrder": 1,
+      "isDeleted": false,
+      "deletedAt": null,
+      "sectionId": "15"
+    },
+    {
+      "id": "159",
+      "formId": "5",
+      "name": "favorite",
+      "label": "Favorite session",
+      "type": "radio",
+      "required": true,
+      "sensitive": false,
+      "placeholder": null,
+      "ratingMin": null,
+      "ratingMax": null,
+      "ratingLabels": null,
+      "sortOrder": 2,
+      "isDeleted": false,
+      "deletedAt": null,
+      "sectionId": "15"
+    },
+    {
+      "id": "160",
+      "formId": "5",
+      "name": "topics",
+      "label": "Topics to continue",
+      "type": "checkbox",
+      "required": false,
+      "sensitive": false,
+      "placeholder": null,
+      "ratingMin": null,
+      "ratingMax": null,
+      "ratingLabels": null,
+      "sortOrder": 3,
+      "isDeleted": false,
+      "deletedAt": null,
+      "sectionId": "15"
+    },
+    {
+      "id": "161",
+      "formId": "5",
+      "name": "comment",
+      "label": "Feedback",
+      "type": "long_text",
+      "required": false,
+      "sensitive": false,
+      "placeholder": null,
+      "ratingMin": null,
+      "ratingMax": null,
+      "ratingLabels": null,
+      "sortOrder": 4,
+      "isDeleted": false,
+      "deletedAt": null,
+      "sectionId": "15"
+    },
+    {
+      "id": "162",
+      "formId": "5",
+      "name": "returnIntent",
+      "label": "Would you attend again?",
+      "type": "dropdown",
+      "required": true,
+      "sensitive": false,
+      "placeholder": null,
+      "ratingMin": null,
+      "ratingMax": null,
+      "ratingLabels": null,
+      "sortOrder": 5,
+      "isDeleted": false,
+      "deletedAt": null,
+      "sectionId": "15"
+    },
+    {
+      "id": "163",
+      "formId": "5",
+      "name": "nps",
+      "label": "Likelihood to recommend (0-10)",
+      "type": "number",
+      "required": true,
+      "sensitive": false,
+      "placeholder": "0",
+      "ratingMin": null,
+      "ratingMax": null,
+      "ratingLabels": null,
+      "sortOrder": 6,
+      "isDeleted": false,
+      "deletedAt": null,
+      "sectionId": "15"
+    },
+    {
+      "id": "164",
+      "formId": "5",
+      "name": "email",
+      "label": "Email",
+      "type": "text",
+      "required": false,
+      "sensitive": true,
+      "placeholder": null,
+      "ratingMin": null,
+      "ratingMax": null,
+      "ratingLabels": null,
+      "sortOrder": 7,
+      "isDeleted": false,
+      "deletedAt": null,
+      "sectionId": "15"
+    },
+    {
+      "id": "166",
+      "formId": "6",
+      "name": "fullName",
+      "label": "Full name",
+      "type": "text",
+      "required": true,
+      "sensitive": true,
+      "placeholder": "First and last name",
+      "ratingMin": null,
+      "ratingMax": null,
+      "ratingLabels": null,
+      "sortOrder": 1,
+      "isDeleted": false,
+      "deletedAt": null,
+      "sectionId": "18"
+    },
+    {
+      "id": "167",
+      "formId": "6",
+      "name": "email",
+      "label": "Email",
+      "type": "text",
+      "required": true,
+      "sensitive": true,
+      "placeholder": "name@email.com",
+      "ratingMin": null,
+      "ratingMax": null,
+      "ratingLabels": null,
+      "sortOrder": 2,
+      "isDeleted": false,
+      "deletedAt": null,
+      "sectionId": "18"
+    },
+    {
+      "id": "168",
+      "formId": "6",
+      "name": "phone",
+      "label": "Phone number",
+      "type": "text",
+      "required": true,
+      "sensitive": true,
+      "placeholder": "08xxxxxxxx",
+      "ratingMin": null,
+      "ratingMax": null,
+      "ratingLabels": null,
+      "sortOrder": 3,
+      "isDeleted": false,
+      "deletedAt": null,
+      "sectionId": "18"
+    },
+    {
+      "id": "169",
+      "formId": "6",
+      "name": "track",
+      "label": "Track of interest",
+      "type": "radio",
+      "required": true,
+      "sensitive": false,
+      "placeholder": null,
+      "ratingMin": null,
+      "ratingMax": null,
+      "ratingLabels": null,
+      "sortOrder": 4,
+      "isDeleted": false,
+      "deletedAt": null,
+      "sectionId": "18"
+    },
+    {
+      "id": "170",
+      "formId": "6",
+      "name": "interests",
+      "label": "Topics of interest",
+      "type": "checkbox",
+      "required": true,
+      "sensitive": false,
+      "placeholder": null,
+      "ratingMin": null,
+      "ratingMax": null,
+      "ratingLabels": null,
+      "sortOrder": 5,
+      "isDeleted": false,
+      "deletedAt": null,
+      "sectionId": "18"
+    },
+    {
+      "id": "171",
+      "formId": "6",
+      "name": "tshirt",
+      "label": "T-shirt size",
+      "type": "dropdown",
+      "required": true,
+      "sensitive": false,
+      "placeholder": null,
+      "ratingMin": null,
+      "ratingMax": null,
+      "ratingLabels": null,
+      "sortOrder": 6,
+      "isDeleted": false,
+      "deletedAt": null,
+      "sectionId": "18"
+    },
+    {
+      "id": "172",
+      "formId": "6",
+      "name": "attendDate",
+      "label": "Attendance date",
+      "type": "date",
+      "required": true,
+      "sensitive": false,
+      "placeholder": null,
+      "ratingMin": null,
+      "ratingMax": null,
+      "ratingLabels": null,
+      "sortOrder": 7,
+      "isDeleted": false,
+      "deletedAt": null,
+      "sectionId": "18"
+    },
+    {
+      "id": "173",
+      "formId": "6",
+      "name": "attendTime",
+      "label": "Arrival time",
+      "type": "time",
+      "required": true,
+      "sensitive": false,
+      "placeholder": null,
+      "ratingMin": null,
+      "ratingMax": null,
+      "ratingLabels": null,
+      "sortOrder": 8,
+      "isDeleted": false,
+      "deletedAt": null,
+      "sectionId": "18"
+    },
+    {
+      "id": "174",
+      "formId": "6",
+      "name": "experience",
+      "label": "Experience (years)",
+      "type": "number",
+      "required": true,
+      "sensitive": false,
+      "placeholder": "0",
+      "ratingMin": null,
+      "ratingMax": null,
+      "ratingLabels": null,
+      "sortOrder": 9,
+      "isDeleted": false,
+      "deletedAt": null,
+      "sectionId": "18"
+    },
+    {
+      "id": "175",
+      "formId": "6",
+      "name": "note",
+      "label": "Notes",
+      "type": "long_text",
+      "required": false,
+      "sensitive": false,
+      "placeholder": null,
+      "ratingMin": null,
+      "ratingMax": null,
+      "ratingLabels": null,
+      "sortOrder": 10,
+      "isDeleted": false,
+      "deletedAt": null,
+      "sectionId": "18"
+    },
+    {
+      "id": "177",
+      "formId": "7",
+      "name": "overall",
+      "label": "Overall satisfaction",
+      "type": "rating",
+      "required": true,
+      "sensitive": false,
+      "placeholder": null,
+      "ratingMin": 1,
+      "ratingMax": 5,
+      "ratingLabels": [
+        "Terrible",
+        "Fair",
+        "Medium",
+        "Good",
+        "Outstanding"
+      ],
+      "sortOrder": 1,
+      "isDeleted": false,
+      "deletedAt": null,
+      "sectionId": "21"
+    },
+    {
+      "id": "178",
+      "formId": "7",
+      "name": "favorite",
+      "label": "Favorite session",
+      "type": "radio",
+      "required": true,
+      "sensitive": false,
+      "placeholder": null,
+      "ratingMin": null,
+      "ratingMax": null,
+      "ratingLabels": null,
+      "sortOrder": 2,
+      "isDeleted": false,
+      "deletedAt": null,
+      "sectionId": "21"
+    },
+    {
+      "id": "179",
+      "formId": "7",
+      "name": "topics",
+      "label": "Topics to continue",
+      "type": "checkbox",
+      "required": false,
+      "sensitive": false,
+      "placeholder": null,
+      "ratingMin": null,
+      "ratingMax": null,
+      "ratingLabels": null,
+      "sortOrder": 3,
+      "isDeleted": false,
+      "deletedAt": null,
+      "sectionId": "21"
+    },
+    {
+      "id": "180",
+      "formId": "7",
+      "name": "comment",
+      "label": "Feedback",
+      "type": "long_text",
+      "required": false,
+      "sensitive": false,
+      "placeholder": null,
+      "ratingMin": null,
+      "ratingMax": null,
+      "ratingLabels": null,
+      "sortOrder": 4,
+      "isDeleted": false,
+      "deletedAt": null,
+      "sectionId": "21"
+    },
+    {
+      "id": "181",
+      "formId": "7",
+      "name": "returnIntent",
+      "label": "Would you attend again?",
+      "type": "dropdown",
+      "required": true,
+      "sensitive": false,
+      "placeholder": null,
+      "ratingMin": null,
+      "ratingMax": null,
+      "ratingLabels": null,
+      "sortOrder": 5,
+      "isDeleted": false,
+      "deletedAt": null,
+      "sectionId": "21"
+    },
+    {
+      "id": "182",
+      "formId": "7",
+      "name": "nps",
+      "label": "Likelihood to recommend (0-10)",
+      "type": "number",
+      "required": true,
+      "sensitive": false,
+      "placeholder": "0",
+      "ratingMin": null,
+      "ratingMax": null,
+      "ratingLabels": null,
+      "sortOrder": 6,
+      "isDeleted": false,
+      "deletedAt": null,
+      "sectionId": "21"
+    },
+    {
+      "id": "183",
+      "formId": "7",
+      "name": "email",
+      "label": "Email",
+      "type": "text",
+      "required": false,
+      "sensitive": true,
+      "placeholder": null,
+      "ratingMin": null,
+      "ratingMax": null,
+      "ratingLabels": null,
+      "sortOrder": 7,
+      "isDeleted": false,
+      "deletedAt": null,
+      "sectionId": "21"
+    },
+    {
+      "id": "185",
+      "formId": "8",
+      "name": "employeeId",
+      "label": "รหัสพนักงาน (EN)",
+      "type": "text",
+      "required": true,
+      "sensitive": true,
+      "placeholder": "EMP001",
+      "ratingMin": null,
+      "ratingMax": null,
+      "ratingLabels": null,
+      "sortOrder": 1,
+      "isDeleted": false,
+      "deletedAt": null,
+      "sectionId": "24"
+    },
+    {
+      "id": "186",
+      "formId": "8",
+      "name": "fullName",
+      "label": "Full name",
+      "type": "text",
+      "required": true,
+      "sensitive": true,
+      "placeholder": "First and last name",
+      "ratingMin": null,
+      "ratingMax": null,
+      "ratingLabels": null,
+      "sortOrder": 2,
+      "isDeleted": false,
+      "deletedAt": null,
+      "sectionId": "24"
+    },
+    {
+      "id": "187",
+      "formId": "8",
+      "name": "email",
+      "label": "Email",
+      "type": "text",
+      "required": true,
+      "sensitive": true,
+      "placeholder": "name@email.com",
+      "ratingMin": null,
+      "ratingMax": null,
+      "ratingLabels": null,
+      "sortOrder": 3,
+      "isDeleted": false,
+      "deletedAt": null,
+      "sectionId": "24"
+    },
+    {
+      "id": "188",
+      "formId": "8",
+      "name": "department",
+      "label": "แผนก (EN)",
+      "type": "dropdown",
+      "required": true,
+      "sensitive": false,
+      "placeholder": null,
+      "ratingMin": null,
+      "ratingMax": null,
+      "ratingLabels": null,
+      "sortOrder": 4,
+      "isDeleted": false,
+      "deletedAt": null,
+      "sectionId": "24"
+    },
+    {
+      "id": "189",
+      "formId": "8",
+      "name": "session",
+      "label": "รอบที่เข้าร่วม (EN)",
+      "type": "radio",
+      "required": true,
+      "sensitive": false,
+      "placeholder": null,
+      "ratingMin": null,
+      "ratingMax": null,
+      "ratingLabels": null,
+      "sortOrder": 5,
+      "isDeleted": false,
+      "deletedAt": null,
+      "sectionId": "24"
+    },
+    {
+      "id": "190",
+      "formId": "8",
+      "name": "diet",
+      "label": "ข้อจำกัดด้านอาหาร (EN)",
+      "type": "checkbox",
+      "required": false,
+      "sensitive": false,
+      "placeholder": null,
+      "ratingMin": null,
+      "ratingMax": null,
+      "ratingLabels": null,
+      "sortOrder": 6,
+      "isDeleted": false,
+      "deletedAt": null,
+      "sectionId": "24"
+    },
+    {
+      "id": "191",
+      "formId": "8",
+      "name": "visitDate",
+      "label": "วันที่เข้าร่วม (EN)",
+      "type": "date",
+      "required": true,
+      "sensitive": false,
+      "placeholder": null,
+      "ratingMin": null,
+      "ratingMax": null,
+      "ratingLabels": null,
+      "sortOrder": 7,
+      "isDeleted": false,
+      "deletedAt": null,
+      "sectionId": "24"
+    },
+    {
+      "id": "192",
+      "formId": "8",
+      "name": "visitTime",
+      "label": "เวลาที่เดินทางถึง (EN)",
+      "type": "time",
+      "required": true,
+      "sensitive": false,
+      "placeholder": null,
+      "ratingMin": null,
+      "ratingMax": null,
+      "ratingLabels": null,
+      "sortOrder": 8,
+      "isDeleted": false,
+      "deletedAt": null,
+      "sectionId": "24"
+    },
+    {
+      "id": "193",
+      "formId": "8",
+      "name": "guests",
+      "label": "จำนวนผู้ติดตาม (EN)",
+      "type": "number",
+      "required": false,
+      "sensitive": false,
+      "placeholder": "0",
+      "ratingMin": null,
+      "ratingMax": null,
+      "ratingLabels": null,
+      "sortOrder": 9,
+      "isDeleted": false,
+      "deletedAt": null,
+      "sectionId": "24"
+    },
+    {
+      "id": "194",
+      "formId": "8",
+      "name": "note",
+      "label": "Notes",
+      "type": "long_text",
+      "required": false,
+      "sensitive": false,
+      "placeholder": null,
+      "ratingMin": null,
+      "ratingMax": null,
+      "ratingLabels": null,
+      "sortOrder": 10,
+      "isDeleted": false,
+      "deletedAt": null,
+      "sectionId": "24"
+    },
+    {
+      "id": "196",
+      "formId": "9",
+      "name": "overall",
+      "label": "Overall satisfaction",
+      "type": "rating",
+      "required": true,
+      "sensitive": false,
+      "placeholder": null,
+      "ratingMin": 1,
+      "ratingMax": 10,
+      "ratingLabels": [
+        "Terrible",
+        "Bad",
+        "Poor",
+        "Fair",
+        "Medium",
+        "Good",
+        "Good",
+        "Very good",
+        "Excellent",
+        "Outstanding"
+      ],
+      "sortOrder": 1,
+      "isDeleted": false,
+      "deletedAt": null,
+      "sectionId": "27"
+    },
+    {
+      "id": "197",
+      "formId": "9",
+      "name": "favorite",
+      "label": "Favorite session",
+      "type": "radio",
+      "required": true,
+      "sensitive": false,
+      "placeholder": null,
+      "ratingMin": null,
+      "ratingMax": null,
+      "ratingLabels": null,
+      "sortOrder": 2,
+      "isDeleted": false,
+      "deletedAt": null,
+      "sectionId": "27"
+    },
+    {
+      "id": "198",
+      "formId": "9",
+      "name": "topics",
+      "label": "Topics to continue",
+      "type": "checkbox",
+      "required": false,
+      "sensitive": false,
+      "placeholder": null,
+      "ratingMin": null,
+      "ratingMax": null,
+      "ratingLabels": null,
+      "sortOrder": 3,
+      "isDeleted": false,
+      "deletedAt": null,
+      "sectionId": "27"
+    },
+    {
+      "id": "199",
+      "formId": "9",
+      "name": "comment",
+      "label": "Feedback",
+      "type": "long_text",
+      "required": false,
+      "sensitive": false,
+      "placeholder": null,
+      "ratingMin": null,
+      "ratingMax": null,
+      "ratingLabels": null,
+      "sortOrder": 4,
+      "isDeleted": false,
+      "deletedAt": null,
+      "sectionId": "27"
+    },
+    {
+      "id": "200",
+      "formId": "9",
+      "name": "returnIntent",
+      "label": "Would you attend again?",
+      "type": "dropdown",
+      "required": true,
+      "sensitive": false,
+      "placeholder": null,
+      "ratingMin": null,
+      "ratingMax": null,
+      "ratingLabels": null,
+      "sortOrder": 5,
+      "isDeleted": false,
+      "deletedAt": null,
+      "sectionId": "27"
+    },
+    {
+      "id": "201",
+      "formId": "9",
+      "name": "nps",
+      "label": "Likelihood to recommend (0-10)",
+      "type": "number",
+      "required": true,
+      "sensitive": false,
+      "placeholder": "0",
+      "ratingMin": null,
+      "ratingMax": null,
+      "ratingLabels": null,
+      "sortOrder": 6,
+      "isDeleted": false,
+      "deletedAt": null,
+      "sectionId": "27"
+    },
+    {
+      "id": "202",
+      "formId": "9",
+      "name": "email",
+      "label": "Email",
+      "type": "text",
+      "required": false,
+      "sensitive": true,
+      "placeholder": null,
+      "ratingMin": null,
+      "ratingMax": null,
+      "ratingLabels": null,
+      "sortOrder": 7,
+      "isDeleted": false,
+      "deletedAt": null,
+      "sectionId": "27"
+    },
+    {
+      "id": "204",
+      "formId": "10",
+      "name": "fullName",
+      "label": "Full name",
+      "type": "text",
+      "required": true,
+      "sensitive": true,
+      "placeholder": "First and last name",
+      "ratingMin": null,
+      "ratingMax": null,
+      "ratingLabels": null,
+      "sortOrder": 1,
+      "isDeleted": false,
+      "deletedAt": null,
+      "sectionId": "30"
+    },
+    {
+      "id": "205",
+      "formId": "10",
+      "name": "email",
+      "label": "Email",
+      "type": "text",
+      "required": true,
+      "sensitive": true,
+      "placeholder": "name@email.com",
+      "ratingMin": null,
+      "ratingMax": null,
+      "ratingLabels": null,
+      "sortOrder": 2,
+      "isDeleted": false,
+      "deletedAt": null,
+      "sectionId": "30"
+    },
+    {
+      "id": "206",
+      "formId": "10",
+      "name": "phone",
+      "label": "Phone number",
+      "type": "text",
+      "required": true,
+      "sensitive": true,
+      "placeholder": "08xxxxxxxx",
+      "ratingMin": null,
+      "ratingMax": null,
+      "ratingLabels": null,
+      "sortOrder": 3,
+      "isDeleted": false,
+      "deletedAt": null,
+      "sectionId": "30"
+    },
+    {
+      "id": "207",
+      "formId": "10",
+      "name": "track",
+      "label": "Track of interest",
+      "type": "radio",
+      "required": true,
+      "sensitive": false,
+      "placeholder": null,
+      "ratingMin": null,
+      "ratingMax": null,
+      "ratingLabels": null,
+      "sortOrder": 4,
+      "isDeleted": false,
+      "deletedAt": null,
+      "sectionId": "30"
+    },
+    {
+      "id": "208",
+      "formId": "10",
+      "name": "interests",
+      "label": "Topics of interest",
+      "type": "checkbox",
+      "required": true,
+      "sensitive": false,
+      "placeholder": null,
+      "ratingMin": null,
+      "ratingMax": null,
+      "ratingLabels": null,
+      "sortOrder": 5,
+      "isDeleted": false,
+      "deletedAt": null,
+      "sectionId": "30"
+    },
+    {
+      "id": "209",
+      "formId": "10",
+      "name": "tshirt",
+      "label": "T-shirt size",
+      "type": "dropdown",
+      "required": true,
+      "sensitive": false,
+      "placeholder": null,
+      "ratingMin": null,
+      "ratingMax": null,
+      "ratingLabels": null,
+      "sortOrder": 6,
+      "isDeleted": false,
+      "deletedAt": null,
+      "sectionId": "30"
+    },
+    {
+      "id": "210",
+      "formId": "10",
+      "name": "attendDate",
+      "label": "Attendance date",
+      "type": "date",
+      "required": true,
+      "sensitive": false,
+      "placeholder": null,
+      "ratingMin": null,
+      "ratingMax": null,
+      "ratingLabels": null,
+      "sortOrder": 7,
+      "isDeleted": false,
+      "deletedAt": null,
+      "sectionId": "30"
+    },
+    {
+      "id": "211",
+      "formId": "10",
+      "name": "attendTime",
+      "label": "Arrival time",
+      "type": "time",
+      "required": true,
+      "sensitive": false,
+      "placeholder": null,
+      "ratingMin": null,
+      "ratingMax": null,
+      "ratingLabels": null,
+      "sortOrder": 8,
+      "isDeleted": false,
+      "deletedAt": null,
+      "sectionId": "30"
+    },
+    {
+      "id": "212",
+      "formId": "10",
+      "name": "experience",
+      "label": "Experience (years)",
+      "type": "number",
+      "required": true,
+      "sensitive": false,
+      "placeholder": "0",
+      "ratingMin": null,
+      "ratingMax": null,
+      "ratingLabels": null,
+      "sortOrder": 9,
+      "isDeleted": false,
+      "deletedAt": null,
+      "sectionId": "30"
+    },
+    {
+      "id": "213",
+      "formId": "10",
+      "name": "note",
+      "label": "Notes",
+      "type": "long_text",
+      "required": false,
+      "sensitive": false,
+      "placeholder": null,
+      "ratingMin": null,
+      "ratingMax": null,
+      "ratingLabels": null,
+      "sortOrder": 10,
+      "isDeleted": false,
+      "deletedAt": null,
+      "sectionId": "30"
+    },
+    {
+      "id": "215",
+      "formId": "11",
+      "name": "overall",
+      "label": "Overall satisfaction",
+      "type": "rating",
+      "required": true,
+      "sensitive": false,
+      "placeholder": null,
+      "ratingMin": 1,
+      "ratingMax": 10,
+      "ratingLabels": [
+        "Terrible",
+        "Bad",
+        "Poor",
+        "Fair",
+        "Medium",
+        "Good",
+        "Good",
+        "Very good",
+        "Excellent",
+        "Outstanding"
+      ],
+      "sortOrder": 1,
+      "isDeleted": false,
+      "deletedAt": null,
+      "sectionId": "33"
+    },
+    {
+      "id": "216",
+      "formId": "11",
+      "name": "favorite",
+      "label": "Favorite session",
+      "type": "radio",
+      "required": true,
+      "sensitive": false,
+      "placeholder": null,
+      "ratingMin": null,
+      "ratingMax": null,
+      "ratingLabels": null,
+      "sortOrder": 2,
+      "isDeleted": false,
+      "deletedAt": null,
+      "sectionId": "33"
+    },
+    {
+      "id": "217",
+      "formId": "11",
+      "name": "topics",
+      "label": "Topics to continue",
+      "type": "checkbox",
+      "required": false,
+      "sensitive": false,
+      "placeholder": null,
+      "ratingMin": null,
+      "ratingMax": null,
+      "ratingLabels": null,
+      "sortOrder": 3,
+      "isDeleted": false,
+      "deletedAt": null,
+      "sectionId": "33"
+    },
+    {
+      "id": "218",
+      "formId": "11",
+      "name": "comment",
+      "label": "Feedback",
+      "type": "long_text",
+      "required": false,
+      "sensitive": false,
+      "placeholder": null,
+      "ratingMin": null,
+      "ratingMax": null,
+      "ratingLabels": null,
+      "sortOrder": 4,
+      "isDeleted": false,
+      "deletedAt": null,
+      "sectionId": "33"
+    },
+    {
+      "id": "219",
+      "formId": "11",
+      "name": "returnIntent",
+      "label": "Would you attend again?",
+      "type": "dropdown",
+      "required": true,
+      "sensitive": false,
+      "placeholder": null,
+      "ratingMin": null,
+      "ratingMax": null,
+      "ratingLabels": null,
+      "sortOrder": 5,
+      "isDeleted": false,
+      "deletedAt": null,
+      "sectionId": "33"
+    },
+    {
+      "id": "220",
+      "formId": "11",
+      "name": "nps",
+      "label": "Likelihood to recommend (0-10)",
+      "type": "number",
+      "required": true,
+      "sensitive": false,
+      "placeholder": "0",
+      "ratingMin": null,
+      "ratingMax": null,
+      "ratingLabels": null,
+      "sortOrder": 6,
+      "isDeleted": false,
+      "deletedAt": null,
+      "sectionId": "33"
+    },
+    {
+      "id": "221",
+      "formId": "11",
+      "name": "email",
+      "label": "Email",
+      "type": "text",
+      "required": false,
+      "sensitive": true,
+      "placeholder": null,
+      "ratingMin": null,
+      "ratingMax": null,
+      "ratingLabels": null,
+      "sortOrder": 7,
+      "isDeleted": false,
+      "deletedAt": null,
+      "sectionId": "33"
+    },
+    {
+      "id": "223",
+      "formId": "12",
+      "name": "employeeId",
+      "label": "รหัสพนักงาน (EN)",
+      "type": "text",
+      "required": true,
+      "sensitive": true,
+      "placeholder": "EMP001",
+      "ratingMin": null,
+      "ratingMax": null,
+      "ratingLabels": null,
+      "sortOrder": 1,
+      "isDeleted": false,
+      "deletedAt": null,
+      "sectionId": "36"
+    },
+    {
+      "id": "224",
+      "formId": "12",
+      "name": "fullName",
+      "label": "Full name",
+      "type": "text",
+      "required": true,
+      "sensitive": true,
+      "placeholder": "First and last name",
+      "ratingMin": null,
+      "ratingMax": null,
+      "ratingLabels": null,
+      "sortOrder": 2,
+      "isDeleted": false,
+      "deletedAt": null,
+      "sectionId": "36"
+    },
+    {
+      "id": "225",
+      "formId": "12",
+      "name": "email",
+      "label": "Email",
+      "type": "text",
+      "required": true,
+      "sensitive": true,
+      "placeholder": "name@email.com",
+      "ratingMin": null,
+      "ratingMax": null,
+      "ratingLabels": null,
+      "sortOrder": 3,
+      "isDeleted": false,
+      "deletedAt": null,
+      "sectionId": "36"
+    },
+    {
+      "id": "226",
+      "formId": "12",
+      "name": "department",
+      "label": "แผนก (EN)",
+      "type": "dropdown",
+      "required": true,
+      "sensitive": false,
+      "placeholder": null,
+      "ratingMin": null,
+      "ratingMax": null,
+      "ratingLabels": null,
+      "sortOrder": 4,
+      "isDeleted": false,
+      "deletedAt": null,
+      "sectionId": "36"
+    },
+    {
+      "id": "227",
+      "formId": "12",
+      "name": "session",
+      "label": "รอบที่เข้าร่วม (EN)",
+      "type": "radio",
+      "required": true,
+      "sensitive": false,
+      "placeholder": null,
+      "ratingMin": null,
+      "ratingMax": null,
+      "ratingLabels": null,
+      "sortOrder": 5,
+      "isDeleted": false,
+      "deletedAt": null,
+      "sectionId": "36"
+    },
+    {
+      "id": "228",
+      "formId": "12",
+      "name": "diet",
+      "label": "ข้อจำกัดด้านอาหาร (EN)",
+      "type": "checkbox",
+      "required": false,
+      "sensitive": false,
+      "placeholder": null,
+      "ratingMin": null,
+      "ratingMax": null,
+      "ratingLabels": null,
+      "sortOrder": 6,
+      "isDeleted": false,
+      "deletedAt": null,
+      "sectionId": "36"
+    },
+    {
+      "id": "229",
+      "formId": "12",
+      "name": "visitDate",
+      "label": "วันที่เข้าร่วม (EN)",
+      "type": "date",
+      "required": true,
+      "sensitive": false,
+      "placeholder": null,
+      "ratingMin": null,
+      "ratingMax": null,
+      "ratingLabels": null,
+      "sortOrder": 7,
+      "isDeleted": false,
+      "deletedAt": null,
+      "sectionId": "36"
+    },
+    {
+      "id": "230",
+      "formId": "12",
+      "name": "visitTime",
+      "label": "เวลาที่เดินทางถึง (EN)",
+      "type": "time",
+      "required": true,
+      "sensitive": false,
+      "placeholder": null,
+      "ratingMin": null,
+      "ratingMax": null,
+      "ratingLabels": null,
+      "sortOrder": 8,
+      "isDeleted": false,
+      "deletedAt": null,
+      "sectionId": "36"
+    },
+    {
+      "id": "231",
+      "formId": "12",
+      "name": "guests",
+      "label": "จำนวนผู้ติดตาม (EN)",
+      "type": "number",
+      "required": false,
+      "sensitive": false,
+      "placeholder": "0",
+      "ratingMin": null,
+      "ratingMax": null,
+      "ratingLabels": null,
+      "sortOrder": 9,
+      "isDeleted": false,
+      "deletedAt": null,
+      "sectionId": "36"
+    },
+    {
+      "id": "232",
+      "formId": "12",
+      "name": "note",
+      "label": "Notes",
+      "type": "long_text",
+      "required": false,
+      "sensitive": false,
+      "placeholder": null,
+      "ratingMin": null,
+      "ratingMax": null,
+      "ratingLabels": null,
+      "sortOrder": 10,
+      "isDeleted": false,
+      "deletedAt": null,
+      "sectionId": "36"
+    },
+    {
+      "id": "234",
+      "formId": "13",
+      "name": "overall",
+      "label": "Overall satisfaction",
+      "type": "rating",
+      "required": true,
+      "sensitive": false,
+      "placeholder": null,
+      "ratingMin": 1,
+      "ratingMax": 5,
+      "ratingLabels": [
+        "Terrible",
+        "Fair",
+        "Medium",
+        "Good",
+        "Outstanding"
+      ],
+      "sortOrder": 1,
+      "isDeleted": false,
+      "deletedAt": null,
+      "sectionId": "39"
+    },
+    {
+      "id": "235",
+      "formId": "13",
+      "name": "favorite",
+      "label": "Favorite session",
+      "type": "radio",
+      "required": true,
+      "sensitive": false,
+      "placeholder": null,
+      "ratingMin": null,
+      "ratingMax": null,
+      "ratingLabels": null,
+      "sortOrder": 2,
+      "isDeleted": false,
+      "deletedAt": null,
+      "sectionId": "39"
+    },
+    {
+      "id": "236",
+      "formId": "13",
+      "name": "topics",
+      "label": "Topics to continue",
+      "type": "checkbox",
+      "required": false,
+      "sensitive": false,
+      "placeholder": null,
+      "ratingMin": null,
+      "ratingMax": null,
+      "ratingLabels": null,
+      "sortOrder": 3,
+      "isDeleted": false,
+      "deletedAt": null,
+      "sectionId": "39"
+    },
+    {
+      "id": "237",
+      "formId": "13",
+      "name": "comment",
+      "label": "Feedback",
+      "type": "long_text",
+      "required": false,
+      "sensitive": false,
+      "placeholder": null,
+      "ratingMin": null,
+      "ratingMax": null,
+      "ratingLabels": null,
+      "sortOrder": 4,
+      "isDeleted": false,
+      "deletedAt": null,
+      "sectionId": "39"
+    },
+    {
+      "id": "238",
+      "formId": "13",
+      "name": "returnIntent",
+      "label": "Would you attend again?",
+      "type": "dropdown",
+      "required": true,
+      "sensitive": false,
+      "placeholder": null,
+      "ratingMin": null,
+      "ratingMax": null,
+      "ratingLabels": null,
+      "sortOrder": 5,
+      "isDeleted": false,
+      "deletedAt": null,
+      "sectionId": "39"
+    },
+    {
+      "id": "239",
+      "formId": "13",
+      "name": "nps",
+      "label": "Likelihood to recommend (0-10)",
+      "type": "number",
+      "required": true,
+      "sensitive": false,
+      "placeholder": "0",
+      "ratingMin": null,
+      "ratingMax": null,
+      "ratingLabels": null,
+      "sortOrder": 6,
+      "isDeleted": false,
+      "deletedAt": null,
+      "sectionId": "39"
+    },
+    {
+      "id": "240",
+      "formId": "13",
+      "name": "email",
+      "label": "Email",
+      "type": "text",
+      "required": false,
+      "sensitive": true,
+      "placeholder": null,
+      "ratingMin": null,
+      "ratingMax": null,
+      "ratingLabels": null,
+      "sortOrder": 7,
+      "isDeleted": false,
+      "deletedAt": null,
+      "sectionId": "39"
+    },
+    {
+      "id": "242",
+      "formId": "14",
+      "name": "fullName",
+      "label": "Full name",
+      "type": "text",
+      "required": true,
+      "sensitive": true,
+      "placeholder": null,
+      "ratingMin": null,
+      "ratingMax": null,
+      "ratingLabels": null,
+      "sortOrder": 1,
+      "isDeleted": false,
+      "deletedAt": null,
+      "sectionId": "42"
+    },
+    {
+      "id": "243",
+      "formId": "14",
+      "name": "email",
+      "label": "Email",
+      "type": "text",
+      "required": true,
+      "sensitive": true,
+      "placeholder": null,
+      "ratingMin": null,
+      "ratingMax": null,
+      "ratingLabels": null,
+      "sortOrder": 2,
+      "isDeleted": false,
+      "deletedAt": null,
+      "sectionId": "42"
+    },
+    {
+      "id": "245",
+      "formId": "15",
+      "name": "fullName",
+      "label": "Full name",
+      "type": "text",
+      "required": true,
+      "sensitive": true,
+      "placeholder": "First and last name",
+      "ratingMin": null,
+      "ratingMax": null,
+      "ratingLabels": null,
+      "sortOrder": 1,
+      "isDeleted": false,
+      "deletedAt": null,
+      "sectionId": "45"
+    },
+    {
+      "id": "246",
+      "formId": "15",
+      "name": "email",
+      "label": "Email",
+      "type": "text",
+      "required": true,
+      "sensitive": true,
+      "placeholder": "name@email.com",
+      "ratingMin": null,
+      "ratingMax": null,
+      "ratingLabels": null,
+      "sortOrder": 2,
+      "isDeleted": false,
+      "deletedAt": null,
+      "sectionId": "45"
+    },
+    {
+      "id": "247",
+      "formId": "15",
+      "name": "phone",
+      "label": "Phone number",
+      "type": "text",
+      "required": true,
+      "sensitive": true,
+      "placeholder": "08xxxxxxxx",
+      "ratingMin": null,
+      "ratingMax": null,
+      "ratingLabels": null,
+      "sortOrder": 3,
+      "isDeleted": false,
+      "deletedAt": null,
+      "sectionId": "45"
+    },
+    {
+      "id": "248",
+      "formId": "15",
+      "name": "track",
+      "label": "Track of interest",
+      "type": "radio",
+      "required": true,
+      "sensitive": false,
+      "placeholder": null,
+      "ratingMin": null,
+      "ratingMax": null,
+      "ratingLabels": null,
+      "sortOrder": 4,
+      "isDeleted": false,
+      "deletedAt": null,
+      "sectionId": "45"
+    },
+    {
+      "id": "249",
+      "formId": "15",
+      "name": "interests",
+      "label": "Topics of interest",
+      "type": "checkbox",
+      "required": true,
+      "sensitive": false,
+      "placeholder": null,
+      "ratingMin": null,
+      "ratingMax": null,
+      "ratingLabels": null,
+      "sortOrder": 5,
+      "isDeleted": false,
+      "deletedAt": null,
+      "sectionId": "45"
+    },
+    {
+      "id": "250",
+      "formId": "15",
+      "name": "tshirt",
+      "label": "T-shirt size",
+      "type": "dropdown",
+      "required": true,
+      "sensitive": false,
+      "placeholder": null,
+      "ratingMin": null,
+      "ratingMax": null,
+      "ratingLabels": null,
+      "sortOrder": 6,
+      "isDeleted": false,
+      "deletedAt": null,
+      "sectionId": "45"
+    },
+    {
+      "id": "251",
+      "formId": "15",
+      "name": "attendDate",
+      "label": "Attendance date",
+      "type": "date",
+      "required": true,
+      "sensitive": false,
+      "placeholder": null,
+      "ratingMin": null,
+      "ratingMax": null,
+      "ratingLabels": null,
+      "sortOrder": 7,
+      "isDeleted": false,
+      "deletedAt": null,
+      "sectionId": "45"
+    },
+    {
+      "id": "252",
+      "formId": "15",
+      "name": "attendTime",
+      "label": "Arrival time",
+      "type": "time",
+      "required": true,
+      "sensitive": false,
+      "placeholder": null,
+      "ratingMin": null,
+      "ratingMax": null,
+      "ratingLabels": null,
+      "sortOrder": 8,
+      "isDeleted": false,
+      "deletedAt": null,
+      "sectionId": "45"
+    },
+    {
+      "id": "253",
+      "formId": "15",
+      "name": "experience",
+      "label": "Experience (years)",
+      "type": "number",
+      "required": true,
+      "sensitive": false,
+      "placeholder": "0",
+      "ratingMin": null,
+      "ratingMax": null,
+      "ratingLabels": null,
+      "sortOrder": 9,
+      "isDeleted": false,
+      "deletedAt": null,
+      "sectionId": "45"
+    },
+    {
+      "id": "254",
+      "formId": "15",
+      "name": "note",
+      "label": "Notes",
+      "type": "long_text",
+      "required": false,
+      "sensitive": false,
+      "placeholder": null,
+      "ratingMin": null,
+      "ratingMax": null,
+      "ratingLabels": null,
+      "sortOrder": 10,
+      "isDeleted": false,
+      "deletedAt": null,
+      "sectionId": "45"
+    },
+    {
+      "id": "256",
+      "formId": "16",
+      "name": "overall",
+      "label": "Overall satisfaction",
+      "type": "rating",
+      "required": true,
+      "sensitive": false,
+      "placeholder": null,
+      "ratingMin": 1,
+      "ratingMax": 10,
+      "ratingLabels": [
+        "Terrible",
+        "Bad",
+        "Poor",
+        "Fair",
+        "Medium",
+        "Good",
+        "Good",
+        "Very good",
+        "Excellent",
+        "Outstanding"
+      ],
+      "sortOrder": 1,
+      "isDeleted": false,
+      "deletedAt": null,
+      "sectionId": "48"
+    },
+    {
+      "id": "257",
+      "formId": "16",
+      "name": "favorite",
+      "label": "Favorite session",
+      "type": "radio",
+      "required": true,
+      "sensitive": false,
+      "placeholder": null,
+      "ratingMin": null,
+      "ratingMax": null,
+      "ratingLabels": null,
+      "sortOrder": 2,
+      "isDeleted": false,
+      "deletedAt": null,
+      "sectionId": "48"
+    },
+    {
+      "id": "258",
+      "formId": "16",
+      "name": "topics",
+      "label": "Topics to continue",
+      "type": "checkbox",
+      "required": false,
+      "sensitive": false,
+      "placeholder": null,
+      "ratingMin": null,
+      "ratingMax": null,
+      "ratingLabels": null,
+      "sortOrder": 3,
+      "isDeleted": false,
+      "deletedAt": null,
+      "sectionId": "48"
+    },
+    {
+      "id": "259",
+      "formId": "16",
+      "name": "comment",
+      "label": "Feedback",
+      "type": "long_text",
+      "required": false,
+      "sensitive": false,
+      "placeholder": null,
+      "ratingMin": null,
+      "ratingMax": null,
+      "ratingLabels": null,
+      "sortOrder": 4,
+      "isDeleted": false,
+      "deletedAt": null,
+      "sectionId": "48"
+    },
+    {
+      "id": "260",
+      "formId": "16",
+      "name": "returnIntent",
+      "label": "Would you attend again?",
+      "type": "dropdown",
+      "required": true,
+      "sensitive": false,
+      "placeholder": null,
+      "ratingMin": null,
+      "ratingMax": null,
+      "ratingLabels": null,
+      "sortOrder": 5,
+      "isDeleted": false,
+      "deletedAt": null,
+      "sectionId": "48"
+    },
+    {
+      "id": "261",
+      "formId": "16",
+      "name": "nps",
+      "label": "Likelihood to recommend (0-10)",
+      "type": "number",
+      "required": true,
+      "sensitive": false,
+      "placeholder": "0",
+      "ratingMin": null,
+      "ratingMax": null,
+      "ratingLabels": null,
+      "sortOrder": 6,
+      "isDeleted": false,
+      "deletedAt": null,
+      "sectionId": "48"
+    },
+    {
+      "id": "262",
+      "formId": "16",
+      "name": "email",
+      "label": "Email",
+      "type": "text",
+      "required": false,
+      "sensitive": true,
+      "placeholder": null,
+      "ratingMin": null,
+      "ratingMax": null,
+      "ratingLabels": null,
+      "sortOrder": 7,
+      "isDeleted": false,
+      "deletedAt": null,
+      "sectionId": "48"
     }
   ],
   "form_field_options": [
@@ -4793,6 +7487,965 @@
     {
       "id": "137",
       "fieldId": "121",
+      "label": "ไม่",
+      "value": "no",
+      "sortOrder": 3
+    },
+    {
+      "id": "140",
+      "fieldId": "128",
+      "label": "Web Development",
+      "value": "web",
+      "sortOrder": 1
+    },
+    {
+      "id": "141",
+      "fieldId": "128",
+      "label": "Artificial Intelligence",
+      "value": "ai",
+      "sortOrder": 2
+    },
+    {
+      "id": "142",
+      "fieldId": "128",
+      "label": "Cybersecurity",
+      "value": "security",
+      "sortOrder": 3
+    },
+    {
+      "id": "143",
+      "fieldId": "129",
+      "label": "Live Demo",
+      "value": "demo",
+      "sortOrder": 1
+    },
+    {
+      "id": "144",
+      "fieldId": "129",
+      "label": "Workshop",
+      "value": "workshop",
+      "sortOrder": 2
+    },
+    {
+      "id": "145",
+      "fieldId": "129",
+      "label": "Networking",
+      "value": "networking",
+      "sortOrder": 3
+    },
+    {
+      "id": "146",
+      "fieldId": "129",
+      "label": "Career Booth",
+      "value": "career",
+      "sortOrder": 4
+    },
+    {
+      "id": "147",
+      "fieldId": "130",
+      "label": "S",
+      "value": "s",
+      "sortOrder": 1
+    },
+    {
+      "id": "148",
+      "fieldId": "130",
+      "label": "M",
+      "value": "m",
+      "sortOrder": 2
+    },
+    {
+      "id": "149",
+      "fieldId": "130",
+      "label": "L",
+      "value": "l",
+      "sortOrder": 3
+    },
+    {
+      "id": "150",
+      "fieldId": "130",
+      "label": "XL",
+      "value": "xl",
+      "sortOrder": 4
+    },
+    {
+      "id": "153",
+      "fieldId": "137",
+      "label": "Web Development",
+      "value": "web",
+      "sortOrder": 1
+    },
+    {
+      "id": "154",
+      "fieldId": "137",
+      "label": "Artificial Intelligence",
+      "value": "ai",
+      "sortOrder": 2
+    },
+    {
+      "id": "155",
+      "fieldId": "137",
+      "label": "Cybersecurity",
+      "value": "security",
+      "sortOrder": 3
+    },
+    {
+      "id": "156",
+      "fieldId": "138",
+      "label": "Live Demo",
+      "value": "demo",
+      "sortOrder": 1
+    },
+    {
+      "id": "157",
+      "fieldId": "138",
+      "label": "Workshop",
+      "value": "workshop",
+      "sortOrder": 2
+    },
+    {
+      "id": "158",
+      "fieldId": "138",
+      "label": "Networking",
+      "value": "networking",
+      "sortOrder": 3
+    },
+    {
+      "id": "159",
+      "fieldId": "138",
+      "label": "Career Booth",
+      "value": "career",
+      "sortOrder": 4
+    },
+    {
+      "id": "160",
+      "fieldId": "140",
+      "label": "Yes",
+      "value": "yes",
+      "sortOrder": 1
+    },
+    {
+      "id": "161",
+      "fieldId": "140",
+      "label": "ไม่แน่ใจ",
+      "value": "maybe",
+      "sortOrder": 2
+    },
+    {
+      "id": "162",
+      "fieldId": "140",
+      "label": "ไม่",
+      "value": "no",
+      "sortOrder": 3
+    },
+    {
+      "id": "167",
+      "fieldId": "150",
+      "label": "Product",
+      "value": "product",
+      "sortOrder": 1
+    },
+    {
+      "id": "168",
+      "fieldId": "150",
+      "label": "Engineering",
+      "value": "engineering",
+      "sortOrder": 2
+    },
+    {
+      "id": "169",
+      "fieldId": "150",
+      "label": "Design",
+      "value": "design",
+      "sortOrder": 3
+    },
+    {
+      "id": "170",
+      "fieldId": "150",
+      "label": "People",
+      "value": "people",
+      "sortOrder": 4
+    },
+    {
+      "id": "171",
+      "fieldId": "151",
+      "label": "รอบเช้า",
+      "value": "morning",
+      "sortOrder": 1
+    },
+    {
+      "id": "172",
+      "fieldId": "151",
+      "label": "รอบบ่าย",
+      "value": "afternoon",
+      "sortOrder": 2
+    },
+    {
+      "id": "173",
+      "fieldId": "152",
+      "label": "ไม่มี",
+      "value": "none",
+      "sortOrder": 1
+    },
+    {
+      "id": "174",
+      "fieldId": "152",
+      "label": "มังสวิรัติ",
+      "value": "vegetarian",
+      "sortOrder": 2
+    },
+    {
+      "id": "175",
+      "fieldId": "152",
+      "label": "ฮาลาล",
+      "value": "halal",
+      "sortOrder": 3
+    },
+    {
+      "id": "176",
+      "fieldId": "152",
+      "label": "แพ้อาหาร",
+      "value": "allergy",
+      "sortOrder": 4
+    },
+    {
+      "id": "179",
+      "fieldId": "159",
+      "label": "รอบเช้า",
+      "value": "morning",
+      "sortOrder": 1
+    },
+    {
+      "id": "180",
+      "fieldId": "159",
+      "label": "รอบบ่าย",
+      "value": "afternoon",
+      "sortOrder": 2
+    },
+    {
+      "id": "181",
+      "fieldId": "160",
+      "label": "ไม่มี",
+      "value": "none",
+      "sortOrder": 1
+    },
+    {
+      "id": "182",
+      "fieldId": "160",
+      "label": "มังสวิรัติ",
+      "value": "vegetarian",
+      "sortOrder": 2
+    },
+    {
+      "id": "183",
+      "fieldId": "160",
+      "label": "ฮาลาล",
+      "value": "halal",
+      "sortOrder": 3
+    },
+    {
+      "id": "184",
+      "fieldId": "160",
+      "label": "แพ้อาหาร",
+      "value": "allergy",
+      "sortOrder": 4
+    },
+    {
+      "id": "185",
+      "fieldId": "162",
+      "label": "Yes",
+      "value": "yes",
+      "sortOrder": 1
+    },
+    {
+      "id": "186",
+      "fieldId": "162",
+      "label": "ไม่แน่ใจ",
+      "value": "maybe",
+      "sortOrder": 2
+    },
+    {
+      "id": "187",
+      "fieldId": "162",
+      "label": "ไม่",
+      "value": "no",
+      "sortOrder": 3
+    },
+    {
+      "id": "190",
+      "fieldId": "169",
+      "label": "Opening Talk",
+      "value": "opening",
+      "sortOrder": 1
+    },
+    {
+      "id": "191",
+      "fieldId": "169",
+      "label": "Community Showcase",
+      "value": "showcase",
+      "sortOrder": 2
+    },
+    {
+      "id": "192",
+      "fieldId": "169",
+      "label": "After Party",
+      "value": "party",
+      "sortOrder": 3
+    },
+    {
+      "id": "193",
+      "fieldId": "170",
+      "label": "พบปะ",
+      "value": "meetup",
+      "sortOrder": 1
+    },
+    {
+      "id": "194",
+      "fieldId": "170",
+      "label": "แลกนามบัตร",
+      "value": "cards",
+      "sortOrder": 2
+    },
+    {
+      "id": "195",
+      "fieldId": "170",
+      "label": "เวิร์กช็อปสั้น",
+      "value": "mini",
+      "sortOrder": 3
+    },
+    {
+      "id": "196",
+      "fieldId": "170",
+      "label": "อาหาร",
+      "value": "food",
+      "sortOrder": 4
+    },
+    {
+      "id": "197",
+      "fieldId": "171",
+      "label": "S",
+      "value": "s",
+      "sortOrder": 1
+    },
+    {
+      "id": "198",
+      "fieldId": "171",
+      "label": "M",
+      "value": "m",
+      "sortOrder": 2
+    },
+    {
+      "id": "199",
+      "fieldId": "171",
+      "label": "L",
+      "value": "l",
+      "sortOrder": 3
+    },
+    {
+      "id": "200",
+      "fieldId": "171",
+      "label": "XL",
+      "value": "xl",
+      "sortOrder": 4
+    },
+    {
+      "id": "203",
+      "fieldId": "178",
+      "label": "Opening Talk",
+      "value": "opening",
+      "sortOrder": 1
+    },
+    {
+      "id": "204",
+      "fieldId": "178",
+      "label": "Community Showcase",
+      "value": "showcase",
+      "sortOrder": 2
+    },
+    {
+      "id": "205",
+      "fieldId": "178",
+      "label": "After Party",
+      "value": "party",
+      "sortOrder": 3
+    },
+    {
+      "id": "206",
+      "fieldId": "179",
+      "label": "พบปะ",
+      "value": "meetup",
+      "sortOrder": 1
+    },
+    {
+      "id": "207",
+      "fieldId": "179",
+      "label": "แลกนามบัตร",
+      "value": "cards",
+      "sortOrder": 2
+    },
+    {
+      "id": "208",
+      "fieldId": "179",
+      "label": "เวิร์กช็อปสั้น",
+      "value": "mini",
+      "sortOrder": 3
+    },
+    {
+      "id": "209",
+      "fieldId": "179",
+      "label": "อาหาร",
+      "value": "food",
+      "sortOrder": 4
+    },
+    {
+      "id": "210",
+      "fieldId": "181",
+      "label": "Yes",
+      "value": "yes",
+      "sortOrder": 1
+    },
+    {
+      "id": "211",
+      "fieldId": "181",
+      "label": "ไม่แน่ใจ",
+      "value": "maybe",
+      "sortOrder": 2
+    },
+    {
+      "id": "212",
+      "fieldId": "181",
+      "label": "ไม่",
+      "value": "no",
+      "sortOrder": 3
+    },
+    {
+      "id": "215",
+      "fieldId": "188",
+      "label": "Product",
+      "value": "product",
+      "sortOrder": 1
+    },
+    {
+      "id": "216",
+      "fieldId": "188",
+      "label": "Engineering",
+      "value": "engineering",
+      "sortOrder": 2
+    },
+    {
+      "id": "217",
+      "fieldId": "188",
+      "label": "Design",
+      "value": "design",
+      "sortOrder": 3
+    },
+    {
+      "id": "218",
+      "fieldId": "188",
+      "label": "People",
+      "value": "people",
+      "sortOrder": 4
+    },
+    {
+      "id": "219",
+      "fieldId": "189",
+      "label": "รอบเช้า",
+      "value": "morning",
+      "sortOrder": 1
+    },
+    {
+      "id": "220",
+      "fieldId": "189",
+      "label": "รอบบ่าย",
+      "value": "afternoon",
+      "sortOrder": 2
+    },
+    {
+      "id": "221",
+      "fieldId": "190",
+      "label": "ไม่มี",
+      "value": "none",
+      "sortOrder": 1
+    },
+    {
+      "id": "222",
+      "fieldId": "190",
+      "label": "มังสวิรัติ",
+      "value": "vegetarian",
+      "sortOrder": 2
+    },
+    {
+      "id": "223",
+      "fieldId": "190",
+      "label": "ฮาลาล",
+      "value": "halal",
+      "sortOrder": 3
+    },
+    {
+      "id": "224",
+      "fieldId": "190",
+      "label": "แพ้อาหาร",
+      "value": "allergy",
+      "sortOrder": 4
+    },
+    {
+      "id": "227",
+      "fieldId": "197",
+      "label": "Critique",
+      "value": "critique",
+      "sortOrder": 1
+    },
+    {
+      "id": "228",
+      "fieldId": "197",
+      "label": "Portfolio",
+      "value": "portfolio",
+      "sortOrder": 2
+    },
+    {
+      "id": "229",
+      "fieldId": "198",
+      "label": "Process",
+      "value": "process",
+      "sortOrder": 1
+    },
+    {
+      "id": "230",
+      "fieldId": "198",
+      "label": "Feedback",
+      "value": "feedback",
+      "sortOrder": 2
+    },
+    {
+      "id": "231",
+      "fieldId": "198",
+      "label": "Tools",
+      "value": "tools",
+      "sortOrder": 3
+    },
+    {
+      "id": "232",
+      "fieldId": "200",
+      "label": "Yes",
+      "value": "yes",
+      "sortOrder": 1
+    },
+    {
+      "id": "233",
+      "fieldId": "200",
+      "label": "ไม่แน่ใจ",
+      "value": "maybe",
+      "sortOrder": 2
+    },
+    {
+      "id": "234",
+      "fieldId": "200",
+      "label": "ไม่",
+      "value": "no",
+      "sortOrder": 3
+    },
+    {
+      "id": "237",
+      "fieldId": "207",
+      "label": "Frontend",
+      "value": "frontend",
+      "sortOrder": 1
+    },
+    {
+      "id": "238",
+      "fieldId": "207",
+      "label": "Backend",
+      "value": "backend",
+      "sortOrder": 2
+    },
+    {
+      "id": "239",
+      "fieldId": "207",
+      "label": "Data",
+      "value": "data",
+      "sortOrder": 3
+    },
+    {
+      "id": "240",
+      "fieldId": "208",
+      "label": "API",
+      "value": "api",
+      "sortOrder": 1
+    },
+    {
+      "id": "241",
+      "fieldId": "208",
+      "label": "UI",
+      "value": "ui",
+      "sortOrder": 2
+    },
+    {
+      "id": "242",
+      "fieldId": "208",
+      "label": "AI",
+      "value": "ai",
+      "sortOrder": 3
+    },
+    {
+      "id": "243",
+      "fieldId": "209",
+      "label": "S",
+      "value": "s",
+      "sortOrder": 1
+    },
+    {
+      "id": "244",
+      "fieldId": "209",
+      "label": "M",
+      "value": "m",
+      "sortOrder": 2
+    },
+    {
+      "id": "245",
+      "fieldId": "209",
+      "label": "L",
+      "value": "l",
+      "sortOrder": 3
+    },
+    {
+      "id": "246",
+      "fieldId": "209",
+      "label": "XL",
+      "value": "xl",
+      "sortOrder": 4
+    },
+    {
+      "id": "249",
+      "fieldId": "216",
+      "label": "Frontend",
+      "value": "frontend",
+      "sortOrder": 1
+    },
+    {
+      "id": "250",
+      "fieldId": "216",
+      "label": "Backend",
+      "value": "backend",
+      "sortOrder": 2
+    },
+    {
+      "id": "251",
+      "fieldId": "216",
+      "label": "Data",
+      "value": "data",
+      "sortOrder": 3
+    },
+    {
+      "id": "252",
+      "fieldId": "217",
+      "label": "API",
+      "value": "api",
+      "sortOrder": 1
+    },
+    {
+      "id": "253",
+      "fieldId": "217",
+      "label": "UI",
+      "value": "ui",
+      "sortOrder": 2
+    },
+    {
+      "id": "254",
+      "fieldId": "217",
+      "label": "AI",
+      "value": "ai",
+      "sortOrder": 3
+    },
+    {
+      "id": "255",
+      "fieldId": "219",
+      "label": "Yes",
+      "value": "yes",
+      "sortOrder": 1
+    },
+    {
+      "id": "256",
+      "fieldId": "219",
+      "label": "ไม่แน่ใจ",
+      "value": "maybe",
+      "sortOrder": 2
+    },
+    {
+      "id": "257",
+      "fieldId": "219",
+      "label": "ไม่",
+      "value": "no",
+      "sortOrder": 3
+    },
+    {
+      "id": "260",
+      "fieldId": "226",
+      "label": "Product",
+      "value": "product",
+      "sortOrder": 1
+    },
+    {
+      "id": "261",
+      "fieldId": "226",
+      "label": "Engineering",
+      "value": "engineering",
+      "sortOrder": 2
+    },
+    {
+      "id": "262",
+      "fieldId": "226",
+      "label": "Design",
+      "value": "design",
+      "sortOrder": 3
+    },
+    {
+      "id": "263",
+      "fieldId": "226",
+      "label": "People",
+      "value": "people",
+      "sortOrder": 4
+    },
+    {
+      "id": "264",
+      "fieldId": "227",
+      "label": "รอบเช้า",
+      "value": "morning",
+      "sortOrder": 1
+    },
+    {
+      "id": "265",
+      "fieldId": "227",
+      "label": "รอบบ่าย",
+      "value": "afternoon",
+      "sortOrder": 2
+    },
+    {
+      "id": "266",
+      "fieldId": "228",
+      "label": "ไม่มี",
+      "value": "none",
+      "sortOrder": 1
+    },
+    {
+      "id": "267",
+      "fieldId": "228",
+      "label": "มังสวิรัติ",
+      "value": "vegetarian",
+      "sortOrder": 2
+    },
+    {
+      "id": "268",
+      "fieldId": "228",
+      "label": "ฮาลาล",
+      "value": "halal",
+      "sortOrder": 3
+    },
+    {
+      "id": "269",
+      "fieldId": "228",
+      "label": "แพ้อาหาร",
+      "value": "allergy",
+      "sortOrder": 4
+    },
+    {
+      "id": "272",
+      "fieldId": "235",
+      "label": "Dinner Talk",
+      "value": "dinner",
+      "sortOrder": 1
+    },
+    {
+      "id": "273",
+      "fieldId": "235",
+      "label": "Networking",
+      "value": "networking",
+      "sortOrder": 2
+    },
+    {
+      "id": "274",
+      "fieldId": "236",
+      "label": "Food",
+      "value": "food",
+      "sortOrder": 1
+    },
+    {
+      "id": "275",
+      "fieldId": "236",
+      "label": "Venue",
+      "value": "venue",
+      "sortOrder": 2
+    },
+    {
+      "id": "276",
+      "fieldId": "236",
+      "label": "Program",
+      "value": "program",
+      "sortOrder": 3
+    },
+    {
+      "id": "277",
+      "fieldId": "238",
+      "label": "Yes",
+      "value": "yes",
+      "sortOrder": 1
+    },
+    {
+      "id": "278",
+      "fieldId": "238",
+      "label": "ไม่แน่ใจ",
+      "value": "maybe",
+      "sortOrder": 2
+    },
+    {
+      "id": "279",
+      "fieldId": "238",
+      "label": "ไม่",
+      "value": "no",
+      "sortOrder": 3
+    },
+    {
+      "id": "284",
+      "fieldId": "248",
+      "label": "Strategy",
+      "value": "strategy",
+      "sortOrder": 1
+    },
+    {
+      "id": "285",
+      "fieldId": "248",
+      "label": "Product",
+      "value": "product",
+      "sortOrder": 2
+    },
+    {
+      "id": "286",
+      "fieldId": "248",
+      "label": "People Ops",
+      "value": "people",
+      "sortOrder": 3
+    },
+    {
+      "id": "287",
+      "fieldId": "249",
+      "label": "Q&A",
+      "value": "qa",
+      "sortOrder": 1
+    },
+    {
+      "id": "288",
+      "fieldId": "249",
+      "label": "Roadmap",
+      "value": "roadmap",
+      "sortOrder": 2
+    },
+    {
+      "id": "289",
+      "fieldId": "249",
+      "label": "Culture",
+      "value": "culture",
+      "sortOrder": 3
+    },
+    {
+      "id": "290",
+      "fieldId": "249",
+      "label": "Tools",
+      "value": "tools",
+      "sortOrder": 4
+    },
+    {
+      "id": "291",
+      "fieldId": "250",
+      "label": "S",
+      "value": "s",
+      "sortOrder": 1
+    },
+    {
+      "id": "292",
+      "fieldId": "250",
+      "label": "M",
+      "value": "m",
+      "sortOrder": 2
+    },
+    {
+      "id": "293",
+      "fieldId": "250",
+      "label": "L",
+      "value": "l",
+      "sortOrder": 3
+    },
+    {
+      "id": "294",
+      "fieldId": "250",
+      "label": "XL",
+      "value": "xl",
+      "sortOrder": 4
+    },
+    {
+      "id": "297",
+      "fieldId": "257",
+      "label": "Strategy",
+      "value": "strategy",
+      "sortOrder": 1
+    },
+    {
+      "id": "298",
+      "fieldId": "257",
+      "label": "Product",
+      "value": "product",
+      "sortOrder": 2
+    },
+    {
+      "id": "299",
+      "fieldId": "257",
+      "label": "People Ops",
+      "value": "people",
+      "sortOrder": 3
+    },
+    {
+      "id": "300",
+      "fieldId": "258",
+      "label": "Q&A",
+      "value": "qa",
+      "sortOrder": 1
+    },
+    {
+      "id": "301",
+      "fieldId": "258",
+      "label": "Roadmap",
+      "value": "roadmap",
+      "sortOrder": 2
+    },
+    {
+      "id": "302",
+      "fieldId": "258",
+      "label": "Culture",
+      "value": "culture",
+      "sortOrder": 3
+    },
+    {
+      "id": "303",
+      "fieldId": "258",
+      "label": "Tools",
+      "value": "tools",
+      "sortOrder": 4
+    },
+    {
+      "id": "304",
+      "fieldId": "260",
+      "label": "Yes",
+      "value": "yes",
+      "sortOrder": 1
+    },
+    {
+      "id": "305",
+      "fieldId": "260",
+      "label": "ไม่แน่ใจ",
+      "value": "maybe",
+      "sortOrder": 2
+    },
+    {
+      "id": "306",
+      "fieldId": "260",
       "label": "ไม่",
       "value": "no",
       "sortOrder": 3

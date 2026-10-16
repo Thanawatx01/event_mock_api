@@ -2,7 +2,7 @@
 
 **ผลิตภัณฑ์:** Event + Survey Management Platform  
 **คอมโพเนนต์:** Mock REST API (`event-management-mock-api`)  
-**เวอร์ชัน:** 1.0.0  
+**เวอร์ชัน:** 1.1.2  
 **Base URL:** `http://localhost:3000`  
 **สแตก:** Node.js + [JSON Server](https://github.com/typicode/json-server) `0.17.4`  
 **แหล่งข้อมูล:** `db.json` (ฐานข้อมูลจำลองแบบไฟล์)
@@ -50,7 +50,7 @@ JSON Server (REST)
 ทรัพยากรใน db.json
   users, roles, permissions
   events, event_users, event_branding
-  forms, form_fields, form_field_options
+  forms, form_sections, form_fields, form_field_options
   whitelist_uploads, whitelist_entries
   submissions, submission_answers
   dashboards, dashboard_widgets
@@ -63,7 +63,7 @@ JSON Server (REST)
 |---|---|---|
 | ตัวตนและการเข้าถึง | `users`, `roles`, `permissions`, `event_users` | บัญชี, บทบาทกำหนดเอง, สิทธิ์รายละเอียด, มอบหมายทีมงานเข้าอีเวนต์ |
 | อีเวนต์ | `events`, `event_branding`, `whitelist_*` | อีเวนต์สาธารณะ/ส่วนตัว, branding, ชุดข้อมูล Access Gate |
-| Form Engine | `forms`, `form_fields`, `form_field_options` | schema ร่วมของฟอร์มลงทะเบียน/แบบสอบถาม และวงจรอนุมัติ |
+| Form Engine | `forms`, `form_sections`, `form_fields`, `form_field_options` | schema ร่วมของฟอร์มลงทะเบียน/แบบสอบถาม (Section Branching ตามภาษา) และวงจรอนุมัติ |
 | คำตอบ | `submissions`, `submission_answers` | คำตอบของผู้เข้าร่วมทั้งสองประเภทฟอร์ม |
 | วิเคราะห์ผล | `dashboards`, `dashboard_widgets` | วิดเจ็ต KPI / กราฟ / ตาราง |
 | การปฏิบัติตามกฎ | `audit_logs`, `cookie_consents`, `privacy_requests` | บันทึก PII, ความยินยอมคุกกี้, สิทธิ์ถูกลืม |
@@ -79,6 +79,7 @@ JSON Server (REST)
 | ต้องอนุมัติฟอร์มก่อนเผยแพร่อีเวนต์ | เผยแพร่ได้เมื่อไม่มีฟอร์มผูกอยู่ หรือฟอร์มที่ active ทั้งหมดเป็น `approved` |
 | Soft delete | ใช้ `isDeleted` / `deletedAt`; ฟอร์มที่ลบแล้วไม่นับโควตา |
 | ฟิลด์ข้อมูลอ่อนไหว | `form_fields.sensitive=true`; API จริงต้อง mask ที่ backend ก่อนส่งตอบ |
+| Form Engine — Section Branching ตามภาษา | ทุกฟอร์ม `branchingMode=section_by_language`; มีเซ็กชันต่อภาษา (`lang_type` เป็น string เช่น `th` / `en`) — **ไม่มี**เซ็กชันเลือกภาษา; UI ใช้ language switch ลอยบนหน้า แล้วแสดงเซ็กชันที่ `lang_type` ตรงกัน |
 
 > **หมายเหตุของ mock:** JSON Server **ไม่บังคับ** กฎธุรกิจและ auth เอง ฝั่ง client หรือ API จริงในอนาคตต้องทำ validation, masking และ authorization เอง ข้อมูลตัวอย่างใน `db.json` มีทั้งเคสที่ผ่านกฎและเคสขอบ สำหรับทดสอบ UI
 
@@ -104,7 +105,8 @@ JSON Server (REST)
 | `event_users` | มอบหมาย Sub-User + บทบาทเข้าอีเวนต์ |
 | `event_branding` | โลโก้, แบนเนอร์, สี, ธีม, สัดส่วนแบนเนอร์ |
 | `forms` | ฟอร์มลงทะเบียนหรือแบบสอบถาม (engine ร่วม) |
-| `form_fields` | นิยามฟิลด์ (อินพุต 9 ชนิด) |
+| `form_sections` | เซ็กชันของฟอร์มสำหรับ Section Branching ตามภาษา (สลับด้วย UI switch) |
+| `form_fields` | นิยามฟิลด์ (อินพุต 9 ชนิด) ผูกกับเซ็กชัน |
 | `form_field_options` | ตัวเลือกของ radio / checkbox / dropdown |
 | `whitelist_uploads` | เมทาดาทาไฟล์ CSV/Excel ที่อัปโหลด |
 | `whitelist_entries` | แถวข้อมูลสำหรับ Access Gate |
@@ -125,7 +127,7 @@ users (event_owner) 1──1 events (ownerId; active ไม่ soft-delete)
 events 1──* event_users *──1 users (sub_user อยู่ได้แค่ 1 อีเวนต์)
 events 1──1 event_branding
 events 1──0..1 forms(registration) + 0..1 forms(survey)
-forms 1──* form_fields 1──* form_field_options
+forms 1──* form_sections 1──* form_fields 1──* form_field_options
 events 1──* whitelist_uploads 1──* whitelist_entries
 forms 1──* submissions 1──* submission_answers
 submission_answers *──1 form_fields
@@ -144,6 +146,7 @@ users / events / form_fields ←── audit_logs (ผู้กระทำ + �
 | `forms.type` | `registration`, `survey` |
 | `forms.status` | `draft`, `pending_approval`, `approved`, `rejected` |
 | `forms.approvalType` | `self`, `approver`, `force_owner` |
+| `forms.branchingMode` | `section_by_language` (Section Branching — UI language switch เลือกเซ็กชัน) |
 | `form_fields.type` | `text`, `long_text`, `radio`, `checkbox`, `dropdown`, `date`, `time`, `number`, `rating` |
 | `event_branding.bannerRatio` | `9:16`, `3:4` |
 | `dashboard_widgets.type` | `kpi`, `bar_chart`, `pie_chart`, `data_table` |
@@ -164,9 +167,13 @@ users / events / form_fields ←── audit_logs (ผู้กระทำ + �
 
 | ฟิลด์ | ชนิด | หมายเหตุ |
 |---|---|---|
+| `name` | `Record<string, string>` | ชื่อหลายภาษา — คีย์เป็นรหัสภาษาแบบ string (`th`, `en`, … สอดคล้อง `languages[].id`) ไม่ใช่ enum |
+| `description` | `Record<string, string>` | คำอธิบายหลายภาษา — รูปแบบเดียวกับ `name` |
 | `startAt` / `endAt` | datetime ISO-8601 | ใช้ช่วง Pre-event / Active / Closed |
 | `accessGateField` | string \| null | บังคับเมื่อ `type=private` เช่น `employeeId` |
 | `status` | enum | วงจรหลักเท่านั้น: draft / published / closed |
+
+ฝั่ง client เลือกข้อความด้วยภาษาที่ active — ถ้าไม่มีคีย์ภาษานั้นให้ fallback เป็น `th` แล้วค่อยค่าแรกที่มี
 
 #### `forms`
 
@@ -176,6 +183,51 @@ users / events / form_fields ←── audit_logs (ผู้กระทำ + �
 | `rejectionNote` | string \| null | บังคับเมื่อ `status=rejected` |
 | `approvedBy` / `rejectedBy` | user id | ผู้ดำเนินการอนุมัติ/ปฏิเสธ |
 | `approvalType` | enum | อนุมัติเอง, ผู้ตรวจอนุมัติ หรือบังคับโดยเจ้าของงาน |
+| `branchingMode` | string | ค่าปัจจุบัน `section_by_language` — UI เลือกภาษาแล้วแสดงเซ็กชันที่ `lang_type` ตรงกัน |
+
+#### `form_sections`
+
+| ฟิลด์ | ชนิด | หมายเหตุ |
+|---|---|---|
+| `id` | string | PK |
+| `formId` | string | FK → `forms` |
+| `key` | string | คีย์ภายใน เช่น `content_th`, `content_en` |
+| `title` | string | หัวข้อเซ็กชัน |
+| `lang_type` | string | **ไม่ใช่ enum** — รหัสภาษาแบบ string (เช่น `"th"`, `"en"` ให้สอดคล้องกับ `languages[].id` ฝั่ง frontend) เพื่อรองรับภาษาใหม่ในอนาคต |
+| `sortOrder` | number | ลำดับเซ็กชัน |
+| `isDeleted` / `deletedAt` | — | soft-delete |
+
+**Flow Section Branching + language switch (ฝั่ง client):**
+
+1. **ไม่มี**เซ็กชัน/`form_fields` สำหรับเลือกภาษา — ใช้ language switch ลอยบนหน้าเว็บ สลับได้ตลอดเวลา
+2. เมื่อสวิตช์เป็นภาษา `L` → แสดงเฉพาะเซ็กชันที่ `lang_type === L` และฟิลด์ในเซ็กชันนั้น
+3. ฟิลด์คู่ภาษาใช้ **`name` เดียวกัน** (เช่น `fullName`) แต่คนละ `id` / `sectionId` / `label`
+4. **Pre-save คำตอบ** เก็บใน `localStorage` หรือ cookie โดยคีย์หลักเป็น `name` (ไม่ใช่ `fieldId`) เพื่อให้เปลี่ยนภาษาแล้วยังเห็นคำตอบเดิม
+5. ตอน submit จริง ค่อย map จาก `name` → `fieldId` ของเซ็กชันภาษาที่ active แล้ว POST `submission_answers`
+
+**รูปแบบ pre-save ที่แนะนำ (client):**
+
+```json
+{
+  "formId": "6",
+  "lang_type": "th",
+  "answersByName": {
+    "fullName": { "value": "สมชาย ใจดี", "values": [] },
+    "interests": { "value": null, "values": ["meetup", "food"] }
+  }
+}
+```
+
+- สลับภาษา → อัปเดตแค่ `lang_type` ที่แสดงผล; `answersByName` คงเดิม
+- ค่า choice (`radio` / `checkbox` / `dropdown`) เก็บ `value`/`values` ที่เป็นรหัสตัวเลือก (ไม่ใช่ label) เพื่อให้ใช้ร่วมข้ามภาษาได้
+
+#### `form_fields`
+
+| ฟิลด์ | ชนิด | หมายเหตุ |
+|---|---|---|
+| `sectionId` | string | FK → `form_sections` — ฟิลด์อยู่ภายใต้เซ็กชันใด |
+| `name` | string | คีย์คำถามร่วมข้ามภาษา — ใช้ pre-save / hydrate คำตอบตอนสลับภาษา |
+| `type` | enum | ชนิดอินพุต 9 แบบ (ดูตาราง enum) |
 
 #### `submission_answers`
 
@@ -221,6 +273,7 @@ JSON Server เปิดเส้นทาง REST มาตรฐานสำ�
 | `/event_users` | มอบหมายทีมงาน |
 | `/event_branding` | Branding |
 | `/forms` | ฟอร์มลงทะเบียน/แบบสอบถาม |
+| `/form_sections` | เซ็กชันของฟอร์ม (branch ตามภาษา) |
 | `/form_fields` | ฟิลด์ของฟอร์ม |
 | `/form_field_options` | ตัวเลือกของฟิลด์ |
 | `/whitelist_uploads` | ชุดไฟล์ whitelist ที่อัปโหลด |
@@ -355,8 +408,14 @@ GET /events?status=published&isDeleted=false&_sort=startAt&_order=asc
 [
   {
     "id": "3",
-    "name": "Community Night Bangkok",
-    "description": "มีตติ้งชุมชนที่กำลังเปิดรับลงทะเบียนอยู่ในช่วงเวลางาน",
+    "name": {
+      "th": "Community Night Bangkok",
+      "en": "Community Night Bangkok"
+    },
+    "description": {
+      "th": "มีตติ้งชุมชนที่กำลังเปิดรับลงทะเบียนอยู่ในช่วงเวลางาน",
+      "en": "A community meetup currently open for registration during the event window."
+    },
     "ownerId": "3",
     "createdBy": "3",
     "type": "public",
@@ -383,8 +442,14 @@ POST /events
 Content-Type: application/json
 
 {
-  "name": "Developer Meetup",
-  "description": "Monthly public meetup",
+  "name": {
+    "th": "Developer Meetup",
+    "en": "Developer Meetup"
+  },
+  "description": {
+    "th": "มีตติ้งสาธารณะรายเดือน",
+    "en": "Monthly public meetup"
+  },
   "ownerId": "2",
   "createdBy": "2",
   "type": "public",
@@ -406,7 +471,10 @@ Content-Type: application/json
 ```json
 {
   "id": "9",
-  "name": "Developer Meetup",
+  "name": {
+    "th": "Developer Meetup",
+    "en": "Developer Meetup"
+  },
   "status": "draft",
   "type": "public",
   "ownerId": "2"
@@ -438,13 +506,30 @@ GET /forms?slug=community-night-register&status=approved&isDeleted=false
 ]
 ```
 
-### 4.5 โหลดฟิลด์และตัวเลือกของฟอร์ม
+### 4.5 โหลดเซ็กชัน ฟิลด์ และตัวเลือกของฟอร์ม
 
 **Request**
 
 ```http
+GET /form_sections?formId=6&_sort=sortOrder&_order=asc
 GET /form_fields?formId=6&_sort=sortOrder&_order=asc
+GET /form_fields?sectionId=17&_sort=sortOrder&_order=asc
 GET /form_field_options?fieldId=41
+```
+
+**ตัวอย่างเซ็กชัน (ภาษาไทย)**
+
+```json
+{
+  "id": "17",
+  "formId": "6",
+  "key": "content_th",
+  "title": "แบบฟอร์มภาษาไทย",
+  "lang_type": "th",
+  "sortOrder": 0,
+  "isDeleted": false,
+  "deletedAt": null
+}
 ```
 
 **ตัวอย่างฟิลด์**
@@ -453,6 +538,7 @@ GET /form_field_options?fieldId=41
 {
   "id": "41",
   "formId": "6",
+  "sectionId": "17",
   "name": "interests",
   "label": "หัวข้อที่สนใจ",
   "type": "checkbox",
@@ -806,7 +892,9 @@ HTTP/1.1 404 Not Found
 | permissions | 48 |
 | events | 8 |
 | forms | 16 |
-| form_fields | 123 |
+| form_sections | 32 |
+| form_fields | 246 |
+| form_field_options | 274 |
 | submissions | 59 |
 | submission_answers | 521 |
 | whitelist_entries | 26 |
@@ -836,6 +924,8 @@ npm start
 # ตัวอย่าง
 curl "http://localhost:3000/events?status=published"
 curl "http://localhost:3000/forms?eventId=3&isDeleted=false"
+curl "http://localhost:3000/form_sections?formId=6&_sort=sortOrder&_order=asc"
+curl "http://localhost:3000/form_fields?formId=6&sectionId=17&_sort=sortOrder&_order=asc"
 curl "http://localhost:3000/submissions?eventId=3&formType=registration"
 curl -X PATCH http://localhost:3000/events/2 \
   -H "Content-Type: application/json" \
@@ -856,5 +946,8 @@ curl -X PATCH http://localhost:3000/events/2 \
 |---|---|---|---|
 | 1.0.0 | 2026-10-12 | Backend mock docs | เอกสารทางเทคนิคฝั่ง Backend ฉบับแรก สอดคล้องกับ schema ใน `db.json` และเส้นทางของ JSON Server |
 | 1.0.1 | 2026-10-12 | Backend mock docs | แปลเอกสารทั้งฉบับเป็นภาษาไทย |
+| 1.1.0 | 2026-10-16 | Backend mock docs | Form Engine ใช้ Section Branching (Route by language choice); เพิ่ม `form_sections.lang_type` (string), `forms.branchingMode`, `form_fields.sectionId` |
+| 1.1.1 | 2026-10-16 | Backend mock docs | ลบเซ็กชัน `language_choice`; สลับภาษาด้วย UI switch; pre-save คำตอบด้วย `name` ใน localStorage/cookie |
+| 1.1.2 | 2026-10-16 | Backend mock docs | `events.name` / `events.description` เป็น map หลายภาษา (`Record<string, string>` คีย์ `th`/`en`) |
 
 **Google Doc เป้าหมาย:** https://docs.google.com/document/d/11oA9XmM2_fsHN7igaOVguOY_Yj_OQwMMSE07Te7Lqs4/edit

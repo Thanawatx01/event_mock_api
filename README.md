@@ -33,7 +33,7 @@ curl "http://localhost:3000/submissions?eventId=3&formType=registration"
 ## ทรัพยากรหลัก
 - `/users`, `/roles`, `/permissions`
 - `/events`, `/event_users`, `/event_branding`
-- `/forms`, `/form_fields`, `/form_field_options`
+- `/forms`, `/form_sections`, `/form_fields`, `/form_field_options`
 - `/whitelist_uploads`, `/whitelist_entries`
 - `/submissions`, `/submission_answers`
 - `/dashboards`, `/dashboard_widgets`
