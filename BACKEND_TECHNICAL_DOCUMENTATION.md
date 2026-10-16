@@ -2,7 +2,7 @@
 
 **ผลิตภัณฑ์:** Event + Survey Management Platform  
 **คอมโพเนนต์:** Mock REST API (`event-management-mock-api`)  
-**เวอร์ชัน:** 1.1.2  
+**เวอร์ชัน:** 1.1.3  
 **Base URL:** `http://localhost:3000`  
 **สแตก:** Node.js + [JSON Server](https://github.com/typicode/json-server) `0.17.4`  
 **แหล่งข้อมูล:** `db.json` (ฐานข้อมูลจำลองแบบไฟล์)
@@ -91,8 +91,9 @@ JSON Server (REST)
 
 ใช้แผนภาพที่ส่งออกไว้ในโปรเจกต์:
 
-- ไฟล์: [`database-schema.png`](./database-schema.png)
-- เนื้อหา: ทรัพยากรครบ 18 ตาราง, เครื่องหมาย PK/FK และความสัมพันธ์แบบ crow-foot
+- แผนภาพ: [`database-schema.png`](./database-schema.png)
+- ต้นทาง DBML: [`database-schema.dbml`](./database-schema.dbml)
+- เนื้อหา: ทรัพยากรครบ **19** ตาราง (รวม `form_sections`) จัดเป็นคอลัมน์ตามโดเมน — วาด FK ครบทุกเส้นด้วย channel routing (เลนแยกกัน): คอลัมน์เดียวกันใช้ gutter ซ้าย, คอลัมน์ติดกันใช้ช่องระหว่างคอลัมน์, ข้ามหลายคอลัมน์ใช้ highway ด้านล่าง — สีเส้นแยกตามตารางต้นทาง (`users` น้ำเงิน / `events` เขียว / form engine แดง)
 
 ### 2.2 รายการเอนทิตี
 
@@ -935,7 +936,7 @@ curl -X PATCH http://localhost:3000/events/2 \
 ไฟล์ที่เกี่ยวข้อง:
 
 - ข้อมูล: `db.json`
-- แผนภาพ schema: `database-schema.png`
+- แผนภาพ schema: `database-schema.png` (ต้นทาง `database-schema.dbml`)
 - สคริปต์แพ็กเกจ: `npm start`
 
 ---
@@ -949,5 +950,6 @@ curl -X PATCH http://localhost:3000/events/2 \
 | 1.1.0 | 2026-10-16 | Backend mock docs | Form Engine ใช้ Section Branching (Route by language choice); เพิ่ม `form_sections.lang_type` (string), `forms.branchingMode`, `form_fields.sectionId` |
 | 1.1.1 | 2026-10-16 | Backend mock docs | ลบเซ็กชัน `language_choice`; สลับภาษาด้วย UI switch; pre-save คำตอบด้วย `name` ใน localStorage/cookie |
 | 1.1.2 | 2026-10-16 | Backend mock docs | `events.name` / `events.description` เป็น map หลายภาษา (`Record<string, string>` คีย์ `th`/`en`) |
+| 1.1.3 | 2026-10-16 | Backend mock docs | อัปเดต ER schema (`database-schema.dbml` + `.png`) เพิ่ม `form_sections` และฟิลด์ i18n/branching |
 
 **Google Doc เป้าหมาย:** https://docs.google.com/document/d/11oA9XmM2_fsHN7igaOVguOY_Yj_OQwMMSE07Te7Lqs4/edit

@@ -1,0 +1,255 @@
+// Event + Survey Management — mock API schema (source of truth for database-schema.png)
+// Localized maps use string language keys (th, en, …) — not enums.
+
+Table users {
+  id string [pk]
+  name string
+  email string
+  password string
+  phone string
+  role string [note: 'super_admin | event_owner | sub_user | participant']
+  status string [note: 'active | inactive']
+  ownerId string [ref: > users.id, null]
+  canViewSensitiveData boolean
+  isDeleted boolean
+  deletedAt datetime [null]
+  anonymizedAt datetime [null]
+  createdAt datetime
+  updatedAt datetime
+}
+
+Table roles {
+  id string [pk]
+  eventOwnerId string [ref: > users.id]
+  name string
+  description string
+  status string
+  isDeleted boolean
+  deletedAt datetime [null]
+  createdAt datetime
+}
+
+Table permissions {
+  id string [pk]
+  roleId string [ref: > roles.id]
+  feature string
+  access boolean
+  view boolean
+  create boolean
+  edit boolean
+  delete boolean
+  approve boolean
+  publish boolean
+}
+
+Table events {
+  id string [pk]
+  name json [note: 'Record<string,string> localized e.g. {th,en}']
+  description json [note: 'Record<string,string> localized e.g. {th,en}']
+  ownerId string [ref: > users.id]
+  createdBy string [ref: > users.id]
+  type string [note: 'public | private']
+  status string [note: 'draft | published | closed']
+  startAt datetime
+  endAt datetime
+  publishedAt datetime [null]
+  closedAt datetime [null]
+  accessGateField string [null]
+  isDeleted boolean
+  deletedAt datetime [null]
+  createdAt datetime
+  updatedAt datetime
+}
+
+Table event_users {
+  id string [pk]
+  eventId string [ref: > events.id]
+  userId string [ref: > users.id]
+  roleId string [ref: > roles.id]
+  status string
+  isDeleted boolean
+  deletedAt datetime [null]
+  createdAt datetime
+}
+
+Table event_branding {
+  id string [pk]
+  eventId string [ref: > events.id]
+  logo string
+  banner string
+  bannerRatio string [note: '9:16 | 3:4']
+  primaryColor string
+  secondaryColor string
+  theme string
+  createdAt datetime
+  updatedAt datetime
+}
+
+Table forms {
+  id string [pk]
+  eventId string [ref: > events.id]
+  type string [note: 'registration | survey']
+  title string
+  description string
+  slug string
+  status string [note: 'draft | pending_approval | approved | rejected']
+  rejectionNote string [null]
+  submittedAt datetime [null]
+  approvedAt datetime [null]
+  approvedBy string [ref: > users.id, null]
+  rejectedAt datetime [null]
+  rejectedBy string [ref: > users.id, null]
+  approvalType string [null, note: 'self | approver | force_owner']
+  branchingMode string [note: 'section_by_language']
+  isDeleted boolean
+  deletedAt datetime [null]
+  createdBy string [ref: > users.id]
+  createdAt datetime
+  updatedAt datetime
+}
+
+Table form_sections {
+  id string [pk]
+  formId string [ref: > forms.id]
+  key string [note: 'e.g. content_th, content_en']
+  title string
+  description string [null]
+  lang_type string [note: 'language id string e.g. th, en — not enum']
+  sortOrder number
+  isDeleted boolean
+  deletedAt datetime [null]
+}
+
+Table form_fields {
+  id string [pk]
+  formId string [ref: > forms.id]
+  sectionId string [ref: > form_sections.id]
+  name string [note: 'stable question key across languages']
+  label string
+  type string [note: 'text | long_text | radio | checkbox | dropdown | date | time | number | rating']
+  required boolean
+  sensitive boolean
+  placeholder string [null]
+  ratingMin number [null]
+  ratingMax number [null]
+  ratingLabels json [null]
+  sortOrder number
+  isDeleted boolean
+  deletedAt datetime [null]
+}
+
+Table form_field_options {
+  id string [pk]
+  fieldId string [ref: > form_fields.id]
+  label string
+  value string
+  sortOrder number
+}
+
+Table whitelist_uploads {
+  id string [pk]
+  eventId string [ref: > events.id]
+  fileName string
+  rowCount number
+  uploadedBy string [ref: > users.id]
+  createdAt datetime
+}
+
+Table whitelist_entries {
+  id string [pk]
+  eventId string [ref: > events.id]
+  uploadId string [ref: > whitelist_uploads.id]
+  uniqueField string
+  uniqueValue string
+  record json
+  status string
+  isDeleted boolean
+  deletedAt datetime [null]
+  createdAt datetime
+}
+
+Table submissions {
+  id string [pk]
+  formId string [ref: > forms.id]
+  eventId string [ref: > events.id]
+  formType string
+  participantId string [ref: > users.id, null]
+  whitelistEntryId string [ref: > whitelist_entries.id, null]
+  status string
+  submittedAt datetime
+  isAnonymized boolean
+  anonymizedAt datetime [null]
+  isDeleted boolean
+  deletedAt datetime [null]
+}
+
+Table submission_answers {
+  id string [pk]
+  submissionId string [ref: > submissions.id]
+  fieldId string [ref: > form_fields.id]
+  value string [null]
+  values json
+}
+
+Table dashboards {
+  id string [pk]
+  eventId string [ref: > events.id]
+  name string
+  layout string
+  isTemplate boolean
+  isDeleted boolean
+  deletedAt datetime [null]
+  createdAt datetime
+}
+
+Table dashboard_widgets {
+  id string [pk]
+  dashboardId string [ref: > dashboards.id]
+  type string [note: 'kpi | bar_chart | pie_chart | data_table']
+  title string
+  dataSourceType string
+  formId string [ref: > forms.id, null]
+  fieldId string [ref: > form_fields.id, null]
+  aggregation string
+  filters json
+  positionX number
+  positionY number
+  width number
+  height number
+  createdAt datetime
+}
+
+Table audit_logs {
+  id string [pk]
+  userId string [ref: > users.id]
+  eventId string [ref: > events.id, null]
+  action string
+  entity string
+  entityId string
+  fieldId string [ref: > form_fields.id, null]
+  metadata json
+  createdAt datetime
+}
+
+Table cookie_consents {
+  id string [pk]
+  participantId string [ref: > users.id, null]
+  visitorId string
+  eventId string [ref: > events.id, null]
+  accepted boolean
+  policyVersion string
+  createdAt datetime
+}
+
+Table privacy_requests {
+  id string [pk]
+  userId string [ref: > users.id]
+  type string
+  scope string
+  status string
+  note string
+  requestedAt datetime
+  reviewedBy string [ref: > users.id, null]
+  reviewedAt datetime [null]
+  completedAt datetime [null]
+}

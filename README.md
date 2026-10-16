@@ -73,6 +73,8 @@ curl "https://your-project.vercel.app/forms?eventId=3&isDeleted=false"
 ## เอกสาร
 ดูรายละเอียดใน `BACKEND_TECHNICAL_DOCUMENTATION.md`
 
+แผนภาพ ER: `database-schema.png` (ต้นทาง `database-schema.dbml`)
+
 ## หมายเหตุ
 - JSON Server ให้ CRUD พื้นฐานตาม array ใน `db.json`
 - ความสัมพันธ์อ้างด้วย id ไม่มีการบังคับ foreign key
