@@ -2,7 +2,7 @@
 
 **ผลิตภัณฑ์:** Event + Survey Management Platform  
 **คอมโพเนนต์:** Mock REST API (`event-management-mock-api`)  
-**เวอร์ชัน:** 1.1.3  
+**เวอร์ชัน:** 1.1.4  
 **Base URL:** `http://localhost:3000`  
 **สแตก:** Node.js + [JSON Server](https://github.com/typicode/json-server) `0.17.4`  
 **แหล่งข้อมูล:** `db.json` (ฐานข้อมูลจำลองแบบไฟล์)
@@ -180,11 +180,22 @@ users / events / form_fields ←── audit_logs (ผู้กระทำ + �
 
 | ฟิลด์ | ชนิด | หมายเหตุ |
 |---|---|---|
-| `slug` | string | slug คงที่สำหรับ URL / QR |
+| `title` | `Record<string, string>` | ชื่อฟอร์มหลายภาษา — คีย์เป็นรหัสภาษา (`th`, `en`, …) ไม่ใช่ enum |
+| `description` | `Record<string, string>` | คำอธิบายหลายภาษา — รูปแบบเดียวกับ `title` |
+| `slug` | string | **รหัส path คงที่ ภาษาเดียว** สำหรับ URL / QR — ไม่แยกตามภาษา (ดูด้านล่าง) |
 | `rejectionNote` | string \| null | บังคับเมื่อ `status=rejected` |
 | `approvedBy` / `rejectedBy` | user id | ผู้ดำเนินการอนุมัติ/ปฏิเสธ |
 | `approvalType` | enum | อนุมัติเอง, ผู้ตรวจอนุมัติ หรือบังคับโดยเจ้าของงาน |
 | `branchingMode` | string | ค่าปัจจุบัน `section_by_language` — UI เลือกภาษาแล้วแสดงเซ็กชันที่ `lang_type` ตรงกัน |
+
+**`slug` — อย่าเจนจาก `title` หลายภาษา**
+
+- ฟอร์ม 1 ใบมี **slug เดียว** → path / QR ชุดเดียว ไม่ว่าผู้ใช้จะเปิดภาษาไหน
+- ห้าม slugify จาก `title.th` / `title.en` เพราะจะได้คนละ path
+- แนะนำให้เจนจากสิ่งที่ภาษาเป็นกลาง เช่น:
+  - `{eventSlug}-{type}` → `tech-conf-2026-register`, `tech-conf-2026-survey`
+  - หรือ `{eventSlug}-{type}-{shortId}` ถ้าต้องการ uniqueness
+- แก้ `title` / `description` ทีหลัง **ไม่ต้องเปลี่ยน slug** (slug เปลี่ยนได้เฉพาะเมื่อเจ้าของตั้งใจ rotate ลิงก์)
 
 #### `form_sections`
 
@@ -498,7 +509,14 @@ GET /forms?slug=community-night-register&status=approved&isDeleted=false
     "id": "6",
     "eventId": "3",
     "type": "registration",
-    "title": "ลงทะเบียน Community Night",
+    "title": {
+      "th": "ลงทะเบียน Community Night",
+      "en": "Community Night Registration"
+    },
+    "description": {
+      "th": "เจ้าของงานอนุมัติเองแบบ self-approval",
+      "en": "Self-approved by the event owner."
+    },
     "slug": "community-night-register",
     "status": "approved",
     "approvalType": "self",
@@ -951,5 +969,6 @@ curl -X PATCH http://localhost:3000/events/2 \
 | 1.1.1 | 2026-10-16 | Backend mock docs | ลบเซ็กชัน `language_choice`; สลับภาษาด้วย UI switch; pre-save คำตอบด้วย `name` ใน localStorage/cookie |
 | 1.1.2 | 2026-10-16 | Backend mock docs | `events.name` / `events.description` เป็น map หลายภาษา (`Record<string, string>` คีย์ `th`/`en`) |
 | 1.1.3 | 2026-10-16 | Backend mock docs | อัปเดต ER schema (`database-schema.dbml` + `.png`) เพิ่ม `form_sections` และฟิลด์ i18n/branching |
+| 1.1.4 | 2026-10-16 | Backend mock docs | `forms.title` / `forms.description` เป็น localized map; ระบุว่า `slug` ต้องภาษาเป็นกลาง ไม่เจนจาก title |
 
 **Google Doc เป้าหมาย:** https://docs.google.com/document/d/11oA9XmM2_fsHN7igaOVguOY_Yj_OQwMMSE07Te7Lqs4/edit

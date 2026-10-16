@@ -89,9 +89,9 @@ Table forms {
   id string [pk]
   eventId string [ref: > events.id]
   type string [note: 'registration | survey']
-  title string
-  description string
-  slug string
+  title json [note: 'Record<string,string> localized e.g. {th,en}']
+  description json [note: 'Record<string,string> localized e.g. {th,en}']
+  slug string [note: 'language-agnostic URL/QR key — one per form, not derived from localized title']
   status string [note: 'draft | pending_approval | approved | rejected']
   rejectionNote string [null]
   submittedAt datetime [null]

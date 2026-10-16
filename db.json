@@ -1520,8 +1520,14 @@
       "id": "1",
       "eventId": "1",
       "type": "registration",
-      "title": "ลงทะเบียน Technology Conference 2026",
-      "description": "ฟอร์มสาธารณะที่อนุมัติแล้ว รอถึงวันงานจึงเปิดให้ส่ง",
+      "title": {
+        "th": "ลงทะเบียน Technology Conference 2026",
+        "en": "Technology Conference 2026 Registration"
+      },
+      "description": {
+        "th": "ฟอร์มสาธารณะที่อนุมัติแล้ว รอถึงวันงานจึงเปิดให้ส่ง",
+        "en": "Approved public form. Submissions open when the event starts."
+      },
       "slug": "tech-conf-2026-register",
       "status": "approved",
       "rejectionNote": null,
@@ -1542,8 +1548,14 @@
       "id": "2",
       "eventId": "1",
       "type": "survey",
-      "title": "แบบสอบถาม Technology Conference 2026",
-      "description": "สเกล 1-10 พร้อมป้ายกำกับทุกช่วงคะแนน",
+      "title": {
+        "th": "แบบสอบถาม Technology Conference 2026",
+        "en": "Technology Conference 2026 Survey"
+      },
+      "description": {
+        "th": "สเกล 1-10 พร้อมป้ายกำกับทุกช่วงคะแนน",
+        "en": "1–10 scale with a label for every score."
+      },
       "slug": "tech-conf-2026-survey",
       "status": "approved",
       "rejectionNote": null,
@@ -1564,8 +1576,14 @@
       "id": "3",
       "eventId": "2",
       "type": "registration",
-      "title": "ลงทะเบียนเวิร์กช็อป (ฉบับเดิมที่ลบแล้ว)",
-      "description": "ฟอร์มที่ถูกซอฟต์ดีลีต จึงไม่นับโควตา 1 ฟอร์มต่อประเภท",
+      "title": {
+        "th": "ลงทะเบียนเวิร์กช็อป (ฉบับเดิมที่ลบแล้ว)",
+        "en": "Workshop registration (soft-deleted old version)"
+      },
+      "description": {
+        "th": "ฟอร์มที่ถูกซอฟต์ดีลีต จึงไม่นับโควตา 1 ฟอร์มต่อประเภท",
+        "en": "Soft-deleted form so it does not count toward the one-form-per-type quota."
+      },
       "slug": "product-workshop-register-old",
       "status": "draft",
       "rejectionNote": null,
@@ -1586,8 +1604,14 @@
       "id": "4",
       "eventId": "2",
       "type": "registration",
-      "title": "ลงทะเบียน Internal Product Workshop",
-      "description": "รอ Approver ตรวจอยู่",
+      "title": {
+        "th": "ลงทะเบียน Internal Product Workshop",
+        "en": "Internal Product Workshop Registration"
+      },
+      "description": {
+        "th": "รอ Approver ตรวจอยู่",
+        "en": "Pending approver review."
+      },
       "slug": "product-workshop-register",
       "status": "pending_approval",
       "rejectionNote": null,
@@ -1608,8 +1632,14 @@
       "id": "5",
       "eventId": "2",
       "type": "survey",
-      "title": "แบบสอบถาม Internal Product Workshop",
-      "description": "ยังเป็นแบบร่าง ยังไม่ส่งขออนุมัติ",
+      "title": {
+        "th": "แบบสอบถาม Internal Product Workshop",
+        "en": "Internal Product Workshop Survey"
+      },
+      "description": {
+        "th": "ยังเป็นแบบร่าง ยังไม่ส่งขออนุมัติ",
+        "en": "Still a draft; not yet submitted for approval."
+      },
       "slug": "product-workshop-survey",
       "status": "draft",
       "rejectionNote": null,
@@ -1630,8 +1660,14 @@
       "id": "6",
       "eventId": "3",
       "type": "registration",
-      "title": "ลงทะเบียน Community Night",
-      "description": "เจ้าของงานอนุมัติเองแบบ self-approval",
+      "title": {
+        "th": "ลงทะเบียน Community Night",
+        "en": "Community Night Registration"
+      },
+      "description": {
+        "th": "เจ้าของงานอนุมัติเองแบบ self-approval",
+        "en": "Self-approved by the event owner."
+      },
       "slug": "community-night-register",
       "status": "approved",
       "rejectionNote": null,
@@ -1652,8 +1688,14 @@
       "id": "7",
       "eventId": "3",
       "type": "survey",
-      "title": "แบบสอบถาม Community Night",
-      "description": "สเกล 1-5 พร้อมป้ายกำกับ",
+      "title": {
+        "th": "แบบสอบถาม Community Night",
+        "en": "Community Night Survey"
+      },
+      "description": {
+        "th": "สเกล 1-5 พร้อมป้ายกำกับ",
+        "en": "1–5 scale with labels."
+      },
       "slug": "community-night-survey",
       "status": "approved",
       "rejectionNote": null,
@@ -1674,8 +1716,14 @@
       "id": "8",
       "eventId": "4",
       "type": "registration",
-      "title": "ลงทะเบียน Design Critique",
-      "description": "ฟอร์มส่วนตัวที่อนุมัติโดย Approver",
+      "title": {
+        "th": "ลงทะเบียน Design Critique",
+        "en": "Design Critique September Registration"
+      },
+      "description": {
+        "th": "ฟอร์มส่วนตัวที่อนุมัติโดย Approver",
+        "en": "Closed design critique round."
+      },
       "slug": "design-critique-register",
       "status": "approved",
       "rejectionNote": null,
@@ -1696,8 +1744,14 @@
       "id": "9",
       "eventId": "4",
       "type": "survey",
-      "title": "แบบสอบถาม Design Critique",
-      "description": "แบบสอบถามของงานปิดที่ตอบครบแล้ว",
+      "title": {
+        "th": "แบบสอบถาม Design Critique",
+        "en": "Design Critique September Survey"
+      },
+      "description": {
+        "th": "แบบสอบถามของงานปิดที่ตอบครบแล้ว",
+        "en": "Post-critique survey."
+      },
       "slug": "design-critique-survey",
       "status": "approved",
       "rejectionNote": null,
@@ -1718,8 +1772,14 @@
       "id": "10",
       "eventId": "5",
       "type": "registration",
-      "title": "ลงทะเบียน Campus Hackathon",
-      "description": "ถูกตีกลับเพราะฟิลด์ไม่ครบ",
+      "title": {
+        "th": "ลงทะเบียน Campus Hackathon",
+        "en": "Campus Hackathon Registration"
+      },
+      "description": {
+        "th": "ถูกตีกลับเพราะฟิลด์ไม่ครบ",
+        "en": "Registration form was rejected and needs changes."
+      },
       "slug": "campus-hackathon-register",
       "status": "rejected",
       "rejectionNote": "กรุณาเพิ่มเบอร์โทรศัพท์เป็น Sensitive Field และใส่ตัวเลือกขนาดเสื้อให้ครบก่อนส่งใหม่",
@@ -1740,8 +1800,14 @@
       "id": "11",
       "eventId": "5",
       "type": "survey",
-      "title": "แบบสอบถาม Campus Hackathon",
-      "description": "ส่งขออนุมัติแล้ว กำลังรอตรวจ",
+      "title": {
+        "th": "แบบสอบถาม Campus Hackathon",
+        "en": "Campus Hackathon Survey"
+      },
+      "description": {
+        "th": "ส่งขออนุมัติแล้ว กำลังรอตรวจ",
+        "en": "Hackathon survey."
+      },
       "slug": "campus-hackathon-survey",
       "status": "pending_approval",
       "rejectionNote": null,
@@ -1762,8 +1828,14 @@
       "id": "12",
       "eventId": "6",
       "type": "registration",
-      "title": "ลงทะเบียน Alumni Dinner",
-      "description": "เจ้าของงานบังคับอนุมัติเอง",
+      "title": {
+        "th": "ลงทะเบียน Alumni Dinner",
+        "en": "Alumni Dinner Registration"
+      },
+      "description": {
+        "th": "เจ้าของงานบังคับอนุมัติเอง",
+        "en": "Invite-only alumni dinner registration."
+      },
       "slug": "alumni-dinner-register",
       "status": "approved",
       "rejectionNote": null,
@@ -1784,8 +1856,14 @@
       "id": "13",
       "eventId": "6",
       "type": "survey",
-      "title": "แบบสอบถาม Alumni Dinner",
-      "description": "บังคับอนุมัติโดยเจ้าของงานเช่นกัน",
+      "title": {
+        "th": "แบบสอบถาม Alumni Dinner",
+        "en": "Alumni Dinner Survey"
+      },
+      "description": {
+        "th": "บังคับอนุมัติโดยเจ้าของงานเช่นกัน",
+        "en": "Post-dinner survey."
+      },
       "slug": "alumni-dinner-survey",
       "status": "approved",
       "rejectionNote": null,
@@ -1806,8 +1884,14 @@
       "id": "14",
       "eventId": "7",
       "type": "registration",
-      "title": "ลงทะเบียน Old Draft Meetup",
-      "description": "ถูกลบพร้อมอีเวนต์",
+      "title": {
+        "th": "ลงทะเบียน Old Draft Meetup",
+        "en": "Old Draft Meetup Registration"
+      },
+      "description": {
+        "th": "ถูกลบพร้อมอีเวนต์",
+        "en": "Soft-deleted draft registration."
+      },
       "slug": "old-draft-meetup-register",
       "status": "draft",
       "rejectionNote": null,
@@ -1828,8 +1912,14 @@
       "id": "15",
       "eventId": "8",
       "type": "registration",
-      "title": "ลงทะเบียน Q3 Townhall",
-      "description": "ฟอร์มของงานที่ปิดแล้ว ใช้เป็นข้อมูลรายงาน",
+      "title": {
+        "th": "ลงทะเบียน Q3 Townhall",
+        "en": "Q3 Townhall Registration"
+      },
+      "description": {
+        "th": "ฟอร์มของงานที่ปิดแล้ว ใช้เป็นข้อมูลรายงาน",
+        "en": "Closed Q3 townhall registration."
+      },
       "slug": "townhall-q3-register",
       "status": "approved",
       "rejectionNote": null,
@@ -1850,8 +1940,14 @@
       "id": "16",
       "eventId": "8",
       "type": "survey",
-      "title": "แบบสอบถาม Q3 Townhall",
-      "description": "มีทั้งคำตอบปกติและคำตอบที่ทำ anonymize ตาม PDPA",
+      "title": {
+        "th": "แบบสอบถาม Q3 Townhall",
+        "en": "Q3 Townhall Survey"
+      },
+      "description": {
+        "th": "มีทั้งคำตอบปกติและคำตอบที่ทำ anonymize ตาม PDPA",
+        "en": "Townhall survey for historical reporting."
+      },
       "slug": "townhall-q3-survey",
       "status": "approved",
       "rejectionNote": null,
