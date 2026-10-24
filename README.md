@@ -55,7 +55,7 @@ curl "http://localhost:3000/submission_answers?submission_id=38e9ffaf-77bc-51bb-
 | `/events` | อีเวนต์ (สถานะ, สโลแกน, timezone) |
 | `/event_translations` | ชื่อ/รายละเอียดอีเวนต์แยก `th` `en` |
 | `/forms` | registration / survey ต่ออีเวนต์ |
-| `/form_translations` | ชื่อฟอร์ม / ปุ่ม / ข้อความสำเร็จ |
+| `/form_translations` | ชื่อฟอร์ม / คำอธิบาย ตามภาษา |
 | `/form_fields` | นิยามฟิลด์ |
 | `/field_translations` | label / help / placeholder ตามภาษา |
 | `/field_options` | ตัวเลือก radio/checkbox/dropdown |
