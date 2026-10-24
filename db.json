@@ -1011,7 +1011,6 @@
       "field_id": "0461a97a-e8c3-5678-9086-290f5128d5c5",
       "locale_code": "th",
       "label": "ชื่อ-นามสกุล",
-      "help_text": "ใช้ชื่อจริงตามบัตร",
       "placeholder": "เช่น สมชาย ใจดี",
       "validation_message": "กรุณากรอกชื่อ-นามสกุล"
     },
@@ -1020,7 +1019,6 @@
       "field_id": "0461a97a-e8c3-5678-9086-290f5128d5c5",
       "locale_code": "en",
       "label": "Full name",
-      "help_text": "Use your legal name",
       "placeholder": "e.g. Somchai Jaidee",
       "validation_message": "Please enter your full name"
     },
@@ -1029,7 +1027,6 @@
       "field_id": "db92199f-e496-5c1f-9427-366799214536",
       "locale_code": "th",
       "label": "อีเมล",
-      "help_text": "ใช้สำหรับส่งบัตรเข้างาน",
       "placeholder": "you@example.com",
       "validation_message": "รูปแบบอีเมลไม่ถูกต้อง"
     },
@@ -1038,7 +1035,6 @@
       "field_id": "db92199f-e496-5c1f-9427-366799214536",
       "locale_code": "en",
       "label": "Email",
-      "help_text": "Used to send your ticket",
       "placeholder": "you@example.com",
       "validation_message": "Invalid email format"
     },
@@ -1047,7 +1043,6 @@
       "field_id": "d9b66c8b-f462-5589-8d45-96e5dd65343a",
       "locale_code": "th",
       "label": "รหัสพนักงาน",
-      "help_text": "ต้องอยู่ในรายชื่อ whitelist",
       "placeholder": "EMP001",
       "validation_message": "กรุณากรอกรหัสพนักงาน"
     },
@@ -1056,7 +1051,6 @@
       "field_id": "d9b66c8b-f462-5589-8d45-96e5dd65343a",
       "locale_code": "en",
       "label": "Employee ID",
-      "help_text": "Must exist in the whitelist",
       "placeholder": "EMP001",
       "validation_message": "Please enter your employee ID"
     },
@@ -1065,7 +1059,6 @@
       "field_id": "a524e451-6403-5262-b13c-d6170703eb9a",
       "locale_code": "th",
       "label": "แทร็กที่สนใจ",
-      "help_text": "เลือก 1 แทร็ก",
       "placeholder": null,
       "validation_message": "กรุณาเลือกแทร็ก"
     },
@@ -1074,7 +1067,6 @@
       "field_id": "a524e451-6403-5262-b13c-d6170703eb9a",
       "locale_code": "en",
       "label": "Interest track",
-      "help_text": "Choose one track",
       "placeholder": null,
       "validation_message": "Please select a track"
     },
@@ -1083,7 +1075,6 @@
       "field_id": "53f079d1-1d22-592a-92ea-bf0190ae8e74",
       "locale_code": "th",
       "label": "หัวข้อที่อยากฟังเพิ่ม",
-      "help_text": "เลือกได้หลายข้อ",
       "placeholder": null,
       "validation_message": null
     },
@@ -1092,7 +1083,6 @@
       "field_id": "53f079d1-1d22-592a-92ea-bf0190ae8e74",
       "locale_code": "en",
       "label": "Extra topics of interest",
-      "help_text": "Select all that apply",
       "placeholder": null,
       "validation_message": null
     },
@@ -1101,7 +1091,6 @@
       "field_id": "14a02883-7642-5d10-a696-0522ca33b793",
       "locale_code": "th",
       "label": "ขนาดเสื้อ",
-      "help_text": null,
       "placeholder": "เลือกขนาด",
       "validation_message": "กรุณาเลือกขนาดเสื้อ"
     },
@@ -1110,7 +1099,6 @@
       "field_id": "14a02883-7642-5d10-a696-0522ca33b793",
       "locale_code": "en",
       "label": "T-shirt size",
-      "help_text": null,
       "placeholder": "Select a size",
       "validation_message": "Please select a t-shirt size"
     },
@@ -1119,7 +1107,6 @@
       "field_id": "2e2d31f5-7bc6-5744-a2e9-9ce66a73f2de",
       "locale_code": "th",
       "label": "คะแนนความพึงพอใจโดยรวม",
-      "help_text": "1 = น้อยที่สุด, 5 = มากที่สุด",
       "placeholder": null,
       "validation_message": "กรุณาให้คะแนน"
     },
@@ -1128,7 +1115,6 @@
       "field_id": "2e2d31f5-7bc6-5744-a2e9-9ce66a73f2de",
       "locale_code": "en",
       "label": "Overall satisfaction rating",
-      "help_text": "1 = lowest, 5 = highest",
       "placeholder": null,
       "validation_message": "Please provide a rating"
     },
@@ -1137,7 +1123,6 @@
       "field_id": "fa9e4322-e148-57c4-bbdc-8f0ad40d9d0f",
       "locale_code": "th",
       "label": "จะแนะนำงานนี้ให้เพื่อนหรือไม่",
-      "help_text": null,
       "placeholder": null,
       "validation_message": "กรุณาเลือกคำตอบ"
     },
@@ -1146,7 +1131,6 @@
       "field_id": "fa9e4322-e148-57c4-bbdc-8f0ad40d9d0f",
       "locale_code": "en",
       "label": "Would you recommend this event?",
-      "help_text": null,
       "placeholder": null,
       "validation_message": "Please select an answer"
     },
@@ -1155,7 +1139,6 @@
       "field_id": "2d5edc99-10ee-5697-81e1-113b7bbbab1d",
       "locale_code": "th",
       "label": "ข้อเสนอแนะเพิ่มเติม",
-      "help_text": "บอกสิ่งที่ชอบหรืออยากให้ปรับ",
       "placeholder": "พิมพ์ความคิดเห็นของคุณ",
       "validation_message": null
     },
@@ -1164,7 +1147,6 @@
       "field_id": "2d5edc99-10ee-5697-81e1-113b7bbbab1d",
       "locale_code": "en",
       "label": "Additional feedback",
-      "help_text": "Tell us what you liked or what we should improve",
       "placeholder": "Type your feedback",
       "validation_message": null
     },
@@ -1173,7 +1155,6 @@
       "field_id": "f0c6d202-adeb-50ad-b8fc-761bae2301e9",
       "locale_code": "th",
       "label": "คะแนน NPS (0-10)",
-      "help_text": "โอกาสที่คุณจะแนะนำงานนี้",
       "placeholder": "8",
       "validation_message": "กรอกตัวเลข 0 ถึง 10"
     },
@@ -1182,7 +1163,6 @@
       "field_id": "f0c6d202-adeb-50ad-b8fc-761bae2301e9",
       "locale_code": "en",
       "label": "NPS score (0-10)",
-      "help_text": "Likelihood that you would recommend this event",
       "placeholder": "8",
       "validation_message": "Enter a number from 0 to 10"
     },
@@ -1191,7 +1171,6 @@
       "field_id": "e6309edf-fa9a-5c45-8224-c88c20600aef",
       "locale_code": "th",
       "label": "ชื่อ-นามสกุล",
-      "help_text": null,
       "placeholder": "ชื่อของคุณ",
       "validation_message": "จำเป็นต้องกรอก"
     },
@@ -1200,7 +1179,6 @@
       "field_id": "e6309edf-fa9a-5c45-8224-c88c20600aef",
       "locale_code": "en",
       "label": "Full name",
-      "help_text": null,
       "placeholder": "Your name",
       "validation_message": "Required"
     },
@@ -1209,7 +1187,6 @@
       "field_id": "5cd40f7d-4281-51dd-bc8d-747b782cf881",
       "locale_code": "th",
       "label": "อีเมล",
-      "help_text": null,
       "placeholder": "you@company.com",
       "validation_message": "รูปแบบอีเมลไม่ถูกต้อง"
     },
@@ -1218,7 +1195,6 @@
       "field_id": "5cd40f7d-4281-51dd-bc8d-747b782cf881",
       "locale_code": "en",
       "label": "Email",
-      "help_text": null,
       "placeholder": "you@company.com",
       "validation_message": "Invalid email format"
     },
@@ -1227,7 +1203,6 @@
       "field_id": "f085db7d-1fee-57ad-a666-3cece4d3eb23",
       "locale_code": "th",
       "label": "กิจกรรมที่สนใจ",
-      "help_text": null,
       "placeholder": "เลือกกิจกรรม",
       "validation_message": "กรุณาเลือกกิจกรรม"
     },
@@ -1236,7 +1211,6 @@
       "field_id": "f085db7d-1fee-57ad-a666-3cece4d3eb23",
       "locale_code": "en",
       "label": "Preferred activity",
-      "help_text": null,
       "placeholder": "Choose an activity",
       "validation_message": "Please choose an activity"
     },
@@ -1245,7 +1219,6 @@
       "field_id": "d14221bc-9a89-5fb9-8ff6-8e34e05055d4",
       "locale_code": "th",
       "label": "วันที่สะดวก (ถ้ามีรอบย่อย)",
-      "help_text": null,
       "placeholder": null,
       "validation_message": null
     },
@@ -1254,7 +1227,6 @@
       "field_id": "d14221bc-9a89-5fb9-8ff6-8e34e05055d4",
       "locale_code": "en",
       "label": "Preferred date (if sessions vary)",
-      "help_text": null,
       "placeholder": null,
       "validation_message": null
     },
@@ -1263,7 +1235,6 @@
       "field_id": "9d398647-9906-511f-825b-beb094265724",
       "locale_code": "th",
       "label": "ระดับพลังงานหลังกิจกรรม",
-      "help_text": null,
       "placeholder": null,
       "validation_message": "กรุณาให้คะแนน"
     },
@@ -1272,7 +1243,6 @@
       "field_id": "9d398647-9906-511f-825b-beb094265724",
       "locale_code": "en",
       "label": "Energy level after activities",
-      "help_text": null,
       "placeholder": null,
       "validation_message": "Please rate"
     },
@@ -1281,7 +1251,6 @@
       "field_id": "b07b303c-4adb-55c2-a974-3a4dc96beeb4",
       "locale_code": "th",
       "label": "ความคิดเห็น",
-      "help_text": null,
       "placeholder": "พิมพ์ได้ที่นี่",
       "validation_message": null
     },
@@ -1290,7 +1259,6 @@
       "field_id": "b07b303c-4adb-55c2-a974-3a4dc96beeb4",
       "locale_code": "en",
       "label": "Comments",
-      "help_text": null,
       "placeholder": "Type here",
       "validation_message": null
     },
@@ -1299,7 +1267,6 @@
       "field_id": "0675879a-b4ff-5f39-a3a2-1531c379f50f",
       "locale_code": "th",
       "label": "ชื่อ",
-      "help_text": null,
       "placeholder": null,
       "validation_message": null
     },
@@ -1308,7 +1275,6 @@
       "field_id": "0675879a-b4ff-5f39-a3a2-1531c379f50f",
       "locale_code": "en",
       "label": "Name",
-      "help_text": null,
       "placeholder": null,
       "validation_message": null
     }

@@ -70,7 +70,7 @@ curl "http://localhost:3000/submission_answers?submission_id=38e9ffaf-77bc-51bb-
 | `/forms` | registration / survey ต่ออีเวนต์ |
 | `/form_translations` | ชื่อฟอร์ม / คำอธิบาย ตามภาษา |
 | `/form_fields` | นิยามฟิลด์ |
-| `/field_translations` | label / help / placeholder ตามภาษา |
+| `/field_translations` | label / placeholder ตามภาษา |
 | `/field_options` | ตัวเลือก radio/checkbox/dropdown |
 | `/field_option_translations` | label ตัวเลือกตามภาษา |
 | `/registration_settings` | capacity, duplicate, whitelist |

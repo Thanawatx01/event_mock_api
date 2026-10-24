@@ -355,7 +355,6 @@ Table field_translations [headercolor: #8B5CF6] {
   field_id uuid [not null, ref: > form_fields.id]
   locale_code varchar(35) [not null]
   label varchar(500) [not null]
-  help_text text
   placeholder varchar(500)
   validation_message text
 

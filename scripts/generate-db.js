@@ -146,7 +146,6 @@ function addField(def) {
       field_id: def.id,
       locale_code: tr.locale_code,
       label: tr.label,
-      help_text: tr.help_text ?? null,
       placeholder: tr.placeholder ?? null,
       validation_message: tr.validation_message ?? null,
     });
@@ -666,14 +665,12 @@ addField({
     {
       locale_code: "th",
       label: "ชื่อ-นามสกุล",
-      help_text: "ใช้ชื่อจริงตามบัตร",
       placeholder: "เช่น สมชาย ใจดี",
       validation_message: "กรุณากรอกชื่อ-นามสกุล",
     },
     {
       locale_code: "en",
       label: "Full name",
-      help_text: "Use your legal name",
       placeholder: "e.g. Somchai Jaidee",
       validation_message: "Please enter your full name",
     },
@@ -694,14 +691,12 @@ addField({
     {
       locale_code: "th",
       label: "อีเมล",
-      help_text: "ใช้สำหรับส่งบัตรเข้างาน",
       placeholder: "you@example.com",
       validation_message: "รูปแบบอีเมลไม่ถูกต้อง",
     },
     {
       locale_code: "en",
       label: "Email",
-      help_text: "Used to send your ticket",
       placeholder: "you@example.com",
       validation_message: "Invalid email format",
     },
@@ -721,14 +716,12 @@ addField({
     {
       locale_code: "th",
       label: "รหัสพนักงาน",
-      help_text: "ต้องอยู่ในรายชื่อ whitelist",
       placeholder: "EMP001",
       validation_message: "กรุณากรอกรหัสพนักงาน",
     },
     {
       locale_code: "en",
       label: "Employee ID",
-      help_text: "Must exist in the whitelist",
       placeholder: "EMP001",
       validation_message: "Please enter your employee ID",
     },
@@ -746,13 +739,11 @@ addField({
     {
       locale_code: "th",
       label: "แทร็กที่สนใจ",
-      help_text: "เลือก 1 แทร็ก",
       validation_message: "กรุณาเลือกแทร็ก",
     },
     {
       locale_code: "en",
       label: "Interest track",
-      help_text: "Choose one track",
       validation_message: "Please select a track",
     },
   ],
@@ -797,12 +788,10 @@ addField({
     {
       locale_code: "th",
       label: "หัวข้อที่อยากฟังเพิ่ม",
-      help_text: "เลือกได้หลายข้อ",
     },
     {
       locale_code: "en",
       label: "Extra topics of interest",
-      help_text: "Select all that apply",
     },
   ],
   options: [
@@ -910,13 +899,11 @@ addField({
     {
       locale_code: "th",
       label: "คะแนนความพึงพอใจโดยรวม",
-      help_text: "1 = น้อยที่สุด, 5 = มากที่สุด",
       validation_message: "กรุณาให้คะแนน",
     },
     {
       locale_code: "en",
       label: "Overall satisfaction rating",
-      help_text: "1 = lowest, 5 = highest",
       validation_message: "Please provide a rating",
     },
   ],
@@ -983,13 +970,11 @@ addField({
     {
       locale_code: "th",
       label: "ข้อเสนอแนะเพิ่มเติม",
-      help_text: "บอกสิ่งที่ชอบหรืออยากให้ปรับ",
       placeholder: "พิมพ์ความคิดเห็นของคุณ",
     },
     {
       locale_code: "en",
       label: "Additional feedback",
-      help_text: "Tell us what you liked or what we should improve",
       placeholder: "Type your feedback",
     },
   ],
@@ -1008,14 +993,12 @@ addField({
     {
       locale_code: "th",
       label: "คะแนน NPS (0-10)",
-      help_text: "โอกาสที่คุณจะแนะนำงานนี้",
       placeholder: "8",
       validation_message: "กรอกตัวเลข 0 ถึง 10",
     },
     {
       locale_code: "en",
       label: "NPS score (0-10)",
-      help_text: "Likelihood that you would recommend this event",
       placeholder: "8",
       validation_message: "Enter a number from 0 to 10",
     },
