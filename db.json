@@ -8,6 +8,7 @@
       "system_role": "platform_admin",
       "event_id": null,
       "event_role": null,
+      "role_id": null,
       "can_manage_dashboard": true,
       "can_manage_event": true,
       "can_manage_registration_form": true,
@@ -32,6 +33,7 @@
       "system_role": "event_user",
       "event_id": "452ac247-5c88-59ca-8de7-c5a329c71317",
       "event_role": "event_admin",
+      "role_id": "5f4490f8-41ca-5d29-8032-879f4966d95d",
       "can_manage_dashboard": true,
       "can_manage_event": true,
       "can_manage_registration_form": true,
@@ -56,6 +58,7 @@
       "system_role": "event_user",
       "event_id": "452ac247-5c88-59ca-8de7-c5a329c71317",
       "event_role": "event_sub_user",
+      "role_id": "68bc119b-43b3-56d8-8e07-d9609a3ca230",
       "can_manage_dashboard": true,
       "can_manage_event": false,
       "can_manage_registration_form": true,
@@ -80,6 +83,7 @@
       "system_role": "event_user",
       "event_id": "dbc642a1-efd7-5ba1-ab44-956b212f0c2f",
       "event_role": "event_admin",
+      "role_id": "c1209fa6-ef07-5bba-b757-45519025c21e",
       "can_manage_dashboard": true,
       "can_manage_event": true,
       "can_manage_registration_form": true,
@@ -104,6 +108,7 @@
       "system_role": "event_user",
       "event_id": "550267c4-98f1-5ffc-94c6-81155429cd03",
       "event_role": "event_admin",
+      "role_id": null,
       "can_manage_dashboard": true,
       "can_manage_event": true,
       "can_manage_registration_form": true,
@@ -119,6 +124,292 @@
       "created_at": "2026-10-01T02:00:00Z",
       "updated_at": "2026-10-01T04:00:00Z",
       "removed_at": null
+    }
+  ],
+  "roles": [
+    {
+      "id": "5f4490f8-41ca-5d29-8032-879f4966d95d",
+      "event_id": "452ac247-5c88-59ca-8de7-c5a329c71317",
+      "owner_user_id": "dff5877d-7b9d-5a71-b9cd-dfce68f0de89",
+      "name": "Event Admin",
+      "description": "Full access for Tech Summit event admin",
+      "is_default": true,
+      "created_at": "2026-09-15T04:00:00Z",
+      "updated_at": "2026-09-15T04:00:00Z"
+    },
+    {
+      "id": "68bc119b-43b3-56d8-8e07-d9609a3ca230",
+      "event_id": "452ac247-5c88-59ca-8de7-c5a329c71317",
+      "owner_user_id": "dff5877d-7b9d-5a71-b9cd-dfce68f0de89",
+      "name": "Form Manager",
+      "description": "Manage registration and survey forms",
+      "is_default": false,
+      "created_at": "2026-09-16T03:00:00Z",
+      "updated_at": "2026-09-16T03:00:00Z"
+    },
+    {
+      "id": "c1209fa6-ef07-5bba-b757-45519025c21e",
+      "event_id": "dbc642a1-efd7-5ba1-ab44-956b212f0c2f",
+      "owner_user_id": "a4472b2b-9581-52a5-899d-fd94ed85bfc3",
+      "name": "Event Admin",
+      "description": "Full access for Wellness Day event admin",
+      "is_default": true,
+      "created_at": "2026-09-20T04:00:00Z",
+      "updated_at": "2026-09-20T04:00:00Z"
+    }
+  ],
+  "permissions": [
+    {
+      "id": "3efc0cb9-6e1f-5a46-889b-9db86d07cd37",
+      "role_id": "5f4490f8-41ca-5d29-8032-879f4966d95d",
+      "feature": "events",
+      "can_access": true,
+      "can_view": true,
+      "can_create": true,
+      "can_edit": true,
+      "can_delete": true,
+      "can_approve": true,
+      "can_publish": true
+    },
+    {
+      "id": "fe5b262b-ed7a-5dd2-aeb8-876a433426a3",
+      "role_id": "5f4490f8-41ca-5d29-8032-879f4966d95d",
+      "feature": "registrations",
+      "can_access": true,
+      "can_view": true,
+      "can_create": true,
+      "can_edit": true,
+      "can_delete": true,
+      "can_approve": true,
+      "can_publish": true
+    },
+    {
+      "id": "142ce69d-aa13-5520-8d67-b7793d26f7b8",
+      "role_id": "5f4490f8-41ca-5d29-8032-879f4966d95d",
+      "feature": "surveys",
+      "can_access": true,
+      "can_view": true,
+      "can_create": true,
+      "can_edit": true,
+      "can_delete": true,
+      "can_approve": true,
+      "can_publish": true
+    },
+    {
+      "id": "628f4394-3e76-59b2-80b1-070df375697b",
+      "role_id": "5f4490f8-41ca-5d29-8032-879f4966d95d",
+      "feature": "dashboards",
+      "can_access": true,
+      "can_view": true,
+      "can_create": true,
+      "can_edit": true,
+      "can_delete": true,
+      "can_approve": true,
+      "can_publish": true
+    },
+    {
+      "id": "d6a1311c-7598-550e-94eb-42343528ff8b",
+      "role_id": "5f4490f8-41ca-5d29-8032-879f4966d95d",
+      "feature": "whitelist",
+      "can_access": true,
+      "can_view": true,
+      "can_create": true,
+      "can_edit": true,
+      "can_delete": true,
+      "can_approve": true,
+      "can_publish": true
+    },
+    {
+      "id": "187358bf-93da-51be-8333-727c6c138fe3",
+      "role_id": "5f4490f8-41ca-5d29-8032-879f4966d95d",
+      "feature": "users",
+      "can_access": true,
+      "can_view": true,
+      "can_create": true,
+      "can_edit": true,
+      "can_delete": true,
+      "can_approve": true,
+      "can_publish": true
+    },
+    {
+      "id": "2bb52df9-e24e-5e66-b798-dbce65571ba9",
+      "role_id": "5f4490f8-41ca-5d29-8032-879f4966d95d",
+      "feature": "audit_logs",
+      "can_access": true,
+      "can_view": true,
+      "can_create": true,
+      "can_edit": true,
+      "can_delete": true,
+      "can_approve": true,
+      "can_publish": true
+    },
+    {
+      "id": "9da0adf6-2101-5830-a287-83a68d849ccf",
+      "role_id": "5f4490f8-41ca-5d29-8032-879f4966d95d",
+      "feature": "branding",
+      "can_access": true,
+      "can_view": true,
+      "can_create": true,
+      "can_edit": true,
+      "can_delete": true,
+      "can_approve": true,
+      "can_publish": true
+    },
+    {
+      "id": "e15283a3-e2c2-544f-9569-d6e038e880ce",
+      "role_id": "68bc119b-43b3-56d8-8e07-d9609a3ca230",
+      "feature": "events",
+      "can_access": true,
+      "can_view": true,
+      "can_create": false,
+      "can_edit": false,
+      "can_delete": false,
+      "can_approve": false,
+      "can_publish": false
+    },
+    {
+      "id": "5fea7c32-b46e-5814-a401-a5f6bcc37220",
+      "role_id": "68bc119b-43b3-56d8-8e07-d9609a3ca230",
+      "feature": "registrations",
+      "can_access": true,
+      "can_view": true,
+      "can_create": true,
+      "can_edit": true,
+      "can_delete": false,
+      "can_approve": false,
+      "can_publish": false
+    },
+    {
+      "id": "c1714ee3-6261-531d-a070-025bfbf2a7b6",
+      "role_id": "68bc119b-43b3-56d8-8e07-d9609a3ca230",
+      "feature": "surveys",
+      "can_access": true,
+      "can_view": true,
+      "can_create": true,
+      "can_edit": true,
+      "can_delete": false,
+      "can_approve": false,
+      "can_publish": false
+    },
+    {
+      "id": "21250e57-47cc-545f-9abc-3afec82f1f01",
+      "role_id": "68bc119b-43b3-56d8-8e07-d9609a3ca230",
+      "feature": "dashboards",
+      "can_access": true,
+      "can_view": true,
+      "can_create": false,
+      "can_edit": false,
+      "can_delete": false,
+      "can_approve": false,
+      "can_publish": false
+    },
+    {
+      "id": "a0792313-2541-5afa-acec-f6c8e5d66dd0",
+      "role_id": "68bc119b-43b3-56d8-8e07-d9609a3ca230",
+      "feature": "whitelist",
+      "can_access": true,
+      "can_view": true,
+      "can_create": true,
+      "can_edit": true,
+      "can_delete": false,
+      "can_approve": false,
+      "can_publish": false
+    },
+    {
+      "id": "f3dacdc7-1375-58c3-8eb9-664c5570c487",
+      "role_id": "c1209fa6-ef07-5bba-b757-45519025c21e",
+      "feature": "events",
+      "can_access": true,
+      "can_view": true,
+      "can_create": true,
+      "can_edit": true,
+      "can_delete": true,
+      "can_approve": true,
+      "can_publish": true
+    },
+    {
+      "id": "c713f967-a728-5839-a187-ef44b1eab396",
+      "role_id": "c1209fa6-ef07-5bba-b757-45519025c21e",
+      "feature": "registrations",
+      "can_access": true,
+      "can_view": true,
+      "can_create": true,
+      "can_edit": true,
+      "can_delete": true,
+      "can_approve": true,
+      "can_publish": true
+    },
+    {
+      "id": "8bc51c68-7a52-503a-b493-08138e757080",
+      "role_id": "c1209fa6-ef07-5bba-b757-45519025c21e",
+      "feature": "surveys",
+      "can_access": true,
+      "can_view": true,
+      "can_create": true,
+      "can_edit": true,
+      "can_delete": true,
+      "can_approve": true,
+      "can_publish": true
+    },
+    {
+      "id": "3901cdd9-be49-56b6-b83b-14f881bdb3b9",
+      "role_id": "c1209fa6-ef07-5bba-b757-45519025c21e",
+      "feature": "dashboards",
+      "can_access": true,
+      "can_view": true,
+      "can_create": true,
+      "can_edit": true,
+      "can_delete": true,
+      "can_approve": true,
+      "can_publish": true
+    },
+    {
+      "id": "d0098dc4-36b2-523d-99a6-856f160347b4",
+      "role_id": "c1209fa6-ef07-5bba-b757-45519025c21e",
+      "feature": "whitelist",
+      "can_access": true,
+      "can_view": true,
+      "can_create": true,
+      "can_edit": true,
+      "can_delete": true,
+      "can_approve": true,
+      "can_publish": true
+    },
+    {
+      "id": "9b5d098d-2475-539b-8166-477d29c0031a",
+      "role_id": "c1209fa6-ef07-5bba-b757-45519025c21e",
+      "feature": "users",
+      "can_access": true,
+      "can_view": true,
+      "can_create": true,
+      "can_edit": true,
+      "can_delete": true,
+      "can_approve": true,
+      "can_publish": true
+    },
+    {
+      "id": "37dc4c67-d08d-53e1-820f-00ae199ec31c",
+      "role_id": "c1209fa6-ef07-5bba-b757-45519025c21e",
+      "feature": "audit_logs",
+      "can_access": true,
+      "can_view": true,
+      "can_create": true,
+      "can_edit": true,
+      "can_delete": true,
+      "can_approve": true,
+      "can_publish": true
+    },
+    {
+      "id": "f453682e-c52f-5404-a6a1-703243a5de4a",
+      "role_id": "c1209fa6-ef07-5bba-b757-45519025c21e",
+      "feature": "branding",
+      "can_access": true,
+      "can_view": true,
+      "can_create": true,
+      "can_edit": true,
+      "can_delete": true,
+      "can_approve": true,
+      "can_publish": true
     }
   ],
   "events": [
@@ -2023,6 +2314,266 @@
       "id": "7d17fd5f-e115-5f44-ac6e-39f05ccea6ab",
       "answer_id": "7fae2464-191b-5d80-a079-1c318b78a89f",
       "option_id": "86786e6a-6351-5e8b-8dbf-03628f1faa21"
+    }
+  ],
+  "dashboard_data": [
+    {
+      "id": "46a46a4c-048a-5032-8eb2-e3a226198a01",
+      "event_id": "452ac247-5c88-59ca-8de7-c5a329c71317",
+      "owner_user_id": "dff5877d-7b9d-5a71-b9cd-dfce68f0de89",
+      "page_key": "overview",
+      "title_th": "ภาพรวม",
+      "title_en": "Overview",
+      "description_th": "สรุปสถานะอีเวนต์และการตอบกลับ",
+      "description_en": "Event status and response summary",
+      "layout_json": {
+        "columns": 2,
+        "gap": 16
+      },
+      "display_order": 1,
+      "is_visible": true,
+      "created_at": "2026-10-24T10:00:00Z",
+      "updated_at": "2026-10-24T10:00:00Z"
+    },
+    {
+      "id": "0a2e1fc3-a190-5800-b3e5-c7d4ddc98972",
+      "event_id": "452ac247-5c88-59ca-8de7-c5a329c71317",
+      "owner_user_id": "dff5877d-7b9d-5a71-b9cd-dfce68f0de89",
+      "page_key": "registrations",
+      "title_th": "การลงทะเบียน",
+      "title_en": "Registrations",
+      "description_th": "รายละเอียดและกราฟการลงทะเบียน",
+      "description_en": "Registration details and charts",
+      "layout_json": {
+        "columns": 2,
+        "gap": 16
+      },
+      "display_order": 2,
+      "is_visible": true,
+      "created_at": "2026-10-24T10:00:00Z",
+      "updated_at": "2026-10-24T10:00:00Z"
+    },
+    {
+      "id": "3de380ff-1eba-5530-9a4c-7ae82d637543",
+      "event_id": "452ac247-5c88-59ca-8de7-c5a329c71317",
+      "owner_user_id": "dff5877d-7b9d-5a71-b9cd-dfce68f0de89",
+      "page_key": "surveys",
+      "title_th": "แบบสอบถาม",
+      "title_en": "Surveys",
+      "description_th": "ผลแบบสอบถามหลังงาน",
+      "description_en": "Post-event survey results",
+      "layout_json": {
+        "columns": 2,
+        "gap": 16
+      },
+      "display_order": 3,
+      "is_visible": true,
+      "created_at": "2026-10-24T10:00:00Z",
+      "updated_at": "2026-10-24T10:00:00Z"
+    },
+    {
+      "id": "4330db21-6686-5dbd-afc2-79306699b9f1",
+      "event_id": "452ac247-5c88-59ca-8de7-c5a329c71317",
+      "owner_user_id": "dff5877d-7b9d-5a71-b9cd-dfce68f0de89",
+      "page_key": "whitelist",
+      "title_th": "Whitelist",
+      "title_en": "Whitelist",
+      "description_th": "สถานะรายชื่อสิทธิ์เข้างาน",
+      "description_en": "Whitelist eligibility status",
+      "layout_json": {
+        "columns": 1,
+        "gap": 12
+      },
+      "display_order": 4,
+      "is_visible": true,
+      "created_at": "2026-10-24T10:00:00Z",
+      "updated_at": "2026-10-24T10:00:00Z"
+    },
+    {
+      "id": "33f5acb4-a7a4-5d2b-9fcd-a053a95662f6",
+      "event_id": "dbc642a1-efd7-5ba1-ab44-956b212f0c2f",
+      "owner_user_id": "a4472b2b-9581-52a5-899d-fd94ed85bfc3",
+      "page_key": "overview",
+      "title_th": "ภาพรวม",
+      "title_en": "Overview",
+      "description_th": "สรุปวันสุขภาพองค์กร",
+      "description_en": "Wellness day summary",
+      "layout_json": {
+        "columns": 2,
+        "gap": 16
+      },
+      "display_order": 1,
+      "is_visible": true,
+      "created_at": "2026-10-24T10:00:00Z",
+      "updated_at": "2026-10-24T10:00:00Z"
+    },
+    {
+      "id": "9a085bf0-b4c3-5cc3-9775-962464d6f3cc",
+      "event_id": "dbc642a1-efd7-5ba1-ab44-956b212f0c2f",
+      "owner_user_id": "a4472b2b-9581-52a5-899d-fd94ed85bfc3",
+      "page_key": "registrations",
+      "title_th": "การลงทะเบียน",
+      "title_en": "Registrations",
+      "description_th": "ผู้จองกิจกรรมสุขภาพ",
+      "description_en": "Wellness activity bookings",
+      "layout_json": {
+        "columns": 2,
+        "gap": 16
+      },
+      "display_order": 2,
+      "is_visible": true,
+      "created_at": "2026-10-24T10:00:00Z",
+      "updated_at": "2026-10-24T10:00:00Z"
+    }
+  ],
+  "dashboard_widgets": [
+    {
+      "id": "b9fc53c1-4d91-58f1-b192-26b24a3060aa",
+      "dashboard_data_id": "46a46a4c-048a-5032-8eb2-e3a226198a01",
+      "type": "kpi",
+      "title_th": "จำนวนลงทะเบียน",
+      "title_en": "Registration count",
+      "form_id": "89e426a3-3b34-50f1-821f-d485abab001b",
+      "field_id": null,
+      "config_json": {
+        "metric": "submission_count",
+        "status": "submitted"
+      },
+      "display_order": 1,
+      "created_at": "2026-10-24T10:00:00Z",
+      "updated_at": "2026-10-24T10:00:00Z"
+    },
+    {
+      "id": "5cf4dda4-0212-583e-b925-96e4bb75ade9",
+      "dashboard_data_id": "46a46a4c-048a-5032-8eb2-e3a226198a01",
+      "type": "kpi",
+      "title_th": "จำนวนแบบสอบถาม",
+      "title_en": "Survey responses",
+      "form_id": "d6a6e0c7-6e71-5f0f-88c2-bdf4f1c52c2c",
+      "field_id": null,
+      "config_json": {
+        "metric": "submission_count",
+        "status": "submitted"
+      },
+      "display_order": 2,
+      "created_at": "2026-10-24T10:00:00Z",
+      "updated_at": "2026-10-24T10:00:00Z"
+    },
+    {
+      "id": "489491ba-888f-5843-a7ab-95b1b656f83d",
+      "dashboard_data_id": "0a2e1fc3-a190-5800-b3e5-c7d4ddc98972",
+      "type": "pie_chart",
+      "title_th": "แทร็กที่สนใจ",
+      "title_en": "Interest track",
+      "form_id": "89e426a3-3b34-50f1-821f-d485abab001b",
+      "field_id": "a524e451-6403-5262-b13c-d6170703eb9a",
+      "config_json": {
+        "chart": "pie",
+        "source": "option_counts"
+      },
+      "display_order": 1,
+      "created_at": "2026-10-24T10:00:00Z",
+      "updated_at": "2026-10-24T10:00:00Z"
+    },
+    {
+      "id": "37b59bd5-9360-537d-816b-402f35b6471c",
+      "dashboard_data_id": "0a2e1fc3-a190-5800-b3e5-c7d4ddc98972",
+      "type": "data_table",
+      "title_th": "รายชื่อผู้ลงทะเบียน",
+      "title_en": "Registrant list",
+      "form_id": "89e426a3-3b34-50f1-821f-d485abab001b",
+      "field_id": null,
+      "config_json": {
+        "columns": [
+          "full_name",
+          "email",
+          "employee_id",
+          "submitted_at"
+        ],
+        "mask_pii": true
+      },
+      "display_order": 2,
+      "created_at": "2026-10-24T10:00:00Z",
+      "updated_at": "2026-10-24T10:00:00Z"
+    },
+    {
+      "id": "920f2cce-3637-5ff5-9eb0-99191898c3bc",
+      "dashboard_data_id": "3de380ff-1eba-5530-9a4c-7ae82d637543",
+      "type": "bar_chart",
+      "title_th": "คะแนนความพึงพอใจ",
+      "title_en": "Satisfaction rating",
+      "form_id": "d6a6e0c7-6e71-5f0f-88c2-bdf4f1c52c2c",
+      "field_id": "2e2d31f5-7bc6-5744-a2e9-9ce66a73f2de",
+      "config_json": {
+        "chart": "bar",
+        "source": "rating_distribution"
+      },
+      "display_order": 1,
+      "created_at": "2026-10-24T10:00:00Z",
+      "updated_at": "2026-10-24T10:00:00Z"
+    },
+    {
+      "id": "b73607dd-9962-552f-b756-e80f0cf71b44",
+      "dashboard_data_id": "3de380ff-1eba-5530-9a4c-7ae82d637543",
+      "type": "kpi",
+      "title_th": "ค่าเฉลี่ย NPS",
+      "title_en": "Average NPS",
+      "form_id": "d6a6e0c7-6e71-5f0f-88c2-bdf4f1c52c2c",
+      "field_id": "f0c6d202-adeb-50ad-b8fc-761bae2301e9",
+      "config_json": {
+        "metric": "avg",
+        "field_type": "number"
+      },
+      "display_order": 2,
+      "created_at": "2026-10-24T10:00:00Z",
+      "updated_at": "2026-10-24T10:00:00Z"
+    },
+    {
+      "id": "6b38adc9-323f-50d9-8f15-d27b6d9c6ce6",
+      "dashboard_data_id": "4330db21-6686-5dbd-afc2-79306699b9f1",
+      "type": "pie_chart",
+      "title_th": "สถานะ whitelist",
+      "title_en": "Whitelist status",
+      "form_id": "89e426a3-3b34-50f1-821f-d485abab001b",
+      "field_id": null,
+      "config_json": {
+        "source": "whitelist_status_counts"
+      },
+      "display_order": 1,
+      "created_at": "2026-10-24T10:00:00Z",
+      "updated_at": "2026-10-24T10:00:00Z"
+    },
+    {
+      "id": "3bb4635e-2250-5a94-b96f-3b8fa5794f04",
+      "dashboard_data_id": "33f5acb4-a7a4-5d2b-9fcd-a053a95662f6",
+      "type": "kpi",
+      "title_th": "จำนวนการจอง",
+      "title_en": "Booking count",
+      "form_id": "35c5334a-f1e3-5479-b5b8-33b96d5d922d",
+      "field_id": null,
+      "config_json": {
+        "metric": "submission_count",
+        "status": "submitted"
+      },
+      "display_order": 1,
+      "created_at": "2026-10-24T10:00:00Z",
+      "updated_at": "2026-10-24T10:00:00Z"
+    },
+    {
+      "id": "f32f14a4-b7dc-5210-b925-d2871e99d8a2",
+      "dashboard_data_id": "9a085bf0-b4c3-5cc3-9775-962464d6f3cc",
+      "type": "bar_chart",
+      "title_th": "กิจกรรมที่เลือก",
+      "title_en": "Preferred activities",
+      "form_id": "35c5334a-f1e3-5479-b5b8-33b96d5d922d",
+      "field_id": "f085db7d-1fee-57ad-a666-3cece4d3eb23",
+      "config_json": {
+        "chart": "bar",
+        "source": "option_counts"
+      },
+      "display_order": 1,
+      "created_at": "2026-10-24T10:00:00Z",
+      "updated_at": "2026-10-24T10:00:00Z"
     }
   ],
   "approval_requests": [

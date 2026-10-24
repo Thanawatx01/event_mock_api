@@ -116,9 +116,71 @@ Enum deletion_request_status {
   completed
 }
 
+Enum permission_feature {
+  events
+  registrations
+  surveys
+  dashboards
+  whitelist
+  users
+  audit_logs
+  branding
+}
+
+Enum dashboard_page_key {
+  overview
+  registrations
+  surveys
+  whitelist
+  settings
+}
+
+Enum dashboard_widget_type {
+  kpi
+  bar_chart
+  pie_chart
+  data_table
+}
+
 ////////////////////////////////////////////////////
 // 01 · IDENTITY & EVENT-SCOPED ACCESS
 ////////////////////////////////////////////////////
+
+Table roles [headercolor: #2563EB] {
+  id uuid [pk]
+  event_id uuid [not null, ref: > events.id]
+  owner_user_id uuid [not null, ref: > users.id]
+  name varchar(160) [not null]
+  description text
+  is_default boolean [not null, default: false]
+  created_at timestamptz [not null]
+  updated_at timestamptz [not null]
+
+  indexes {
+    (event_id, name) [unique]
+  }
+
+  Note: 'Custom roles owned by an Event Admin for Sub-User assignment within one Event.'
+}
+
+Table permissions [headercolor: #2563EB] {
+  id uuid [pk]
+  role_id uuid [not null, ref: > roles.id]
+  feature permission_feature [not null]
+  can_access boolean [not null, default: false]
+  can_view boolean [not null, default: false]
+  can_create boolean [not null, default: false]
+  can_edit boolean [not null, default: false]
+  can_delete boolean [not null, default: false]
+  can_approve boolean [not null, default: false]
+  can_publish boolean [not null, default: false]
+
+  indexes {
+    (role_id, feature) [unique]
+  }
+
+  Note: 'Feature x action matrix for one role. Event Admin may still use the seven can_manage_* flags on users.'
+}
 
 Table users [headercolor: #2563EB] {
   id uuid [pk]
@@ -128,6 +190,7 @@ Table users [headercolor: #2563EB] {
   system_role system_role [not null, default: 'event_user']
   event_id uuid [ref: > events.id]
   event_role event_member_role
+  role_id uuid [ref: > roles.id]
 
   can_manage_dashboard boolean [not null, default: false]
   can_manage_event boolean [not null, default: false]
@@ -148,12 +211,14 @@ Table users [headercolor: #2563EB] {
 
   indexes {
     (event_id, event_role, status)
+    (role_id)
   }
 
   Note: '''
     Only administrative users have accounts. Participants never require an account.
     Platform Admin has event_id and event_role set to null. Event Admin and Event
     Sub-User store their Event, Event role, and seven permissions directly in this table.
+    Sub-Users may also reference roles.id for fine-grained feature permissions.
     One account belongs to one Event; another Event requires another account.
     can_view_unmasked_pii covers both screen access and unmasked export.
     password is stored for mock login only; production must store a hashed credential.
@@ -447,7 +512,59 @@ Table answer_option_selections [headercolor: #059669] {
 }
 
 ////////////////////////////////////////////////////
-// 06 · APPROVAL, EXPORT & GOVERNANCE
+// 06 · EVENT OWNER DASHBOARD PAGES & WIDGETS
+////////////////////////////////////////////////////
+
+Table dashboard_data [headercolor: #0284C7] {
+  id uuid [pk]
+  event_id uuid [not null, ref: > events.id]
+  owner_user_id uuid [not null, ref: > users.id]
+  page_key dashboard_page_key [not null]
+  title_th varchar(240) [not null]
+  title_en varchar(240) [not null]
+  description_th text
+  description_en text
+  layout_json json
+  display_order int [not null]
+  is_visible boolean [not null, default: true]
+  created_at timestamptz [not null]
+  updated_at timestamptz [not null]
+
+  indexes {
+    (event_id, page_key) [unique]
+    (owner_user_id, event_id)
+    (event_id, display_order)
+  }
+
+  Note: '''
+    One row per Event Owner console page (overview, registrations, surveys, whitelist, settings).
+    Stores page metadata and layout for that Event. Aggregate numbers still come from submissions.
+  '''
+}
+
+Table dashboard_widgets [headercolor: #0284C7] {
+  id uuid [pk]
+  dashboard_data_id uuid [not null, ref: > dashboard_data.id]
+  type dashboard_widget_type [not null]
+  title_th varchar(240) [not null]
+  title_en varchar(240) [not null]
+  form_id uuid [ref: > forms.id]
+  field_id uuid [ref: > form_fields.id]
+  config_json json
+  display_order int [not null]
+  created_at timestamptz [not null]
+  updated_at timestamptz [not null]
+
+  indexes {
+    (dashboard_data_id, display_order)
+    (form_id, field_id)
+  }
+
+  Note: 'Widgets rendered on an Event Owner dashboard page. Bound optionally to a form/field for chart sources.'
+}
+
+////////////////////////////////////////////////////
+// 07 · APPROVAL, EXPORT & GOVERNANCE
 ////////////////////////////////////////////////////
 
 Table approval_requests [headercolor: #0F766E] {
@@ -538,7 +655,9 @@ Table audit_logs [headercolor: #DC2626] {
 // TABLE GROUPS FOR DBDIAGRAM.IO
 ////////////////////////////////////////////////////
 
-TableGroup group_01_users_access [color: #2563EB, note: 'Start here: administrative accounts, Event assignment, roles, and seven permissions.'] {
+TableGroup group_01_users_access [color: #2563EB, note: 'Start here: roles, permissions, administrative accounts, Event assignment.'] {
+  roles
+  permissions
   users
 }
 
@@ -568,7 +687,12 @@ TableGroup group_05_submissions_answers [color: #059669, note: 'Participant subm
   answer_option_selections
 }
 
-TableGroup group_06_governance [color: #DC2626, note: 'Approval, Trash, permanent deletion requests, and audit evidence. Export is derived without persistence.'] {
+TableGroup group_06_dashboard [color: #0284C7, note: 'Event Owner console pages and widgets. Aggregate values are still computed from submissions.'] {
+  dashboard_data
+  dashboard_widgets
+}
+
+TableGroup group_07_governance [color: #DC2626, note: 'Approval, Trash, permanent deletion requests, and audit evidence. Export is derived without persistence.'] {
   approval_requests
   trash_items
   hard_delete_requests
@@ -577,8 +701,11 @@ TableGroup group_06_governance [color: #DC2626, note: 'Approval, Trash, permanen
 
 Note dashboard_design [color: #DBEAFE] {
   '''
-    DASHBOARD DATA FLOW
+    DASHBOARD PAGE STORAGE
+    dashboard_data stores each Event Owner page for an Event.
+    dashboard_widgets stores widgets on those pages.
 
+    DASHBOARD AGGREGATION FLOW
     1. Filter form_submissions by forms.event_id, form_id, status, and submitted_at.
     2. Join submission_answers with form_fields.
     3. Join answer_option_selections with field_options for choice questions.
@@ -589,8 +716,7 @@ Note dashboard_design [color: #DBEAFE] {
        - text: count and detail table
     5. Exclude soft-deleted submissions and enforce masked/unmasked PII in the service layer.
 
-    Dashboard, CSV/XLSX export files, QR URLs, Event routes, and aggregate results
-    are derived features. They do not require separate source-of-truth tables.
+    CSV/XLSX export files, QR URLs, Event routes, and aggregate results remain derived.
     Unmasked export requires can_view_unmasked_pii.
 
     REGISTRATION DUPLICATE CHECK

@@ -27,6 +27,15 @@ npm run seed
 curl http://localhost:3000/events
 curl "http://localhost:3000/events?status=published"
 
+# roles / permissions
+curl "http://localhost:3000/roles?event_id=452ac247-5c88-59ca-8de7-c5a329c71317"
+curl "http://localhost:3000/permissions?role_id=68bc119b-43b3-56d8-8e07-d9609a3ca230"
+
+# หน้า Event Owner + widgets
+curl "http://localhost:3000/dashboard_data?event_id=452ac247-5c88-59ca-8de7-c5a329c71317"
+curl "http://localhost:3000/dashboard_widgets?dashboard_data_id=46a46a4c-048a-5032-8eb2-e3a226198a01"
+
+
 # เนื้อหาหลายภาษา (th / en)
 curl "http://localhost:3000/event_translations?event_id=452ac247-5c88-59ca-8de7-c5a329c71317"
 curl "http://localhost:3000/event_translations?locale_code=en"
@@ -51,7 +60,11 @@ curl "http://localhost:3000/submission_answers?submission_id=38e9ffaf-77bc-51bb-
 
 | Path | หมายเหตุ |
 |---|---|
-| `/users` | บัญชีแอดมิน / สิทธิ์ต่ออีเวนต์ |
+| `/users` | บัญชีแอดมิน / สิทธิ์ต่ออีเวนต์ (`role_id`, `password`) |
+| `/roles` | บทบาทกำหนดเองของ Event Admin |
+| `/permissions` | เมทริกซ์สิทธิ์ราย feature ของแต่ละ role |
+| `/dashboard_data` | หน้าของ Event Owner ต่ออีเวนต์ (overview, registrations, …) |
+| `/dashboard_widgets` | วิดเจ็ตบนแต่ละหน้า dashboard |
 | `/events` | อีเวนต์ (สถานะ, สโลแกน, timezone) |
 | `/event_translations` | ชื่อ/รายละเอียดอีเวนต์แยก `th` `en` |
 | `/forms` | registration / survey ต่ออีเวนต์ |
