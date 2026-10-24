@@ -123,6 +123,7 @@ Enum deletion_request_status {
 Table users [headercolor: #2563EB] {
   id uuid [pk]
   email varchar(320) [not null, unique]
+  password varchar(255) [not null]
   display_name varchar(160) [not null]
   system_role system_role [not null, default: 'event_user']
   event_id uuid [ref: > events.id]
@@ -155,6 +156,7 @@ Table users [headercolor: #2563EB] {
     Sub-User store their Event, Event role, and seven permissions directly in this table.
     One account belongs to one Event; another Event requires another account.
     can_view_unmasked_pii covers both screen access and unmasked export.
+    password is stored for mock login only; production must store a hashed credential.
   '''
 }
 

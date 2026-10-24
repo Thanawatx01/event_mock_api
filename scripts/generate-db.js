@@ -234,6 +234,7 @@ const users = [
   {
     id: ids.users.platformAdmin,
     email: "admin@example.com",
+    password: "password123",
     display_name: "Ananda Platform Admin",
     system_role: "platform_admin",
     event_id: null,
@@ -257,6 +258,7 @@ const users = [
   {
     id: ids.users.eventAdmin1,
     email: "thanawat@example.com",
+    password: "password123",
     display_name: "Thanawat Ketaya",
     system_role: "event_user",
     event_id: ids.events.tech,
@@ -280,6 +282,7 @@ const users = [
   {
     id: ids.users.subUser1,
     email: "kittisak@example.com",
+    password: "password123",
     display_name: "Kittisak Jaidee",
     system_role: "event_user",
     event_id: ids.events.tech,
@@ -303,6 +306,7 @@ const users = [
   {
     id: ids.users.eventAdmin2,
     email: "mali@example.com",
+    password: "password123",
     display_name: "Mali Charoenpol",
     system_role: "event_user",
     event_id: ids.events.wellness,
@@ -326,6 +330,7 @@ const users = [
   {
     id: ids.users.eventAdmin3,
     email: "pim@example.com",
+    password: "password123",
     display_name: "Pimchanok Siriwong",
     system_role: "event_user",
     event_id: ids.events.draft,

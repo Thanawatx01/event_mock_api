@@ -3,6 +3,7 @@
     {
       "id": "cf4f56ab-fe37-58d1-ac73-e833abdd2561",
       "email": "admin@example.com",
+      "password": "password123",
       "display_name": "Ananda Platform Admin",
       "system_role": "platform_admin",
       "event_id": null,
@@ -26,6 +27,7 @@
     {
       "id": "dff5877d-7b9d-5a71-b9cd-dfce68f0de89",
       "email": "thanawat@example.com",
+      "password": "password123",
       "display_name": "Thanawat Ketaya",
       "system_role": "event_user",
       "event_id": "452ac247-5c88-59ca-8de7-c5a329c71317",
@@ -49,6 +51,7 @@
     {
       "id": "6f682b3b-8200-5ae3-a1f8-0158dca1ee61",
       "email": "kittisak@example.com",
+      "password": "password123",
       "display_name": "Kittisak Jaidee",
       "system_role": "event_user",
       "event_id": "452ac247-5c88-59ca-8de7-c5a329c71317",
@@ -72,6 +75,7 @@
     {
       "id": "a4472b2b-9581-52a5-899d-fd94ed85bfc3",
       "email": "mali@example.com",
+      "password": "password123",
       "display_name": "Mali Charoenpol",
       "system_role": "event_user",
       "event_id": "dbc642a1-efd7-5ba1-ab44-956b212f0c2f",
@@ -95,6 +99,7 @@
     {
       "id": "2fe6a003-59af-5f7d-a768-e8539b43f837",
       "email": "pim@example.com",
+      "password": "password123",
       "display_name": "Pimchanok Siriwong",
       "system_role": "event_user",
       "event_id": "550267c4-98f1-5ffc-94c6-81155429cd03",
