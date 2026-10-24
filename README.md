@@ -1,6 +1,6 @@
 # Event Management Mock API (JSON Server)
 
-Mock REST API สำหรับ Event + Survey Management Platform ใช้กับ JSON Server
+Mock REST API ตามสคีมาใน `db.md` (SRS Draft v2.1.0) ใช้ JSON Server
 
 ## ความต้องการ
 - Node.js
@@ -14,68 +14,88 @@ npm start
 
 Base URL: `http://localhost:3000`
 
+สร้าง `db.json` ใหม่จากสคริปต์ (ถ้าแก้ seed):
+
+```bash
+npm run seed
+```
+
 ## ตัวอย่างคำสั่ง
 
 ```bash
-# รายการอีเวนต์
+# อีเวนต์
 curl http://localhost:3000/events
-
-# กรองอีเวนต์ที่เผยแพร่แล้ว
 curl "http://localhost:3000/events?status=published"
 
-# ฟอร์มของอีเวนต์
-curl "http://localhost:3000/forms?eventId=3&isDeleted=false"
+# เนื้อหาหลายภาษา (th / en)
+curl "http://localhost:3000/event_translations?event_id=452ac247-5c88-59ca-8de7-c5a329c71317"
+curl "http://localhost:3000/event_translations?locale_code=en"
 
-# คำตอบการลงทะเบียน
-curl "http://localhost:3000/submissions?eventId=3&formType=registration"
+# ฟอร์ม + คำแปล
+curl "http://localhost:3000/forms?event_id=452ac247-5c88-59ca-8de7-c5a329c71317"
+curl "http://localhost:3000/form_translations?form_id=89e426a3-3b34-50f1-821f-d485abab001b"
+
+# ฟิลด์ + ตัวเลือก + คำแปล
+curl "http://localhost:3000/form_fields?form_id=89e426a3-3b34-50f1-821f-d485abab001b"
+curl "http://localhost:3000/field_translations?locale_code=th"
+curl "http://localhost:3000/field_options?field_id=a524e451-6403-5262-b13c-d6170703eb9a"
+
+# คำตอบที่ส่งแล้ว
+curl "http://localhost:3000/form_submissions?status=submitted"
+curl "http://localhost:3000/submission_answers?submission_id=38e9ffaf-77bc-51bb-a286-3544c352c9eb"
 ```
 
-## ทรัพยากรหลัก
-- `/users`, `/roles`, `/permissions`
-- `/events`, `/event_users`, `/event_branding`
-- `/forms`, `/form_sections`, `/form_fields`, `/form_field_options`
-- `/whitelist_uploads`, `/whitelist_entries`
-- `/submissions`, `/submission_answers`
-- `/dashboards`, `/dashboard_widgets`
-- `/audit_logs`, `/cookie_consents`, `/privacy_requests`
+> `id` ทั้งหมดเป็น UUID (string) ตามสคีมาใน `db.md` — ค่าซ้ำได้ทุกครั้งที่รัน `npm run seed`
+
+## ทรัพยากรหลัก (ตาม `db.md`)
+
+| Path | หมายเหตุ |
+|---|---|
+| `/users` | บัญชีแอดมิน / สิทธิ์ต่ออีเวนต์ |
+| `/events` | อีเวนต์ (สถานะ, สโลแกน, timezone) |
+| `/event_translations` | ชื่อ/รายละเอียดอีเวนต์แยก `th` `en` |
+| `/forms` | registration / survey ต่ออีเวนต์ |
+| `/form_translations` | ชื่อฟอร์ม / ปุ่ม / ข้อความสำเร็จ |
+| `/form_fields` | นิยามฟิลด์ |
+| `/field_translations` | label / help / placeholder ตามภาษา |
+| `/field_options` | ตัวเลือก radio/checkbox/dropdown |
+| `/field_option_translations` | label ตัวเลือกตามภาษา |
+| `/registration_settings` | capacity, duplicate, whitelist |
+| `/whitelist_entries` | รายชื่อสิทธิ์ลงทะเบียน |
+| `/form_submissions` | header การส่งฟอร์ม |
+| `/registrations` | ข้อมูลลงทะเบียน (reference_code) |
+| `/submission_answers` | คำตอบแบบ typed columns |
+| `/answer_option_selections` | ตัวเลือกที่เลือก |
+| `/approval_requests` | คำขออนุมัติ |
+| `/trash_items` | ถังขยะ soft-delete |
+| `/hard_delete_requests` | คำขอลบถาวร / PDPA |
+| `/audit_logs` | audit |
+
+ภาษาเนื้อหาสาธารณะอยู่ที่ตาราง `*_translations` โดยใช้ `locale_code` เป็น `th` หรือ `en`  
+ภาษาที่ผู้เข้าร่วมส่งฟอร์มเก็บที่ `form_submissions.submitted_language`
 
 ## Deploy บน Vercel
 
-โปรเจกต์นี้พร้อม deploy เป็น serverless API แล้ว ผ่าน `api/server.js` + `vercel.json`
+ผ่าน `api/server.js` + `vercel.json`
 
-### วิธีที่ 1: ผ่านเว็บ Vercel
-1. ไปที่ [vercel.com/new](https://vercel.com/new)
-2. Import repo `Thanawatx01/event_mock_api`
-3. Framework Preset ปล่อยเป็น Other / ไม่ต้องตั้งค่าอะไรเพิ่ม
-4. กด **Deploy**
-5. เรียก API จาก URL ที่ได้ เช่น `https://your-project.vercel.app/events`
-
-### วิธีที่ 2: ผ่าน Vercel CLI
 ```bash
 npm i -g vercel
-vercel login
 vercel
-# production
 vercel --prod
 ```
 
-ตัวอย่างหลัง deploy:
+ตัวอย่าง:
 ```bash
 curl "https://your-project.vercel.app/events?status=published"
-curl "https://your-project.vercel.app/forms?eventId=3&isDeleted=false"
+curl "https://your-project.vercel.app/event_translations?locale_code=th"
 ```
 
 ### ข้อจำกัดบน Vercel
-- **อ่านข้อมูล (GET)** ใช้งานได้ปกติ
-- **เขียนข้อมูล (POST / PUT / PATCH / DELETE)** อาจไม่ถาวร เพราะ filesystem ของ serverless ไม่ persist ข้าม request
-- เหมาะกับ mock/read สำหรับ frontend; ถ้าต้องการเขียนข้อมูลถาวร ควรใช้ database จริงหรือบริการอื่น
-
-## เอกสาร
-ดูรายละเอียดใน `BACKEND_TECHNICAL_DOCUMENTATION.md`
-
-แผนภาพ ER: `database-schema.png` (ต้นทาง `database-schema.dbml`)
+- **GET** ใช้งานได้ปกติ
+- **POST / PUT / PATCH / DELETE** อาจไม่ถาวรบน serverless filesystem
 
 ## หมายเหตุ
-- JSON Server ให้ CRUD พื้นฐานตาม array ใน `db.json`
-- ความสัมพันธ์อ้างด้วย id ไม่มีการบังคับ foreign key
-- ข้อมูลนี้ใช้ทดสอบเท่านั้น อย่าใช้รหัสผ่านตัวอย่างใน production
+- JSON Server ให้ CRUD ตาม array ใน `db.json`
+- ความสัมพันธ์อ้างด้วย id ไม่บังคับ foreign key
+- ข้อมูลตัวอย่างเท่านั้น อย่าใช้ใน production
+- แผนสคีมาต้นทาง: `db.md`
