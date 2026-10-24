@@ -333,8 +333,6 @@
       "locale_code": "th",
       "title": "ลงทะเบียน Tech Summit 2026",
       "description": "กรอกข้อมูลเพื่อรับบัตรเข้างาน",
-      "submit_button_label": "ส่งการลงทะเบียน",
-      "success_message": "ลงทะเบียนสำเร็จ เราจะส่งอีเมลยืนยันให้คุณ",
       "created_at": "2026-10-24T10:00:00Z",
       "updated_at": "2026-10-24T10:00:00Z"
     },
@@ -344,8 +342,6 @@
       "locale_code": "en",
       "title": "Register for Tech Summit 2026",
       "description": "Fill in your details to receive an event ticket.",
-      "submit_button_label": "Submit registration",
-      "success_message": "Registration successful. We will email your confirmation.",
       "created_at": "2026-10-24T10:00:00Z",
       "updated_at": "2026-10-24T10:00:00Z"
     },
@@ -355,8 +351,6 @@
       "locale_code": "th",
       "title": "แบบสอบถามหลังงาน Tech Summit",
       "description": "ช่วยให้คะแนนและข้อเสนอแนะหลังเข้าร่วมงาน",
-      "submit_button_label": "ส่งแบบสอบถาม",
-      "success_message": "ขอบคุณสำหรับความคิดเห็นของคุณ",
       "created_at": "2026-10-24T10:00:00Z",
       "updated_at": "2026-10-24T10:00:00Z"
     },
@@ -366,8 +360,6 @@
       "locale_code": "en",
       "title": "Tech Summit Post-Event Survey",
       "description": "Please rate the event and share feedback.",
-      "submit_button_label": "Submit survey",
-      "success_message": "Thank you for your feedback.",
       "created_at": "2026-10-24T10:00:00Z",
       "updated_at": "2026-10-24T10:00:00Z"
     },
@@ -377,8 +369,6 @@
       "locale_code": "th",
       "title": "ลงทะเบียนวันสุขภาพองค์กร",
       "description": "จองที่นั่งสำหรับกิจกรรมสุขภาพ",
-      "submit_button_label": "ยืนยันการจอง",
-      "success_message": "จองสำเร็จ แล้วพบกันในงาน",
       "created_at": "2026-10-24T10:00:00Z",
       "updated_at": "2026-10-24T10:00:00Z"
     },
@@ -388,8 +378,6 @@
       "locale_code": "en",
       "title": "Wellness Day Registration",
       "description": "Reserve your spot for wellness activities.",
-      "submit_button_label": "Confirm booking",
-      "success_message": "Booking confirmed. See you at the event.",
       "created_at": "2026-10-24T10:00:00Z",
       "updated_at": "2026-10-24T10:00:00Z"
     },
@@ -399,8 +387,6 @@
       "locale_code": "th",
       "title": "แบบสอบถามวันสุขภาพ",
       "description": "ประเมินกิจกรรมและสุขภาพโดยรวม",
-      "submit_button_label": "ส่งคำตอบ",
-      "success_message": "บันทึกคำตอบเรียบร้อย",
       "created_at": "2026-10-24T10:00:00Z",
       "updated_at": "2026-10-24T10:00:00Z"
     },
@@ -410,8 +396,6 @@
       "locale_code": "en",
       "title": "Wellness Day Survey",
       "description": "Rate the activities and your overall wellness experience.",
-      "submit_button_label": "Send answers",
-      "success_message": "Your answers were saved.",
       "created_at": "2026-10-24T10:00:00Z",
       "updated_at": "2026-10-24T10:00:00Z"
     },
@@ -421,8 +405,6 @@
       "locale_code": "th",
       "title": "ลงทะเบียนมีตอัป (ร่าง)",
       "description": "ฟอร์มยังไม่เผยแพร่",
-      "submit_button_label": "ส่ง",
-      "success_message": "สำเร็จ",
       "created_at": "2026-10-24T10:00:00Z",
       "updated_at": "2026-10-24T10:00:00Z"
     },
@@ -432,8 +414,6 @@
       "locale_code": "en",
       "title": "Meetup Registration (Draft)",
       "description": "This form is not published yet.",
-      "submit_button_label": "Submit",
-      "success_message": "Success",
       "created_at": "2026-10-24T10:00:00Z",
       "updated_at": "2026-10-24T10:00:00Z"
     }

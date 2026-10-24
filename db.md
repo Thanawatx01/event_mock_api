@@ -249,8 +249,6 @@ Table form_translations [headercolor: #8B5CF6] {
   locale_code varchar(35) [not null]
   title varchar(240) [not null]
   description text
-  submit_button_label varchar(120)
-  success_message text
   created_at timestamptz [not null]
   updated_at timestamptz [not null]
 
