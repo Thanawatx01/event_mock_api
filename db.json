@@ -7,17 +7,9 @@
       "display_name": "Ananda Platform Admin",
       "system_role": "platform_admin",
       "event_id": null,
-      "event_role": null,
       "role_id": null,
-      "can_manage_dashboard": true,
-      "can_manage_event": true,
-      "can_manage_registration_form": true,
-      "can_manage_survey_form": true,
-      "can_manage_sub_user": true,
-      "can_approve": true,
-      "can_view_unmasked_pii": true,
-      "permission_granted_by_user_id": null,
-      "permission_updated_at": null,
+      "role_assigned_by_user_id": null,
+      "role_assigned_at": null,
       "status": "active",
       "invited_by_user_id": null,
       "joined_at": "2026-09-01T02:00:00Z",
@@ -32,17 +24,9 @@
       "display_name": "Thanawat Ketaya",
       "system_role": "event_user",
       "event_id": "452ac247-5c88-59ca-8de7-c5a329c71317",
-      "event_role": "event_admin",
       "role_id": "5f4490f8-41ca-5d29-8032-879f4966d95d",
-      "can_manage_dashboard": true,
-      "can_manage_event": true,
-      "can_manage_registration_form": true,
-      "can_manage_survey_form": true,
-      "can_manage_sub_user": true,
-      "can_approve": true,
-      "can_view_unmasked_pii": true,
-      "permission_granted_by_user_id": "cf4f56ab-fe37-58d1-ac73-e833abdd2561",
-      "permission_updated_at": "2026-09-15T04:00:00Z",
+      "role_assigned_by_user_id": "cf4f56ab-fe37-58d1-ac73-e833abdd2561",
+      "role_assigned_at": "2026-09-15T04:00:00Z",
       "status": "active",
       "invited_by_user_id": "cf4f56ab-fe37-58d1-ac73-e833abdd2561",
       "joined_at": "2026-09-02T02:00:00Z",
@@ -57,17 +41,9 @@
       "display_name": "Kittisak Jaidee",
       "system_role": "event_user",
       "event_id": "452ac247-5c88-59ca-8de7-c5a329c71317",
-      "event_role": "event_sub_user",
       "role_id": "68bc119b-43b3-56d8-8e07-d9609a3ca230",
-      "can_manage_dashboard": true,
-      "can_manage_event": false,
-      "can_manage_registration_form": true,
-      "can_manage_survey_form": true,
-      "can_manage_sub_user": false,
-      "can_approve": false,
-      "can_view_unmasked_pii": false,
-      "permission_granted_by_user_id": "dff5877d-7b9d-5a71-b9cd-dfce68f0de89",
-      "permission_updated_at": "2026-09-16T03:00:00Z",
+      "role_assigned_by_user_id": "dff5877d-7b9d-5a71-b9cd-dfce68f0de89",
+      "role_assigned_at": "2026-09-16T03:00:00Z",
       "status": "active",
       "invited_by_user_id": "dff5877d-7b9d-5a71-b9cd-dfce68f0de89",
       "joined_at": "2026-09-10T02:00:00Z",
@@ -82,17 +58,9 @@
       "display_name": "Mali Charoenpol",
       "system_role": "event_user",
       "event_id": "dbc642a1-efd7-5ba1-ab44-956b212f0c2f",
-      "event_role": "event_admin",
       "role_id": "c1209fa6-ef07-5bba-b757-45519025c21e",
-      "can_manage_dashboard": true,
-      "can_manage_event": true,
-      "can_manage_registration_form": true,
-      "can_manage_survey_form": true,
-      "can_manage_sub_user": true,
-      "can_approve": true,
-      "can_view_unmasked_pii": false,
-      "permission_granted_by_user_id": "cf4f56ab-fe37-58d1-ac73-e833abdd2561",
-      "permission_updated_at": "2026-09-20T04:00:00Z",
+      "role_assigned_by_user_id": "cf4f56ab-fe37-58d1-ac73-e833abdd2561",
+      "role_assigned_at": "2026-09-20T04:00:00Z",
       "status": "active",
       "invited_by_user_id": "cf4f56ab-fe37-58d1-ac73-e833abdd2561",
       "joined_at": "2026-09-03T02:00:00Z",
@@ -107,17 +75,9 @@
       "display_name": "Pimchanok Siriwong",
       "system_role": "event_user",
       "event_id": "550267c4-98f1-5ffc-94c6-81155429cd03",
-      "event_role": "event_admin",
-      "role_id": null,
-      "can_manage_dashboard": true,
-      "can_manage_event": true,
-      "can_manage_registration_form": true,
-      "can_manage_survey_form": true,
-      "can_manage_sub_user": true,
-      "can_approve": true,
-      "can_view_unmasked_pii": true,
-      "permission_granted_by_user_id": "cf4f56ab-fe37-58d1-ac73-e833abdd2561",
-      "permission_updated_at": "2026-10-01T04:00:00Z",
+      "role_id": "9d35db90-07bd-5420-8a2b-c84977910d09",
+      "role_assigned_by_user_id": "cf4f56ab-fe37-58d1-ac73-e833abdd2561",
+      "role_assigned_at": "2026-10-01T04:00:00Z",
       "status": "active",
       "invited_by_user_id": "cf4f56ab-fe37-58d1-ac73-e833abdd2561",
       "joined_at": "2026-10-01T02:00:00Z",
@@ -130,286 +90,136 @@
     {
       "id": "5f4490f8-41ca-5d29-8032-879f4966d95d",
       "event_id": "452ac247-5c88-59ca-8de7-c5a329c71317",
-      "owner_user_id": "dff5877d-7b9d-5a71-b9cd-dfce68f0de89",
       "name": "Event Admin",
       "description": "Full access for Tech Summit event admin",
-      "is_default": true,
+      "owner_user_id": "dff5877d-7b9d-5a71-b9cd-dfce68f0de89",
       "created_at": "2026-09-15T04:00:00Z",
-      "updated_at": "2026-09-15T04:00:00Z"
+      "updated_at": "2026-09-15T04:00:00Z",
+      "deleted_at": null
     },
     {
       "id": "68bc119b-43b3-56d8-8e07-d9609a3ca230",
       "event_id": "452ac247-5c88-59ca-8de7-c5a329c71317",
-      "owner_user_id": "dff5877d-7b9d-5a71-b9cd-dfce68f0de89",
       "name": "Form Manager",
       "description": "Manage registration and survey forms",
-      "is_default": false,
+      "owner_user_id": "dff5877d-7b9d-5a71-b9cd-dfce68f0de89",
       "created_at": "2026-09-16T03:00:00Z",
-      "updated_at": "2026-09-16T03:00:00Z"
+      "updated_at": "2026-09-16T03:00:00Z",
+      "deleted_at": null
     },
     {
       "id": "c1209fa6-ef07-5bba-b757-45519025c21e",
       "event_id": "dbc642a1-efd7-5ba1-ab44-956b212f0c2f",
-      "owner_user_id": "a4472b2b-9581-52a5-899d-fd94ed85bfc3",
       "name": "Event Admin",
       "description": "Full access for Wellness Day event admin",
-      "is_default": true,
+      "owner_user_id": "a4472b2b-9581-52a5-899d-fd94ed85bfc3",
       "created_at": "2026-09-20T04:00:00Z",
-      "updated_at": "2026-09-20T04:00:00Z"
+      "updated_at": "2026-09-20T04:00:00Z",
+      "deleted_at": null
+    },
+    {
+      "id": "9d35db90-07bd-5420-8a2b-c84977910d09",
+      "event_id": "550267c4-98f1-5ffc-94c6-81155429cd03",
+      "name": "Event Admin",
+      "description": "Full access for draft community meetup admin",
+      "owner_user_id": "2fe6a003-59af-5f7d-a768-e8539b43f837",
+      "created_at": "2026-10-01T04:00:00Z",
+      "updated_at": "2026-10-01T04:00:00Z",
+      "deleted_at": null
     }
   ],
-  "permissions": [
+  "role_permissions": [
     {
-      "id": "3efc0cb9-6e1f-5a46-889b-9db86d07cd37",
       "role_id": "5f4490f8-41ca-5d29-8032-879f4966d95d",
-      "feature": "events",
-      "can_access": true,
-      "can_view": true,
-      "can_create": true,
-      "can_edit": true,
-      "can_delete": true,
-      "can_approve": true,
-      "can_publish": true
+      "permission": "manage_dashboard"
     },
     {
-      "id": "fe5b262b-ed7a-5dd2-aeb8-876a433426a3",
       "role_id": "5f4490f8-41ca-5d29-8032-879f4966d95d",
-      "feature": "registrations",
-      "can_access": true,
-      "can_view": true,
-      "can_create": true,
-      "can_edit": true,
-      "can_delete": true,
-      "can_approve": true,
-      "can_publish": true
+      "permission": "manage_event"
     },
     {
-      "id": "142ce69d-aa13-5520-8d67-b7793d26f7b8",
       "role_id": "5f4490f8-41ca-5d29-8032-879f4966d95d",
-      "feature": "surveys",
-      "can_access": true,
-      "can_view": true,
-      "can_create": true,
-      "can_edit": true,
-      "can_delete": true,
-      "can_approve": true,
-      "can_publish": true
+      "permission": "manage_registration_form"
     },
     {
-      "id": "628f4394-3e76-59b2-80b1-070df375697b",
       "role_id": "5f4490f8-41ca-5d29-8032-879f4966d95d",
-      "feature": "dashboards",
-      "can_access": true,
-      "can_view": true,
-      "can_create": true,
-      "can_edit": true,
-      "can_delete": true,
-      "can_approve": true,
-      "can_publish": true
+      "permission": "manage_survey_form"
     },
     {
-      "id": "d6a1311c-7598-550e-94eb-42343528ff8b",
       "role_id": "5f4490f8-41ca-5d29-8032-879f4966d95d",
-      "feature": "whitelist",
-      "can_access": true,
-      "can_view": true,
-      "can_create": true,
-      "can_edit": true,
-      "can_delete": true,
-      "can_approve": true,
-      "can_publish": true
+      "permission": "manage_sub_user"
     },
     {
-      "id": "187358bf-93da-51be-8333-727c6c138fe3",
       "role_id": "5f4490f8-41ca-5d29-8032-879f4966d95d",
-      "feature": "users",
-      "can_access": true,
-      "can_view": true,
-      "can_create": true,
-      "can_edit": true,
-      "can_delete": true,
-      "can_approve": true,
-      "can_publish": true
+      "permission": "approve"
     },
     {
-      "id": "2bb52df9-e24e-5e66-b798-dbce65571ba9",
       "role_id": "5f4490f8-41ca-5d29-8032-879f4966d95d",
-      "feature": "audit_logs",
-      "can_access": true,
-      "can_view": true,
-      "can_create": true,
-      "can_edit": true,
-      "can_delete": true,
-      "can_approve": true,
-      "can_publish": true
+      "permission": "view_unmasked_pii"
     },
     {
-      "id": "9da0adf6-2101-5830-a287-83a68d849ccf",
-      "role_id": "5f4490f8-41ca-5d29-8032-879f4966d95d",
-      "feature": "branding",
-      "can_access": true,
-      "can_view": true,
-      "can_create": true,
-      "can_edit": true,
-      "can_delete": true,
-      "can_approve": true,
-      "can_publish": true
-    },
-    {
-      "id": "e15283a3-e2c2-544f-9569-d6e038e880ce",
       "role_id": "68bc119b-43b3-56d8-8e07-d9609a3ca230",
-      "feature": "events",
-      "can_access": true,
-      "can_view": true,
-      "can_create": false,
-      "can_edit": false,
-      "can_delete": false,
-      "can_approve": false,
-      "can_publish": false
+      "permission": "manage_dashboard"
     },
     {
-      "id": "5fea7c32-b46e-5814-a401-a5f6bcc37220",
       "role_id": "68bc119b-43b3-56d8-8e07-d9609a3ca230",
-      "feature": "registrations",
-      "can_access": true,
-      "can_view": true,
-      "can_create": true,
-      "can_edit": true,
-      "can_delete": false,
-      "can_approve": false,
-      "can_publish": false
+      "permission": "manage_registration_form"
     },
     {
-      "id": "c1714ee3-6261-531d-a070-025bfbf2a7b6",
       "role_id": "68bc119b-43b3-56d8-8e07-d9609a3ca230",
-      "feature": "surveys",
-      "can_access": true,
-      "can_view": true,
-      "can_create": true,
-      "can_edit": true,
-      "can_delete": false,
-      "can_approve": false,
-      "can_publish": false
+      "permission": "manage_survey_form"
     },
     {
-      "id": "21250e57-47cc-545f-9abc-3afec82f1f01",
-      "role_id": "68bc119b-43b3-56d8-8e07-d9609a3ca230",
-      "feature": "dashboards",
-      "can_access": true,
-      "can_view": true,
-      "can_create": false,
-      "can_edit": false,
-      "can_delete": false,
-      "can_approve": false,
-      "can_publish": false
-    },
-    {
-      "id": "a0792313-2541-5afa-acec-f6c8e5d66dd0",
-      "role_id": "68bc119b-43b3-56d8-8e07-d9609a3ca230",
-      "feature": "whitelist",
-      "can_access": true,
-      "can_view": true,
-      "can_create": true,
-      "can_edit": true,
-      "can_delete": false,
-      "can_approve": false,
-      "can_publish": false
-    },
-    {
-      "id": "f3dacdc7-1375-58c3-8eb9-664c5570c487",
       "role_id": "c1209fa6-ef07-5bba-b757-45519025c21e",
-      "feature": "events",
-      "can_access": true,
-      "can_view": true,
-      "can_create": true,
-      "can_edit": true,
-      "can_delete": true,
-      "can_approve": true,
-      "can_publish": true
+      "permission": "manage_dashboard"
     },
     {
-      "id": "c713f967-a728-5839-a187-ef44b1eab396",
       "role_id": "c1209fa6-ef07-5bba-b757-45519025c21e",
-      "feature": "registrations",
-      "can_access": true,
-      "can_view": true,
-      "can_create": true,
-      "can_edit": true,
-      "can_delete": true,
-      "can_approve": true,
-      "can_publish": true
+      "permission": "manage_event"
     },
     {
-      "id": "8bc51c68-7a52-503a-b493-08138e757080",
       "role_id": "c1209fa6-ef07-5bba-b757-45519025c21e",
-      "feature": "surveys",
-      "can_access": true,
-      "can_view": true,
-      "can_create": true,
-      "can_edit": true,
-      "can_delete": true,
-      "can_approve": true,
-      "can_publish": true
+      "permission": "manage_registration_form"
     },
     {
-      "id": "3901cdd9-be49-56b6-b83b-14f881bdb3b9",
       "role_id": "c1209fa6-ef07-5bba-b757-45519025c21e",
-      "feature": "dashboards",
-      "can_access": true,
-      "can_view": true,
-      "can_create": true,
-      "can_edit": true,
-      "can_delete": true,
-      "can_approve": true,
-      "can_publish": true
+      "permission": "manage_survey_form"
     },
     {
-      "id": "d0098dc4-36b2-523d-99a6-856f160347b4",
       "role_id": "c1209fa6-ef07-5bba-b757-45519025c21e",
-      "feature": "whitelist",
-      "can_access": true,
-      "can_view": true,
-      "can_create": true,
-      "can_edit": true,
-      "can_delete": true,
-      "can_approve": true,
-      "can_publish": true
+      "permission": "manage_sub_user"
     },
     {
-      "id": "9b5d098d-2475-539b-8166-477d29c0031a",
       "role_id": "c1209fa6-ef07-5bba-b757-45519025c21e",
-      "feature": "users",
-      "can_access": true,
-      "can_view": true,
-      "can_create": true,
-      "can_edit": true,
-      "can_delete": true,
-      "can_approve": true,
-      "can_publish": true
+      "permission": "approve"
     },
     {
-      "id": "37dc4c67-d08d-53e1-820f-00ae199ec31c",
-      "role_id": "c1209fa6-ef07-5bba-b757-45519025c21e",
-      "feature": "audit_logs",
-      "can_access": true,
-      "can_view": true,
-      "can_create": true,
-      "can_edit": true,
-      "can_delete": true,
-      "can_approve": true,
-      "can_publish": true
+      "role_id": "9d35db90-07bd-5420-8a2b-c84977910d09",
+      "permission": "manage_dashboard"
     },
     {
-      "id": "f453682e-c52f-5404-a6a1-703243a5de4a",
-      "role_id": "c1209fa6-ef07-5bba-b757-45519025c21e",
-      "feature": "branding",
-      "can_access": true,
-      "can_view": true,
-      "can_create": true,
-      "can_edit": true,
-      "can_delete": true,
-      "can_approve": true,
-      "can_publish": true
+      "role_id": "9d35db90-07bd-5420-8a2b-c84977910d09",
+      "permission": "manage_event"
+    },
+    {
+      "role_id": "9d35db90-07bd-5420-8a2b-c84977910d09",
+      "permission": "manage_registration_form"
+    },
+    {
+      "role_id": "9d35db90-07bd-5420-8a2b-c84977910d09",
+      "permission": "manage_survey_form"
+    },
+    {
+      "role_id": "9d35db90-07bd-5420-8a2b-c84977910d09",
+      "permission": "manage_sub_user"
+    },
+    {
+      "role_id": "9d35db90-07bd-5420-8a2b-c84977910d09",
+      "permission": "approve"
+    },
+    {
+      "role_id": "9d35db90-07bd-5420-8a2b-c84977910d09",
+      "permission": "view_unmasked_pii"
     }
   ],
   "events": [
@@ -423,7 +233,6 @@
       "ends_at": "2026-11-15T10:00:00Z",
       "timezone": "Asia/Bangkok",
       "banner_url": "https://cdn.example.com/banners/tech-summit-2026.jpg",
-      "banner_aspect_ratio": "3:4",
       "created_by_user_id": "dff5877d-7b9d-5a71-b9cd-dfce68f0de89",
       "published_at": "2026-10-01T08:00:00Z",
       "closed_at": null,
@@ -442,7 +251,6 @@
       "ends_at": "2026-12-05T09:00:00Z",
       "timezone": "Asia/Bangkok",
       "banner_url": "https://cdn.example.com/banners/wellness-day-2026.jpg",
-      "banner_aspect_ratio": "3:4",
       "created_by_user_id": "a4472b2b-9581-52a5-899d-fd94ed85bfc3",
       "published_at": "2026-10-10T08:00:00Z",
       "closed_at": null,
@@ -461,7 +269,6 @@
       "ends_at": "2027-01-20T08:00:00Z",
       "timezone": "Asia/Bangkok",
       "banner_url": null,
-      "banner_aspect_ratio": "3:4",
       "created_by_user_id": "2fe6a003-59af-5f7d-a768-e8539b43f837",
       "published_at": null,
       "closed_at": null,
@@ -476,6 +283,7 @@
       "id": "bc6f59b6-c67c-597b-a6b9-3ca2b7e29b35",
       "event_id": "452ac247-5c88-59ca-8de7-c5a329c71317",
       "locale_code": "th",
+      "display_order": 1,
       "title": "เทคซัมมิต 2026",
       "summary": "งานรวมตัวนักพัฒนาและผู้สนใจเทคโนโลยีในไทย",
       "description": "ร่วมฟังบรรยาย อัปเดตเทรนด์ และเชื่อมต่อกับชุมชนนักพัฒนา ทั้ง AI, Web และ Cloud",
@@ -488,6 +296,7 @@
       "id": "c2b264bb-fc42-59ab-8f60-aca295041187",
       "event_id": "452ac247-5c88-59ca-8de7-c5a329c71317",
       "locale_code": "en",
+      "display_order": 2,
       "title": "Tech Summit 2026",
       "summary": "A gathering for developers and technology enthusiasts in Thailand",
       "description": "Join talks, trend updates, and community networking across AI, Web, and Cloud.",
@@ -500,6 +309,7 @@
       "id": "0a4bf48e-6250-5dba-8a8a-424f9c2baec5",
       "event_id": "dbc642a1-efd7-5ba1-ab44-956b212f0c2f",
       "locale_code": "th",
+      "display_order": 1,
       "title": "วันสุขภาพองค์กร 2026",
       "summary": "กิจกรรมสุขภาพและสมดุลชีวิตสำหรับพนักงาน",
       "description": "เวิร์กช็อปโยคะ โภชนาการ และการจัดการความเครียดในที่ทำงาน",
@@ -512,6 +322,7 @@
       "id": "b0f3b408-1d17-57ef-8564-9e616160f3aa",
       "event_id": "dbc642a1-efd7-5ba1-ab44-956b212f0c2f",
       "locale_code": "en",
+      "display_order": 2,
       "title": "Corporate Wellness Day 2026",
       "summary": "Health and work-life balance activities for employees",
       "description": "Workshops on yoga, nutrition, and workplace stress management.",
@@ -524,6 +335,7 @@
       "id": "02ffe5ee-d63c-55f1-bd3d-1c55914b0e19",
       "event_id": "550267c4-98f1-5ffc-94c6-81155429cd03",
       "locale_code": "th",
+      "display_order": 1,
       "title": "มีตอัปชุมชน (ร่าง)",
       "summary": "ร่างอีเวนต์สำหรับทดสอบสถานะ draft",
       "description": "รายละเอียดยังไม่เผยแพร่",
@@ -536,6 +348,7 @@
       "id": "c6854d9c-e499-5db7-9b41-1731997ba088",
       "event_id": "550267c4-98f1-5ffc-94c6-81155429cd03",
       "locale_code": "en",
+      "display_order": 2,
       "title": "Community Meetup (Draft)",
       "summary": "Draft event used for testing draft status",
       "description": "Details are not published yet.",
@@ -718,7 +531,6 @@
     {
       "id": "0461a97a-e8c3-5678-9086-290f5128d5c5",
       "form_id": "89e426a3-3b34-50f1-821f-d485abab001b",
-      "field_key": "full_name",
       "type": "short_text",
       "display_order": 1,
       "is_required": true,
@@ -735,7 +547,6 @@
     {
       "id": "db92199f-e496-5c1f-9427-366799214536",
       "form_id": "89e426a3-3b34-50f1-821f-d485abab001b",
-      "field_key": "email",
       "type": "short_text",
       "display_order": 2,
       "is_required": true,
@@ -752,7 +563,6 @@
     {
       "id": "d9b66c8b-f462-5589-8d45-96e5dd65343a",
       "form_id": "89e426a3-3b34-50f1-821f-d485abab001b",
-      "field_key": "employee_id",
       "type": "short_text",
       "display_order": 3,
       "is_required": true,
@@ -769,7 +579,6 @@
     {
       "id": "a524e451-6403-5262-b13c-d6170703eb9a",
       "form_id": "89e426a3-3b34-50f1-821f-d485abab001b",
-      "field_key": "interest_track",
       "type": "radio",
       "display_order": 4,
       "is_required": true,
@@ -786,7 +595,6 @@
     {
       "id": "53f079d1-1d22-592a-92ea-bf0190ae8e74",
       "form_id": "89e426a3-3b34-50f1-821f-d485abab001b",
-      "field_key": "topics",
       "type": "checkbox",
       "display_order": 5,
       "is_required": false,
@@ -803,7 +611,6 @@
     {
       "id": "14a02883-7642-5d10-a696-0522ca33b793",
       "form_id": "89e426a3-3b34-50f1-821f-d485abab001b",
-      "field_key": "tshirt_size",
       "type": "dropdown",
       "display_order": 6,
       "is_required": true,
@@ -820,7 +627,6 @@
     {
       "id": "2e2d31f5-7bc6-5744-a2e9-9ce66a73f2de",
       "form_id": "d6a6e0c7-6e71-5f0f-88c2-bdf4f1c52c2c",
-      "field_key": "overall_rating",
       "type": "rating",
       "display_order": 1,
       "is_required": true,
@@ -837,7 +643,6 @@
     {
       "id": "fa9e4322-e148-57c4-bbdc-8f0ad40d9d0f",
       "form_id": "d6a6e0c7-6e71-5f0f-88c2-bdf4f1c52c2c",
-      "field_key": "would_recommend",
       "type": "radio",
       "display_order": 2,
       "is_required": true,
@@ -854,7 +659,6 @@
     {
       "id": "2d5edc99-10ee-5697-81e1-113b7bbbab1d",
       "form_id": "d6a6e0c7-6e71-5f0f-88c2-bdf4f1c52c2c",
-      "field_key": "feedback",
       "type": "long_text",
       "display_order": 3,
       "is_required": false,
@@ -871,7 +675,6 @@
     {
       "id": "f0c6d202-adeb-50ad-b8fc-761bae2301e9",
       "form_id": "d6a6e0c7-6e71-5f0f-88c2-bdf4f1c52c2c",
-      "field_key": "nps_score",
       "type": "number",
       "display_order": 4,
       "is_required": true,
@@ -888,7 +691,6 @@
     {
       "id": "e6309edf-fa9a-5c45-8224-c88c20600aef",
       "form_id": "35c5334a-f1e3-5479-b5b8-33b96d5d922d",
-      "field_key": "full_name",
       "type": "short_text",
       "display_order": 1,
       "is_required": true,
@@ -905,7 +707,6 @@
     {
       "id": "5cd40f7d-4281-51dd-bc8d-747b782cf881",
       "form_id": "35c5334a-f1e3-5479-b5b8-33b96d5d922d",
-      "field_key": "email",
       "type": "short_text",
       "display_order": 2,
       "is_required": true,
@@ -922,7 +723,6 @@
     {
       "id": "f085db7d-1fee-57ad-a666-3cece4d3eb23",
       "form_id": "35c5334a-f1e3-5479-b5b8-33b96d5d922d",
-      "field_key": "preferred_activity",
       "type": "dropdown",
       "display_order": 3,
       "is_required": true,
@@ -939,7 +739,6 @@
     {
       "id": "d14221bc-9a89-5fb9-8ff6-8e34e05055d4",
       "form_id": "35c5334a-f1e3-5479-b5b8-33b96d5d922d",
-      "field_key": "preferred_date",
       "type": "date",
       "display_order": 4,
       "is_required": false,
@@ -956,7 +755,6 @@
     {
       "id": "9d398647-9906-511f-825b-beb094265724",
       "form_id": "eeec9663-1768-55b6-9c94-01a72acc5c3a",
-      "field_key": "energy_level",
       "type": "rating",
       "display_order": 1,
       "is_required": true,
@@ -973,7 +771,6 @@
     {
       "id": "b07b303c-4adb-55c2-a974-3a4dc96beeb4",
       "form_id": "eeec9663-1768-55b6-9c94-01a72acc5c3a",
-      "field_key": "comment",
       "type": "long_text",
       "display_order": 2,
       "is_required": false,
@@ -990,7 +787,6 @@
     {
       "id": "0675879a-b4ff-5f39-a3a2-1531c379f50f",
       "form_id": "0486f101-9307-509d-a770-1f501a622503",
-      "field_key": "full_name",
       "type": "short_text",
       "display_order": 1,
       "is_required": true,
@@ -1011,279 +807,244 @@
       "field_id": "0461a97a-e8c3-5678-9086-290f5128d5c5",
       "locale_code": "th",
       "label": "ชื่อ-นามสกุล",
-      "placeholder": "เช่น สมชาย ใจดี",
-      "validation_message": "กรุณากรอกชื่อ-นามสกุล"
+      "placeholder": "เช่น สมชาย ใจดี"
     },
     {
       "id": "6f60b0de-ff8a-5325-a1c8-d70cda8ef1ea",
       "field_id": "0461a97a-e8c3-5678-9086-290f5128d5c5",
       "locale_code": "en",
       "label": "Full name",
-      "placeholder": "e.g. Somchai Jaidee",
-      "validation_message": "Please enter your full name"
+      "placeholder": "e.g. Somchai Jaidee"
     },
     {
       "id": "984fd0b6-2567-5954-8ad4-4c8a617f3e08",
       "field_id": "db92199f-e496-5c1f-9427-366799214536",
       "locale_code": "th",
       "label": "อีเมล",
-      "placeholder": "you@example.com",
-      "validation_message": "รูปแบบอีเมลไม่ถูกต้อง"
+      "placeholder": "you@example.com"
     },
     {
       "id": "8d2aa1f5-b86c-5046-998e-87674266e240",
       "field_id": "db92199f-e496-5c1f-9427-366799214536",
       "locale_code": "en",
       "label": "Email",
-      "placeholder": "you@example.com",
-      "validation_message": "Invalid email format"
+      "placeholder": "you@example.com"
     },
     {
       "id": "7c52527a-04c8-5491-8399-f82937b2ba0f",
       "field_id": "d9b66c8b-f462-5589-8d45-96e5dd65343a",
       "locale_code": "th",
       "label": "รหัสพนักงาน",
-      "placeholder": "EMP001",
-      "validation_message": "กรุณากรอกรหัสพนักงาน"
+      "placeholder": "EMP001"
     },
     {
       "id": "6bb1389d-a66a-5401-acc6-3a8d9573842e",
       "field_id": "d9b66c8b-f462-5589-8d45-96e5dd65343a",
       "locale_code": "en",
       "label": "Employee ID",
-      "placeholder": "EMP001",
-      "validation_message": "Please enter your employee ID"
+      "placeholder": "EMP001"
     },
     {
       "id": "fd07257d-6b69-5717-9d46-59c638baba00",
       "field_id": "a524e451-6403-5262-b13c-d6170703eb9a",
       "locale_code": "th",
       "label": "แทร็กที่สนใจ",
-      "placeholder": null,
-      "validation_message": "กรุณาเลือกแทร็ก"
+      "placeholder": null
     },
     {
       "id": "5a285683-cf35-570e-ad2f-b024795f577c",
       "field_id": "a524e451-6403-5262-b13c-d6170703eb9a",
       "locale_code": "en",
       "label": "Interest track",
-      "placeholder": null,
-      "validation_message": "Please select a track"
+      "placeholder": null
     },
     {
       "id": "b0a5b5fa-e912-5e4b-8856-862e7e532468",
       "field_id": "53f079d1-1d22-592a-92ea-bf0190ae8e74",
       "locale_code": "th",
       "label": "หัวข้อที่อยากฟังเพิ่ม",
-      "placeholder": null,
-      "validation_message": null
+      "placeholder": null
     },
     {
       "id": "10e8039a-e03a-51c7-ba14-0eb42ac07cab",
       "field_id": "53f079d1-1d22-592a-92ea-bf0190ae8e74",
       "locale_code": "en",
       "label": "Extra topics of interest",
-      "placeholder": null,
-      "validation_message": null
+      "placeholder": null
     },
     {
       "id": "df3cb251-2cc3-5e65-b852-3cec9d2c5f6e",
       "field_id": "14a02883-7642-5d10-a696-0522ca33b793",
       "locale_code": "th",
       "label": "ขนาดเสื้อ",
-      "placeholder": "เลือกขนาด",
-      "validation_message": "กรุณาเลือกขนาดเสื้อ"
+      "placeholder": "เลือกขนาด"
     },
     {
       "id": "20b354d4-8ed7-58ee-965a-5554a9aa6503",
       "field_id": "14a02883-7642-5d10-a696-0522ca33b793",
       "locale_code": "en",
       "label": "T-shirt size",
-      "placeholder": "Select a size",
-      "validation_message": "Please select a t-shirt size"
+      "placeholder": "Select a size"
     },
     {
       "id": "2205ef74-7e2f-5b34-897a-c96b5bc99ce6",
       "field_id": "2e2d31f5-7bc6-5744-a2e9-9ce66a73f2de",
       "locale_code": "th",
       "label": "คะแนนความพึงพอใจโดยรวม",
-      "placeholder": null,
-      "validation_message": "กรุณาให้คะแนน"
+      "placeholder": null
     },
     {
       "id": "c06d65b2-370c-524b-a4e6-1a190d483007",
       "field_id": "2e2d31f5-7bc6-5744-a2e9-9ce66a73f2de",
       "locale_code": "en",
       "label": "Overall satisfaction rating",
-      "placeholder": null,
-      "validation_message": "Please provide a rating"
+      "placeholder": null
     },
     {
       "id": "41130ef1-e95d-52be-8b04-a4a487a061ae",
       "field_id": "fa9e4322-e148-57c4-bbdc-8f0ad40d9d0f",
       "locale_code": "th",
       "label": "จะแนะนำงานนี้ให้เพื่อนหรือไม่",
-      "placeholder": null,
-      "validation_message": "กรุณาเลือกคำตอบ"
+      "placeholder": null
     },
     {
       "id": "4034d3b8-829c-5810-9017-70cc13f056e7",
       "field_id": "fa9e4322-e148-57c4-bbdc-8f0ad40d9d0f",
       "locale_code": "en",
       "label": "Would you recommend this event?",
-      "placeholder": null,
-      "validation_message": "Please select an answer"
+      "placeholder": null
     },
     {
       "id": "2bd9f3b3-ba4f-5ce8-935e-9447080a27f5",
       "field_id": "2d5edc99-10ee-5697-81e1-113b7bbbab1d",
       "locale_code": "th",
       "label": "ข้อเสนอแนะเพิ่มเติม",
-      "placeholder": "พิมพ์ความคิดเห็นของคุณ",
-      "validation_message": null
+      "placeholder": "พิมพ์ความคิดเห็นของคุณ"
     },
     {
       "id": "3a995ee8-b58b-5711-be3c-fdad5485bb61",
       "field_id": "2d5edc99-10ee-5697-81e1-113b7bbbab1d",
       "locale_code": "en",
       "label": "Additional feedback",
-      "placeholder": "Type your feedback",
-      "validation_message": null
+      "placeholder": "Type your feedback"
     },
     {
       "id": "9ed8c2ed-c14f-500a-a1df-7195dab920b4",
       "field_id": "f0c6d202-adeb-50ad-b8fc-761bae2301e9",
       "locale_code": "th",
       "label": "คะแนน NPS (0-10)",
-      "placeholder": "8",
-      "validation_message": "กรอกตัวเลข 0 ถึง 10"
+      "placeholder": "8"
     },
     {
       "id": "f278cb78-ef22-5d89-bc9a-d7c9ce609cc2",
       "field_id": "f0c6d202-adeb-50ad-b8fc-761bae2301e9",
       "locale_code": "en",
       "label": "NPS score (0-10)",
-      "placeholder": "8",
-      "validation_message": "Enter a number from 0 to 10"
+      "placeholder": "8"
     },
     {
       "id": "6930e277-f2d0-5a67-b4d8-860323b9f457",
       "field_id": "e6309edf-fa9a-5c45-8224-c88c20600aef",
       "locale_code": "th",
       "label": "ชื่อ-นามสกุล",
-      "placeholder": "ชื่อของคุณ",
-      "validation_message": "จำเป็นต้องกรอก"
+      "placeholder": "ชื่อของคุณ"
     },
     {
       "id": "e4801667-d57b-5469-b4e0-b5ee5a5a1cfe",
       "field_id": "e6309edf-fa9a-5c45-8224-c88c20600aef",
       "locale_code": "en",
       "label": "Full name",
-      "placeholder": "Your name",
-      "validation_message": "Required"
+      "placeholder": "Your name"
     },
     {
       "id": "25e4a78d-1e31-5785-9912-247105373662",
       "field_id": "5cd40f7d-4281-51dd-bc8d-747b782cf881",
       "locale_code": "th",
       "label": "อีเมล",
-      "placeholder": "you@company.com",
-      "validation_message": "รูปแบบอีเมลไม่ถูกต้อง"
+      "placeholder": "you@company.com"
     },
     {
       "id": "26ccf87b-7226-5b85-89ce-ff36605cf6e7",
       "field_id": "5cd40f7d-4281-51dd-bc8d-747b782cf881",
       "locale_code": "en",
       "label": "Email",
-      "placeholder": "you@company.com",
-      "validation_message": "Invalid email format"
+      "placeholder": "you@company.com"
     },
     {
       "id": "e4db793d-8f54-53f7-aa76-9a08a69fb13f",
       "field_id": "f085db7d-1fee-57ad-a666-3cece4d3eb23",
       "locale_code": "th",
       "label": "กิจกรรมที่สนใจ",
-      "placeholder": "เลือกกิจกรรม",
-      "validation_message": "กรุณาเลือกกิจกรรม"
+      "placeholder": "เลือกกิจกรรม"
     },
     {
       "id": "6787a9f3-52b6-585a-ad02-683040583941",
       "field_id": "f085db7d-1fee-57ad-a666-3cece4d3eb23",
       "locale_code": "en",
       "label": "Preferred activity",
-      "placeholder": "Choose an activity",
-      "validation_message": "Please choose an activity"
+      "placeholder": "Choose an activity"
     },
     {
       "id": "e6605f58-c30e-52b4-8f11-b89a87111db7",
       "field_id": "d14221bc-9a89-5fb9-8ff6-8e34e05055d4",
       "locale_code": "th",
       "label": "วันที่สะดวก (ถ้ามีรอบย่อย)",
-      "placeholder": null,
-      "validation_message": null
+      "placeholder": null
     },
     {
       "id": "7a639097-79f7-52f0-8f61-b4e1eebc967f",
       "field_id": "d14221bc-9a89-5fb9-8ff6-8e34e05055d4",
       "locale_code": "en",
       "label": "Preferred date (if sessions vary)",
-      "placeholder": null,
-      "validation_message": null
+      "placeholder": null
     },
     {
       "id": "6ad4a4db-40c2-57f8-b21e-94ba7917946d",
       "field_id": "9d398647-9906-511f-825b-beb094265724",
       "locale_code": "th",
       "label": "ระดับพลังงานหลังกิจกรรม",
-      "placeholder": null,
-      "validation_message": "กรุณาให้คะแนน"
+      "placeholder": null
     },
     {
       "id": "90c5c969-b002-5b3e-889f-fac3ac98dac6",
       "field_id": "9d398647-9906-511f-825b-beb094265724",
       "locale_code": "en",
       "label": "Energy level after activities",
-      "placeholder": null,
-      "validation_message": "Please rate"
+      "placeholder": null
     },
     {
       "id": "8d0ced9b-0a05-5eec-aa30-259c8308df1a",
       "field_id": "b07b303c-4adb-55c2-a974-3a4dc96beeb4",
       "locale_code": "th",
       "label": "ความคิดเห็น",
-      "placeholder": "พิมพ์ได้ที่นี่",
-      "validation_message": null
+      "placeholder": "พิมพ์ได้ที่นี่"
     },
     {
       "id": "5cc9af60-03b6-50d8-b1a2-f3eacb64cd00",
       "field_id": "b07b303c-4adb-55c2-a974-3a4dc96beeb4",
       "locale_code": "en",
       "label": "Comments",
-      "placeholder": "Type here",
-      "validation_message": null
+      "placeholder": "Type here"
     },
     {
       "id": "c2ab4d77-6aec-5bf2-8f74-8f3291cdf1a1",
       "field_id": "0675879a-b4ff-5f39-a3a2-1531c379f50f",
       "locale_code": "th",
       "label": "ชื่อ",
-      "placeholder": null,
-      "validation_message": null
+      "placeholder": null
     },
     {
       "id": "f6ed9841-ce7d-504e-9c44-6758775a0753",
       "field_id": "0675879a-b4ff-5f39-a3a2-1531c379f50f",
       "locale_code": "en",
       "label": "Name",
-      "placeholder": null,
-      "validation_message": null
+      "placeholder": null
     }
   ],
   "field_options": [
     {
       "id": "11c7d037-b62e-5aba-b432-f5aafea3dc37",
       "field_id": "a524e451-6403-5262-b13c-d6170703eb9a",
-      "option_key": "ai",
       "display_order": 1,
       "created_at": "2026-10-24T10:00:00Z",
       "deleted_at": null
@@ -1291,7 +1052,6 @@
     {
       "id": "f15cf215-4093-58b1-afcc-36e367afe3ec",
       "field_id": "a524e451-6403-5262-b13c-d6170703eb9a",
-      "option_key": "web",
       "display_order": 2,
       "created_at": "2026-10-24T10:00:00Z",
       "deleted_at": null
@@ -1299,7 +1059,6 @@
     {
       "id": "99c3f603-1ba0-538e-a5de-cf2f22042f07",
       "field_id": "a524e451-6403-5262-b13c-d6170703eb9a",
-      "option_key": "cloud",
       "display_order": 3,
       "created_at": "2026-10-24T10:00:00Z",
       "deleted_at": null
@@ -1307,7 +1066,6 @@
     {
       "id": "4c48923e-c5e1-561b-9cce-57f0119fb3eb",
       "field_id": "53f079d1-1d22-592a-92ea-bf0190ae8e74",
-      "option_key": "security",
       "display_order": 1,
       "created_at": "2026-10-24T10:00:00Z",
       "deleted_at": null
@@ -1315,7 +1073,6 @@
     {
       "id": "966af093-ba69-5a9d-94c2-e781da1db715",
       "field_id": "53f079d1-1d22-592a-92ea-bf0190ae8e74",
-      "option_key": "data",
       "display_order": 2,
       "created_at": "2026-10-24T10:00:00Z",
       "deleted_at": null
@@ -1323,7 +1080,6 @@
     {
       "id": "8672396a-6fe4-5e4e-9553-29466c97532c",
       "field_id": "53f079d1-1d22-592a-92ea-bf0190ae8e74",
-      "option_key": "product",
       "display_order": 3,
       "created_at": "2026-10-24T10:00:00Z",
       "deleted_at": null
@@ -1331,7 +1087,6 @@
     {
       "id": "cf9ec3bd-752a-54b5-b941-449df76968d5",
       "field_id": "14a02883-7642-5d10-a696-0522ca33b793",
-      "option_key": "s",
       "display_order": 1,
       "created_at": "2026-10-24T10:00:00Z",
       "deleted_at": null
@@ -1339,7 +1094,6 @@
     {
       "id": "d9db5839-a0c5-5755-8218-095c1cd02030",
       "field_id": "14a02883-7642-5d10-a696-0522ca33b793",
-      "option_key": "m",
       "display_order": 2,
       "created_at": "2026-10-24T10:00:00Z",
       "deleted_at": null
@@ -1347,7 +1101,6 @@
     {
       "id": "7f38cf70-1a51-5d0f-96d6-3e48d499c4e3",
       "field_id": "14a02883-7642-5d10-a696-0522ca33b793",
-      "option_key": "l",
       "display_order": 3,
       "created_at": "2026-10-24T10:00:00Z",
       "deleted_at": null
@@ -1355,7 +1108,6 @@
     {
       "id": "dcd9585f-45e0-51ea-a2b0-ac4dc2a4b288",
       "field_id": "14a02883-7642-5d10-a696-0522ca33b793",
-      "option_key": "xl",
       "display_order": 4,
       "created_at": "2026-10-24T10:00:00Z",
       "deleted_at": null
@@ -1363,7 +1115,6 @@
     {
       "id": "86786e6a-6351-5e8b-8dbf-03628f1faa21",
       "field_id": "fa9e4322-e148-57c4-bbdc-8f0ad40d9d0f",
-      "option_key": "yes",
       "display_order": 1,
       "created_at": "2026-10-24T10:00:00Z",
       "deleted_at": null
@@ -1371,7 +1122,6 @@
     {
       "id": "33680630-40bf-5e47-a332-7ca3b18e2826",
       "field_id": "fa9e4322-e148-57c4-bbdc-8f0ad40d9d0f",
-      "option_key": "maybe",
       "display_order": 2,
       "created_at": "2026-10-24T10:00:00Z",
       "deleted_at": null
@@ -1379,7 +1129,6 @@
     {
       "id": "a952fb6d-ebb0-5c70-adb4-d256caa4fc05",
       "field_id": "fa9e4322-e148-57c4-bbdc-8f0ad40d9d0f",
-      "option_key": "no",
       "display_order": 3,
       "created_at": "2026-10-24T10:00:00Z",
       "deleted_at": null
@@ -1387,7 +1136,6 @@
     {
       "id": "615d3e2a-48c0-5203-87c0-11ac711f7197",
       "field_id": "f085db7d-1fee-57ad-a666-3cece4d3eb23",
-      "option_key": "yoga",
       "display_order": 1,
       "created_at": "2026-10-24T10:00:00Z",
       "deleted_at": null
@@ -1395,7 +1143,6 @@
     {
       "id": "4d095081-efc7-5f2c-8327-4a5beff9cca2",
       "field_id": "f085db7d-1fee-57ad-a666-3cece4d3eb23",
-      "option_key": "running",
       "display_order": 2,
       "created_at": "2026-10-24T10:00:00Z",
       "deleted_at": null
@@ -1403,7 +1150,6 @@
     {
       "id": "db2fd617-e3d7-533d-8f50-21e3f7f7b782",
       "field_id": "f085db7d-1fee-57ad-a666-3cece4d3eb23",
-      "option_key": "nutrition",
       "display_order": 3,
       "created_at": "2026-10-24T10:00:00Z",
       "deleted_at": null
@@ -1605,26 +1351,20 @@
   ],
   "registration_settings": [
     {
-      "id": "89e426a3-3b34-50f1-821f-d485abab001b",
       "form_id": "89e426a3-3b34-50f1-821f-d485abab001b",
       "capacity": 200,
-      "duplicate_check_enabled": true,
       "unique_field_id": "d9b66c8b-f462-5589-8d45-96e5dd65343a",
       "whitelist_enabled": true
     },
     {
-      "id": "35c5334a-f1e3-5479-b5b8-33b96d5d922d",
       "form_id": "35c5334a-f1e3-5479-b5b8-33b96d5d922d",
       "capacity": 80,
-      "duplicate_check_enabled": true,
       "unique_field_id": "5cd40f7d-4281-51dd-bc8d-747b782cf881",
       "whitelist_enabled": false
     },
     {
-      "id": "0486f101-9307-509d-a770-1f501a622503",
       "form_id": "0486f101-9307-509d-a770-1f501a622503",
       "capacity": null,
-      "duplicate_check_enabled": false,
       "unique_field_id": null,
       "whitelist_enabled": false
     }
@@ -1634,7 +1374,6 @@
       "id": "7a61f993-63b9-5116-bced-7cc6e3bc0cb5",
       "registration_form_id": "89e426a3-3b34-50f1-821f-d485abab001b",
       "normalized_unique_value": "emp001",
-      "invitation_code": "482913",
       "status": "used",
       "used_at": "2026-10-12T03:15:00Z",
       "created_at": "2026-10-02T02:00:00Z",
@@ -1644,7 +1383,6 @@
       "id": "9635dbe4-7ec4-5d7b-a455-1d624d0cc42a",
       "registration_form_id": "89e426a3-3b34-50f1-821f-d485abab001b",
       "normalized_unique_value": "emp002",
-      "invitation_code": "193746",
       "status": "used",
       "used_at": "2026-10-12T04:20:00Z",
       "created_at": "2026-10-02T02:00:00Z",
@@ -1654,7 +1392,6 @@
       "id": "a3ff293e-402e-5550-8111-9cefdee5558c",
       "registration_form_id": "89e426a3-3b34-50f1-821f-d485abab001b",
       "normalized_unique_value": "emp003",
-      "invitation_code": "557201",
       "status": "available",
       "used_at": null,
       "created_at": "2026-10-02T02:00:00Z",
@@ -1664,7 +1401,6 @@
       "id": "cd3c9f20-1414-500a-8f49-365c9a97a31c",
       "registration_form_id": "89e426a3-3b34-50f1-821f-d485abab001b",
       "normalized_unique_value": "emp004",
-      "invitation_code": "660184",
       "status": "available",
       "used_at": null,
       "created_at": "2026-10-02T02:00:00Z",
@@ -1674,7 +1410,6 @@
       "id": "a077c9ef-4802-53d7-9dc8-b0f487a4a28b",
       "registration_form_id": "89e426a3-3b34-50f1-821f-d485abab001b",
       "normalized_unique_value": "emp005",
-      "invitation_code": null,
       "status": "revoked",
       "used_at": null,
       "created_at": "2026-10-02T02:00:00Z",
@@ -1766,28 +1501,24 @@
   ],
   "registrations": [
     {
-      "id": "38e9ffaf-77bc-51bb-a286-3544c352c9eb",
       "submission_id": "38e9ffaf-77bc-51bb-a286-3544c352c9eb",
       "whitelist_entry_id": "7a61f993-63b9-5116-bced-7cc6e3bc0cb5",
-      "reference_code": "A1B2C3"
+      "confirmation_code": "A1B2C3"
     },
     {
-      "id": "15de7c3b-1946-5273-83cc-c648ada76547",
       "submission_id": "15de7c3b-1946-5273-83cc-c648ada76547",
       "whitelist_entry_id": "9635dbe4-7ec4-5d7b-a455-1d624d0cc42a",
-      "reference_code": "D4E5F6"
+      "confirmation_code": "D4E5F6"
     },
     {
-      "id": "4dbf8fe7-acc1-5d92-a5bb-e0f2cf786a34",
       "submission_id": "4dbf8fe7-acc1-5d92-a5bb-e0f2cf786a34",
       "whitelist_entry_id": null,
-      "reference_code": "W11111"
+      "confirmation_code": "W11111"
     },
     {
-      "id": "2f6a954e-a36a-5edc-a7ed-0bb97eaaa600",
       "submission_id": "2f6a954e-a36a-5edc-a7ed-0bb97eaaa600",
       "whitelist_entry_id": null,
-      "reference_code": "W22222"
+      "confirmation_code": "W22222"
     }
   ],
   "submission_answers": [
@@ -2212,333 +1943,187 @@
   ],
   "answer_option_selections": [
     {
-      "id": "796a714c-aa92-5c4e-bf27-30c0338803cb",
       "answer_id": "c61f1585-ab19-58a1-9866-d2d6b5cae3a2",
       "option_id": "11c7d037-b62e-5aba-b432-f5aafea3dc37"
     },
     {
-      "id": "bb218969-b7ee-5f2e-94c8-13d38cc88ae5",
       "answer_id": "02142809-9ca8-53be-90f3-15d076429793",
       "option_id": "4c48923e-c5e1-561b-9cce-57f0119fb3eb"
     },
     {
-      "id": "59c4951a-7e9f-583b-8607-f05b413fcd1d",
       "answer_id": "02142809-9ca8-53be-90f3-15d076429793",
       "option_id": "966af093-ba69-5a9d-94c2-e781da1db715"
     },
     {
-      "id": "5cc71c55-f4e0-5fc9-8b85-386e43238327",
       "answer_id": "bc626721-0bdd-54ba-bba1-0d7fe4e40756",
       "option_id": "7f38cf70-1a51-5d0f-96d6-3e48d499c4e3"
     },
     {
-      "id": "a67d2817-f6a3-5900-9b00-6ec11a54b9a6",
       "answer_id": "b330ad81-fd97-5974-ab91-083ace3c0c0b",
       "option_id": "f15cf215-4093-58b1-afcc-36e367afe3ec"
     },
     {
-      "id": "97436694-243d-5798-a2e8-f3479f8b360a",
       "answer_id": "c798dbd7-3b94-58ec-a516-a30813bc22ee",
       "option_id": "8672396a-6fe4-5e4e-9553-29466c97532c"
     },
     {
-      "id": "f2b00df4-842d-5953-a14d-88a7ad85d36a",
       "answer_id": "30159b16-6a8e-53d2-9c19-f0e686b0d55b",
       "option_id": "d9db5839-a0c5-5755-8218-095c1cd02030"
     },
     {
-      "id": "5a5188b2-a191-5aff-82db-3bb3474bb3cf",
       "answer_id": "e3e369f4-7918-5183-909a-392cbefbc3f8",
       "option_id": "99c3f603-1ba0-538e-a5de-cf2f22042f07"
     },
     {
-      "id": "e45cbdee-4645-5b45-ac21-3a6b56489507",
       "answer_id": "4f854b43-eb0c-5e55-a535-54bc686b35f0",
       "option_id": "dcd9585f-45e0-51ea-a2b0-ac4dc2a4b288"
     },
     {
-      "id": "2dcb7253-08f7-504a-81bd-a1ed4008240c",
       "answer_id": "aa5b365c-739c-56bd-b80d-ef881e538c6a",
       "option_id": "615d3e2a-48c0-5203-87c0-11ac711f7197"
     },
     {
-      "id": "6e95927f-14f1-5359-8d1d-be86902bd5ad",
       "answer_id": "bf7f48f4-285f-536c-a25f-fb90b42db319",
       "option_id": "4d095081-efc7-5f2c-8327-4a5beff9cca2"
     },
     {
-      "id": "bfde22f5-2734-5560-a8e9-a28d5ffff060",
       "answer_id": "2c51ead9-ac03-53a9-99e3-ee96c10a1969",
       "option_id": "86786e6a-6351-5e8b-8dbf-03628f1faa21"
     },
     {
-      "id": "8dc7cdb2-024e-5cb3-964a-2ee234fb34ce",
       "answer_id": "a71accaa-81b9-5bf9-aa05-d41de88143ab",
       "option_id": "33680630-40bf-5e47-a332-7ca3b18e2826"
     },
     {
-      "id": "7d17fd5f-e115-5f44-ac6e-39f05ccea6ab",
       "answer_id": "7fae2464-191b-5d80-a079-1c318b78a89f",
       "option_id": "86786e6a-6351-5e8b-8dbf-03628f1faa21"
     }
   ],
-  "dashboard_data": [
+  "dashboard_layouts": [
     {
-      "id": "46a46a4c-048a-5032-8eb2-e3a226198a01",
+      "id": "c57d8bf9-e30a-58b1-9eb0-9f4c4b96e7e5",
       "event_id": "452ac247-5c88-59ca-8de7-c5a329c71317",
-      "owner_user_id": "dff5877d-7b9d-5a71-b9cd-dfce68f0de89",
-      "page_key": "overview",
-      "title_th": "ภาพรวม",
-      "title_en": "Overview",
-      "description_th": "สรุปสถานะอีเวนต์และการตอบกลับ",
-      "description_en": "Event status and response summary",
-      "layout_json": {
-        "columns": 2,
-        "gap": 16
-      },
-      "display_order": 1,
-      "is_visible": true,
-      "created_at": "2026-10-24T10:00:00Z",
+      "updated_by_user_id": "dff5877d-7b9d-5a71-b9cd-dfce68f0de89",
       "updated_at": "2026-10-24T10:00:00Z"
     },
     {
-      "id": "0a2e1fc3-a190-5800-b3e5-c7d4ddc98972",
-      "event_id": "452ac247-5c88-59ca-8de7-c5a329c71317",
-      "owner_user_id": "dff5877d-7b9d-5a71-b9cd-dfce68f0de89",
-      "page_key": "registrations",
-      "title_th": "การลงทะเบียน",
-      "title_en": "Registrations",
-      "description_th": "รายละเอียดและกราฟการลงทะเบียน",
-      "description_en": "Registration details and charts",
-      "layout_json": {
-        "columns": 2,
-        "gap": 16
-      },
-      "display_order": 2,
-      "is_visible": true,
-      "created_at": "2026-10-24T10:00:00Z",
-      "updated_at": "2026-10-24T10:00:00Z"
-    },
-    {
-      "id": "3de380ff-1eba-5530-9a4c-7ae82d637543",
-      "event_id": "452ac247-5c88-59ca-8de7-c5a329c71317",
-      "owner_user_id": "dff5877d-7b9d-5a71-b9cd-dfce68f0de89",
-      "page_key": "surveys",
-      "title_th": "แบบสอบถาม",
-      "title_en": "Surveys",
-      "description_th": "ผลแบบสอบถามหลังงาน",
-      "description_en": "Post-event survey results",
-      "layout_json": {
-        "columns": 2,
-        "gap": 16
-      },
-      "display_order": 3,
-      "is_visible": true,
-      "created_at": "2026-10-24T10:00:00Z",
-      "updated_at": "2026-10-24T10:00:00Z"
-    },
-    {
-      "id": "4330db21-6686-5dbd-afc2-79306699b9f1",
-      "event_id": "452ac247-5c88-59ca-8de7-c5a329c71317",
-      "owner_user_id": "dff5877d-7b9d-5a71-b9cd-dfce68f0de89",
-      "page_key": "whitelist",
-      "title_th": "Whitelist",
-      "title_en": "Whitelist",
-      "description_th": "สถานะรายชื่อสิทธิ์เข้างาน",
-      "description_en": "Whitelist eligibility status",
-      "layout_json": {
-        "columns": 1,
-        "gap": 12
-      },
-      "display_order": 4,
-      "is_visible": true,
-      "created_at": "2026-10-24T10:00:00Z",
-      "updated_at": "2026-10-24T10:00:00Z"
-    },
-    {
-      "id": "33f5acb4-a7a4-5d2b-9fcd-a053a95662f6",
+      "id": "6a8a45d1-3ffa-5bf7-90dd-5b4a9b65920d",
       "event_id": "dbc642a1-efd7-5ba1-ab44-956b212f0c2f",
-      "owner_user_id": "a4472b2b-9581-52a5-899d-fd94ed85bfc3",
-      "page_key": "overview",
-      "title_th": "ภาพรวม",
-      "title_en": "Overview",
-      "description_th": "สรุปวันสุขภาพองค์กร",
-      "description_en": "Wellness day summary",
-      "layout_json": {
-        "columns": 2,
-        "gap": 16
-      },
-      "display_order": 1,
-      "is_visible": true,
-      "created_at": "2026-10-24T10:00:00Z",
-      "updated_at": "2026-10-24T10:00:00Z"
-    },
-    {
-      "id": "9a085bf0-b4c3-5cc3-9775-962464d6f3cc",
-      "event_id": "dbc642a1-efd7-5ba1-ab44-956b212f0c2f",
-      "owner_user_id": "a4472b2b-9581-52a5-899d-fd94ed85bfc3",
-      "page_key": "registrations",
-      "title_th": "การลงทะเบียน",
-      "title_en": "Registrations",
-      "description_th": "ผู้จองกิจกรรมสุขภาพ",
-      "description_en": "Wellness activity bookings",
-      "layout_json": {
-        "columns": 2,
-        "gap": 16
-      },
-      "display_order": 2,
-      "is_visible": true,
-      "created_at": "2026-10-24T10:00:00Z",
+      "updated_by_user_id": "a4472b2b-9581-52a5-899d-fd94ed85bfc3",
       "updated_at": "2026-10-24T10:00:00Z"
     }
   ],
   "dashboard_widgets": [
     {
-      "id": "b9fc53c1-4d91-58f1-b192-26b24a3060aa",
-      "dashboard_data_id": "46a46a4c-048a-5032-8eb2-e3a226198a01",
-      "type": "kpi",
-      "title_th": "จำนวนลงทะเบียน",
-      "title_en": "Registration count",
-      "form_id": "89e426a3-3b34-50f1-821f-d485abab001b",
-      "field_id": null,
-      "config_json": {
-        "metric": "submission_count",
-        "status": "submitted"
-      },
+      "id": "7eab065c-4da7-5c23-b7df-7926936abf62",
+      "layout_id": "c57d8bf9-e30a-58b1-9eb0-9f4c4b96e7e5",
+      "widget_type": "number",
+      "title": "Registration count",
+      "source_form_id": "89e426a3-3b34-50f1-821f-d485abab001b",
+      "source_field_id": null,
+      "aggregation": "count",
+      "chart_type": null,
+      "comparison_mode": null,
+      "target_value": null,
       "display_order": 1,
-      "created_at": "2026-10-24T10:00:00Z",
       "updated_at": "2026-10-24T10:00:00Z"
     },
     {
-      "id": "5cf4dda4-0212-583e-b925-96e4bb75ade9",
-      "dashboard_data_id": "46a46a4c-048a-5032-8eb2-e3a226198a01",
-      "type": "kpi",
-      "title_th": "จำนวนแบบสอบถาม",
-      "title_en": "Survey responses",
-      "form_id": "d6a6e0c7-6e71-5f0f-88c2-bdf4f1c52c2c",
-      "field_id": null,
-      "config_json": {
-        "metric": "submission_count",
-        "status": "submitted"
-      },
+      "id": "51adce97-7677-5591-a569-6fd5703ef738",
+      "layout_id": "c57d8bf9-e30a-58b1-9eb0-9f4c4b96e7e5",
+      "widget_type": "number",
+      "title": "Survey responses",
+      "source_form_id": "d6a6e0c7-6e71-5f0f-88c2-bdf4f1c52c2c",
+      "source_field_id": null,
+      "aggregation": "count",
+      "chart_type": null,
+      "comparison_mode": null,
+      "target_value": null,
       "display_order": 2,
-      "created_at": "2026-10-24T10:00:00Z",
       "updated_at": "2026-10-24T10:00:00Z"
     },
     {
-      "id": "489491ba-888f-5843-a7ab-95b1b656f83d",
-      "dashboard_data_id": "0a2e1fc3-a190-5800-b3e5-c7d4ddc98972",
-      "type": "pie_chart",
-      "title_th": "แทร็กที่สนใจ",
-      "title_en": "Interest track",
-      "form_id": "89e426a3-3b34-50f1-821f-d485abab001b",
-      "field_id": "a524e451-6403-5262-b13c-d6170703eb9a",
-      "config_json": {
-        "chart": "pie",
-        "source": "option_counts"
-      },
+      "id": "6b191948-7382-50f9-b020-9fc411f3525e",
+      "layout_id": "c57d8bf9-e30a-58b1-9eb0-9f4c4b96e7e5",
+      "widget_type": "comparison",
+      "title": "Registration vs capacity",
+      "source_form_id": "89e426a3-3b34-50f1-821f-d485abab001b",
+      "source_field_id": null,
+      "aggregation": "count",
+      "chart_type": null,
+      "comparison_mode": "capacity",
+      "target_value": null,
+      "display_order": 3,
+      "updated_at": "2026-10-24T10:00:00Z"
+    },
+    {
+      "id": "b145eff4-cd8b-5c26-92b9-10cb2099c5f7",
+      "layout_id": "c57d8bf9-e30a-58b1-9eb0-9f4c4b96e7e5",
+      "widget_type": "chart",
+      "title": "Interest track",
+      "source_form_id": "89e426a3-3b34-50f1-821f-d485abab001b",
+      "source_field_id": "a524e451-6403-5262-b13c-d6170703eb9a",
+      "aggregation": "count",
+      "chart_type": "pie",
+      "comparison_mode": null,
+      "target_value": null,
+      "display_order": 4,
+      "updated_at": "2026-10-24T10:00:00Z"
+    },
+    {
+      "id": "4da3ef65-ba02-5725-ac22-17fba4a40590",
+      "layout_id": "c57d8bf9-e30a-58b1-9eb0-9f4c4b96e7e5",
+      "widget_type": "chart",
+      "title": "Satisfaction rating",
+      "source_form_id": "d6a6e0c7-6e71-5f0f-88c2-bdf4f1c52c2c",
+      "source_field_id": "2e2d31f5-7bc6-5744-a2e9-9ce66a73f2de",
+      "aggregation": "count",
+      "chart_type": "bar",
+      "comparison_mode": null,
+      "target_value": null,
+      "display_order": 5,
+      "updated_at": "2026-10-24T10:00:00Z"
+    },
+    {
+      "id": "f56317ee-0c39-5f4c-96a0-81457eb208c5",
+      "layout_id": "c57d8bf9-e30a-58b1-9eb0-9f4c4b96e7e5",
+      "widget_type": "number",
+      "title": "Average NPS",
+      "source_form_id": "d6a6e0c7-6e71-5f0f-88c2-bdf4f1c52c2c",
+      "source_field_id": "f0c6d202-adeb-50ad-b8fc-761bae2301e9",
+      "aggregation": "average",
+      "chart_type": null,
+      "comparison_mode": null,
+      "target_value": null,
+      "display_order": 6,
+      "updated_at": "2026-10-24T10:00:00Z"
+    },
+    {
+      "id": "24109fe6-afb7-58a4-89cd-c9b62cff0abb",
+      "layout_id": "6a8a45d1-3ffa-5bf7-90dd-5b4a9b65920d",
+      "widget_type": "number",
+      "title": "Booking count",
+      "source_form_id": "35c5334a-f1e3-5479-b5b8-33b96d5d922d",
+      "source_field_id": null,
+      "aggregation": "count",
+      "chart_type": null,
+      "comparison_mode": null,
+      "target_value": null,
       "display_order": 1,
-      "created_at": "2026-10-24T10:00:00Z",
       "updated_at": "2026-10-24T10:00:00Z"
     },
     {
-      "id": "37b59bd5-9360-537d-816b-402f35b6471c",
-      "dashboard_data_id": "0a2e1fc3-a190-5800-b3e5-c7d4ddc98972",
-      "type": "data_table",
-      "title_th": "รายชื่อผู้ลงทะเบียน",
-      "title_en": "Registrant list",
-      "form_id": "89e426a3-3b34-50f1-821f-d485abab001b",
-      "field_id": null,
-      "config_json": {
-        "columns": [
-          "full_name",
-          "email",
-          "employee_id",
-          "submitted_at"
-        ],
-        "mask_pii": true
-      },
+      "id": "43f3728c-555a-56cb-a371-81fdff3ccf35",
+      "layout_id": "6a8a45d1-3ffa-5bf7-90dd-5b4a9b65920d",
+      "widget_type": "chart",
+      "title": "Preferred activities",
+      "source_form_id": "35c5334a-f1e3-5479-b5b8-33b96d5d922d",
+      "source_field_id": "f085db7d-1fee-57ad-a666-3cece4d3eb23",
+      "aggregation": "count",
+      "chart_type": "bar",
+      "comparison_mode": null,
+      "target_value": null,
       "display_order": 2,
-      "created_at": "2026-10-24T10:00:00Z",
-      "updated_at": "2026-10-24T10:00:00Z"
-    },
-    {
-      "id": "920f2cce-3637-5ff5-9eb0-99191898c3bc",
-      "dashboard_data_id": "3de380ff-1eba-5530-9a4c-7ae82d637543",
-      "type": "bar_chart",
-      "title_th": "คะแนนความพึงพอใจ",
-      "title_en": "Satisfaction rating",
-      "form_id": "d6a6e0c7-6e71-5f0f-88c2-bdf4f1c52c2c",
-      "field_id": "2e2d31f5-7bc6-5744-a2e9-9ce66a73f2de",
-      "config_json": {
-        "chart": "bar",
-        "source": "rating_distribution"
-      },
-      "display_order": 1,
-      "created_at": "2026-10-24T10:00:00Z",
-      "updated_at": "2026-10-24T10:00:00Z"
-    },
-    {
-      "id": "b73607dd-9962-552f-b756-e80f0cf71b44",
-      "dashboard_data_id": "3de380ff-1eba-5530-9a4c-7ae82d637543",
-      "type": "kpi",
-      "title_th": "ค่าเฉลี่ย NPS",
-      "title_en": "Average NPS",
-      "form_id": "d6a6e0c7-6e71-5f0f-88c2-bdf4f1c52c2c",
-      "field_id": "f0c6d202-adeb-50ad-b8fc-761bae2301e9",
-      "config_json": {
-        "metric": "avg",
-        "field_type": "number"
-      },
-      "display_order": 2,
-      "created_at": "2026-10-24T10:00:00Z",
-      "updated_at": "2026-10-24T10:00:00Z"
-    },
-    {
-      "id": "6b38adc9-323f-50d9-8f15-d27b6d9c6ce6",
-      "dashboard_data_id": "4330db21-6686-5dbd-afc2-79306699b9f1",
-      "type": "pie_chart",
-      "title_th": "สถานะ whitelist",
-      "title_en": "Whitelist status",
-      "form_id": "89e426a3-3b34-50f1-821f-d485abab001b",
-      "field_id": null,
-      "config_json": {
-        "source": "whitelist_status_counts"
-      },
-      "display_order": 1,
-      "created_at": "2026-10-24T10:00:00Z",
-      "updated_at": "2026-10-24T10:00:00Z"
-    },
-    {
-      "id": "3bb4635e-2250-5a94-b96f-3b8fa5794f04",
-      "dashboard_data_id": "33f5acb4-a7a4-5d2b-9fcd-a053a95662f6",
-      "type": "kpi",
-      "title_th": "จำนวนการจอง",
-      "title_en": "Booking count",
-      "form_id": "35c5334a-f1e3-5479-b5b8-33b96d5d922d",
-      "field_id": null,
-      "config_json": {
-        "metric": "submission_count",
-        "status": "submitted"
-      },
-      "display_order": 1,
-      "created_at": "2026-10-24T10:00:00Z",
-      "updated_at": "2026-10-24T10:00:00Z"
-    },
-    {
-      "id": "f32f14a4-b7dc-5210-b925-d2871e99d8a2",
-      "dashboard_data_id": "9a085bf0-b4c3-5cc3-9775-962464d6f3cc",
-      "type": "bar_chart",
-      "title_th": "กิจกรรมที่เลือก",
-      "title_en": "Preferred activities",
-      "form_id": "35c5334a-f1e3-5479-b5b8-33b96d5d922d",
-      "field_id": "f085db7d-1fee-57ad-a666-3cece4d3eb23",
-      "config_json": {
-        "chart": "bar",
-        "source": "option_counts"
-      },
-      "display_order": 1,
-      "created_at": "2026-10-24T10:00:00Z",
       "updated_at": "2026-10-24T10:00:00Z"
     }
   ],
@@ -2584,7 +2169,7 @@
     {
       "id": "c861474a-2a59-5519-88d5-2f03703fce93",
       "event_id": "452ac247-5c88-59ca-8de7-c5a329c71317",
-      "resource_type": "registration",
+      "resource_type": "submission",
       "resource_id": "7197e35d-868f-58d6-8b31-32497c4a743c",
       "display_name": "วิชัย ทดสอบลบ / EMP099",
       "deleted_by_user_id": "dff5877d-7b9d-5a71-b9cd-dfce68f0de89",
@@ -2598,7 +2183,7 @@
     {
       "id": "68d730a8-70d3-59f8-93bd-282669eb947b",
       "event_id": "452ac247-5c88-59ca-8de7-c5a329c71317",
-      "resource_type": "registration",
+      "resource_type": "submission",
       "resource_id": "7197e35d-868f-58d6-8b31-32497c4a743c",
       "reason": "ผู้เข้าร่วมขอใช้สิทธิ์ถูกลืมตาม PDPA",
       "requested_by_user_id": "dff5877d-7b9d-5a71-b9cd-dfce68f0de89",
@@ -2648,7 +2233,7 @@
       "event_id": "452ac247-5c88-59ca-8de7-c5a329c71317",
       "actor_user_id": "dff5877d-7b9d-5a71-b9cd-dfce68f0de89",
       "action": "registration.soft_delete",
-      "resource_type": "registration",
+      "resource_type": "submission",
       "resource_id": "7197e35d-868f-58d6-8b31-32497c4a743c",
       "description": "Soft-deleted a registration submission",
       "includes_unmasked_pii": false,

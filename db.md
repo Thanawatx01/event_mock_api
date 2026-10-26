@@ -7,13 +7,16 @@ Project event_survey_relational_database {
     This is a future production persistence model. The current Frontend MVP still
     uses json-server Seed Data and Client Memory. Form answers are normalized into
     typed rows so Dashboard, filtering, export, and aggregation do not need to query
-    dynamic JSON keys. No Clone Event or Clone Form feature is included.
+    dynamic JSON keys. Export produces raw CSV/XLSX files without export history or
+    PDF report generation. Privacy/Consent is a Mock Banner only and is not persisted.
+    No Clone Event or Clone Form feature is included.
   '''
 }
 
 // READING ORDER
 // 01 USERS & ACCESS -> 02 EVENTS -> 03 FORM DEFINITIONS
-// -> 04 WHITELIST -> 05 SUBMISSIONS & ANSWERS -> 06 GOVERNANCE
+// -> 04 WHITELIST -> 05 SUBMISSIONS & ANSWERS
+// -> 06 DASHBOARD CONFIGURATION -> 07 GOVERNANCE
 //
 // Main participant data path:
 // forms -> form_submissions -> submission_answers -> answer_option_selections
@@ -26,6 +29,17 @@ Project event_survey_relational_database {
 
 Enum system_role {
   platform_admin
+  event_user
+}
+
+Enum permission_code {
+  manage_dashboard
+  manage_event
+  manage_registration_form
+  manage_survey_form
+  manage_sub_user
+  approve
+  view_unmasked_pii
 }
 
 Enum account_status {
@@ -33,11 +47,6 @@ Enum account_status {
   active
   suspended
   removed
-}
-
-Enum event_member_role {
-  event_admin
-  event_sub_user
 }
 
 Enum event_status {
@@ -106,7 +115,7 @@ Enum trash_resource_type {
   form_field
   field_option
   whitelist_entry
-  registration
+  submission
 }
 
 Enum deletion_request_status {
@@ -116,92 +125,49 @@ Enum deletion_request_status {
   completed
 }
 
-Enum permission_feature {
-  events
-  registrations
-  surveys
-  dashboards
-  whitelist
-  users
-  audit_logs
-  branding
-}
-
-Enum dashboard_page_key {
-  overview
-  registrations
-  surveys
-  whitelist
-  settings
-}
-
 Enum dashboard_widget_type {
-  kpi
-  bar_chart
-  pie_chart
-  data_table
+  number
+  comparison
+  chart
+}
+
+Enum dashboard_aggregation {
+  count
+  sum
+  average
+  minimum
+  maximum
+  percentage
+}
+
+Enum dashboard_chart_type {
+  bar
+  line
+  pie
+  donut
+}
+
+Enum dashboard_comparison_mode {
+  previous_period
+  target
+  capacity
 }
 
 ////////////////////////////////////////////////////
 // 01 · IDENTITY & EVENT-SCOPED ACCESS
 ////////////////////////////////////////////////////
 
-Table roles [headercolor: #2563EB] {
-  id uuid [pk]
-  event_id uuid [not null, ref: > events.id]
-  owner_user_id uuid [not null, ref: > users.id]
-  name varchar(160) [not null]
-  description text
-  is_default boolean [not null, default: false]
-  created_at timestamptz [not null]
-  updated_at timestamptz [not null]
-
-  indexes {
-    (event_id, name) [unique]
-  }
-
-  Note: 'Custom roles owned by an Event Admin for Sub-User assignment within one Event.'
-}
-
-Table permissions [headercolor: #2563EB] {
-  id uuid [pk]
-  role_id uuid [not null, ref: > roles.id]
-  feature permission_feature [not null]
-  can_access boolean [not null, default: false]
-  can_view boolean [not null, default: false]
-  can_create boolean [not null, default: false]
-  can_edit boolean [not null, default: false]
-  can_delete boolean [not null, default: false]
-  can_approve boolean [not null, default: false]
-  can_publish boolean [not null, default: false]
-
-  indexes {
-    (role_id, feature) [unique]
-  }
-
-  Note: 'Feature x action matrix for one role. Event Admin may still use the seven can_manage_* flags on users.'
-}
-
 Table users [headercolor: #2563EB] {
   id uuid [pk]
-  email varchar(320) [not null, unique]
+  email varchar(320) [unique]
   password varchar(255) [not null]
   display_name varchar(160) [not null]
   system_role system_role [not null, default: 'event_user']
   event_id uuid [ref: > events.id]
-  event_role event_member_role
   role_id uuid [ref: > roles.id]
 
-  can_manage_dashboard boolean [not null, default: false]
-  can_manage_event boolean [not null, default: false]
-  can_manage_registration_form boolean [not null, default: false]
-  can_manage_survey_form boolean [not null, default: false]
-  can_manage_sub_user boolean [not null, default: false]
-  can_approve boolean [not null, default: false]
-  can_view_unmasked_pii boolean [not null, default: false]
-
-  permission_granted_by_user_id uuid [ref: > users.id]
-  permission_updated_at timestamptz
+  role_assigned_by_user_id uuid [ref: > users.id]
+  role_assigned_at timestamptz
   status account_status [not null, default: 'invited']
   invited_by_user_id uuid [ref: > users.id]
   joined_at timestamptz
@@ -210,18 +176,56 @@ Table users [headercolor: #2563EB] {
   removed_at timestamptz
 
   indexes {
-    (event_id, event_role, status)
-    (role_id)
+    (event_id, status)
+    (event_id, role_id, status)
   }
 
   Note: '''
     Only administrative users have accounts. Participants never require an account.
-    Platform Admin has event_id and event_role set to null. Event Admin and Event
-    Sub-User store their Event, Event role, and seven permissions directly in this table.
-    Sub-Users may also reference roles.id for fine-grained feature permissions.
-    One account belongs to one Event; another Event requires another account.
-    can_view_unmasked_pii covers both screen access and unmasked export.
-    password is stored for mock login only; production must store a hashed credential.
+    Platform Admin has event_id and role_id set to null. Every Event User belongs to
+    one Event and has one Event-scoped Custom Role. Platform Admin assigns the initial
+    Event Admin Role; a Role with manage_sub_user may create and assign Roles within
+    its Event. Another Event requires another account. The
+    view_unmasked_pii permission covers both screen access and unmasked export.
+    password is used only by the Demo authentication flow and represents Mock Data;
+    it is not a production password-storage design. Removing an account sets
+    status=removed, email=null, and removed_at while retaining the user ID for
+    historical references. The released email may be used by a new account.
+  '''
+}
+
+Table roles [headercolor: #2563EB] {
+  id uuid [pk]
+  event_id uuid [not null, ref: > events.id]
+  name varchar(160) [not null]
+  description text
+  owner_user_id uuid [not null, ref: > users.id]
+  created_at timestamptz [not null]
+  updated_at timestamptz [not null]
+  deleted_at timestamptz
+
+  indexes {
+    (event_id, name) [unique]
+  }
+
+  Note: '''
+    Roles are scoped to one Event. The initial Event Admin Role is assigned by Platform
+    Admin. A Role with manage_sub_user may create and manage Roles for Event Users in
+    that Event, but must not grant a permission that its creator cannot delegate.
+  '''
+}
+
+Table role_permissions [headercolor: #2563EB] {
+  role_id uuid [not null, ref: > roles.id]
+  permission permission_code [not null]
+
+  indexes {
+    (role_id, permission) [pk]
+  }
+
+  Note: '''
+    One row means that the Role grants the permission. The seven permission codes are
+    the same permission groups used by the SRS Permission Matrix.
   '''
 }
 
@@ -231,7 +235,7 @@ Table users [headercolor: #2563EB] {
 
 Table events [headercolor: #7C3AED] {
   id uuid [pk]
-  slug varchar(160) [not null, unique]
+  slug varchar(160) [not null]
   status event_status [not null, default: 'draft']
   default_locale varchar(35) [not null, default: 'th']
   language_rotation_seconds int
@@ -239,7 +243,6 @@ Table events [headercolor: #7C3AED] {
   ends_at timestamptz
   timezone varchar(80) [not null, default: 'Asia/Bangkok']
   banner_url varchar(2048)
-  banner_aspect_ratio varchar(8) [not null, default: '3:4']
   created_by_user_id uuid [not null, ref: > users.id]
   published_at timestamptz
   closed_at timestamptz
@@ -249,6 +252,7 @@ Table events [headercolor: #7C3AED] {
   deleted_at timestamptz
 
   indexes {
+    (slug) [unique]
     (status, starts_at)
     (status, ends_at)
   }
@@ -256,7 +260,8 @@ Table events [headercolor: #7C3AED] {
   Note: '''
     Slug and published content are immutable after Publish. Closed stops Registration,
     while Survey may continue. Archived hides the Event and stops every Form.
-    language_rotation_seconds accepts null, 30, 60, or 300.
+    language_rotation_seconds accepts null, 30, 60, or 300. Banner rendering uses
+    the fixed 3:4 aspect ratio on Desktop and Mobile and requires no persisted setting.
   '''
 }
 
@@ -264,6 +269,7 @@ Table event_translations [headercolor: #7C3AED] {
   id uuid [pk]
   event_id uuid [not null, ref: > events.id]
   locale_code varchar(35) [not null]
+  display_order int [not null]
   title varchar(240) [not null]
   summary text
   description text
@@ -274,6 +280,7 @@ Table event_translations [headercolor: #7C3AED] {
 
   indexes {
     (event_id, locale_code) [unique]
+    (event_id, display_order) [unique]
   }
 
   Note: 'Rows define the enabled content languages. Application UI languages remain Thai and English.'
@@ -327,7 +334,6 @@ Table form_translations [headercolor: #8B5CF6] {
 Table form_fields [headercolor: #8B5CF6] {
   id uuid [pk]
   form_id uuid [not null, ref: > forms.id]
-  field_key varchar(100) [not null]
   type field_type [not null]
   display_order int [not null]
   is_required boolean [not null, default: false]
@@ -342,7 +348,6 @@ Table form_fields [headercolor: #8B5CF6] {
   deleted_at timestamptz
 
   indexes {
-    (form_id, field_key) [unique]
     (form_id, display_order) [unique]
     (form_id, type)
   }
@@ -356,7 +361,6 @@ Table field_translations [headercolor: #8B5CF6] {
   locale_code varchar(35) [not null]
   label varchar(500) [not null]
   placeholder varchar(500)
-  validation_message text
 
   indexes {
     (field_id, locale_code) [unique]
@@ -366,13 +370,11 @@ Table field_translations [headercolor: #8B5CF6] {
 Table field_options [headercolor: #8B5CF6] {
   id uuid [pk]
   field_id uuid [not null, ref: > form_fields.id]
-  option_key varchar(120) [not null]
   display_order int [not null]
   created_at timestamptz [not null]
   deleted_at timestamptz
 
   indexes {
-    (field_id, option_key) [unique]
     (field_id, display_order) [unique]
   }
 }
@@ -391,14 +393,13 @@ Table field_option_translations [headercolor: #8B5CF6] {
 Table registration_settings [headercolor: #8B5CF6] {
   form_id uuid [pk, ref: - forms.id]
   capacity int
-  duplicate_check_enabled boolean [not null, default: false]
   unique_field_id uuid [ref: > form_fields.id]
   whitelist_enabled boolean [not null, default: false]
 
   Note: '''
-    Registration Form only. Null capacity means unlimited. Duplicate and Whitelist
-    checks require a Unique Field configured from the same Form. Duplicate checking
-    reads submission_answers where field_id equals unique_field_id.
+    Registration Form only. Null capacity means unlimited. Whitelist duplicate
+    checking requires a Unique Field configured from the same Form and reads
+    submission_answers where field_id equals unique_field_id.
   '''
 }
 
@@ -410,7 +411,6 @@ Table whitelist_entries [headercolor: #D97706] {
   id uuid [pk]
   registration_form_id uuid [not null, ref: > forms.id]
   normalized_unique_value varchar(500) [not null]
-  invitation_code varchar(6)
   status whitelist_entry_status [not null, default: 'available']
   used_at timestamptz
   created_at timestamptz [not null]
@@ -418,16 +418,15 @@ Table whitelist_entries [headercolor: #D97706] {
 
   indexes {
     (registration_form_id, normalized_unique_value) [unique]
-    (registration_form_id, invitation_code) [unique]
     (registration_form_id, status)
   }
 
   Note: '''
-    Invitation code is optional and contains 4-6 random digits. Whitelist upload files
-    are transient and are never retained. Validation failure leaves the current list
-    unchanged. After confirmation, unused current entries are replaced by the uploaded
-    values. Entries already used by Registrations remain only to preserve references
-    and are excluded from the active eligibility list. Import history is not retained.
+    Whitelist upload files are transient and are never retained. Validation failure
+    leaves the current list unchanged. After confirmation, unused current entries are
+    replaced by the uploaded values. Entries already used by Registrations remain only
+    to preserve references and are excluded from the active eligibility list. Import
+    history is not retained.
   '''
 }
 
@@ -460,10 +459,10 @@ Table form_submissions [headercolor: #059669] {
 Table registrations [headercolor: #D97706] {
   submission_id uuid [pk, ref: - form_submissions.id]
   whitelist_entry_id uuid [unique, ref: > whitelist_entries.id]
-  reference_code varchar(6) [not null]
+  confirmation_code varchar(6) [not null]
 
   indexes {
-    (reference_code)
+    (confirmation_code)
   }
 
   Note: '''
@@ -511,59 +510,53 @@ Table answer_option_selections [headercolor: #059669] {
 }
 
 ////////////////////////////////////////////////////
-// 06 · EVENT OWNER DASHBOARD PAGES & WIDGETS
+// 06 · DASHBOARD CONFIGURATION
 ////////////////////////////////////////////////////
 
-Table dashboard_data [headercolor: #0284C7] {
+Table dashboard_layouts [headercolor: #0284C7] {
   id uuid [pk]
-  event_id uuid [not null, ref: > events.id]
-  owner_user_id uuid [not null, ref: > users.id]
-  page_key dashboard_page_key [not null]
-  title_th varchar(240) [not null]
-  title_en varchar(240) [not null]
-  description_th text
-  description_en text
-  layout_json json
-  display_order int [not null]
-  is_visible boolean [not null, default: true]
-  created_at timestamptz [not null]
+  event_id uuid [not null, unique, ref: > events.id]
+  updated_by_user_id uuid [not null, ref: > users.id]
   updated_at timestamptz [not null]
 
-  indexes {
-    (event_id, page_key) [unique]
-    (owner_user_id, event_id)
-    (event_id, display_order)
-  }
-
   Note: '''
-    One row per Event Owner console page (overview, registrations, surveys, whitelist, settings).
-    Stores page metadata and layout for that Event. Aggregate numbers still come from submissions.
+    Each Event has one Dashboard Layout. It stores Widget order only; managing it
+    requires Manage Dashboard permission.
   '''
 }
 
 Table dashboard_widgets [headercolor: #0284C7] {
   id uuid [pk]
-  dashboard_data_id uuid [not null, ref: > dashboard_data.id]
-  type dashboard_widget_type [not null]
-  title_th varchar(240) [not null]
-  title_en varchar(240) [not null]
-  form_id uuid [ref: > forms.id]
-  field_id uuid [ref: > form_fields.id]
-  config_json json
+  layout_id uuid [not null, ref: > dashboard_layouts.id]
+  widget_type dashboard_widget_type [not null]
+  title varchar(240) [not null]
+  source_form_id uuid [ref: > forms.id]
+  source_field_id uuid [ref: > form_fields.id]
+  aggregation dashboard_aggregation [not null, default: 'count']
+  chart_type dashboard_chart_type
+  comparison_mode dashboard_comparison_mode
+  target_value decimal
   display_order int [not null]
-  created_at timestamptz [not null]
   updated_at timestamptz [not null]
 
   indexes {
-    (dashboard_data_id, display_order)
-    (form_id, field_id)
+    (layout_id, display_order) [unique]
+    (layout_id, widget_type)
+    (source_form_id, source_field_id)
   }
 
-  Note: 'Widgets rendered on an Event Owner dashboard page. Bound optionally to a form/field for chart sources.'
+  Note: '''
+    Widgets support Number, Comparison, and Chart displays. source_form_id=null means
+    aggregate across the Event; source_field_id selects one question when required.
+    Chart Widgets require chart_type. Comparison Widgets require comparison_mode;
+    target_value is used only for target comparison. The selected Form and Field must
+    belong to the same Event as the Layout. Widgets store configuration and order,
+    never copied Submission answers or precomputed Dashboard results.
+  '''
 }
 
 ////////////////////////////////////////////////////
-// 07 · APPROVAL, EXPORT & GOVERNANCE
+// 07 · APPROVAL & GOVERNANCE
 ////////////////////////////////////////////////////
 
 Table approval_requests [headercolor: #0F766E] {
@@ -603,7 +596,7 @@ Table trash_items [headercolor: #DC2626] {
     (event_id, deleted_at)
   }
 
-  Note: 'All soft-deleted business resources appear in Trash. Registration has restore_allowed=false.'
+  Note: 'All soft-deleted business resources appear in Trash. Submission resources have restore_allowed=false.'
 }
 
 Table hard_delete_requests [headercolor: #DC2626] {
@@ -654,10 +647,10 @@ Table audit_logs [headercolor: #DC2626] {
 // TABLE GROUPS FOR DBDIAGRAM.IO
 ////////////////////////////////////////////////////
 
-TableGroup group_01_users_access [color: #2563EB, note: 'Start here: roles, permissions, administrative accounts, Event assignment.'] {
-  roles
-  permissions
+TableGroup group_01_users_access [color: #2563EB, note: 'Start here: administrative accounts, Event assignment, roles, and seven permissions.'] {
   users
+  roles
+  role_permissions
 }
 
 TableGroup group_02_events_content [color: #7C3AED, note: 'Event lifecycle and localized public content.'] {
@@ -686,8 +679,8 @@ TableGroup group_05_submissions_answers [color: #059669, note: 'Participant subm
   answer_option_selections
 }
 
-TableGroup group_06_dashboard [color: #0284C7, note: 'Event Owner console pages and widgets. Aggregate values are still computed from submissions.'] {
-  dashboard_data
+TableGroup group_06_dashboard_configuration [color: #0284C7, note: 'Event Dashboard layouts and Number, Comparison, and Chart widget configuration.'] {
+  dashboard_layouts
   dashboard_widgets
 }
 
@@ -700,12 +693,9 @@ TableGroup group_07_governance [color: #DC2626, note: 'Approval, Trash, permanen
 
 Note dashboard_design [color: #DBEAFE] {
   '''
-    DASHBOARD PAGE STORAGE
-    dashboard_data stores each Event Owner page for an Event.
-    dashboard_widgets stores widgets on those pages.
+    DASHBOARD DATA FLOW
 
-    DASHBOARD AGGREGATION FLOW
-    1. Filter form_submissions by forms.event_id, form_id, status, and submitted_at.
+    1. Filter forms by event_id, then join active form_submissions by form_id.
     2. Join submission_answers with form_fields.
     3. Join answer_option_selections with field_options for choice questions.
     4. Aggregate by field type:
@@ -715,11 +705,17 @@ Note dashboard_design [color: #DBEAFE] {
        - text: count and detail table
     5. Exclude soft-deleted submissions and enforce masked/unmasked PII in the service layer.
 
-    CSV/XLSX export files, QR URLs, Event routes, and aggregate results remain derived.
-    Unmasked export requires can_view_unmasked_pii.
+    Dashboard Layouts and Widgets persist presentation configuration only. CSV/XLSX
+    export files, QR URLs, Event routes, and aggregate results remain derived features
+    and do not require separate source-of-truth tables.
+    Each Event Dashboard is obtained by filtering forms through forms.event_id, then
+    aggregating its active form_submissions and submission_answers. The current Demo
+    computes these values from Mock API data plus current session state and does not
+    persist dashboard_data. Unmasked export requires view_unmasked_pii.
 
     REGISTRATION DUPLICATE CHECK
     Normalize the submitted value of registration_settings.unique_field_id and compare
     it with submission_answers for active Registration submissions of the same Form.
   '''
 }
+

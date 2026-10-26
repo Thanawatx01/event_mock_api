@@ -27,14 +27,13 @@ npm run seed
 curl http://localhost:3000/events
 curl "http://localhost:3000/events?status=published"
 
-# roles / permissions
+# roles / role_permissions
 curl "http://localhost:3000/roles?event_id=452ac247-5c88-59ca-8de7-c5a329c71317"
-curl "http://localhost:3000/permissions?role_id=68bc119b-43b3-56d8-8e07-d9609a3ca230"
+curl "http://localhost:3000/role_permissions?role_id=5f4490f8-41ca-5d29-8032-879f4966d95d"
 
-# หน้า Event Owner + widgets
-curl "http://localhost:3000/dashboard_data?event_id=452ac247-5c88-59ca-8de7-c5a329c71317"
-curl "http://localhost:3000/dashboard_widgets?dashboard_data_id=46a46a4c-048a-5032-8eb2-e3a226198a01"
-
+# dashboard layout + widgets
+curl "http://localhost:3000/dashboard_layouts?event_id=452ac247-5c88-59ca-8de7-c5a329c71317"
+curl "http://localhost:3000/dashboard_widgets?layout_id=c57d8bf9-e30a-58b1-9eb0-9f4c4b96e7e5"
 
 # เนื้อหาหลายภาษา (th / en)
 curl "http://localhost:3000/event_translations?event_id=452ac247-5c88-59ca-8de7-c5a329c71317"
@@ -54,31 +53,32 @@ curl "http://localhost:3000/form_submissions?status=submitted"
 curl "http://localhost:3000/submission_answers?submission_id=38e9ffaf-77bc-51bb-a286-3544c352c9eb"
 ```
 
-> `id` ทั้งหมดเป็น UUID (string) ตามสคีมาใน `db.md` — ค่าซ้ำได้ทุกครั้งที่รัน `npm run seed`
+> `id` ทั้งหมดเป็น UUID (string) ตามสคีมาใน `db.md` — ค่าซ้ำได้ทุกครั้งที่รัน `npm run seed`  
+> ตาราง composite / PK อื่น (เช่น `role_permissions`, `registrations`, `answer_option_selections`) ใช้คีย์ตาม `db.md` โดยไม่มี `id` แยก — query ด้วยฟิลด์ที่เกี่ยวข้อง
 
 ## ทรัพยากรหลัก (ตาม `db.md`)
 
 | Path | หมายเหตุ |
 |---|---|
-| `/users` | บัญชีแอดมิน / สิทธิ์ต่ออีเวนต์ (`role_id`, `password`) |
-| `/roles` | บทบาทกำหนดเองของ Event Admin |
-| `/permissions` | เมทริกซ์สิทธิ์ราย feature ของแต่ละ role |
-| `/dashboard_data` | หน้าของ Event Owner ต่ออีเวนต์ (overview, registrations, …) |
-| `/dashboard_widgets` | วิดเจ็ตบนแต่ละหน้า dashboard |
-| `/events` | อีเวนต์ (สถานะ, สโลแกน, timezone) |
-| `/event_translations` | ชื่อ/รายละเอียดอีเวนต์แยก `th` `en` |
+| `/users` | บัญชีแอดมิน (`system_role`, `event_id`, `role_id`, `password`) |
+| `/roles` | Custom Role ต่ออีเวนต์ |
+| `/role_permissions` | สิทธิ์ 7 รหัสต่อ role (`permission_code`) |
+| `/dashboard_layouts` | 1 layout ต่ออีเวนต์ |
+| `/dashboard_widgets` | Number / Comparison / Chart บน layout |
+| `/events` | อีเวนต์ (สถานะ, slug, timezone) |
+| `/event_translations` | ชื่อ/รายละเอียดอีเวนต์แยก `th` `en` + `display_order` |
 | `/forms` | registration / survey ต่ออีเวนต์ |
 | `/form_translations` | ชื่อฟอร์ม / คำอธิบาย ตามภาษา |
 | `/form_fields` | นิยามฟิลด์ |
 | `/field_translations` | label / placeholder ตามภาษา |
 | `/field_options` | ตัวเลือก radio/checkbox/dropdown |
 | `/field_option_translations` | label ตัวเลือกตามภาษา |
-| `/registration_settings` | capacity, duplicate, whitelist |
+| `/registration_settings` | capacity, unique_field_id, whitelist |
 | `/whitelist_entries` | รายชื่อสิทธิ์ลงทะเบียน |
 | `/form_submissions` | header การส่งฟอร์ม |
-| `/registrations` | ข้อมูลลงทะเบียน (reference_code) |
+| `/registrations` | ลงทะเบียน (`confirmation_code`, PK = `submission_id`) |
 | `/submission_answers` | คำตอบแบบ typed columns |
-| `/answer_option_selections` | ตัวเลือกที่เลือก |
+| `/answer_option_selections` | ตัวเลือกที่เลือก (composite `answer_id` + `option_id`) |
 | `/approval_requests` | คำขออนุมัติ |
 | `/trash_items` | ถังขยะ soft-delete |
 | `/hard_delete_requests` | คำขอลบถาวร / PDPA |
