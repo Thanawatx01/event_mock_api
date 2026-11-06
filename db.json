@@ -6,6 +6,7 @@
       "password": "password123",
       "display_name": "Ananda Platform Admin",
       "system_role": "platform_admin",
+      "platform_role_id": "3af7420f-5588-52b9-9ac0-7ea75fd7bdcf",
       "event_id": null,
       "role_id": null,
       "role_assigned_by_user_id": null,
@@ -23,6 +24,7 @@
       "password": "password123",
       "display_name": "Thanawat Ketaya",
       "system_role": "event_user",
+      "platform_role_id": null,
       "event_id": "452ac247-5c88-59ca-8de7-c5a329c71317",
       "role_id": "5f4490f8-41ca-5d29-8032-879f4966d95d",
       "role_assigned_by_user_id": "cf4f56ab-fe37-58d1-ac73-e833abdd2561",
@@ -40,6 +42,7 @@
       "password": "password123",
       "display_name": "Kittisak Jaidee",
       "system_role": "event_user",
+      "platform_role_id": null,
       "event_id": "452ac247-5c88-59ca-8de7-c5a329c71317",
       "role_id": "68bc119b-43b3-56d8-8e07-d9609a3ca230",
       "role_assigned_by_user_id": "dff5877d-7b9d-5a71-b9cd-dfce68f0de89",
@@ -57,6 +60,7 @@
       "password": "password123",
       "display_name": "Mali Charoenpol",
       "system_role": "event_user",
+      "platform_role_id": null,
       "event_id": "dbc642a1-efd7-5ba1-ab44-956b212f0c2f",
       "role_id": "c1209fa6-ef07-5bba-b757-45519025c21e",
       "role_assigned_by_user_id": "cf4f56ab-fe37-58d1-ac73-e833abdd2561",
@@ -74,6 +78,7 @@
       "password": "password123",
       "display_name": "Pimchanok Siriwong",
       "system_role": "event_user",
+      "platform_role_id": null,
       "event_id": "550267c4-98f1-5ffc-94c6-81155429cd03",
       "role_id": "9d35db90-07bd-5420-8a2b-c84977910d09",
       "role_assigned_by_user_id": "cf4f56ab-fe37-58d1-ac73-e833abdd2561",
@@ -86,15 +91,50 @@
       "removed_at": null
     }
   ],
+  "platform_roles": [
+    {
+      "id": "3af7420f-5588-52b9-9ac0-7ea75fd7bdcf",
+      "name": "Super Admin",
+      "description": "Full platform administration",
+      "created_at": "2026-09-01T02:00:00Z",
+      "created_by": null,
+      "updated_at": "2026-09-01T02:00:00Z",
+      "updated_by": null,
+      "deleted_at": null
+    }
+  ],
+  "platform_role_permissions": [
+    {
+      "id": "f1c4454f-bae6-5cc6-81e1-7123828beb63",
+      "platform_role_id": "3af7420f-5588-52b9-9ac0-7ea75fd7bdcf",
+      "permission": "manage_platform_users"
+    },
+    {
+      "id": "97b0a158-01a1-58d5-b229-7a309c3b0e63",
+      "platform_role_id": "3af7420f-5588-52b9-9ac0-7ea75fd7bdcf",
+      "permission": "manage_all_events"
+    },
+    {
+      "id": "f1a4dc95-ea91-558a-8635-2fdd955dd724",
+      "platform_role_id": "3af7420f-5588-52b9-9ac0-7ea75fd7bdcf",
+      "permission": "view_platform_overview"
+    },
+    {
+      "id": "4c65e35a-f0e3-5cb8-ac31-3f575c86a1bc",
+      "platform_role_id": "3af7420f-5588-52b9-9ac0-7ea75fd7bdcf",
+      "permission": "impersonate_event_user"
+    }
+  ],
   "roles": [
     {
       "id": "5f4490f8-41ca-5d29-8032-879f4966d95d",
       "event_id": "452ac247-5c88-59ca-8de7-c5a329c71317",
       "name": "Event Admin",
       "description": "Full access for Tech Summit event admin",
-      "owner_user_id": "dff5877d-7b9d-5a71-b9cd-dfce68f0de89",
       "created_at": "2026-09-15T04:00:00Z",
+      "created_by": "cf4f56ab-fe37-58d1-ac73-e833abdd2561",
       "updated_at": "2026-09-15T04:00:00Z",
+      "updated_by": "cf4f56ab-fe37-58d1-ac73-e833abdd2561",
       "deleted_at": null
     },
     {
@@ -102,9 +142,10 @@
       "event_id": "452ac247-5c88-59ca-8de7-c5a329c71317",
       "name": "Form Manager",
       "description": "Manage registration and survey forms",
-      "owner_user_id": "dff5877d-7b9d-5a71-b9cd-dfce68f0de89",
       "created_at": "2026-09-16T03:00:00Z",
+      "created_by": "dff5877d-7b9d-5a71-b9cd-dfce68f0de89",
       "updated_at": "2026-09-16T03:00:00Z",
+      "updated_by": "dff5877d-7b9d-5a71-b9cd-dfce68f0de89",
       "deleted_at": null
     },
     {
@@ -112,9 +153,10 @@
       "event_id": "dbc642a1-efd7-5ba1-ab44-956b212f0c2f",
       "name": "Event Admin",
       "description": "Full access for Wellness Day event admin",
-      "owner_user_id": "a4472b2b-9581-52a5-899d-fd94ed85bfc3",
       "created_at": "2026-09-20T04:00:00Z",
+      "created_by": "cf4f56ab-fe37-58d1-ac73-e833abdd2561",
       "updated_at": "2026-09-20T04:00:00Z",
+      "updated_by": "cf4f56ab-fe37-58d1-ac73-e833abdd2561",
       "deleted_at": null
     },
     {
@@ -122,9 +164,10 @@
       "event_id": "550267c4-98f1-5ffc-94c6-81155429cd03",
       "name": "Event Admin",
       "description": "Full access for draft community meetup admin",
-      "owner_user_id": "2fe6a003-59af-5f7d-a768-e8539b43f837",
       "created_at": "2026-10-01T04:00:00Z",
+      "created_by": "cf4f56ab-fe37-58d1-ac73-e833abdd2561",
       "updated_at": "2026-10-01T04:00:00Z",
+      "updated_by": "cf4f56ab-fe37-58d1-ac73-e833abdd2561",
       "deleted_at": null
     }
   ],
@@ -153,16 +196,6 @@
       "id": "f5433d8b-f6be-5fc2-a97a-e44179c5ce72",
       "role_id": "5f4490f8-41ca-5d29-8032-879f4966d95d",
       "permission": "manage_sub_user"
-    },
-    {
-      "id": "d5d1da75-94d1-5943-b240-49141dc0acaf",
-      "role_id": "5f4490f8-41ca-5d29-8032-879f4966d95d",
-      "permission": "approve"
-    },
-    {
-      "id": "3ab7f86e-6b15-5cb9-bcda-b9dcd1589110",
-      "role_id": "5f4490f8-41ca-5d29-8032-879f4966d95d",
-      "permission": "view_unmasked_pii"
     },
     {
       "id": "296f82bb-f108-559f-b3fa-66e82b0008c5",
@@ -205,11 +238,6 @@
       "permission": "manage_sub_user"
     },
     {
-      "id": "ba0c040b-871e-5f7e-9a02-c06707b09607",
-      "role_id": "c1209fa6-ef07-5bba-b757-45519025c21e",
-      "permission": "approve"
-    },
-    {
       "id": "2dceaabe-cde9-5f18-81d0-f427b69f3a77",
       "role_id": "9d35db90-07bd-5420-8a2b-c84977910d09",
       "permission": "manage_dashboard"
@@ -233,72 +261,62 @@
       "id": "eb4d37ba-515f-55a4-b772-b4545b1ce765",
       "role_id": "9d35db90-07bd-5420-8a2b-c84977910d09",
       "permission": "manage_sub_user"
-    },
-    {
-      "id": "b5b47cb6-06bb-5689-ae57-c6983e22bc2f",
-      "role_id": "9d35db90-07bd-5420-8a2b-c84977910d09",
-      "permission": "approve"
-    },
-    {
-      "id": "c9b427da-6664-5933-a177-512e2ff15bb8",
-      "role_id": "9d35db90-07bd-5420-8a2b-c84977910d09",
-      "permission": "view_unmasked_pii"
     }
   ],
   "events": [
     {
       "id": "452ac247-5c88-59ca-8de7-c5a329c71317",
       "slug": "tech-summit-2026",
-      "status": "published",
+      "status": "open",
       "default_locale": "th",
-      "language_rotation_seconds": 60,
-      "starts_at": "2026-11-15T01:00:00Z",
-      "ends_at": "2026-11-15T10:00:00Z",
-      "timezone": "Asia/Bangkok",
-      "banner_url": "https://cdn.example.com/banners/tech-summit-2026.jpg",
-      "created_by_user_id": "dff5877d-7b9d-5a71-b9cd-dfce68f0de89",
-      "published_at": "2026-10-01T08:00:00Z",
-      "closed_at": null,
-      "archived_at": null,
+      "start_at": "2026-11-15T01:00:00Z",
+      "end_at": "2026-11-15T10:00:00Z",
+      "is_private": true,
+      "has_registration": true,
+      "has_survey": true,
+      "survey_access": "registered_only",
+      "opens_at": "2026-10-01T08:00:00Z",
+      "closes_at": "2026-11-30T17:00:00Z",
       "created_at": "2026-09-15T03:00:00Z",
+      "created_by": "cf4f56ab-fe37-58d1-ac73-e833abdd2561",
       "updated_at": "2026-10-01T08:00:00Z",
-      "deleted_at": null
+      "updated_by": "dff5877d-7b9d-5a71-b9cd-dfce68f0de89"
     },
     {
       "id": "dbc642a1-efd7-5ba1-ab44-956b212f0c2f",
       "slug": "wellness-day-2026",
-      "status": "published",
+      "status": "open",
       "default_locale": "th",
-      "language_rotation_seconds": 30,
-      "starts_at": "2026-12-05T02:00:00Z",
-      "ends_at": "2026-12-05T09:00:00Z",
-      "timezone": "Asia/Bangkok",
-      "banner_url": "https://cdn.example.com/banners/wellness-day-2026.jpg",
-      "created_by_user_id": "a4472b2b-9581-52a5-899d-fd94ed85bfc3",
-      "published_at": "2026-10-10T08:00:00Z",
-      "closed_at": null,
-      "archived_at": null,
+      "start_at": "2026-12-05T02:00:00Z",
+      "end_at": "2026-12-05T09:00:00Z",
+      "is_private": false,
+      "has_registration": true,
+      "has_survey": true,
+      "survey_access": "public",
+      "opens_at": "2026-10-10T08:00:00Z",
+      "closes_at": "2026-12-20T17:00:00Z",
       "created_at": "2026-09-20T03:00:00Z",
+      "created_by": "cf4f56ab-fe37-58d1-ac73-e833abdd2561",
       "updated_at": "2026-10-10T08:00:00Z",
-      "deleted_at": null
+      "updated_by": "a4472b2b-9581-52a5-899d-fd94ed85bfc3"
     },
     {
       "id": "550267c4-98f1-5ffc-94c6-81155429cd03",
       "slug": "community-meetup-draft",
       "status": "draft",
       "default_locale": "th",
-      "language_rotation_seconds": null,
-      "starts_at": "2027-01-20T03:00:00Z",
-      "ends_at": "2027-01-20T08:00:00Z",
-      "timezone": "Asia/Bangkok",
-      "banner_url": null,
-      "created_by_user_id": "2fe6a003-59af-5f7d-a768-e8539b43f837",
-      "published_at": null,
-      "closed_at": null,
-      "archived_at": null,
+      "start_at": "2027-01-20T03:00:00Z",
+      "end_at": "2027-01-20T08:00:00Z",
+      "is_private": false,
+      "has_registration": true,
+      "has_survey": false,
+      "survey_access": null,
+      "opens_at": null,
+      "closes_at": null,
       "created_at": "2026-10-05T03:00:00Z",
+      "created_by": "cf4f56ab-fe37-58d1-ac73-e833abdd2561",
       "updated_at": "2026-10-20T03:00:00Z",
-      "deleted_at": null
+      "updated_by": "2fe6a003-59af-5f7d-a768-e8539b43f837"
     }
   ],
   "event_translations": [
@@ -310,7 +328,7 @@
       "title": "เทคซัมมิต 2026",
       "summary": "งานรวมตัวนักพัฒนาและผู้สนใจเทคโนโลยีในไทย",
       "description": "ร่วมฟังบรรยาย อัปเดตเทรนด์ และเชื่อมต่อกับชุมชนนักพัฒนา ทั้ง AI, Web และ Cloud",
-      "venue_name": "ศูนย์ประชุมแห่งชาติสิริกิติ์",
+      "location_name": "ศูนย์ประชุมแห่งชาติสิริกิติ์",
       "address_text": "60 ถนนรัชดาภิเษก คลองเตย กรุงเทพมหานคร 10110",
       "created_at": "2026-09-15T03:00:00Z",
       "updated_at": "2026-10-01T08:00:00Z"
@@ -323,7 +341,7 @@
       "title": "Tech Summit 2026",
       "summary": "A gathering for developers and technology enthusiasts in Thailand",
       "description": "Join talks, trend updates, and community networking across AI, Web, and Cloud.",
-      "venue_name": "Queen Sirikit National Convention Center",
+      "location_name": "Queen Sirikit National Convention Center",
       "address_text": "60 Ratchadaphisek Road, Khlong Toei, Bangkok 10110",
       "created_at": "2026-09-15T03:00:00Z",
       "updated_at": "2026-10-01T08:00:00Z"
@@ -336,7 +354,7 @@
       "title": "วันสุขภาพองค์กร 2026",
       "summary": "กิจกรรมสุขภาพและสมดุลชีวิตสำหรับพนักงาน",
       "description": "เวิร์กช็อปโยคะ โภชนาการ และการจัดการความเครียดในที่ทำงาน",
-      "venue_name": "สวนลุมพินี",
+      "location_name": "สวนลุมพินี",
       "address_text": "ถนนราชดำริ ปทุมวัน กรุงเทพมหานคร 10330",
       "created_at": "2026-09-20T03:00:00Z",
       "updated_at": "2026-10-10T08:00:00Z"
@@ -349,7 +367,7 @@
       "title": "Corporate Wellness Day 2026",
       "summary": "Health and work-life balance activities for employees",
       "description": "Workshops on yoga, nutrition, and workplace stress management.",
-      "venue_name": "Lumphini Park",
+      "location_name": "Lumphini Park",
       "address_text": "Ratchadamri Road, Pathum Wan, Bangkok 10330",
       "created_at": "2026-09-20T03:00:00Z",
       "updated_at": "2026-10-10T08:00:00Z"
@@ -362,7 +380,7 @@
       "title": "มีตอัปชุมชน (ร่าง)",
       "summary": "ร่างอีเวนต์สำหรับทดสอบสถานะ draft",
       "description": "รายละเอียดยังไม่เผยแพร่",
-      "venue_name": "Co-working Space ย่านอารีย์",
+      "location_name": "Co-working Space ย่านอารีย์",
       "address_text": "พหลโยธิน กรุงเทพมหานคร",
       "created_at": "2026-10-05T03:00:00Z",
       "updated_at": "2026-10-20T03:00:00Z"
@@ -375,10 +393,73 @@
       "title": "Community Meetup (Draft)",
       "summary": "Draft event used for testing draft status",
       "description": "Details are not published yet.",
-      "venue_name": "Ari Co-working Space",
+      "location_name": "Ari Co-working Space",
       "address_text": "Phahonyothin, Bangkok",
       "created_at": "2026-10-05T03:00:00Z",
       "updated_at": "2026-10-20T03:00:00Z"
+    }
+  ],
+  "event_form_settings": [
+    {
+      "id": "f006704e-afd3-5b3f-9915-7adcadf059e5",
+      "event_id": "452ac247-5c88-59ca-8de7-c5a329c71317",
+      "form_type": "registration",
+      "is_unlimited": false,
+      "capacity": 200,
+      "created_at": "2026-09-15T03:00:00Z",
+      "updated_at": "2026-10-01T08:00:00Z"
+    },
+    {
+      "id": "d9704dd7-a9c5-57ed-a0f4-2a9bcb33139f",
+      "event_id": "452ac247-5c88-59ca-8de7-c5a329c71317",
+      "form_type": "survey",
+      "is_unlimited": true,
+      "capacity": null,
+      "created_at": "2026-09-15T03:00:00Z",
+      "updated_at": "2026-10-01T08:00:00Z"
+    },
+    {
+      "id": "5a5553b8-7384-52fd-aba1-2272f8863d12",
+      "event_id": "dbc642a1-efd7-5ba1-ab44-956b212f0c2f",
+      "form_type": "registration",
+      "is_unlimited": false,
+      "capacity": 80,
+      "created_at": "2026-09-20T03:00:00Z",
+      "updated_at": "2026-10-10T08:00:00Z"
+    },
+    {
+      "id": "dc42e0ee-7493-5d8b-9428-277a83ea3b86",
+      "event_id": "dbc642a1-efd7-5ba1-ab44-956b212f0c2f",
+      "form_type": "survey",
+      "is_unlimited": true,
+      "capacity": null,
+      "created_at": "2026-09-20T03:00:00Z",
+      "updated_at": "2026-10-10T08:00:00Z"
+    },
+    {
+      "id": "00f70f17-a00a-587f-a3a0-f0a73bffef7e",
+      "event_id": "550267c4-98f1-5ffc-94c6-81155429cd03",
+      "form_type": "registration",
+      "is_unlimited": true,
+      "capacity": null,
+      "created_at": "2026-10-05T03:00:00Z",
+      "updated_at": "2026-10-20T03:00:00Z"
+    }
+  ],
+  "event_banners": [
+    {
+      "id": "bb7b8f91-e2b5-5498-afc1-f08fb1fa07f5",
+      "event_id": "452ac247-5c88-59ca-8de7-c5a329c71317",
+      "banner_url": "https://picsum.photos/seed/tech-summit-1/1200/800",
+      "created_at": "2026-09-15T03:00:00Z",
+      "updated_at": "2026-10-01T08:00:00Z"
+    },
+    {
+      "id": "4d5cfa36-1aeb-5015-ada2-f85ebad9c19e",
+      "event_id": "dbc642a1-efd7-5ba1-ab44-956b212f0c2f",
+      "banner_url": "https://picsum.photos/seed/wellness-1/1200/800",
+      "created_at": "2026-09-20T03:00:00Z",
+      "updated_at": "2026-10-10T08:00:00Z"
     }
   ],
   "forms": [
@@ -386,60 +467,52 @@
       "id": "89e426a3-3b34-50f1-821f-d485abab001b",
       "event_id": "452ac247-5c88-59ca-8de7-c5a329c71317",
       "type": "registration",
-      "status": "published",
+      "status": "open",
       "opens_at": "2026-10-01T08:00:00Z",
       "closes_at": "2026-11-14T17:00:00Z",
-      "accepting_responses": true,
-      "created_by_user_id": "dff5877d-7b9d-5a71-b9cd-dfce68f0de89",
-      "updated_by_user_id": "dff5877d-7b9d-5a71-b9cd-dfce68f0de89",
-      "published_at": "2026-10-01T08:00:00Z",
       "created_at": "2026-09-16T04:00:00Z",
+      "created_by": "dff5877d-7b9d-5a71-b9cd-dfce68f0de89",
       "updated_at": "2026-10-01T08:00:00Z",
+      "updated_by": "dff5877d-7b9d-5a71-b9cd-dfce68f0de89",
       "deleted_at": null
     },
     {
       "id": "d6a6e0c7-6e71-5f0f-88c2-bdf4f1c52c2c",
       "event_id": "452ac247-5c88-59ca-8de7-c5a329c71317",
       "type": "survey",
-      "status": "published",
+      "status": "open",
       "opens_at": "2026-11-15T10:00:00Z",
       "closes_at": "2026-11-30T17:00:00Z",
-      "accepting_responses": true,
-      "created_by_user_id": "dff5877d-7b9d-5a71-b9cd-dfce68f0de89",
-      "updated_by_user_id": "6f682b3b-8200-5ae3-a1f8-0158dca1ee61",
-      "published_at": "2026-10-01T08:10:00Z",
       "created_at": "2026-09-16T05:00:00Z",
+      "created_by": "dff5877d-7b9d-5a71-b9cd-dfce68f0de89",
       "updated_at": "2026-10-01T08:10:00Z",
+      "updated_by": "6f682b3b-8200-5ae3-a1f8-0158dca1ee61",
       "deleted_at": null
     },
     {
       "id": "35c5334a-f1e3-5479-b5b8-33b96d5d922d",
       "event_id": "dbc642a1-efd7-5ba1-ab44-956b212f0c2f",
       "type": "registration",
-      "status": "published",
+      "status": "open",
       "opens_at": "2026-10-10T08:00:00Z",
       "closes_at": "2026-12-04T17:00:00Z",
-      "accepting_responses": true,
-      "created_by_user_id": "a4472b2b-9581-52a5-899d-fd94ed85bfc3",
-      "updated_by_user_id": "a4472b2b-9581-52a5-899d-fd94ed85bfc3",
-      "published_at": "2026-10-10T08:00:00Z",
       "created_at": "2026-09-21T04:00:00Z",
+      "created_by": "a4472b2b-9581-52a5-899d-fd94ed85bfc3",
       "updated_at": "2026-10-10T08:00:00Z",
+      "updated_by": "a4472b2b-9581-52a5-899d-fd94ed85bfc3",
       "deleted_at": null
     },
     {
       "id": "eeec9663-1768-55b6-9c94-01a72acc5c3a",
       "event_id": "dbc642a1-efd7-5ba1-ab44-956b212f0c2f",
       "type": "survey",
-      "status": "published",
+      "status": "open",
       "opens_at": "2026-12-05T09:00:00Z",
       "closes_at": "2026-12-20T17:00:00Z",
-      "accepting_responses": true,
-      "created_by_user_id": "a4472b2b-9581-52a5-899d-fd94ed85bfc3",
-      "updated_by_user_id": "a4472b2b-9581-52a5-899d-fd94ed85bfc3",
-      "published_at": "2026-10-10T08:10:00Z",
       "created_at": "2026-09-21T05:00:00Z",
+      "created_by": "a4472b2b-9581-52a5-899d-fd94ed85bfc3",
       "updated_at": "2026-10-10T08:10:00Z",
+      "updated_by": "a4472b2b-9581-52a5-899d-fd94ed85bfc3",
       "deleted_at": null
     },
     {
@@ -449,12 +522,10 @@
       "status": "draft",
       "opens_at": null,
       "closes_at": null,
-      "accepting_responses": false,
-      "created_by_user_id": "2fe6a003-59af-5f7d-a768-e8539b43f837",
-      "updated_by_user_id": "2fe6a003-59af-5f7d-a768-e8539b43f837",
-      "published_at": null,
       "created_at": "2026-10-06T04:00:00Z",
+      "created_by": "2fe6a003-59af-5f7d-a768-e8539b43f837",
       "updated_at": "2026-10-20T04:00:00Z",
+      "updated_by": "2fe6a003-59af-5f7d-a768-e8539b43f837",
       "deleted_at": null
     }
   ],
@@ -557,12 +628,14 @@
       "type": "short_text",
       "display_order": 1,
       "is_required": true,
-      "contains_pii": true,
       "min_number": null,
       "max_number": null,
       "min_length": null,
       "max_length": 160,
       "validation_pattern": null,
+      "rating_display": null,
+      "rating_icon": null,
+      "rating_max": null,
       "created_at": "2026-10-24T10:00:00Z",
       "updated_at": "2026-10-24T10:00:00Z",
       "deleted_at": null
@@ -573,12 +646,14 @@
       "type": "short_text",
       "display_order": 2,
       "is_required": true,
-      "contains_pii": true,
       "min_number": null,
       "max_number": null,
       "min_length": null,
       "max_length": 320,
       "validation_pattern": "^[^@\\s]+@[^@\\s]+\\.[^@\\s]+$",
+      "rating_display": null,
+      "rating_icon": null,
+      "rating_max": null,
       "created_at": "2026-10-24T10:00:00Z",
       "updated_at": "2026-10-24T10:00:00Z",
       "deleted_at": null
@@ -589,12 +664,14 @@
       "type": "short_text",
       "display_order": 3,
       "is_required": true,
-      "contains_pii": true,
       "min_number": null,
       "max_number": null,
       "min_length": null,
       "max_length": 40,
       "validation_pattern": null,
+      "rating_display": null,
+      "rating_icon": null,
+      "rating_max": null,
       "created_at": "2026-10-24T10:00:00Z",
       "updated_at": "2026-10-24T10:00:00Z",
       "deleted_at": null
@@ -602,15 +679,17 @@
     {
       "id": "a524e451-6403-5262-b13c-d6170703eb9a",
       "form_id": "89e426a3-3b34-50f1-821f-d485abab001b",
-      "type": "radio",
+      "type": "single_choice",
       "display_order": 4,
       "is_required": true,
-      "contains_pii": false,
       "min_number": null,
       "max_number": null,
       "min_length": null,
       "max_length": null,
       "validation_pattern": null,
+      "rating_display": null,
+      "rating_icon": null,
+      "rating_max": null,
       "created_at": "2026-10-24T10:00:00Z",
       "updated_at": "2026-10-24T10:00:00Z",
       "deleted_at": null
@@ -618,15 +697,17 @@
     {
       "id": "53f079d1-1d22-592a-92ea-bf0190ae8e74",
       "form_id": "89e426a3-3b34-50f1-821f-d485abab001b",
-      "type": "checkbox",
+      "type": "multiple_choice",
       "display_order": 5,
       "is_required": false,
-      "contains_pii": false,
       "min_number": null,
       "max_number": null,
       "min_length": null,
       "max_length": null,
       "validation_pattern": null,
+      "rating_display": null,
+      "rating_icon": null,
+      "rating_max": null,
       "created_at": "2026-10-24T10:00:00Z",
       "updated_at": "2026-10-24T10:00:00Z",
       "deleted_at": null
@@ -637,12 +718,14 @@
       "type": "dropdown",
       "display_order": 6,
       "is_required": true,
-      "contains_pii": false,
       "min_number": null,
       "max_number": null,
       "min_length": null,
       "max_length": null,
       "validation_pattern": null,
+      "rating_display": null,
+      "rating_icon": null,
+      "rating_max": null,
       "created_at": "2026-10-24T10:00:00Z",
       "updated_at": "2026-10-24T10:00:00Z",
       "deleted_at": null
@@ -653,12 +736,14 @@
       "type": "rating",
       "display_order": 1,
       "is_required": true,
-      "contains_pii": false,
-      "min_number": 1,
-      "max_number": 5,
+      "min_number": null,
+      "max_number": null,
       "min_length": null,
       "max_length": null,
       "validation_pattern": null,
+      "rating_display": "icon",
+      "rating_icon": "star",
+      "rating_max": 5,
       "created_at": "2026-10-24T10:00:00Z",
       "updated_at": "2026-10-24T10:00:00Z",
       "deleted_at": null
@@ -666,15 +751,17 @@
     {
       "id": "fa9e4322-e148-57c4-bbdc-8f0ad40d9d0f",
       "form_id": "d6a6e0c7-6e71-5f0f-88c2-bdf4f1c52c2c",
-      "type": "radio",
+      "type": "single_choice",
       "display_order": 2,
       "is_required": true,
-      "contains_pii": false,
       "min_number": null,
       "max_number": null,
       "min_length": null,
       "max_length": null,
       "validation_pattern": null,
+      "rating_display": null,
+      "rating_icon": null,
+      "rating_max": null,
       "created_at": "2026-10-24T10:00:00Z",
       "updated_at": "2026-10-24T10:00:00Z",
       "deleted_at": null
@@ -685,12 +772,14 @@
       "type": "long_text",
       "display_order": 3,
       "is_required": false,
-      "contains_pii": false,
       "min_number": null,
       "max_number": null,
       "min_length": null,
       "max_length": 2000,
       "validation_pattern": null,
+      "rating_display": null,
+      "rating_icon": null,
+      "rating_max": null,
       "created_at": "2026-10-24T10:00:00Z",
       "updated_at": "2026-10-24T10:00:00Z",
       "deleted_at": null
@@ -701,12 +790,14 @@
       "type": "number",
       "display_order": 4,
       "is_required": true,
-      "contains_pii": false,
       "min_number": 0,
       "max_number": 10,
       "min_length": null,
       "max_length": null,
       "validation_pattern": null,
+      "rating_display": null,
+      "rating_icon": null,
+      "rating_max": null,
       "created_at": "2026-10-24T10:00:00Z",
       "updated_at": "2026-10-24T10:00:00Z",
       "deleted_at": null
@@ -717,12 +808,14 @@
       "type": "short_text",
       "display_order": 1,
       "is_required": true,
-      "contains_pii": true,
       "min_number": null,
       "max_number": null,
       "min_length": null,
       "max_length": null,
       "validation_pattern": null,
+      "rating_display": null,
+      "rating_icon": null,
+      "rating_max": null,
       "created_at": "2026-10-24T10:00:00Z",
       "updated_at": "2026-10-24T10:00:00Z",
       "deleted_at": null
@@ -733,12 +826,14 @@
       "type": "short_text",
       "display_order": 2,
       "is_required": true,
-      "contains_pii": true,
       "min_number": null,
       "max_number": null,
       "min_length": null,
       "max_length": null,
       "validation_pattern": null,
+      "rating_display": null,
+      "rating_icon": null,
+      "rating_max": null,
       "created_at": "2026-10-24T10:00:00Z",
       "updated_at": "2026-10-24T10:00:00Z",
       "deleted_at": null
@@ -749,12 +844,14 @@
       "type": "dropdown",
       "display_order": 3,
       "is_required": true,
-      "contains_pii": false,
       "min_number": null,
       "max_number": null,
       "min_length": null,
       "max_length": null,
       "validation_pattern": null,
+      "rating_display": null,
+      "rating_icon": null,
+      "rating_max": null,
       "created_at": "2026-10-24T10:00:00Z",
       "updated_at": "2026-10-24T10:00:00Z",
       "deleted_at": null
@@ -765,12 +862,14 @@
       "type": "date",
       "display_order": 4,
       "is_required": false,
-      "contains_pii": false,
       "min_number": null,
       "max_number": null,
       "min_length": null,
       "max_length": null,
       "validation_pattern": null,
+      "rating_display": null,
+      "rating_icon": null,
+      "rating_max": null,
       "created_at": "2026-10-24T10:00:00Z",
       "updated_at": "2026-10-24T10:00:00Z",
       "deleted_at": null
@@ -781,12 +880,14 @@
       "type": "rating",
       "display_order": 1,
       "is_required": true,
-      "contains_pii": false,
       "min_number": 1,
       "max_number": 5,
       "min_length": null,
       "max_length": null,
       "validation_pattern": null,
+      "rating_display": "linear_scale",
+      "rating_icon": null,
+      "rating_max": null,
       "created_at": "2026-10-24T10:00:00Z",
       "updated_at": "2026-10-24T10:00:00Z",
       "deleted_at": null
@@ -797,12 +898,14 @@
       "type": "long_text",
       "display_order": 2,
       "is_required": false,
-      "contains_pii": false,
       "min_number": null,
       "max_number": null,
       "min_length": null,
       "max_length": null,
       "validation_pattern": null,
+      "rating_display": null,
+      "rating_icon": null,
+      "rating_max": null,
       "created_at": "2026-10-24T10:00:00Z",
       "updated_at": "2026-10-24T10:00:00Z",
       "deleted_at": null
@@ -813,12 +916,14 @@
       "type": "short_text",
       "display_order": 1,
       "is_required": true,
-      "contains_pii": true,
       "min_number": null,
       "max_number": null,
       "min_length": null,
       "max_length": null,
       "validation_pattern": null,
+      "rating_display": null,
+      "rating_icon": null,
+      "rating_max": null,
       "created_at": "2026-10-24T10:00:00Z",
       "updated_at": "2026-10-24T10:00:00Z",
       "deleted_at": null
@@ -830,238 +935,306 @@
       "field_id": "0461a97a-e8c3-5678-9086-290f5128d5c5",
       "locale_code": "th",
       "label": "ชื่อ-นามสกุล",
-      "placeholder": "เช่น สมชาย ใจดี"
+      "placeholder": "เช่น สมชาย ใจดี",
+      "scale_min_label": null,
+      "scale_max_label": null
     },
     {
       "id": "6f60b0de-ff8a-5325-a1c8-d70cda8ef1ea",
       "field_id": "0461a97a-e8c3-5678-9086-290f5128d5c5",
       "locale_code": "en",
       "label": "Full name",
-      "placeholder": "e.g. Somchai Jaidee"
+      "placeholder": "e.g. Somchai Jaidee",
+      "scale_min_label": null,
+      "scale_max_label": null
     },
     {
       "id": "984fd0b6-2567-5954-8ad4-4c8a617f3e08",
       "field_id": "db92199f-e496-5c1f-9427-366799214536",
       "locale_code": "th",
       "label": "อีเมล",
-      "placeholder": "you@example.com"
+      "placeholder": "you@example.com",
+      "scale_min_label": null,
+      "scale_max_label": null
     },
     {
       "id": "8d2aa1f5-b86c-5046-998e-87674266e240",
       "field_id": "db92199f-e496-5c1f-9427-366799214536",
       "locale_code": "en",
       "label": "Email",
-      "placeholder": "you@example.com"
+      "placeholder": "you@example.com",
+      "scale_min_label": null,
+      "scale_max_label": null
     },
     {
       "id": "7c52527a-04c8-5491-8399-f82937b2ba0f",
       "field_id": "d9b66c8b-f462-5589-8d45-96e5dd65343a",
       "locale_code": "th",
       "label": "รหัสพนักงาน",
-      "placeholder": "EMP001"
+      "placeholder": "EMP001",
+      "scale_min_label": null,
+      "scale_max_label": null
     },
     {
       "id": "6bb1389d-a66a-5401-acc6-3a8d9573842e",
       "field_id": "d9b66c8b-f462-5589-8d45-96e5dd65343a",
       "locale_code": "en",
       "label": "Employee ID",
-      "placeholder": "EMP001"
+      "placeholder": "EMP001",
+      "scale_min_label": null,
+      "scale_max_label": null
     },
     {
       "id": "fd07257d-6b69-5717-9d46-59c638baba00",
       "field_id": "a524e451-6403-5262-b13c-d6170703eb9a",
       "locale_code": "th",
       "label": "แทร็กที่สนใจ",
-      "placeholder": null
+      "placeholder": null,
+      "scale_min_label": null,
+      "scale_max_label": null
     },
     {
       "id": "5a285683-cf35-570e-ad2f-b024795f577c",
       "field_id": "a524e451-6403-5262-b13c-d6170703eb9a",
       "locale_code": "en",
       "label": "Interest track",
-      "placeholder": null
+      "placeholder": null,
+      "scale_min_label": null,
+      "scale_max_label": null
     },
     {
       "id": "b0a5b5fa-e912-5e4b-8856-862e7e532468",
       "field_id": "53f079d1-1d22-592a-92ea-bf0190ae8e74",
       "locale_code": "th",
       "label": "หัวข้อที่อยากฟังเพิ่ม",
-      "placeholder": null
+      "placeholder": null,
+      "scale_min_label": null,
+      "scale_max_label": null
     },
     {
       "id": "10e8039a-e03a-51c7-ba14-0eb42ac07cab",
       "field_id": "53f079d1-1d22-592a-92ea-bf0190ae8e74",
       "locale_code": "en",
       "label": "Extra topics of interest",
-      "placeholder": null
+      "placeholder": null,
+      "scale_min_label": null,
+      "scale_max_label": null
     },
     {
       "id": "df3cb251-2cc3-5e65-b852-3cec9d2c5f6e",
       "field_id": "14a02883-7642-5d10-a696-0522ca33b793",
       "locale_code": "th",
       "label": "ขนาดเสื้อ",
-      "placeholder": "เลือกขนาด"
+      "placeholder": "เลือกขนาด",
+      "scale_min_label": null,
+      "scale_max_label": null
     },
     {
       "id": "20b354d4-8ed7-58ee-965a-5554a9aa6503",
       "field_id": "14a02883-7642-5d10-a696-0522ca33b793",
       "locale_code": "en",
       "label": "T-shirt size",
-      "placeholder": "Select a size"
+      "placeholder": "Select a size",
+      "scale_min_label": null,
+      "scale_max_label": null
     },
     {
       "id": "2205ef74-7e2f-5b34-897a-c96b5bc99ce6",
       "field_id": "2e2d31f5-7bc6-5744-a2e9-9ce66a73f2de",
       "locale_code": "th",
       "label": "คะแนนความพึงพอใจโดยรวม",
-      "placeholder": null
+      "placeholder": null,
+      "scale_min_label": null,
+      "scale_max_label": null
     },
     {
       "id": "c06d65b2-370c-524b-a4e6-1a190d483007",
       "field_id": "2e2d31f5-7bc6-5744-a2e9-9ce66a73f2de",
       "locale_code": "en",
       "label": "Overall satisfaction rating",
-      "placeholder": null
+      "placeholder": null,
+      "scale_min_label": null,
+      "scale_max_label": null
     },
     {
       "id": "41130ef1-e95d-52be-8b04-a4a487a061ae",
       "field_id": "fa9e4322-e148-57c4-bbdc-8f0ad40d9d0f",
       "locale_code": "th",
       "label": "จะแนะนำงานนี้ให้เพื่อนหรือไม่",
-      "placeholder": null
+      "placeholder": null,
+      "scale_min_label": null,
+      "scale_max_label": null
     },
     {
       "id": "4034d3b8-829c-5810-9017-70cc13f056e7",
       "field_id": "fa9e4322-e148-57c4-bbdc-8f0ad40d9d0f",
       "locale_code": "en",
       "label": "Would you recommend this event?",
-      "placeholder": null
+      "placeholder": null,
+      "scale_min_label": null,
+      "scale_max_label": null
     },
     {
       "id": "2bd9f3b3-ba4f-5ce8-935e-9447080a27f5",
       "field_id": "2d5edc99-10ee-5697-81e1-113b7bbbab1d",
       "locale_code": "th",
       "label": "ข้อเสนอแนะเพิ่มเติม",
-      "placeholder": "พิมพ์ความคิดเห็นของคุณ"
+      "placeholder": "พิมพ์ความคิดเห็นของคุณ",
+      "scale_min_label": null,
+      "scale_max_label": null
     },
     {
       "id": "3a995ee8-b58b-5711-be3c-fdad5485bb61",
       "field_id": "2d5edc99-10ee-5697-81e1-113b7bbbab1d",
       "locale_code": "en",
       "label": "Additional feedback",
-      "placeholder": "Type your feedback"
+      "placeholder": "Type your feedback",
+      "scale_min_label": null,
+      "scale_max_label": null
     },
     {
       "id": "9ed8c2ed-c14f-500a-a1df-7195dab920b4",
       "field_id": "f0c6d202-adeb-50ad-b8fc-761bae2301e9",
       "locale_code": "th",
       "label": "คะแนน NPS (0-10)",
-      "placeholder": "8"
+      "placeholder": "8",
+      "scale_min_label": null,
+      "scale_max_label": null
     },
     {
       "id": "f278cb78-ef22-5d89-bc9a-d7c9ce609cc2",
       "field_id": "f0c6d202-adeb-50ad-b8fc-761bae2301e9",
       "locale_code": "en",
       "label": "NPS score (0-10)",
-      "placeholder": "8"
+      "placeholder": "8",
+      "scale_min_label": null,
+      "scale_max_label": null
     },
     {
       "id": "6930e277-f2d0-5a67-b4d8-860323b9f457",
       "field_id": "e6309edf-fa9a-5c45-8224-c88c20600aef",
       "locale_code": "th",
       "label": "ชื่อ-นามสกุล",
-      "placeholder": "ชื่อของคุณ"
+      "placeholder": "ชื่อของคุณ",
+      "scale_min_label": null,
+      "scale_max_label": null
     },
     {
       "id": "e4801667-d57b-5469-b4e0-b5ee5a5a1cfe",
       "field_id": "e6309edf-fa9a-5c45-8224-c88c20600aef",
       "locale_code": "en",
       "label": "Full name",
-      "placeholder": "Your name"
+      "placeholder": "Your name",
+      "scale_min_label": null,
+      "scale_max_label": null
     },
     {
       "id": "25e4a78d-1e31-5785-9912-247105373662",
       "field_id": "5cd40f7d-4281-51dd-bc8d-747b782cf881",
       "locale_code": "th",
       "label": "อีเมล",
-      "placeholder": "you@company.com"
+      "placeholder": "you@company.com",
+      "scale_min_label": null,
+      "scale_max_label": null
     },
     {
       "id": "26ccf87b-7226-5b85-89ce-ff36605cf6e7",
       "field_id": "5cd40f7d-4281-51dd-bc8d-747b782cf881",
       "locale_code": "en",
       "label": "Email",
-      "placeholder": "you@company.com"
+      "placeholder": "you@company.com",
+      "scale_min_label": null,
+      "scale_max_label": null
     },
     {
       "id": "e4db793d-8f54-53f7-aa76-9a08a69fb13f",
       "field_id": "f085db7d-1fee-57ad-a666-3cece4d3eb23",
       "locale_code": "th",
       "label": "กิจกรรมที่สนใจ",
-      "placeholder": "เลือกกิจกรรม"
+      "placeholder": "เลือกกิจกรรม",
+      "scale_min_label": null,
+      "scale_max_label": null
     },
     {
       "id": "6787a9f3-52b6-585a-ad02-683040583941",
       "field_id": "f085db7d-1fee-57ad-a666-3cece4d3eb23",
       "locale_code": "en",
       "label": "Preferred activity",
-      "placeholder": "Choose an activity"
+      "placeholder": "Choose an activity",
+      "scale_min_label": null,
+      "scale_max_label": null
     },
     {
       "id": "e6605f58-c30e-52b4-8f11-b89a87111db7",
       "field_id": "d14221bc-9a89-5fb9-8ff6-8e34e05055d4",
       "locale_code": "th",
       "label": "วันที่สะดวก (ถ้ามีรอบย่อย)",
-      "placeholder": null
+      "placeholder": null,
+      "scale_min_label": null,
+      "scale_max_label": null
     },
     {
       "id": "7a639097-79f7-52f0-8f61-b4e1eebc967f",
       "field_id": "d14221bc-9a89-5fb9-8ff6-8e34e05055d4",
       "locale_code": "en",
       "label": "Preferred date (if sessions vary)",
-      "placeholder": null
+      "placeholder": null,
+      "scale_min_label": null,
+      "scale_max_label": null
     },
     {
       "id": "6ad4a4db-40c2-57f8-b21e-94ba7917946d",
       "field_id": "9d398647-9906-511f-825b-beb094265724",
       "locale_code": "th",
       "label": "ระดับพลังงานหลังกิจกรรม",
-      "placeholder": null
+      "placeholder": null,
+      "scale_min_label": "ต่ำ",
+      "scale_max_label": "สูง"
     },
     {
       "id": "90c5c969-b002-5b3e-889f-fac3ac98dac6",
       "field_id": "9d398647-9906-511f-825b-beb094265724",
       "locale_code": "en",
       "label": "Energy level after activities",
-      "placeholder": null
+      "placeholder": null,
+      "scale_min_label": "Low",
+      "scale_max_label": "High"
     },
     {
       "id": "8d0ced9b-0a05-5eec-aa30-259c8308df1a",
       "field_id": "b07b303c-4adb-55c2-a974-3a4dc96beeb4",
       "locale_code": "th",
       "label": "ความคิดเห็น",
-      "placeholder": "พิมพ์ได้ที่นี่"
+      "placeholder": "พิมพ์ได้ที่นี่",
+      "scale_min_label": null,
+      "scale_max_label": null
     },
     {
       "id": "5cc9af60-03b6-50d8-b1a2-f3eacb64cd00",
       "field_id": "b07b303c-4adb-55c2-a974-3a4dc96beeb4",
       "locale_code": "en",
       "label": "Comments",
-      "placeholder": "Type here"
+      "placeholder": "Type here",
+      "scale_min_label": null,
+      "scale_max_label": null
     },
     {
       "id": "c2ab4d77-6aec-5bf2-8f74-8f3291cdf1a1",
       "field_id": "0675879a-b4ff-5f39-a3a2-1531c379f50f",
       "locale_code": "th",
       "label": "ชื่อ",
-      "placeholder": null
+      "placeholder": null,
+      "scale_min_label": null,
+      "scale_max_label": null
     },
     {
       "id": "f6ed9841-ce7d-504e-9c44-6758775a0753",
       "field_id": "0675879a-b4ff-5f39-a3a2-1531c379f50f",
       "locale_code": "en",
       "label": "Name",
-      "placeholder": null
+      "placeholder": null,
+      "scale_min_label": null,
+      "scale_max_label": null
     }
   ],
   "field_options": [
@@ -1372,69 +1545,54 @@
       "label": "Nutrition"
     }
   ],
-  "registration_settings": [
-    {
-      "form_id": "89e426a3-3b34-50f1-821f-d485abab001b",
-      "capacity": 200,
-      "unique_field_id": "d9b66c8b-f462-5589-8d45-96e5dd65343a",
-      "whitelist_enabled": true
-    },
-    {
-      "form_id": "35c5334a-f1e3-5479-b5b8-33b96d5d922d",
-      "capacity": 80,
-      "unique_field_id": "5cd40f7d-4281-51dd-bc8d-747b782cf881",
-      "whitelist_enabled": false
-    },
-    {
-      "form_id": "0486f101-9307-509d-a770-1f501a622503",
-      "capacity": null,
-      "unique_field_id": null,
-      "whitelist_enabled": false
-    }
-  ],
   "whitelist_entries": [
     {
       "id": "7a61f993-63b9-5116-bced-7cc6e3bc0cb5",
-      "registration_form_id": "89e426a3-3b34-50f1-821f-d485abab001b",
-      "normalized_unique_value": "emp001",
-      "status": "used",
-      "used_at": "2026-10-12T03:15:00Z",
+      "event_id": "452ac247-5c88-59ca-8de7-c5a329c71317",
+      "access_code": "TECH01",
+      "username": "สมชาย ใจดี",
+      "status": "joined",
+      "joined_at": "2026-10-12T03:15:00Z",
       "created_at": "2026-10-02T02:00:00Z",
       "deleted_at": null
     },
     {
       "id": "9635dbe4-7ec4-5d7b-a455-1d624d0cc42a",
-      "registration_form_id": "89e426a3-3b34-50f1-821f-d485abab001b",
-      "normalized_unique_value": "emp002",
-      "status": "used",
-      "used_at": "2026-10-12T04:20:00Z",
+      "event_id": "452ac247-5c88-59ca-8de7-c5a329c71317",
+      "access_code": "TECH02",
+      "username": "Emily Carter",
+      "status": "joined",
+      "joined_at": "2026-10-12T04:20:00Z",
       "created_at": "2026-10-02T02:00:00Z",
       "deleted_at": null
     },
     {
       "id": "a3ff293e-402e-5550-8111-9cefdee5558c",
-      "registration_form_id": "89e426a3-3b34-50f1-821f-d485abab001b",
-      "normalized_unique_value": "emp003",
+      "event_id": "452ac247-5c88-59ca-8de7-c5a329c71317",
+      "access_code": "TECH03",
+      "username": "Guest 003",
       "status": "available",
-      "used_at": null,
+      "joined_at": null,
       "created_at": "2026-10-02T02:00:00Z",
       "deleted_at": null
     },
     {
       "id": "cd3c9f20-1414-500a-8f49-365c9a97a31c",
-      "registration_form_id": "89e426a3-3b34-50f1-821f-d485abab001b",
-      "normalized_unique_value": "emp004",
+      "event_id": "452ac247-5c88-59ca-8de7-c5a329c71317",
+      "access_code": "TECH04",
+      "username": "Guest 004",
       "status": "available",
-      "used_at": null,
+      "joined_at": null,
       "created_at": "2026-10-02T02:00:00Z",
       "deleted_at": null
     },
     {
       "id": "a077c9ef-4802-53d7-9dc8-b0f487a4a28b",
-      "registration_form_id": "89e426a3-3b34-50f1-821f-d485abab001b",
-      "normalized_unique_value": "emp005",
-      "status": "revoked",
-      "used_at": null,
+      "event_id": "452ac247-5c88-59ca-8de7-c5a329c71317",
+      "access_code": "TECH05",
+      "username": "Guest 005",
+      "status": "available",
+      "joined_at": null,
       "created_at": "2026-10-02T02:00:00Z",
       "deleted_at": null
     }
@@ -1444,82 +1602,73 @@
       "id": "38e9ffaf-77bc-51bb-a286-3544c352c9eb",
       "form_id": "89e426a3-3b34-50f1-821f-d485abab001b",
       "status": "submitted",
-      "submitted_language": "th",
       "submitted_at": "2026-10-12T03:15:00Z",
-      "deleted_by_user_id": null,
-      "deleted_at": null
+      "cancelled_by_user_id": null,
+      "cancelled_at": null
     },
     {
       "id": "15de7c3b-1946-5273-83cc-c648ada76547",
       "form_id": "89e426a3-3b34-50f1-821f-d485abab001b",
       "status": "submitted",
-      "submitted_language": "en",
       "submitted_at": "2026-10-12T04:20:00Z",
-      "deleted_by_user_id": null,
-      "deleted_at": null
+      "cancelled_by_user_id": null,
+      "cancelled_at": null
     },
     {
       "id": "7197e35d-868f-58d6-8b31-32497c4a743c",
       "form_id": "89e426a3-3b34-50f1-821f-d485abab001b",
-      "status": "soft_deleted",
-      "submitted_language": "th",
+      "status": "cancelled",
       "submitted_at": "2026-10-13T02:40:00Z",
-      "deleted_by_user_id": "dff5877d-7b9d-5a71-b9cd-dfce68f0de89",
-      "deleted_at": "2026-10-14T01:00:00Z"
+      "cancelled_by_user_id": "dff5877d-7b9d-5a71-b9cd-dfce68f0de89",
+      "cancelled_at": "2026-10-14T01:00:00Z"
     },
     {
       "id": "4dbf8fe7-acc1-5d92-a5bb-e0f2cf786a34",
       "form_id": "35c5334a-f1e3-5479-b5b8-33b96d5d922d",
       "status": "submitted",
-      "submitted_language": "th",
       "submitted_at": "2026-10-15T05:00:00Z",
-      "deleted_by_user_id": null,
-      "deleted_at": null
+      "cancelled_by_user_id": null,
+      "cancelled_at": null
     },
     {
       "id": "2f6a954e-a36a-5edc-a7ed-0bb97eaaa600",
       "form_id": "35c5334a-f1e3-5479-b5b8-33b96d5d922d",
       "status": "submitted",
-      "submitted_language": "en",
       "submitted_at": "2026-10-16T06:30:00Z",
-      "deleted_by_user_id": null,
-      "deleted_at": null
+      "cancelled_by_user_id": null,
+      "cancelled_at": null
     },
     {
       "id": "a783413a-939f-52c7-99e4-b82cfcecf34a",
       "form_id": "d6a6e0c7-6e71-5f0f-88c2-bdf4f1c52c2c",
       "status": "submitted",
-      "submitted_language": "th",
       "submitted_at": "2026-11-15T11:00:00Z",
-      "deleted_by_user_id": null,
-      "deleted_at": null
+      "cancelled_by_user_id": null,
+      "cancelled_at": null
     },
     {
       "id": "7f40efb0-8e53-5999-8259-c3bbdb1515bb",
       "form_id": "d6a6e0c7-6e71-5f0f-88c2-bdf4f1c52c2c",
       "status": "submitted",
-      "submitted_language": "en",
       "submitted_at": "2026-11-15T12:10:00Z",
-      "deleted_by_user_id": null,
-      "deleted_at": null
+      "cancelled_by_user_id": null,
+      "cancelled_at": null
     },
     {
       "id": "56e617cf-5eae-5458-8acd-fae7fa46d7db",
       "form_id": "d6a6e0c7-6e71-5f0f-88c2-bdf4f1c52c2c",
       "status": "submitted",
-      "submitted_language": "th",
       "submitted_at": "2026-11-16T02:00:00Z",
-      "deleted_by_user_id": null,
-      "deleted_at": null
+      "cancelled_by_user_id": null,
+      "cancelled_at": null
     },
     {
       "id": "4d8fb16b-8a84-52cc-be1c-3c8077ebc524",
       "form_id": "eeec9663-1768-55b6-9c94-01a72acc5c3a",
       "status": "submitted",
-      "submitted_language": "th",
       "submitted_at": "2026-12-05T10:00:00Z",
-      "deleted_by_user_id": null,
-      "deleted_at": null
+      "cancelled_by_user_id": null,
+      "cancelled_at": null
     }
   ],
   "registrations": [
@@ -2038,6 +2187,14 @@
   ],
   "dashboard_widgets": [
     {
+      "text_align": "left",
+      "date_type": "week",
+      "start_date": null,
+      "end_date": null,
+      "display_size": "small",
+      "grid_w": null,
+      "grid_h": null,
+      "updated_at": "2026-10-24T10:00:00Z",
       "id": "7eab065c-4da7-5c23-b7df-7926936abf62",
       "layout_id": "c57d8bf9-e30a-58b1-9eb0-9f4c4b96e7e5",
       "widget_type": "number",
@@ -2048,10 +2205,17 @@
       "chart_type": null,
       "comparison_mode": null,
       "target_value": null,
-      "display_order": 1,
-      "updated_at": "2026-10-24T10:00:00Z"
+      "display_order": 1
     },
     {
+      "text_align": "left",
+      "date_type": "week",
+      "start_date": null,
+      "end_date": null,
+      "display_size": "small",
+      "grid_w": null,
+      "grid_h": null,
+      "updated_at": "2026-10-24T10:00:00Z",
       "id": "51adce97-7677-5591-a569-6fd5703ef738",
       "layout_id": "c57d8bf9-e30a-58b1-9eb0-9f4c4b96e7e5",
       "widget_type": "number",
@@ -2062,10 +2226,17 @@
       "chart_type": null,
       "comparison_mode": null,
       "target_value": null,
-      "display_order": 2,
-      "updated_at": "2026-10-24T10:00:00Z"
+      "display_order": 2
     },
     {
+      "text_align": "left",
+      "date_type": "week",
+      "start_date": null,
+      "end_date": null,
+      "display_size": "medium",
+      "grid_w": null,
+      "grid_h": null,
+      "updated_at": "2026-10-24T10:00:00Z",
       "id": "6b191948-7382-50f9-b020-9fc411f3525e",
       "layout_id": "c57d8bf9-e30a-58b1-9eb0-9f4c4b96e7e5",
       "widget_type": "comparison",
@@ -2076,10 +2247,17 @@
       "chart_type": null,
       "comparison_mode": "capacity",
       "target_value": null,
-      "display_order": 3,
-      "updated_at": "2026-10-24T10:00:00Z"
+      "display_order": 3
     },
     {
+      "text_align": "left",
+      "date_type": "week",
+      "start_date": null,
+      "end_date": null,
+      "display_size": "large",
+      "grid_w": null,
+      "grid_h": null,
+      "updated_at": "2026-10-24T10:00:00Z",
       "id": "b145eff4-cd8b-5c26-92b9-10cb2099c5f7",
       "layout_id": "c57d8bf9-e30a-58b1-9eb0-9f4c4b96e7e5",
       "widget_type": "chart",
@@ -2090,10 +2268,17 @@
       "chart_type": "pie",
       "comparison_mode": null,
       "target_value": null,
-      "display_order": 4,
-      "updated_at": "2026-10-24T10:00:00Z"
+      "display_order": 4
     },
     {
+      "text_align": "left",
+      "date_type": "week",
+      "start_date": null,
+      "end_date": null,
+      "display_size": "custom",
+      "grid_w": 2,
+      "grid_h": 1,
+      "updated_at": "2026-10-24T10:00:00Z",
       "id": "4da3ef65-ba02-5725-ac22-17fba4a40590",
       "layout_id": "c57d8bf9-e30a-58b1-9eb0-9f4c4b96e7e5",
       "widget_type": "chart",
@@ -2104,10 +2289,17 @@
       "chart_type": "bar",
       "comparison_mode": null,
       "target_value": null,
-      "display_order": 5,
-      "updated_at": "2026-10-24T10:00:00Z"
+      "display_order": 5
     },
     {
+      "text_align": "left",
+      "date_type": "week",
+      "start_date": null,
+      "end_date": null,
+      "display_size": "small",
+      "grid_w": null,
+      "grid_h": null,
+      "updated_at": "2026-10-24T10:00:00Z",
       "id": "f56317ee-0c39-5f4c-96a0-81457eb208c5",
       "layout_id": "c57d8bf9-e30a-58b1-9eb0-9f4c4b96e7e5",
       "widget_type": "number",
@@ -2118,10 +2310,17 @@
       "chart_type": null,
       "comparison_mode": null,
       "target_value": null,
-      "display_order": 6,
-      "updated_at": "2026-10-24T10:00:00Z"
+      "display_order": 6
     },
     {
+      "text_align": "left",
+      "date_type": "week",
+      "start_date": null,
+      "end_date": null,
+      "display_size": "small",
+      "grid_w": null,
+      "grid_h": null,
+      "updated_at": "2026-10-24T10:00:00Z",
       "id": "24109fe6-afb7-58a4-89cd-c9b62cff0abb",
       "layout_id": "6a8a45d1-3ffa-5bf7-90dd-5b4a9b65920d",
       "widget_type": "number",
@@ -2132,10 +2331,17 @@
       "chart_type": null,
       "comparison_mode": null,
       "target_value": null,
-      "display_order": 1,
-      "updated_at": "2026-10-24T10:00:00Z"
+      "display_order": 1
     },
     {
+      "text_align": "left",
+      "date_type": "week",
+      "start_date": null,
+      "end_date": null,
+      "display_size": "medium",
+      "grid_w": null,
+      "grid_h": null,
+      "updated_at": "2026-10-24T10:00:00Z",
       "id": "43f3728c-555a-56cb-a371-81fdff3ccf35",
       "layout_id": "6a8a45d1-3ffa-5bf7-90dd-5b4a9b65920d",
       "widget_type": "chart",
@@ -2146,121 +2352,7 @@
       "chart_type": "bar",
       "comparison_mode": null,
       "target_value": null,
-      "display_order": 2,
-      "updated_at": "2026-10-24T10:00:00Z"
-    }
-  ],
-  "approval_requests": [
-    {
-      "id": "6d8f2eac-7358-58e5-8e0b-b36c94053b20",
-      "event_id": "452ac247-5c88-59ca-8de7-c5a329c71317",
-      "target_type": "event",
-      "target_id": "452ac247-5c88-59ca-8de7-c5a329c71317",
-      "requested_by_user_id": "dff5877d-7b9d-5a71-b9cd-dfce68f0de89",
-      "reviewed_by_user_id": "dff5877d-7b9d-5a71-b9cd-dfce68f0de89",
-      "status": "approved",
-      "reviewer_note": "พร้อมเผยแพร่",
-      "requested_at": "2026-09-30T08:00:00Z",
-      "reviewed_at": "2026-10-01T07:50:00Z"
-    },
-    {
-      "id": "87b74e41-d3df-5dbf-a49a-35672972b369",
-      "event_id": "452ac247-5c88-59ca-8de7-c5a329c71317",
-      "target_type": "registration_form",
-      "target_id": "89e426a3-3b34-50f1-821f-d485abab001b",
-      "requested_by_user_id": "6f682b3b-8200-5ae3-a1f8-0158dca1ee61",
-      "reviewed_by_user_id": "dff5877d-7b9d-5a71-b9cd-dfce68f0de89",
-      "status": "approved",
-      "reviewer_note": null,
-      "requested_at": "2026-09-28T04:00:00Z",
-      "reviewed_at": "2026-09-29T04:00:00Z"
-    },
-    {
-      "id": "7e7e00b0-13b0-589e-a0f3-5c24bad2d0ac",
-      "event_id": "550267c4-98f1-5ffc-94c6-81155429cd03",
-      "target_type": "event",
-      "target_id": "550267c4-98f1-5ffc-94c6-81155429cd03",
-      "requested_by_user_id": "2fe6a003-59af-5f7d-a768-e8539b43f837",
-      "reviewed_by_user_id": null,
-      "status": "pending",
-      "reviewer_note": null,
-      "requested_at": "2026-10-21T03:00:00Z",
-      "reviewed_at": null
-    }
-  ],
-  "trash_items": [
-    {
-      "id": "c861474a-2a59-5519-88d5-2f03703fce93",
-      "event_id": "452ac247-5c88-59ca-8de7-c5a329c71317",
-      "resource_type": "submission",
-      "resource_id": "7197e35d-868f-58d6-8b31-32497c4a743c",
-      "display_name": "วิชัย ทดสอบลบ / EMP099",
-      "deleted_by_user_id": "dff5877d-7b9d-5a71-b9cd-dfce68f0de89",
-      "deleted_at": "2026-10-14T01:00:00Z",
-      "restore_allowed": false,
-      "restored_by_user_id": null,
-      "restored_at": null
-    }
-  ],
-  "hard_delete_requests": [
-    {
-      "id": "68d730a8-70d3-59f8-93bd-282669eb947b",
-      "event_id": "452ac247-5c88-59ca-8de7-c5a329c71317",
-      "resource_type": "submission",
-      "resource_id": "7197e35d-868f-58d6-8b31-32497c4a743c",
-      "reason": "ผู้เข้าร่วมขอใช้สิทธิ์ถูกลืมตาม PDPA",
-      "requested_by_user_id": "dff5877d-7b9d-5a71-b9cd-dfce68f0de89",
-      "reviewed_by_user_id": null,
-      "status": "pending",
-      "requested_at": "2026-10-14T02:00:00Z",
-      "reviewed_at": null,
-      "completed_at": null
-    }
-  ],
-  "audit_logs": [
-    {
-      "id": "40bc072b-c7fd-5b23-9b35-87174f6cb70a",
-      "event_id": "452ac247-5c88-59ca-8de7-c5a329c71317",
-      "actor_user_id": "dff5877d-7b9d-5a71-b9cd-dfce68f0de89",
-      "action": "event.publish",
-      "resource_type": "event",
-      "resource_id": "452ac247-5c88-59ca-8de7-c5a329c71317",
-      "description": "Published Tech Summit 2026",
-      "includes_unmasked_pii": false,
-      "occurred_at": "2026-10-01T08:00:00Z"
-    },
-    {
-      "id": "c2c15d34-ff1d-5676-b692-7a9fa1fe464e",
-      "event_id": "452ac247-5c88-59ca-8de7-c5a329c71317",
-      "actor_user_id": "6f682b3b-8200-5ae3-a1f8-0158dca1ee61",
-      "action": "registration.view_list",
-      "resource_type": "form",
-      "resource_id": "89e426a3-3b34-50f1-821f-d485abab001b",
-      "description": "Viewed registration list with masked PII",
-      "includes_unmasked_pii": false,
-      "occurred_at": "2026-10-13T01:00:00Z"
-    },
-    {
-      "id": "c43ac3ba-3805-59f2-8e8f-686247e1ee93",
-      "event_id": "452ac247-5c88-59ca-8de7-c5a329c71317",
-      "actor_user_id": "dff5877d-7b9d-5a71-b9cd-dfce68f0de89",
-      "action": "registration.export_unmasked",
-      "resource_type": "form",
-      "resource_id": "89e426a3-3b34-50f1-821f-d485abab001b",
-      "description": "Exported registration CSV with unmasked PII",
-      "includes_unmasked_pii": true,
-      "occurred_at": "2026-10-13T02:00:00Z"
-    },
-    {
-      "id": "4b746f93-8173-5ceb-8833-e3b8f07d090e",
-      "event_id": "452ac247-5c88-59ca-8de7-c5a329c71317",
-      "actor_user_id": "dff5877d-7b9d-5a71-b9cd-dfce68f0de89",
-      "action": "registration.soft_delete",
-      "resource_type": "submission",
-      "resource_id": "7197e35d-868f-58d6-8b31-32497c4a743c",
-      "description": "Soft-deleted a registration submission",
-      "includes_unmasked_pii": false,
-      "occurred_at": "2026-10-14T01:00:00Z"
+      "display_order": 2
     }
   ]
 }

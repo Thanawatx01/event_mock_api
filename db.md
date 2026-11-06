@@ -242,7 +242,7 @@ Table events [headercolor: #7C3AED] {
   starts_at timestamptz
   ends_at timestamptz
   timezone varchar(80) [not null, default: 'Asia/Bangkok']
-  banner_url varchar(2048)
+  banner_urls jsonb [note: 'string[] of banner image URLs; mock stores JSON array (gallery, 1+)']
   created_by_user_id uuid [not null, ref: > users.id]
   published_at timestamptz
   closed_at timestamptz
@@ -260,8 +260,9 @@ Table events [headercolor: #7C3AED] {
   Note: '''
     Slug and published content are immutable after Publish. Closed stops Registration,
     while Survey may continue. Archived hides the Event and stops every Form.
-    language_rotation_seconds accepts null, 30, 60, or 300. Banner rendering uses
-    the fixed 3:4 aspect ratio on Desktop and Mobile and requires no persisted setting.
+    language_rotation_seconds accepts null, 30, 60, or 300. Banner gallery stores
+    one or more image URLs in banner_urls; rendering uses a fixed 3:4 aspect ratio
+    and requires no persisted ratio setting.
   '''
 }
 

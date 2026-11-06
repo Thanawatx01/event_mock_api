@@ -1,255 +1,872 @@
-// Event + Survey Management — mock API schema (source of truth for database-schema.png)
-// Localized maps use string language keys (th, en, …) — not enums.
+Project event_survey_relational_database {
+  database_type: 'PostgreSQL'
+  Note: '''
+    โมเดลฐานข้อมูลเชิงสัมพันธ์สำหรับแพลตฟอร์มจัดการอีเวนต์และแบบสอบถาม
+    อ้างอิง: SRS Draft v2.1.0 — 22 ตุลาคม 2026
 
-Table users {
-  id string [pk]
-  name string
-  email string
-  password string
-  phone string
-  role string [note: 'super_admin | event_owner | sub_user | participant']
-  status string [note: 'active | inactive']
-  ownerId string [ref: > users.id, null]
-  canViewSensitiveData boolean
-  isDeleted boolean
-  deletedAt datetime [null]
-  anonymizedAt datetime [null]
-  createdAt datetime
-  updatedAt datetime
+    นี่คือโมเดล persistence สำหรับ production ในอนาคต Frontend MVP ปัจจุบันยังใช้
+    json-server Seed Data และ Client Memory คำตอบฟอร์มถูกเก็บแบบ normalize เป็นแถว
+    ตามชนิดข้อมูล เพื่อให้ Dashboard การกรอง การส่งออก และการสรุปไม่ต้อง query
+    คีย์ JSON แบบไดนามิก การส่งออกได้ไฟล์ CSV/XLSX ดิบ โดยไม่มีประวัติการส่งออก
+    หรือสร้างรายงาน PDF Privacy/Consent เป็น Mock Banner เท่านั้นและไม่ถูกเก็บถาวร
+    ไม่รวมฟีเจอร์ Clone Event หรือ Clone Form
+  '''
 }
 
-Table roles {
-  id string [pk]
-  eventOwnerId string [ref: > users.id]
-  name string
-  description string
-  status string
-  isDeleted boolean
-  deletedAt datetime [null]
-  createdAt datetime
+// ลำดับการอ่าน
+// 01 สิทธิ์แพลตฟอร์ม + สิทธิ์ในอีเวนต์ -> 02 อีเวนต์
+// -> 03 นิยามฟอร์ม -> 04 ไวท์ลิสต์ -> 05 การส่งคำตอบ
+// -> 06 การตั้งค่า Dashboard
+//
+// เส้นทางข้อมูลหลักของผู้เข้าร่วม:
+// forms -> form_submissions -> submission_answers -> answer_option_selections
+// การลงทะเบียนมีแถว registrations เพิ่มอีกหนึ่งแถว
+// คำตอบแบบสอบถามระบุผ่าน forms.type = survey
+
+////////////////////////////////////////////////////
+// ENUMS
+////////////////////////////////////////////////////
+
+Enum system_role {
+  platform_admin
+  event_user
 }
 
-Table permissions {
-  id string [pk]
-  roleId string [ref: > roles.id]
-  feature string
-  access boolean
-  view boolean
-  create boolean
-  edit boolean
-  delete boolean
-  approve boolean
-  publish boolean
+/// สิทธิ์สำหรับ Custom Role ในระดับอีเวนต์เท่านั้น (ไม่ใช่แพลตฟอร์ม)
+Enum permission_code {
+  manage_dashboard
+  manage_event
+  manage_registration_form
+  manage_survey_form
+  manage_sub_user
 }
 
-Table events {
-  id string [pk]
-  name json [note: 'Record<string,string> localized e.g. {th,en}']
-  description json [note: 'Record<string,string> localized e.g. {th,en}']
-  ownerId string [ref: > users.id]
-  createdBy string [ref: > users.id]
-  type string [note: 'public | private']
-  status string [note: 'draft | published | closed']
-  startAt datetime
-  endAt datetime
-  publishedAt datetime [null]
-  closedAt datetime [null]
-  accessGateField string [null]
-  isDeleted boolean
-  deletedAt datetime [null]
-  createdAt datetime
-  updatedAt datetime
+/// สิทธิ์สำหรับ Platform Role เท่านั้น (แยกจาก Event Role)
+Enum platform_permission_code {
+  manage_platform_users
+  manage_all_events
+  view_platform_overview
+  impersonate_event_user
 }
 
-Table event_users {
-  id string [pk]
-  eventId string [ref: > events.id]
-  userId string [ref: > users.id]
-  roleId string [ref: > roles.id]
-  status string
-  isDeleted boolean
-  deletedAt datetime [null]
-  createdAt datetime
+Enum account_status {
+  invited
+  active
+  suspended
+  removed
 }
 
-Table event_branding {
-  id string [pk]
-  eventId string [ref: > events.id]
-  logo string
-  banner string
-  bannerRatio string [note: '9:16 | 3:4']
-  primaryColor string
-  secondaryColor string
-  theme string
-  createdAt datetime
-  updatedAt datetime
+Enum event_status {
+  draft
+  scheduled
+  open
+  closed
 }
 
-Table forms {
-  id string [pk]
-  eventId string [ref: > events.id]
-  type string [note: 'registration | survey']
-  title json [note: 'Record<string,string> localized e.g. {th,en}']
-  description json [note: 'Record<string,string> localized e.g. {th,en}']
-  slug string [note: 'language-agnostic URL/QR key — one per form, not derived from localized title']
-  status string [note: 'draft | pending_approval | approved | rejected']
-  rejectionNote string [null]
-  submittedAt datetime [null]
-  approvedAt datetime [null]
-  approvedBy string [ref: > users.id, null]
-  rejectedAt datetime [null]
-  rejectedBy string [ref: > users.id, null]
-  approvalType string [null, note: 'self | approver | force_owner']
-  branchingMode string [note: 'section_by_language']
-  isDeleted boolean
-  deletedAt datetime [null]
-  createdBy string [ref: > users.id]
-  createdAt datetime
-  updatedAt datetime
+/// ใครเปิดแบบสอบถามได้ เมื่อ events.has_survey = true
+Enum survey_access {
+  public
+  registered_only
 }
 
-Table form_sections {
-  id string [pk]
-  formId string [ref: > forms.id]
-  key string [note: 'e.g. content_th, content_en']
-  title string
-  description string [null]
-  lang_type string [note: 'language id string e.g. th, en — not enum']
-  sortOrder number
-  isDeleted boolean
-  deletedAt datetime [null]
+Enum form_type {
+  registration
+  survey
 }
 
-Table form_fields {
-  id string [pk]
-  formId string [ref: > forms.id]
-  sectionId string [ref: > form_sections.id]
-  name string [note: 'stable question key across languages']
-  label string
-  type string [note: 'text | long_text | radio | checkbox | dropdown | date | time | number | rating']
-  required boolean
-  sensitive boolean
-  placeholder string [null]
-  ratingMin number [null]
-  ratingMax number [null]
-  ratingLabels json [null]
-  sortOrder number
-  isDeleted boolean
-  deletedAt datetime [null]
+Enum form_status {
+  draft
+  scheduled
+  open
+  closed
 }
 
-Table form_field_options {
-  id string [pk]
-  fieldId string [ref: > form_fields.id]
-  label string
-  value string
-  sortOrder number
+Enum field_type {
+  short_text
+  long_text
+  single_choice
+  multiple_choice
+  dropdown
+  date
+  time
+  number
+  email
+  rating
 }
 
-Table whitelist_uploads {
-  id string [pk]
-  eventId string [ref: > events.id]
-  fileName string
-  rowCount number
-  uploadedBy string [ref: > users.id]
-  createdAt datetime
+/// โหมดการแสดงผลเมื่อ form_fields.type = rating
+Enum rating_display {
+  icon
+  linear_scale
 }
 
-Table whitelist_entries {
-  id string [pk]
-  eventId string [ref: > events.id]
-  uploadId string [ref: > whitelist_uploads.id]
-  uniqueField string
-  uniqueValue string
-  record json
-  status string
-  isDeleted boolean
-  deletedAt datetime [null]
-  createdAt datetime
+/// ชุดไอคอนเมื่อ rating_display = icon
+Enum rating_icon {
+  star
+  heart
+  like
 }
 
-Table submissions {
-  id string [pk]
-  formId string [ref: > forms.id]
-  eventId string [ref: > events.id]
-  formType string
-  participantId string [ref: > users.id, null]
-  whitelistEntryId string [ref: > whitelist_entries.id, null]
-  status string
-  submittedAt datetime
-  isAnonymized boolean
-  anonymizedAt datetime [null]
-  isDeleted boolean
-  deletedAt datetime [null]
+Enum submission_status {
+  submitted
+  cancelled
 }
 
-Table submission_answers {
-  id string [pk]
-  submissionId string [ref: > submissions.id]
-  fieldId string [ref: > form_fields.id]
-  value string [null]
-  values json
+Enum whitelist_entry_status {
+  available
+  joined
 }
 
-Table dashboards {
-  id string [pk]
-  eventId string [ref: > events.id]
-  name string
-  layout string
-  isTemplate boolean
-  isDeleted boolean
-  deletedAt datetime [null]
-  createdAt datetime
+Enum dashboard_widget_type {
+  number
+  comparison
+  chart
 }
 
-Table dashboard_widgets {
-  id string [pk]
-  dashboardId string [ref: > dashboards.id]
-  type string [note: 'kpi | bar_chart | pie_chart | data_table']
-  title string
-  dataSourceType string
-  formId string [ref: > forms.id, null]
-  fieldId string [ref: > form_fields.id, null]
-  aggregation string
-  filters json
-  positionX number
-  positionY number
-  width number
-  height number
-  createdAt datetime
+Enum dashboard_aggregation {
+  count
+  sum
+  average
+  minimum
+  maximum
+  percentage
 }
 
-Table audit_logs {
-  id string [pk]
-  userId string [ref: > users.id]
-  eventId string [ref: > events.id, null]
-  action string
-  entity string
-  entityId string
-  fieldId string [ref: > form_fields.id, null]
-  metadata json
-  createdAt datetime
+Enum dashboard_chart_type {
+  bar
+  line
+  pie
+  donut
 }
 
-Table cookie_consents {
-  id string [pk]
-  participantId string [ref: > users.id, null]
-  visitorId string
-  eventId string [ref: > events.id, null]
-  accepted boolean
-  policyVersion string
-  createdAt datetime
+Enum dashboard_comparison_mode {
+  previous_period
+  target
+  capacity
 }
 
-Table privacy_requests {
-  id string [pk]
-  userId string [ref: > users.id]
-  type string
-  scope string
-  status string
-  note string
-  requestedAt datetime
-  reviewedBy string [ref: > users.id, null]
-  reviewedAt datetime [null]
-  completedAt datetime [null]
+/// พื้นที่ widget บนกริดแบบ preset ส่วน custom ใช้ grid_w / grid_h (อย่างละ 1..3 สูงสุด 3×3)
+Enum display_size {
+  small
+  medium
+  large
+  custom
+}
+
+Enum text_align {
+  left
+  center
+  right
+}
+
+Enum date_type {
+  day
+  week
+  month
+  three_months
+}
+
+////////////////////////////////////////////////////
+// 01 · ตัวตน · สิทธิ์แพลตฟอร์ม · สิทธิ์ในอีเวนต์
+////////////////////////////////////////////////////
+
+Table users [headercolor: #2563EB] {
+  id uuid [pk]
+  email varchar(320) [unique]
+  password varchar(255) [not null]
+  display_name varchar(160) [not null]
+  system_role system_role [not null, default: 'event_user']
+
+  /// เฉพาะ Platform Admin — อ้างอิง platform_roles (ห้ามอ้าง Event Role)
+  platform_role_id uuid [ref: > platform_roles.id]
+
+  /// เฉพาะ Event User — หนึ่งอีเวนต์ + หนึ่ง Custom Role ในอีเวนต์นั้น
+  event_id uuid [ref: > events.id]
+  role_id uuid [ref: > roles.id]
+
+  role_assigned_by_user_id uuid [ref: > users.id]
+  role_assigned_at timestamptz
+  status account_status [not null, default: 'invited']
+  invited_by_user_id uuid [ref: > users.id]
+  joined_at timestamptz
+  created_at timestamptz [not null]
+  updated_at timestamptz [not null]
+  removed_at timestamptz
+
+  indexes {
+    (system_role, status)
+    (platform_role_id, status)
+    (event_id, status)
+    (event_id, role_id, status)
+  }
+
+  Note: '''
+    มีบัญชีเฉพาะผู้ดูแลระบบ ผู้เข้าร่วมไม่ต้องมีบัญชี
+
+    Platform Admin (system_role=platform_admin):
+      - ใช้ platform_role_id → platform_roles / platform_role_permissions
+      - event_id และ role_id ต้องเป็น null
+      - Platform Role แยกจาก Event Role โดยสิ้นเชิง
+
+    Event User (system_role=event_user):
+      - สังกัดอีเวนต์เดียว (event_id) พร้อม Custom Role ในอีเวนต์นั้น (role_id)
+      - platform_role_id ต้องเป็น null
+      - Platform Admin เป็นผู้มอบ Role ผู้ดูแลอีเวนต์เริ่มต้น Role ที่มี
+        manage_sub_user สามารถสร้างและมอบ Role ภายในอีเวนต์ได้
+        อีเวนต์อื่นต้องใช้บัญชีอื่น
+
+    password ใช้สำหรับ Demo/Mock auth เท่านั้น การลบบัญชีตั้ง status=removed,
+    email=null และ removed_at แต่คง user ID ไว้สำหรับอ้างอิงประวัติ
+  '''
+}
+
+/// Role ระดับแพลตฟอร์มเท่านั้น ไม่เกี่ยวกับ Event Owner / Event Custom Role
+Table platform_roles [headercolor: #1D4ED8] {
+  id uuid [pk]
+  name varchar(160) [unique, not null]
+  description text
+  created_at timestamptz [not null]
+  created_by uuid [ref: > users.id]
+  updated_at timestamptz [not null]
+  updated_by uuid [ref: > users.id]
+  deleted_at timestamptz
+
+  Note: '''
+    แคตตาล็อก Platform Role สำหรับ Platform Admin เท่านั้น สิทธิ์มาจาก
+    platform_permission_code ผ่าน platform_role_permissions
+    ห้ามปนกับ Role ในระดับอีเวนต์
+  '''
+}
+
+Table platform_role_permissions [headercolor: #1D4ED8] {
+  id uuid [pk]
+  platform_role_id uuid [not null, ref: > platform_roles.id]
+  permission platform_permission_code [not null]
+
+  indexes {
+    (platform_role_id, permission) [unique]
+  }
+
+  Note: 'หนึ่งแถว = มอบสิทธิ์แพลตฟอร์มหนึ่งรายการให้หนึ่ง Platform Role'
+}
+
+/// Custom Role ในระดับอีเวนต์เท่านั้น (ผู้ดูแลอีเวนต์, ผู้จัดการฟอร์ม, …)
+Table roles [headercolor: #2563EB] {
+  id uuid [pk]
+  event_id uuid [not null, ref: > events.id]
+  name varchar(160) [not null]
+  description text
+  created_at timestamptz [not null]
+  created_by uuid [not null, ref: > users.id]
+  updated_at timestamptz [not null]
+  updated_by uuid [not null, ref: > users.id]
+  deleted_at timestamptz
+
+  indexes {
+    (event_id, name) [unique]
+  }
+
+  Note: '''
+    Role จำกัดขอบเขตต่อหนึ่งอีเวนต์ และใช้ permission_code (เมทริกซ์สิทธิ์อีเวนต์)
+    ไม่ใช่ Platform Role Role ผู้ดูแลอีเวนต์เริ่มต้นถูกมอบโดย Platform Admin
+    Role ที่มี manage_sub_user สร้างและจัดการ Role ของ Event User ในอีเวนต์นั้นได้
+    แต่ต้องไม่มอบสิทธิ์ที่ผู้สร้างมอบต่อไม่ได้
+  '''
+}
+
+Table role_permissions [headercolor: #2563EB] {
+  id uuid [pk]
+  role_id uuid [not null, ref: > roles.id]
+  permission permission_code [not null]
+
+  indexes {
+    (role_id, permission) [unique]
+  }
+
+  Note: 'หนึ่งแถว = มอบสิทธิ์อีเวนต์หนึ่งรายการให้หนึ่ง Event-scoped Role'
+}
+
+////////////////////////////////////////////////////
+// 02 · อีเวนต์และเนื้อหาหลายภาษา
+////////////////////////////////////////////////////
+
+Table events [headercolor: #7C3AED] {
+  id uuid [pk]
+  slug varchar(160) [not null]
+  status event_status [not null, default: 'draft']
+  default_locale varchar(35) [not null, default: 'th']
+  start_at timestamptz
+  end_at timestamptz
+
+  /// โหมดการเข้าถึง
+  is_private boolean [not null, default: false]
+
+  /// โฟลว์ผู้เข้าร่วม (เลือกได้แยกกัน)
+  has_registration boolean [not null, default: false]
+  has_survey boolean [not null, default: false]
+
+  /// มีความหมายเมื่อ has_survey = true เท่านั้น
+  /// public = ใครก็ตอบได้; registered_only = ต้องลงทะเบียนก่อน
+  survey_access survey_access
+
+  opens_at timestamptz
+  closes_at timestamptz
+  created_at timestamptz [not null]
+  created_by uuid [not null, ref: > users.id]
+  updated_at timestamptz [not null]
+  updated_by uuid [not null, ref: > users.id]
+
+  indexes {
+    (slug) [unique]
+    (status, start_at)
+    (status, end_at)
+    (is_private, status)
+  }
+
+  Note: '''
+    slug และเนื้อหาที่เผยแพร่แล้วแก้ไขไม่ได้หลัง Publish สถานะ closed หยุดการลงทะเบียน
+    แบบสอบถามอาจดำเนินต่อได้ตามกฎผลิตภัณฑ์
+
+    สวิตช์ฟอร์ม:
+      - has_registration = true → อีเวนต์มี forms ชนิด registration ได้หนึ่งแถว
+      - has_survey = true → อีเวนต์มี forms ชนิด survey ได้หนึ่งแถว
+      - survey_access จำเป็นเมื่อ has_survey = true; ต้องเป็น null เมื่อ has_survey = false
+      - registered_only ต้องมี has_registration = true
+
+    อีเวนต์ส่วนตัว:
+      - is_private = true บังคับ has_registration = true และมี whitelist_entries
+        ระดับอีเวนต์ (จัดการที่อีเวนต์ ไม่ผูกฟอร์ม) อีเวนต์ส่วนตัวห้ามเปิด
+        ลงทะเบียนสาธารณะโดยไม่มีไวท์ลิสต์
+
+    ความจุ (capacity) ไม่เก็บที่ตาราง events — ดูที่ event_form_settings
+    กำหนดตอนสร้าง/แก้ไขอีเวนต์ ก่อนมีนิยาม Form Builder
+  '''
+}
+
+Table event_translations [headercolor: #7C3AED] {
+  id uuid [pk]
+  event_id uuid [not null, ref: > events.id]
+  locale_code varchar(5) [not null]
+  display_order int [not null]
+  title varchar(240) [not null]
+  description text
+  location_name varchar(240)
+  address_text text
+  created_at timestamptz [not null]
+  updated_at timestamptz [not null]
+
+  indexes {
+    (event_id, locale_code) [unique]
+    (event_id, display_order) [unique]
+  }
+
+  Note: 'แต่ละแถวคือภาษาเนื้อหาที่เปิดใช้ ภาษา UI ของแอปยังคงเป็นไทยและอังกฤษ'
+}
+
+/// จำกัดที่นั่ง กำหนดตอนสร้าง/แก้ อีเวนต์ — ก่อนมีแถว Form Builder
+Table event_form_settings [headercolor: #7C3AED] {
+  id uuid [pk]
+  event_id uuid [not null, ref: > events.id]
+  form_type form_type [not null]
+
+  /// ไม่จำกัด: is_unlimited = true และ capacity ต้องเป็น null
+  /// จำกัด: is_unlimited = false และ capacity ต้องเป็นจำนวนเต็มบวก
+  is_unlimited boolean [not null, default: true]
+  capacity int
+
+  created_at timestamptz [not null]
+  updated_at timestamptz [not null]
+
+  indexes {
+    (event_id, form_type) [unique]
+  }
+
+  Note: '''
+    หนึ่งแถวต่อโฟลว์ผู้เข้าร่วมที่เปิดบนอีเวนต์ สร้าง/อัปเดตพร้อมอีเวนต์
+    (โฟลว์สร้างอีเวนต์ของ Platform Admin) ไม่ใช่ตอน Form Builder นิยามฟิลด์ทีหลัง
+
+    วงจรชีวิต:
+      - has_registration = true → ต้องมีแถว form_type = registration
+      - has_survey = true → ต้องมีแถว form_type = survey
+      - ปิดสวิตช์แล้วให้ลบ (หรือไม่ใช้) แถว settings นั้น ไม่ทิ้ง capacity ของโฟลว์ที่ปิด
+      - เมื่อสร้าง forms ทีหลัง อ้างความจุจากแถวนี้ผ่าน (event_id, type)
+        ตาราง forms ไม่มีคอลัมน์ capacity ของตัวเอง
+
+    การนับที่นั่ง (บังคับเมื่อฟอร์มมีอยู่และเปิดรับ):
+      COUNT form_submissions ของฟอร์มที่ตรง (event_id, form_type)
+      WHERE status = 'submitted' AND deleted_at IS NULL
+      ยกเลิกคำตอบ (status → cancelled) คืนที่นั่งหนึ่งที่
+      ปฏิเสธการรับใหม่เมื่อจำกัดและ usage >= capacity
+  '''
+}
+
+Table event_banners [headercolor: #7C3AED] {
+  id uuid [pk]
+  event_id uuid [not null, ref: > events.id]
+  banner_url varchar(2048) [not null]
+  created_at timestamptz [not null]
+  updated_at timestamptz [not null]
+
+  indexes {
+    (event_id) [unique]
+  }
+}
+
+////////////////////////////////////////////////////
+// 03 · FORM BUILDER
+////////////////////////////////////////////////////
+
+Table forms [headercolor: #8B5CF6] {
+  id uuid [pk]
+  event_id uuid [not null, ref: > events.id]
+  type form_type [not null]
+  status form_status [not null, default: 'draft']
+  opens_at timestamptz
+  closes_at timestamptz
+  created_at timestamptz [not null]
+  created_by uuid [not null, ref: > users.id]
+  updated_at timestamptz [not null]
+  updated_by uuid [not null, ref: > users.id]
+  deleted_at timestamptz
+
+  indexes {
+    (event_id, type) [unique]
+    (event_id, status)
+    (opens_at, closes_at)
+  }
+
+  Note: '''
+    อีเวนต์ละได้มากสุดหนึ่งฟอร์มลงทะเบียนและหนึ่งแบบสอบถาม (unique ที่ event_id, type)
+    ฟอร์มลงทะเบียนมีได้เฉพาะเมื่อ events.has_registration = true
+    แบบสอบถามมีได้เฉพาะเมื่อ events.has_survey = true
+    สิทธิ์เข้าแบบสอบถามตาม events.survey_access (public / registered_only)
+    ฟอร์มที่เผยแพร่แล้วอาจหยุดรับคำตอบได้ แต่แก้โครงสร้างไม่ได้
+
+    ความจุอยู่ที่ event_form_settings ของ (event_id, type) ที่ตั้งตอนสร้างอีเวนต์
+    ไม่ใช่คอลัมน์ในตารางนี้ Form Builder นิยามเฉพาะฟิลด์/สถานะ
+  '''
+}
+
+Table form_translations [headercolor: #8B5CF6] {
+  id uuid [pk]
+  form_id uuid [not null, ref: > forms.id]
+  locale_code varchar(35) [not null]
+  title varchar(240) [not null]
+  description text
+  created_at timestamptz [not null]
+  updated_at timestamptz [not null]
+
+  indexes {
+    (form_id, locale_code) [unique]
+  }
+}
+
+Table form_fields [headercolor: #8B5CF6] {
+  id uuid [pk]
+  form_id uuid [not null, ref: > forms.id]
+  type field_type [not null]
+  display_order int [not null]
+  is_required boolean [not null, default: false]
+
+  /// ขอบเขตตัวเลขร่วม (ใช้กับ type=number ด้วย)
+  min_number decimal
+  max_number decimal
+  min_length int
+  max_length int
+  validation_pattern varchar(500)
+
+  // ── เฉพาะ rating (เป็น null เมื่อ type ≠ rating) ──────────────────
+  /// icon = แถวดาว/หัวใจ/ไลก์; linear_scale = สเกลตัวเลขพร้อมป้ายปลายสเกล
+  rating_display rating_display
+  /// จำเป็นเมื่อ rating_display = icon; ต้องเป็น null เมื่อเป็น linear_scale
+  rating_icon rating_icon
+  /// โหมดไอคอน: ค่าสูงสุดที่เลือกได้ (เช่น 5 ดาว) ค่าต่ำสุดเป็น 1 เสมอ
+  /// สเกลเชิงเส้น: ใช้ min_number / max_number แทน; rating_max ต้องเป็น null
+  rating_max int
+
+  created_at timestamptz [not null]
+  updated_at timestamptz [not null]
+  deleted_at timestamptz
+
+  indexes {
+    (form_id, display_order) [unique]
+    (form_id, type)
+  }
+
+  Note: '''
+    ฟิลด์ผู้เข้าร่วมไม่มี File Upload — File Upload ใช้เฉพาะนำเข้าไวท์ลิสต์โดยผู้ดูแลอีเวนต์
+
+    โครงฟิลด์เรตติ้ง (type = rating)
+    ┌─────────────────────────────────────────────────────────────────┐
+    │ rating_display = icon                                           │
+    │   rating_icon ∈ { star, heart, like }                           │
+    │   rating_max  ∈ { 1..10 } โดยทั่วไป 5                            │
+    │   UI: [★][★][★][★][★] หรือ ♥ / 👍                               │
+    │   คำตอบ → submission_answers.value_number (1 .. rating_max)     │
+    ├─────────────────────────────────────────────────────────────────┤
+    │ rating_display = linear_scale                                   │
+    │   min_number / max_number = ปลายสเกล (เช่น 1 .. 10)              │
+    │   rating_icon / rating_max = null                               │
+    │   ป้ายปลายสเกล (i18n) ที่ field_translations:                    │
+    │     scale_min_label = "แย่"     scale_max_label = "ดีเยี่ยม"      │
+    │   UI:  แย่  (1) (2) (3) … (10)  ดีเยี่ยม                         │
+    │   คำตอบ → submission_answers.value_number (min .. max)          │
+    └─────────────────────────────────────────────────────────────────┘
+
+    ข้อจำกัดเมื่อ type = rating:
+      - ต้องมี rating_display
+      - icon         → ต้องมี rating_icon และ rating_max (> 0)
+                       min_number/max_number เป็น null
+      - linear_scale → rating_icon/rating_max เป็น null
+                       ต้องมี min_number/max_number และ min < max
+      - ไม่มีแถว field_options (rating ไม่ใช่รายการตัวเลือก)
+  '''
+}
+
+Table field_translations [headercolor: #8B5CF6] {
+  id uuid [pk]
+  field_id uuid [not null, ref: > form_fields.id]
+  locale_code varchar(35) [not null]
+  label varchar(500) [not null]
+  placeholder varchar(500)
+
+  /// ป้ายปลายสเกลเชิงเส้นเท่านั้น (null สำหรับชนิดอื่น / เรตติ้งแบบไอคอน)
+  scale_min_label varchar(240)
+  scale_max_label varchar(240)
+
+  indexes {
+    (field_id, locale_code) [unique]
+  }
+
+  Note: '''
+    scale_min_label / scale_max_label ใช้เมื่อฟิลด์แม่มี type = rating และ
+    rating_display = linear_scale ทั้งคู่เป็น null ได้ (แสดงเฉพาะตัวเลข)
+    เรตติ้งแบบไอคอนปล่อยเป็น null
+  '''
+}
+
+Table field_options [headercolor: #8B5CF6] {
+  id uuid [pk]
+  field_id uuid [not null, ref: > form_fields.id]
+  display_order int [not null]
+  created_at timestamptz [not null]
+  deleted_at timestamptz
+
+  indexes {
+    (field_id, display_order) [unique]
+  }
+}
+
+Table field_option_translations [headercolor: #8B5CF6] {
+  id uuid [pk]
+  option_id uuid [not null, ref: > field_options.id]
+  locale_code varchar(35) [not null]
+  label varchar(240) [not null]
+
+  indexes {
+    (option_id, locale_code) [unique]
+  }
+}
+
+////////////////////////////////////////////////////
+// 04 · ไวท์ลิสต์ (ระดับอีเวนต์)
+////////////////////////////////////////////////////
+
+Table whitelist_entries [headercolor: #D97706] {
+  id uuid [pk]
+  event_id uuid [not null, ref: > events.id]
+
+  /// โค้ดสั้นที่ระบบสร้างตอนเพิ่มรายชื่อ (เพิ่มทีละคน / นำเข้าจำนวนมาก)
+  /// ผู้เข้าร่วมกรอกโค้ดนี้บนฟอร์มลงทะเบียนของอีเวนต์ส่วนตัว
+  /// ไม่ซ้ำภายในอีเวนต์ รูปแบบตัวอย่าง: ตัวอักษร+ตัวเลข 6–8 ตัว (กำหนดโดยแอป)
+  access_code varchar(32) [not null]
+
+  username varchar(240) [not null]
+
+  /// available = ยังไม่ลงทะเบียน; joined = ใช้ access_code นี้ลงทะเบียนแล้ว
+  status whitelist_entry_status [not null, default: 'available']
+  /// ตั้งเมื่อสถานะเป็น joined; ล้างเมื่อยกเลิกการลงทะเบียน
+  joined_at timestamptz
+  created_at timestamptz [not null]
+  deleted_at timestamptz
+
+  indexes {
+    (event_id, access_code) [unique]
+    (event_id, status)
+  }
+
+  Note: '''
+    ไวท์ลิสต์เป็นของอีเวนต์ (ผู้ดูแลอีเวนต์ / Platform Admin จัดการรายการ)
+    ไม่ผูกกับฟอร์ม จำเป็นเมื่อ events.is_private = true
+    (และจึงต้องมี has_registration = true)
+
+    โฟลว์ลงทะเบียนอีเวนต์ส่วนตัว:
+      1. Admin เพิ่มคน (ทีละราย / นำเข้า) → ระบบสร้าง access_code
+      2. ผู้เข้าร่วมเปิดฟอร์มลงทะเบียนแล้วกรอก access_code
+      3. ถ้าโค้ดมีในอีเวนต์นี้และ status = available → อนุญาตส่ง
+         ผูก registrations.whitelist_entry_id ตั้ง status = joined + joined_at
+      4. ถ้า status = joined แล้ว → ปฏิเสธ (ลงทะเบียน/เข้าร่วมแล้ว)
+      5. ยกเลิกการลงทะเบียน → คืน status เป็น available ล้าง joined_at
+         (ใช้โค้ดซ้ำได้ เว้นผลิตภัณฑ์ห้าม)
+
+    access_code เป็นคีย์จับคู่เพียงอย่างเดียว username เป็นป้ายชื่อฝั่งแอดมิน
+    การนำเข้าสร้างหนึ่งแถว (+ โค้ดที่เจน) ต่อหนึ่งบรรทัด ไฟล์อัปโหลดเป็นชั่วคราว
+    ไม่เก็บถาวร รายการที่ joined แล้วเก็บไว้เป็นประวัติและไม่อยู่ในรายชื่อสิทธิ์ที่ใช้งาน
+  '''
+}
+
+////////////////////////////////////////////////////
+// 05 · การส่งคำตอบและคำตอบแบบ normalize
+////////////////////////////////////////////////////
+
+Table form_submissions [headercolor: #059669] {
+  id uuid [pk]
+  form_id uuid [not null, ref: > forms.id]
+  status submission_status [not null, default: 'submitted']
+  submitted_at timestamptz [not null]
+
+  /// ตั้งเมื่อสถานะเป็น cancelled — คืนที่นั่งหนึ่งที่ของความจุฟอร์มแม่
+  cancelled_by_user_id uuid [ref: > users.id]
+  cancelled_at timestamptz
+
+  indexes {
+    (form_id, submitted_at)
+    (form_id, status, submitted_at)
+    (form_id, status) /// ตรวจความจุ: COUNT WHERE status = 'submitted'
+  }
+
+  Note: '''
+    ส่วนหัวการส่งร่วมสำหรับลงทะเบียนและแบบสอบถาม การลงทะเบียนมีแถว
+    registrations เพิ่มอีกหนึ่งแถว คำตอบแบบสอบถามระบุผ่าน forms.type = survey
+    โดยไม่ต้องมีตารางย่อย
+
+    ปฏิสัมพันธ์กับความจุ:
+      - แหล่งจำกัด = event_form_settings ของ (event_id, type) ของฟอร์มแม่
+      - ที่นั่งใช้งาน = status = submitted (และ deleted_at IS NULL)
+      - ยกเลิก (status → cancelled, ตั้ง cancelled_at / cancelled_by_user_id)
+        กู้คืนแถวไม่ได้ คืนที่นั่งหนึ่งที่ของโฟลว์อีเวนต์นั้นถาวร
+      - คำตอบที่ยกเลิก / soft-delete ไม่นับความจุ ไม่รวมในสรุป Dashboard
+        แบบ "active" และไม่ใช้เช็คซ้ำการลงทะเบียน
+  '''
+}
+
+Table registrations [headercolor: #D97706] {
+  submission_id uuid [pk, ref: - form_submissions.id]
+  /// จำเป็นสำหรับอีเวนต์ส่วนตัว: รายการไวท์ลิสต์ที่ใช้ access_code
+  /// เป็น null สำหรับลงทะเบียนสาธารณะ (ไม่มีไวท์ลิสต์)
+  whitelist_entry_id uuid [unique, ref: > whitelist_entries.id]
+  /// รหัสยืนยันหลังส่งสำเร็จ (คนละตัวกับ whitelist access_code)
+  confirmation_code varchar(6) [not null]
+
+  indexes {
+    (confirmation_code)
+  }
+
+  Note: '''
+    การลงทะเบียนไม่เป็นนิรนาม
+
+    อีเวนต์ส่วนตัว:
+      - ผู้เข้าร่วมส่งพร้อม access_code จากไวท์ลิสต์
+      - จับคู่ whitelist_entries (event_id + access_code, status=available)
+      - ตั้ง whitelist_entry_id และเปลี่ยนรายการเป็น joined
+
+    อีเวนต์สาธารณะ:
+      - whitelist_entry_id เป็น null ไม่ต้องใช้ access_code
+
+    confirmation_code ถูกสร้างหลังลงทะเบียนสำเร็จ (ใบเสร็จ / ค้นหาย้อนหลัง)
+    แยกจาก whitelist_entries.access_code (โค้ดเชิญ/เข้างาน)
+
+    การยกเลิก form_submissions ที่ผูกอยู่กู้คืนไม่ได้ คืนรายการไวท์ลิสต์
+    (status กลับ available, ล้าง joined_at) และหยุดกินที่นั่งของ
+    event_form_settings (form_type=registration)
+  '''
+}
+
+Table submission_answers [headercolor: #059669] {
+  id uuid [pk]
+  submission_id uuid [not null, ref: > form_submissions.id]
+  field_id uuid [not null, ref: > form_fields.id]
+  value_text text
+  value_number decimal
+  value_boolean boolean
+  value_date date
+  value_time time
+  created_at timestamptz [not null]
+
+  indexes {
+    (submission_id, field_id) [unique]
+    (field_id, value_number)
+    (field_id, value_date)
+    (field_id, value_boolean)
+  }
+
+  Note: '''
+    ใช้คอลัมน์ค่า typed เพียงหนึ่งคอลัมน์ตาม form_fields.type
+    ค่า Radio / Dropdown / Checkbox เก็บใน answer_option_selections แทนข้อความ
+    โครงสร้างนี้เป็นแหล่งหลักสำหรับสรุป Dashboard และการส่งออก
+  '''
+}
+
+Table answer_option_selections [headercolor: #059669] {
+  answer_id uuid [not null, ref: > submission_answers.id]
+  option_id uuid [not null, ref: > field_options.id]
+
+  indexes {
+    (answer_id, option_id) [pk]
+    (option_id, answer_id)
+  }
+
+  Note: 'Radio/Dropdown หนึ่งแถว; Checkbox ได้หลายแถว'
+}
+
+////////////////////////////////////////////////////
+// 06 · การตั้งค่า DASHBOARD
+////////////////////////////////////////////////////
+
+Table dashboard_layouts [headercolor: #0284C7] {
+  id uuid [pk]
+  event_id uuid [not null, unique, ref: > events.id]
+  updated_by_user_id uuid [not null, ref: > users.id]
+  updated_at timestamptz [not null]
+
+  Note: '''
+    อีเวนต์ละหนึ่ง Dashboard Layout เก็บลำดับ Widget เท่านั้น
+    การจัดการต้องมีสิทธิ์ Manage Dashboard
+  '''
+}
+
+Table dashboard_widgets [headercolor: #0284C7] {
+  id uuid [pk]
+  layout_id uuid [not null, ref: > dashboard_layouts.id]
+  widget_type dashboard_widget_type [not null]
+  title varchar(240) [not null]
+  source_form_id uuid [ref: > forms.id]
+  source_field_id uuid [ref: > form_fields.id]
+  aggregation dashboard_aggregation [not null, default: 'count']
+  chart_type dashboard_chart_type
+  comparison_mode dashboard_comparison_mode
+  target_value decimal
+  text_align text_align [not null, default: 'left']
+  date_type date_type [default: 'week']
+  start_date date
+  end_date date
+
+  /// ขนาดบนกริด Dashboard (พื้นที่สูงสุด 3×3 ช่อง)
+  /// Preset (แอป map ให้; grid_w/grid_h ต้องเป็น null):
+  ///   small  → 1×1
+  ///   medium → 2×2
+  ///   large  → 3×3
+  /// custom → ต้องมี grid_w และ grid_h อย่างละ 1..3 (เช่น 1×2, 2×3, 3×1)
+  display_size display_size [not null, default: 'small']
+  grid_w int
+  grid_h int
+
+  display_order int [not null]
+  updated_at timestamptz [not null]
+
+  indexes {
+    (layout_id, display_order) [unique]
+    (layout_id, widget_type)
+    (source_form_id, source_field_id)
+  }
+
+  Note: '''
+    Widget รองรับ Number, Comparison และ Chart
+    source_form_id=null หมายถึงสรุปรวมทั้งอีเวนต์
+    source_field_id เลือกคำถามหนึ่งข้อเมื่อจำเป็น
+    Widget แบบ Chart ต้องมี chart_type Widget แบบ Comparison ต้องมี comparison_mode
+    target_value ใช้เฉพาะโหมดเทียบเป้า Form และ Field ที่เลือกต้องอยู่ในอีเวนต์เดียวกับ Layout
+    Widget เก็บเฉพาะการตั้งค่าและการเรียงลำดับ
+    ไม่คัดลอกคำตอบหรือผล Dashboard ที่คำนวณล่วงหน้า
+
+    ขนาดการแสดงผล:
+      - ค่าเริ่มต้น display_size = small (1×1)
+      - Preset small/medium/large → พื้นที่สี่เหลี่ยมจัตุรัสคงที่; ปล่อย grid_w/grid_h เป็น null
+      - custom → ผู้ใช้เลือกสี่เหลี่ยมใดก็ได้สูงสุด 3×3 ผ่าน grid_w + grid_h (ทั้งคู่ 1..3)
+      - ไม่ใช้ custom_size int ตัวเดียว — ความกว้างกับความสูงต่างกันได้ (เช่น 1×3)
+  '''
+}
+
+////////////////////////////////////////////////////
+// กลุ่มตารางสำหรับ DBDIAGRAM.IO
+////////////////////////////////////////////////////
+
+TableGroup group_01_users_access [color: #2563EB, note: 'บัญชี Platform Role (แยก) และ Custom Role ในอีเวนต์'] {
+  users
+  platform_roles
+  platform_role_permissions
+  roles
+  role_permissions
+}
+
+TableGroup group_02_events_content [color: #7C3AED, note: 'วงจรชีวิตอีเวนต์ สาธารณะ/ส่วนตัว สวิตช์ฟอร์ม ความจุต่อโฟลว์ (ตั้งตอนสร้างอีเวนต์) แบนเนอร์ เนื้อหาหลายภาษา'] {
+  events
+  event_translations
+  event_form_settings
+  event_banners
+}
+
+TableGroup group_03_form_definitions [color: #8B5CF6, note: 'นิยาม Form Builder ลงทะเบียน/แบบสอบถาม (ถ้าเปิด); ความจุมาจาก event_form_settings'] {
+  forms
+  form_translations
+  form_fields
+  field_translations
+  field_options
+  field_option_translations
+}
+
+TableGroup group_04_whitelist [color: #D97706, note: 'รายชื่อสิทธิ์ระดับอีเวนต์สำหรับอีเวนต์ส่วนตัว; สถานะ available→joined ตอนลงทะเบียน'] {
+  whitelist_entries
+}
+
+TableGroup group_05_submissions_answers [color: #059669, note: 'คำตอบผู้เข้าร่วม; ยกเลิกแล้วคืนความจุ คำตอบ normalize ใช้กับ Dashboard และการส่งออก'] {
+  form_submissions
+  registrations
+  submission_answers
+  answer_option_selections
+}
+
+TableGroup group_06_dashboard_configuration [color: #0284C7, note: 'เลย์เอาต์ Dashboard ของอีเวนต์และการตั้งค่า Widget แบบ Number, Comparison, Chart'] {
+  dashboard_layouts
+  dashboard_widgets
+}
+
+Note dashboard_design [color: #DBEAFE] {
+  '''
+    การไหลของข้อมูล DASHBOARD
+
+    1. กรอง forms ด้วย event_id แล้ว join form_submissions ที่ใช้งานด้วย form_id
+    2. Join submission_answers กับ form_fields
+    3. Join answer_option_selections กับ field_options สำหรับคำถามแบบเลือก
+    4. สรุปตามชนิดฟิลด์:
+       - number/rating: COUNT, AVG, MIN, MAX
+       - radio/dropdown/checkbox: COUNT และเปอร์เซ็นต์ตาม option_id
+       - date/time: จัดกลุ่มตามช่วงวันหรือเวลา
+       - text: นับจำนวนและตารางรายละเอียด
+    5. ตัดคำตอบที่ soft-delete และบังคับ mask/unmask PII ที่ชั้น service
+
+    Dashboard Layouts และ Widgets เก็บเฉพาะการตั้งค่าการแสดงผล
+    ไฟล์ส่งออก CSV/XLSX, QR URL, เส้นทางอีเวนต์ และผลรวมเป็นฟีเจอร์ที่คำนวณได้
+    ไม่ต้องมีตารางต้นทางแยก Dashboard ของแต่ละอีเวนต์ได้จากการกรอง forms.event_id
+    แล้วสรุป form_submissions / submission_answers ที่ใช้งาน
+    Demo ปัจจุบันคำนวณจาก Mock API + สถานะเซสชัน และไม่เก็บ dashboard_data
+
+    อีเวนต์ส่วนตัว + ไวท์ลิสต์
+    events.is_private = true ต้องมี has_registration = true และ whitelist_entries
+    ระดับอีเวนต์ แต่ละรายการได้ access_code จากระบบ ผู้เข้าร่วมกรอกเพื่อลงทะเบียน
+    สถานะ available → joined บอกว่าเข้าร่วม/ลงทะเบียนแล้วหรือยัง
+    แบบสอบถามแบบ registered_only ก็ต้องมี has_registration = true เช่นกัน
+
+    ความจุฟอร์ม
+    ตั้งที่ event_form_settings ตอนสร้าง/แก้ อีเวนต์ (ก่อนมี Form Builder)
+    หนึ่งแถวต่อโฟลว์ที่เปิด (registration / survey)
+    ที่นั่งใช้งาน = COUNT form_submissions ของฟอร์มที่ตรง
+    WHERE status = 'submitted' AND deleted_at IS NULL
+    ยกเลิกแล้ว status = cancelled คืนที่นั่งหนึ่งที่
+    ปฏิเสธรับใหม่เมื่อจำกัดและ usage >= capacity
+
+    การจับคู่ลงทะเบียนอีเวนต์ส่วนตัว
+    จับคู่ access_code ที่ส่งมากับ whitelist_entries ของอีเวนต์
+    ปฏิเสธถ้าไม่มี ผิดอีเวนต์ หรือ status = joined แล้ว
+  '''
 }

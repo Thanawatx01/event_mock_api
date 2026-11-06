@@ -102,6 +102,9 @@ const ids = {
     tech: uuid("dashboard_layouts.tech"),
     wellness: uuid("dashboard_layouts.wellness"),
   },
+  platformRoles: {
+    superAdmin: uuid("platform_roles.superAdmin"),
+  },
 };
 
 let nextFieldTrSeq = 1;
@@ -118,18 +121,21 @@ const submission_answers = [];
 const answer_option_selections = [];
 
 function addField(def) {
+  const isRating = def.type === "rating";
   form_fields.push({
     id: def.id,
     form_id: def.form_id,
     type: def.type,
     display_order: def.display_order,
     is_required: def.is_required ?? false,
-    contains_pii: def.contains_pii ?? false,
-    min_number: def.min_number ?? null,
-    max_number: def.max_number ?? null,
+    min_number: isRating && def.rating_display === "icon" ? null : (def.min_number ?? null),
+    max_number: isRating && def.rating_display === "icon" ? null : (def.max_number ?? null),
     min_length: def.min_length ?? null,
     max_length: def.max_length ?? null,
     validation_pattern: def.validation_pattern ?? null,
+    rating_display: isRating ? (def.rating_display ?? "icon") : null,
+    rating_icon: isRating && (def.rating_display ?? "icon") === "icon" ? (def.rating_icon ?? "star") : null,
+    rating_max: isRating && (def.rating_display ?? "icon") === "icon" ? (def.rating_max ?? def.max_number ?? 5) : null,
     created_at: def.created_at || now,
     updated_at: def.updated_at || now,
     deleted_at: null,
@@ -142,6 +148,8 @@ function addField(def) {
       locale_code: tr.locale_code,
       label: tr.label,
       placeholder: tr.placeholder ?? null,
+      scale_min_label: tr.scale_min_label ?? null,
+      scale_max_label: tr.scale_max_label ?? null,
     });
   });
 
@@ -234,6 +242,32 @@ function addChoiceAnswer(submissionId, fieldId, optionIds) {
   return id;
 }
 
+const platform_roles = [
+  {
+    id: ids.platformRoles.superAdmin,
+    name: "Super Admin",
+    description: "Full platform administration",
+    created_at: ts("2026-09-01T02:00:00Z"),
+    created_by: null,
+    updated_at: ts("2026-09-01T02:00:00Z"),
+    updated_by: null,
+    deleted_at: null,
+  },
+];
+
+const PLATFORM_PERMISSIONS = [
+  "manage_platform_users",
+  "manage_all_events",
+  "view_platform_overview",
+  "impersonate_event_user",
+];
+
+const platform_role_permissions = PLATFORM_PERMISSIONS.map((permission) => ({
+  id: uuid(`platform_role_permissions.${ids.platformRoles.superAdmin}.${permission}`),
+  platform_role_id: ids.platformRoles.superAdmin,
+  permission,
+}));
+
 const users = [
   {
     id: ids.users.platformAdmin,
@@ -241,6 +275,7 @@ const users = [
     password: "password123",
     display_name: "Ananda Platform Admin",
     system_role: "platform_admin",
+    platform_role_id: ids.platformRoles.superAdmin,
     event_id: null,
     role_id: null,
     role_assigned_by_user_id: null,
@@ -258,6 +293,7 @@ const users = [
     password: "password123",
     display_name: "Thanawat Ketaya",
     system_role: "event_user",
+    platform_role_id: null,
     event_id: ids.events.tech,
     role_id: ids.roles.techAdmin,
     role_assigned_by_user_id: ids.users.platformAdmin,
@@ -275,6 +311,7 @@ const users = [
     password: "password123",
     display_name: "Kittisak Jaidee",
     system_role: "event_user",
+    platform_role_id: null,
     event_id: ids.events.tech,
     role_id: ids.roles.techFormManager,
     role_assigned_by_user_id: ids.users.eventAdmin1,
@@ -292,6 +329,7 @@ const users = [
     password: "password123",
     display_name: "Mali Charoenpol",
     system_role: "event_user",
+    platform_role_id: null,
     event_id: ids.events.wellness,
     role_id: ids.roles.wellnessAdmin,
     role_assigned_by_user_id: ids.users.platformAdmin,
@@ -309,6 +347,7 @@ const users = [
     password: "password123",
     display_name: "Pimchanok Siriwong",
     system_role: "event_user",
+    platform_role_id: null,
     event_id: ids.events.draft,
     role_id: ids.roles.draftAdmin,
     role_assigned_by_user_id: ids.users.platformAdmin,
@@ -326,56 +365,121 @@ const events = [
   {
     id: ids.events.tech,
     slug: "tech-summit-2026",
-    status: "published",
+    status: "open",
     default_locale: "th",
-    language_rotation_seconds: 60,
-    starts_at: ts("2026-11-15T01:00:00Z"),
-    ends_at: ts("2026-11-15T10:00:00Z"),
-    timezone: "Asia/Bangkok",
-    banner_url: "https://cdn.example.com/banners/tech-summit-2026.jpg",
-    created_by_user_id: ids.users.eventAdmin1,
-    published_at: ts("2026-10-01T08:00:00Z"),
-    closed_at: null,
-    archived_at: null,
+    start_at: ts("2026-11-15T01:00:00Z"),
+    end_at: ts("2026-11-15T10:00:00Z"),
+    is_private: true,
+    has_registration: true,
+    has_survey: true,
+    survey_access: "registered_only",
+    opens_at: ts("2026-10-01T08:00:00Z"),
+    closes_at: ts("2026-11-30T17:00:00Z"),
     created_at: ts("2026-09-15T03:00:00Z"),
+    created_by: ids.users.platformAdmin,
     updated_at: ts("2026-10-01T08:00:00Z"),
-    deleted_at: null,
+    updated_by: ids.users.eventAdmin1,
   },
   {
     id: ids.events.wellness,
     slug: "wellness-day-2026",
-    status: "published",
+    status: "open",
     default_locale: "th",
-    language_rotation_seconds: 30,
-    starts_at: ts("2026-12-05T02:00:00Z"),
-    ends_at: ts("2026-12-05T09:00:00Z"),
-    timezone: "Asia/Bangkok",
-    banner_url: "https://cdn.example.com/banners/wellness-day-2026.jpg",
-    created_by_user_id: ids.users.eventAdmin2,
-    published_at: ts("2026-10-10T08:00:00Z"),
-    closed_at: null,
-    archived_at: null,
+    start_at: ts("2026-12-05T02:00:00Z"),
+    end_at: ts("2026-12-05T09:00:00Z"),
+    is_private: false,
+    has_registration: true,
+    has_survey: true,
+    survey_access: "public",
+    opens_at: ts("2026-10-10T08:00:00Z"),
+    closes_at: ts("2026-12-20T17:00:00Z"),
     created_at: ts("2026-09-20T03:00:00Z"),
+    created_by: ids.users.platformAdmin,
     updated_at: ts("2026-10-10T08:00:00Z"),
-    deleted_at: null,
+    updated_by: ids.users.eventAdmin2,
   },
   {
     id: ids.events.draft,
     slug: "community-meetup-draft",
     status: "draft",
     default_locale: "th",
-    language_rotation_seconds: null,
-    starts_at: ts("2027-01-20T03:00:00Z"),
-    ends_at: ts("2027-01-20T08:00:00Z"),
-    timezone: "Asia/Bangkok",
-    banner_url: null,
-    created_by_user_id: ids.users.eventAdmin3,
-    published_at: null,
-    closed_at: null,
-    archived_at: null,
+    start_at: ts("2027-01-20T03:00:00Z"),
+    end_at: ts("2027-01-20T08:00:00Z"),
+    is_private: false,
+    has_registration: true,
+    has_survey: false,
+    survey_access: null,
+    opens_at: null,
+    closes_at: null,
+    created_at: ts("2026-10-05T03:00:00Z"),
+    created_by: ids.users.platformAdmin,
+    updated_at: ts("2026-10-20T03:00:00Z"),
+    updated_by: ids.users.eventAdmin3,
+  },
+];
+
+const event_banners = [
+  {
+    id: uuid("event_banners.tech"),
+    event_id: ids.events.tech,
+    banner_url: "https://picsum.photos/seed/tech-summit-1/1200/800",
+    created_at: ts("2026-09-15T03:00:00Z"),
+    updated_at: ts("2026-10-01T08:00:00Z"),
+  },
+  {
+    id: uuid("event_banners.wellness"),
+    event_id: ids.events.wellness,
+    banner_url: "https://picsum.photos/seed/wellness-1/1200/800",
+    created_at: ts("2026-09-20T03:00:00Z"),
+    updated_at: ts("2026-10-10T08:00:00Z"),
+  },
+];
+
+const event_form_settings = [
+  {
+    id: uuid("event_form_settings.tech.registration"),
+    event_id: ids.events.tech,
+    form_type: "registration",
+    is_unlimited: false,
+    capacity: 200,
+    created_at: ts("2026-09-15T03:00:00Z"),
+    updated_at: ts("2026-10-01T08:00:00Z"),
+  },
+  {
+    id: uuid("event_form_settings.tech.survey"),
+    event_id: ids.events.tech,
+    form_type: "survey",
+    is_unlimited: true,
+    capacity: null,
+    created_at: ts("2026-09-15T03:00:00Z"),
+    updated_at: ts("2026-10-01T08:00:00Z"),
+  },
+  {
+    id: uuid("event_form_settings.wellness.registration"),
+    event_id: ids.events.wellness,
+    form_type: "registration",
+    is_unlimited: false,
+    capacity: 80,
+    created_at: ts("2026-09-20T03:00:00Z"),
+    updated_at: ts("2026-10-10T08:00:00Z"),
+  },
+  {
+    id: uuid("event_form_settings.wellness.survey"),
+    event_id: ids.events.wellness,
+    form_type: "survey",
+    is_unlimited: true,
+    capacity: null,
+    created_at: ts("2026-09-20T03:00:00Z"),
+    updated_at: ts("2026-10-10T08:00:00Z"),
+  },
+  {
+    id: uuid("event_form_settings.draft.registration"),
+    event_id: ids.events.draft,
+    form_type: "registration",
+    is_unlimited: true,
+    capacity: null,
     created_at: ts("2026-10-05T03:00:00Z"),
     updated_at: ts("2026-10-20T03:00:00Z"),
-    deleted_at: null,
   },
 ];
 
@@ -389,7 +493,7 @@ const event_translations = [
     summary: "งานรวมตัวนักพัฒนาและผู้สนใจเทคโนโลยีในไทย",
     description:
       "ร่วมฟังบรรยาย อัปเดตเทรนด์ และเชื่อมต่อกับชุมชนนักพัฒนา ทั้ง AI, Web และ Cloud",
-    venue_name: "ศูนย์ประชุมแห่งชาติสิริกิติ์",
+    location_name: "ศูนย์ประชุมแห่งชาติสิริกิติ์",
     address_text: "60 ถนนรัชดาภิเษก คลองเตย กรุงเทพมหานคร 10110",
     created_at: ts("2026-09-15T03:00:00Z"),
     updated_at: ts("2026-10-01T08:00:00Z"),
@@ -403,7 +507,7 @@ const event_translations = [
     summary: "A gathering for developers and technology enthusiasts in Thailand",
     description:
       "Join talks, trend updates, and community networking across AI, Web, and Cloud.",
-    venue_name: "Queen Sirikit National Convention Center",
+    location_name: "Queen Sirikit National Convention Center",
     address_text: "60 Ratchadaphisek Road, Khlong Toei, Bangkok 10110",
     created_at: ts("2026-09-15T03:00:00Z"),
     updated_at: ts("2026-10-01T08:00:00Z"),
@@ -416,7 +520,7 @@ const event_translations = [
     title: "วันสุขภาพองค์กร 2026",
     summary: "กิจกรรมสุขภาพและสมดุลชีวิตสำหรับพนักงาน",
     description: "เวิร์กช็อปโยคะ โภชนาการ และการจัดการความเครียดในที่ทำงาน",
-    venue_name: "สวนลุมพินี",
+    location_name: "สวนลุมพินี",
     address_text: "ถนนราชดำริ ปทุมวัน กรุงเทพมหานคร 10330",
     created_at: ts("2026-09-20T03:00:00Z"),
     updated_at: ts("2026-10-10T08:00:00Z"),
@@ -429,7 +533,7 @@ const event_translations = [
     title: "Corporate Wellness Day 2026",
     summary: "Health and work-life balance activities for employees",
     description: "Workshops on yoga, nutrition, and workplace stress management.",
-    venue_name: "Lumphini Park",
+    location_name: "Lumphini Park",
     address_text: "Ratchadamri Road, Pathum Wan, Bangkok 10330",
     created_at: ts("2026-09-20T03:00:00Z"),
     updated_at: ts("2026-10-10T08:00:00Z"),
@@ -442,7 +546,7 @@ const event_translations = [
     title: "มีตอัปชุมชน (ร่าง)",
     summary: "ร่างอีเวนต์สำหรับทดสอบสถานะ draft",
     description: "รายละเอียดยังไม่เผยแพร่",
-    venue_name: "Co-working Space ย่านอารีย์",
+    location_name: "Co-working Space ย่านอารีย์",
     address_text: "พหลโยธิน กรุงเทพมหานคร",
     created_at: ts("2026-10-05T03:00:00Z"),
     updated_at: ts("2026-10-20T03:00:00Z"),
@@ -455,7 +559,7 @@ const event_translations = [
     title: "Community Meetup (Draft)",
     summary: "Draft event used for testing draft status",
     description: "Details are not published yet.",
-    venue_name: "Ari Co-working Space",
+    location_name: "Ari Co-working Space",
     address_text: "Phahonyothin, Bangkok",
     created_at: ts("2026-10-05T03:00:00Z"),
     updated_at: ts("2026-10-20T03:00:00Z"),
@@ -467,60 +571,52 @@ const forms = [
     id: ids.forms.techReg,
     event_id: ids.events.tech,
     type: "registration",
-    status: "published",
+    status: "open",
     opens_at: ts("2026-10-01T08:00:00Z"),
     closes_at: ts("2026-11-14T17:00:00Z"),
-    accepting_responses: true,
-    created_by_user_id: ids.users.eventAdmin1,
-    updated_by_user_id: ids.users.eventAdmin1,
-    published_at: ts("2026-10-01T08:00:00Z"),
     created_at: ts("2026-09-16T04:00:00Z"),
+    created_by: ids.users.eventAdmin1,
     updated_at: ts("2026-10-01T08:00:00Z"),
+    updated_by: ids.users.eventAdmin1,
     deleted_at: null,
   },
   {
     id: ids.forms.techSurvey,
     event_id: ids.events.tech,
     type: "survey",
-    status: "published",
+    status: "open",
     opens_at: ts("2026-11-15T10:00:00Z"),
     closes_at: ts("2026-11-30T17:00:00Z"),
-    accepting_responses: true,
-    created_by_user_id: ids.users.eventAdmin1,
-    updated_by_user_id: ids.users.subUser1,
-    published_at: ts("2026-10-01T08:10:00Z"),
     created_at: ts("2026-09-16T05:00:00Z"),
+    created_by: ids.users.eventAdmin1,
     updated_at: ts("2026-10-01T08:10:00Z"),
+    updated_by: ids.users.subUser1,
     deleted_at: null,
   },
   {
     id: ids.forms.wellnessReg,
     event_id: ids.events.wellness,
     type: "registration",
-    status: "published",
+    status: "open",
     opens_at: ts("2026-10-10T08:00:00Z"),
     closes_at: ts("2026-12-04T17:00:00Z"),
-    accepting_responses: true,
-    created_by_user_id: ids.users.eventAdmin2,
-    updated_by_user_id: ids.users.eventAdmin2,
-    published_at: ts("2026-10-10T08:00:00Z"),
     created_at: ts("2026-09-21T04:00:00Z"),
+    created_by: ids.users.eventAdmin2,
     updated_at: ts("2026-10-10T08:00:00Z"),
+    updated_by: ids.users.eventAdmin2,
     deleted_at: null,
   },
   {
     id: ids.forms.wellnessSurvey,
     event_id: ids.events.wellness,
     type: "survey",
-    status: "published",
+    status: "open",
     opens_at: ts("2026-12-05T09:00:00Z"),
     closes_at: ts("2026-12-20T17:00:00Z"),
-    accepting_responses: true,
-    created_by_user_id: ids.users.eventAdmin2,
-    updated_by_user_id: ids.users.eventAdmin2,
-    published_at: ts("2026-10-10T08:10:00Z"),
     created_at: ts("2026-09-21T05:00:00Z"),
+    created_by: ids.users.eventAdmin2,
     updated_at: ts("2026-10-10T08:10:00Z"),
+    updated_by: ids.users.eventAdmin2,
     deleted_at: null,
   },
   {
@@ -530,12 +626,10 @@ const forms = [
     status: "draft",
     opens_at: null,
     closes_at: null,
-    accepting_responses: false,
-    created_by_user_id: ids.users.eventAdmin3,
-    updated_by_user_id: ids.users.eventAdmin3,
-    published_at: null,
     created_at: ts("2026-10-06T04:00:00Z"),
+    created_by: ids.users.eventAdmin3,
     updated_at: ts("2026-10-20T04:00:00Z"),
+    updated_by: ids.users.eventAdmin3,
     deleted_at: null,
   },
 ];
@@ -713,7 +807,7 @@ addField({
   id: ids.fields.techTrack,
   form_id: ids.forms.techReg,
   field_key: "interest_track",
-  type: "radio",
+  type: "single_choice",
   display_order: 4,
   is_required: true,
   translations: [
@@ -763,7 +857,7 @@ addField({
   id: ids.fields.techTopics,
   form_id: ids.forms.techReg,
   field_key: "topics",
-  type: "checkbox",
+  type: "multiple_choice",
   display_order: 5,
   translations: [
     {
@@ -874,8 +968,9 @@ addField({
   type: "rating",
   display_order: 1,
   is_required: true,
-  min_number: 1,
-  max_number: 5,
+  rating_display: "icon",
+  rating_icon: "star",
+  rating_max: 5,
   translations: [
     {
       locale_code: "th",
@@ -894,7 +989,7 @@ addField({
   id: ids.fields.techRecommend,
   form_id: ids.forms.techSurvey,
   field_key: "would_recommend",
-  type: "radio",
+  type: "single_choice",
   display_order: 2,
   is_required: true,
   translations: [
@@ -1111,6 +1206,7 @@ addField({
   type: "rating",
   display_order: 1,
   is_required: true,
+  rating_display: "linear_scale",
   min_number: 1,
   max_number: 5,
   translations: [
@@ -1118,11 +1214,15 @@ addField({
       locale_code: "th",
       label: "ระดับพลังงานหลังกิจกรรม",
       validation_message: "กรุณาให้คะแนน",
+      scale_min_label: "ต่ำ",
+      scale_max_label: "สูง",
     },
     {
       locale_code: "en",
       label: "Energy level after activities",
       validation_message: "Please rate",
+      scale_min_label: "Low",
+      scale_max_label: "High",
     },
   ],
 });
@@ -1161,70 +1261,54 @@ addField({
   ],
 });
 
-const registration_settings = [
-  {
-    form_id: ids.forms.techReg,
-    capacity: 200,
-    unique_field_id: ids.fields.techEmployee,
-    whitelist_enabled: true,
-  },
-  {
-    form_id: ids.forms.wellnessReg,
-    capacity: 80,
-    unique_field_id: ids.fields.wellEmail,
-    whitelist_enabled: false,
-  },
-  {
-    form_id: ids.forms.draftReg,
-    capacity: null,
-    unique_field_id: null,
-    whitelist_enabled: false,
-  },
-];
-
 const whitelist_entries = [
   {
     id: ids.whitelist.emp001,
-    registration_form_id: ids.forms.techReg,
-    normalized_unique_value: "emp001",
-    status: "used",
-    used_at: ts("2026-10-12T03:15:00Z"),
+    event_id: ids.events.tech,
+    access_code: "TECH01",
+    username: "สมชาย ใจดี",
+    status: "joined",
+    joined_at: ts("2026-10-12T03:15:00Z"),
     created_at: ts("2026-10-02T02:00:00Z"),
     deleted_at: null,
   },
   {
     id: ids.whitelist.emp002,
-    registration_form_id: ids.forms.techReg,
-    normalized_unique_value: "emp002",
-    status: "used",
-    used_at: ts("2026-10-12T04:20:00Z"),
+    event_id: ids.events.tech,
+    access_code: "TECH02",
+    username: "Emily Carter",
+    status: "joined",
+    joined_at: ts("2026-10-12T04:20:00Z"),
     created_at: ts("2026-10-02T02:00:00Z"),
     deleted_at: null,
   },
   {
     id: ids.whitelist.emp003,
-    registration_form_id: ids.forms.techReg,
-    normalized_unique_value: "emp003",
+    event_id: ids.events.tech,
+    access_code: "TECH03",
+    username: "Guest 003",
     status: "available",
-    used_at: null,
+    joined_at: null,
     created_at: ts("2026-10-02T02:00:00Z"),
     deleted_at: null,
   },
   {
     id: ids.whitelist.emp004,
-    registration_form_id: ids.forms.techReg,
-    normalized_unique_value: "emp004",
+    event_id: ids.events.tech,
+    access_code: "TECH04",
+    username: "Guest 004",
     status: "available",
-    used_at: null,
+    joined_at: null,
     created_at: ts("2026-10-02T02:00:00Z"),
     deleted_at: null,
   },
   {
     id: ids.whitelist.emp005,
-    registration_form_id: ids.forms.techReg,
-    normalized_unique_value: "emp005",
-    status: "revoked",
-    used_at: null,
+    event_id: ids.events.tech,
+    access_code: "TECH05",
+    username: "Guest 005",
+    status: "available",
+    joined_at: null,
     created_at: ts("2026-10-02T02:00:00Z"),
     deleted_at: null,
   },
@@ -1275,11 +1359,10 @@ techRegs.forEach((row) => {
   form_submissions.push({
     id: row.submission_id,
     form_id: ids.forms.techReg,
-    status: row.soft_deleted ? "soft_deleted" : "submitted",
-    submitted_language: row.language,
+    status: row.soft_deleted ? "cancelled" : "submitted",
     submitted_at: row.submitted_at,
-    deleted_by_user_id: row.soft_deleted ? ids.users.eventAdmin1 : null,
-    deleted_at: row.soft_deleted ? ts("2026-10-14T01:00:00Z") : null,
+    cancelled_by_user_id: row.soft_deleted ? ids.users.eventAdmin1 : null,
+    cancelled_at: row.soft_deleted ? ts("2026-10-14T01:00:00Z") : null,
   });
   if (!row.soft_deleted) {
     registrations.push({
@@ -1326,10 +1409,9 @@ wellRegs.forEach((row) => {
     id: row.submission_id,
     form_id: ids.forms.wellnessReg,
     status: "submitted",
-    submitted_language: row.language,
     submitted_at: row.submitted_at,
-    deleted_by_user_id: null,
-    deleted_at: null,
+    cancelled_by_user_id: null,
+    cancelled_at: null,
   });
   registrations.push({
     submission_id: row.submission_id,
@@ -1377,10 +1459,9 @@ techSurveys.forEach((row) => {
     id: row.submission_id,
     form_id: ids.forms.techSurvey,
     status: "submitted",
-    submitted_language: row.language,
     submitted_at: row.submitted_at,
-    deleted_by_user_id: null,
-    deleted_at: null,
+    cancelled_by_user_id: null,
+    cancelled_at: null,
   });
   addNumberAnswer(row.submission_id, ids.fields.techRating, row.rating);
   addChoiceAnswer(row.submission_id, ids.fields.techRecommend, [row.recommend]);
@@ -1394,10 +1475,9 @@ form_submissions.push({
   id: ids.submissions.wellSurvey1,
   form_id: ids.forms.wellnessSurvey,
   status: "submitted",
-  submitted_language: "th",
   submitted_at: ts("2026-12-05T10:00:00Z"),
-  deleted_by_user_id: null,
-  deleted_at: null,
+  cancelled_by_user_id: null,
+  cancelled_at: null,
 });
 addNumberAnswer(ids.submissions.wellSurvey1, ids.fields.wellEnergy, 5);
 addTextAnswer(
@@ -1406,131 +1486,12 @@ addTextAnswer(
   "สนุกและผ่อนคลายมาก"
 );
 
-const approval_requests = [
-  {
-    id: uuid("approval_requests.1"),
-    event_id: ids.events.tech,
-    target_type: "event",
-    target_id: ids.events.tech,
-    requested_by_user_id: ids.users.eventAdmin1,
-    reviewed_by_user_id: ids.users.eventAdmin1,
-    status: "approved",
-    reviewer_note: "พร้อมเผยแพร่",
-    requested_at: ts("2026-09-30T08:00:00Z"),
-    reviewed_at: ts("2026-10-01T07:50:00Z"),
-  },
-  {
-    id: uuid("approval_requests.2"),
-    event_id: ids.events.tech,
-    target_type: "registration_form",
-    target_id: ids.forms.techReg,
-    requested_by_user_id: ids.users.subUser1,
-    reviewed_by_user_id: ids.users.eventAdmin1,
-    status: "approved",
-    reviewer_note: null,
-    requested_at: ts("2026-09-28T04:00:00Z"),
-    reviewed_at: ts("2026-09-29T04:00:00Z"),
-  },
-  {
-    id: uuid("approval_requests.3"),
-    event_id: ids.events.draft,
-    target_type: "event",
-    target_id: ids.events.draft,
-    requested_by_user_id: ids.users.eventAdmin3,
-    reviewed_by_user_id: null,
-    status: "pending",
-    reviewer_note: null,
-    requested_at: ts("2026-10-21T03:00:00Z"),
-    reviewed_at: null,
-  },
-];
-
-const trash_items = [
-  {
-    id: uuid("trash_items.1"),
-    event_id: ids.events.tech,
-    resource_type: "submission",
-    resource_id: ids.submissions.techReg3,
-    display_name: "วิชัย ทดสอบลบ / EMP099",
-    deleted_by_user_id: ids.users.eventAdmin1,
-    deleted_at: ts("2026-10-14T01:00:00Z"),
-    restore_allowed: false,
-    restored_by_user_id: null,
-    restored_at: null,
-  },
-];
-
-const hard_delete_requests = [
-  {
-    id: uuid("hard_delete_requests.1"),
-    event_id: ids.events.tech,
-    resource_type: "submission",
-    resource_id: ids.submissions.techReg3,
-    reason: "ผู้เข้าร่วมขอใช้สิทธิ์ถูกลืมตาม PDPA",
-    requested_by_user_id: ids.users.eventAdmin1,
-    reviewed_by_user_id: null,
-    status: "pending",
-    requested_at: ts("2026-10-14T02:00:00Z"),
-    reviewed_at: null,
-    completed_at: null,
-  },
-];
-
-const audit_logs = [
-  {
-    id: uuid("audit_logs.1"),
-    event_id: ids.events.tech,
-    actor_user_id: ids.users.eventAdmin1,
-    action: "event.publish",
-    resource_type: "event",
-    resource_id: ids.events.tech,
-    description: "Published Tech Summit 2026",
-    includes_unmasked_pii: false,
-    occurred_at: ts("2026-10-01T08:00:00Z"),
-  },
-  {
-    id: uuid("audit_logs.2"),
-    event_id: ids.events.tech,
-    actor_user_id: ids.users.subUser1,
-    action: "registration.view_list",
-    resource_type: "form",
-    resource_id: ids.forms.techReg,
-    description: "Viewed registration list with masked PII",
-    includes_unmasked_pii: false,
-    occurred_at: ts("2026-10-13T01:00:00Z"),
-  },
-  {
-    id: uuid("audit_logs.3"),
-    event_id: ids.events.tech,
-    actor_user_id: ids.users.eventAdmin1,
-    action: "registration.export_unmasked",
-    resource_type: "form",
-    resource_id: ids.forms.techReg,
-    description: "Exported registration CSV with unmasked PII",
-    includes_unmasked_pii: true,
-    occurred_at: ts("2026-10-13T02:00:00Z"),
-  },
-  {
-    id: uuid("audit_logs.4"),
-    event_id: ids.events.tech,
-    actor_user_id: ids.users.eventAdmin1,
-    action: "registration.soft_delete",
-    resource_type: "submission",
-    resource_id: ids.submissions.techReg3,
-    description: "Soft-deleted a registration submission",
-    includes_unmasked_pii: false,
-    occurred_at: ts("2026-10-14T01:00:00Z"),
-  },
-];
-
 const ALL_PERMISSIONS = [
   "manage_dashboard",
   "manage_event",
   "manage_registration_form",
   "manage_survey_form",
   "manage_sub_user",
-  "approve",
-  "view_unmasked_pii",
 ];
 
 const FORM_MANAGER_PERMISSIONS = [
@@ -1554,9 +1515,10 @@ const roles = [
     event_id: ids.events.tech,
     name: "Event Admin",
     description: "Full access for Tech Summit event admin",
-    owner_user_id: ids.users.eventAdmin1,
     created_at: ts("2026-09-15T04:00:00Z"),
+    created_by: ids.users.platformAdmin,
     updated_at: ts("2026-09-15T04:00:00Z"),
+    updated_by: ids.users.platformAdmin,
     deleted_at: null,
   },
   {
@@ -1564,9 +1526,10 @@ const roles = [
     event_id: ids.events.tech,
     name: "Form Manager",
     description: "Manage registration and survey forms",
-    owner_user_id: ids.users.eventAdmin1,
     created_at: ts("2026-09-16T03:00:00Z"),
+    created_by: ids.users.eventAdmin1,
     updated_at: ts("2026-09-16T03:00:00Z"),
+    updated_by: ids.users.eventAdmin1,
     deleted_at: null,
   },
   {
@@ -1574,9 +1537,10 @@ const roles = [
     event_id: ids.events.wellness,
     name: "Event Admin",
     description: "Full access for Wellness Day event admin",
-    owner_user_id: ids.users.eventAdmin2,
     created_at: ts("2026-09-20T04:00:00Z"),
+    created_by: ids.users.platformAdmin,
     updated_at: ts("2026-09-20T04:00:00Z"),
+    updated_by: ids.users.platformAdmin,
     deleted_at: null,
   },
   {
@@ -1584,9 +1548,10 @@ const roles = [
     event_id: ids.events.draft,
     name: "Event Admin",
     description: "Full access for draft community meetup admin",
-    owner_user_id: ids.users.eventAdmin3,
     created_at: ts("2026-10-01T04:00:00Z"),
+    created_by: ids.users.platformAdmin,
     updated_at: ts("2026-10-01T04:00:00Z"),
+    updated_by: ids.users.platformAdmin,
     deleted_at: null,
   },
 ];
@@ -1594,7 +1559,7 @@ const roles = [
 const role_permissions = [
   ...rolePermissionRows(ids.roles.techAdmin, ALL_PERMISSIONS),
   ...rolePermissionRows(ids.roles.techFormManager, FORM_MANAGER_PERMISSIONS),
-  ...rolePermissionRows(ids.roles.wellnessAdmin, ALL_PERMISSIONS.filter((p) => p !== "view_unmasked_pii")),
+  ...rolePermissionRows(ids.roles.wellnessAdmin, ALL_PERMISSIONS),
   ...rolePermissionRows(ids.roles.draftAdmin, ALL_PERMISSIONS),
 ];
 
@@ -1613,8 +1578,22 @@ const dashboard_layouts = [
   },
 ];
 
+function widgetDefaults(extra) {
+  return {
+    text_align: "left",
+    date_type: "week",
+    start_date: null,
+    end_date: null,
+    display_size: "small",
+    grid_w: null,
+    grid_h: null,
+    updated_at: now,
+    ...extra,
+  };
+}
+
 const dashboard_widgets = [
-  {
+  widgetDefaults({
     id: uuid("dashboard_widgets.tech.regCount"),
     layout_id: ids.dashboardLayouts.tech,
     widget_type: "number",
@@ -1626,9 +1605,8 @@ const dashboard_widgets = [
     comparison_mode: null,
     target_value: null,
     display_order: 1,
-    updated_at: now,
-  },
-  {
+  }),
+  widgetDefaults({
     id: uuid("dashboard_widgets.tech.surveyCount"),
     layout_id: ids.dashboardLayouts.tech,
     widget_type: "number",
@@ -1640,9 +1618,8 @@ const dashboard_widgets = [
     comparison_mode: null,
     target_value: null,
     display_order: 2,
-    updated_at: now,
-  },
-  {
+  }),
+  widgetDefaults({
     id: uuid("dashboard_widgets.tech.capacity"),
     layout_id: ids.dashboardLayouts.tech,
     widget_type: "comparison",
@@ -1653,10 +1630,10 @@ const dashboard_widgets = [
     chart_type: null,
     comparison_mode: "capacity",
     target_value: null,
+    display_size: "medium",
     display_order: 3,
-    updated_at: now,
-  },
-  {
+  }),
+  widgetDefaults({
     id: uuid("dashboard_widgets.tech.track"),
     layout_id: ids.dashboardLayouts.tech,
     widget_type: "chart",
@@ -1667,10 +1644,10 @@ const dashboard_widgets = [
     chart_type: "pie",
     comparison_mode: null,
     target_value: null,
+    display_size: "large",
     display_order: 4,
-    updated_at: now,
-  },
-  {
+  }),
+  widgetDefaults({
     id: uuid("dashboard_widgets.tech.rating"),
     layout_id: ids.dashboardLayouts.tech,
     widget_type: "chart",
@@ -1681,10 +1658,12 @@ const dashboard_widgets = [
     chart_type: "bar",
     comparison_mode: null,
     target_value: null,
+    display_size: "custom",
+    grid_w: 2,
+    grid_h: 1,
     display_order: 5,
-    updated_at: now,
-  },
-  {
+  }),
+  widgetDefaults({
     id: uuid("dashboard_widgets.tech.nps"),
     layout_id: ids.dashboardLayouts.tech,
     widget_type: "number",
@@ -1696,9 +1675,8 @@ const dashboard_widgets = [
     comparison_mode: null,
     target_value: null,
     display_order: 6,
-    updated_at: now,
-  },
-  {
+  }),
+  widgetDefaults({
     id: uuid("dashboard_widgets.well.regCount"),
     layout_id: ids.dashboardLayouts.wellness,
     widget_type: "number",
@@ -1710,9 +1688,8 @@ const dashboard_widgets = [
     comparison_mode: null,
     target_value: null,
     display_order: 1,
-    updated_at: now,
-  },
-  {
+  }),
+  widgetDefaults({
     id: uuid("dashboard_widgets.well.activity"),
     layout_id: ids.dashboardLayouts.wellness,
     widget_type: "chart",
@@ -1723,24 +1700,27 @@ const dashboard_widgets = [
     chart_type: "bar",
     comparison_mode: null,
     target_value: null,
+    display_size: "medium",
     display_order: 2,
-    updated_at: now,
-  },
+  }),
 ];
 
 const db = {
   users,
+  platform_roles,
+  platform_role_permissions,
   roles,
   role_permissions,
   events,
   event_translations,
+  event_form_settings,
+  event_banners,
   forms,
   form_translations,
   form_fields,
   field_translations,
   field_options,
   field_option_translations,
-  registration_settings,
   whitelist_entries,
   form_submissions,
   registrations,
@@ -1748,10 +1728,6 @@ const db = {
   answer_option_selections,
   dashboard_layouts,
   dashboard_widgets,
-  approval_requests,
-  trash_items,
-  hard_delete_requests,
-  audit_logs,
 };
 
 const outPath = path.join(__dirname, "..", "db.json");
