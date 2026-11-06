@@ -1541,6 +1541,8 @@ const FORM_MANAGER_PERMISSIONS = [
 
 function rolePermissionRows(roleId, permissions) {
   return permissions.map((permission) => ({
+    // json-server requires `id` on every resource
+    id: uuid(`role_permissions.${roleId}.${permission}`),
     role_id: roleId,
     permission,
   }));

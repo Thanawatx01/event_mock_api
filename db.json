@@ -130,94 +130,117 @@
   ],
   "role_permissions": [
     {
+      "id": "33932553-df3e-5b11-b793-fd131a51bcbe",
       "role_id": "5f4490f8-41ca-5d29-8032-879f4966d95d",
       "permission": "manage_dashboard"
     },
     {
+      "id": "dcd778c0-4552-5f51-b4f1-2519e3200d13",
       "role_id": "5f4490f8-41ca-5d29-8032-879f4966d95d",
       "permission": "manage_event"
     },
     {
+      "id": "26134ac5-acdf-58f6-82bf-3785bd2d180b",
       "role_id": "5f4490f8-41ca-5d29-8032-879f4966d95d",
       "permission": "manage_registration_form"
     },
     {
+      "id": "30a7635a-145e-5f16-93e2-db52661d6b51",
       "role_id": "5f4490f8-41ca-5d29-8032-879f4966d95d",
       "permission": "manage_survey_form"
     },
     {
+      "id": "f5433d8b-f6be-5fc2-a97a-e44179c5ce72",
       "role_id": "5f4490f8-41ca-5d29-8032-879f4966d95d",
       "permission": "manage_sub_user"
     },
     {
+      "id": "d5d1da75-94d1-5943-b240-49141dc0acaf",
       "role_id": "5f4490f8-41ca-5d29-8032-879f4966d95d",
       "permission": "approve"
     },
     {
+      "id": "3ab7f86e-6b15-5cb9-bcda-b9dcd1589110",
       "role_id": "5f4490f8-41ca-5d29-8032-879f4966d95d",
       "permission": "view_unmasked_pii"
     },
     {
+      "id": "296f82bb-f108-559f-b3fa-66e82b0008c5",
       "role_id": "68bc119b-43b3-56d8-8e07-d9609a3ca230",
       "permission": "manage_dashboard"
     },
     {
+      "id": "2d3b8713-20e9-5937-b72b-fe9c5416f3b3",
       "role_id": "68bc119b-43b3-56d8-8e07-d9609a3ca230",
       "permission": "manage_registration_form"
     },
     {
+      "id": "081fdd4c-2bec-50f3-9928-69e38320aea4",
       "role_id": "68bc119b-43b3-56d8-8e07-d9609a3ca230",
       "permission": "manage_survey_form"
     },
     {
+      "id": "8edb788f-15ad-5ae4-a481-e091044c16ff",
       "role_id": "c1209fa6-ef07-5bba-b757-45519025c21e",
       "permission": "manage_dashboard"
     },
     {
+      "id": "dc22cdc8-7cee-5534-b974-70c8e39c642e",
       "role_id": "c1209fa6-ef07-5bba-b757-45519025c21e",
       "permission": "manage_event"
     },
     {
+      "id": "017731ec-c155-5ad3-92f7-1d296a0f3522",
       "role_id": "c1209fa6-ef07-5bba-b757-45519025c21e",
       "permission": "manage_registration_form"
     },
     {
+      "id": "684b733e-bf8b-5ee7-8c6b-78c364d5ceb2",
       "role_id": "c1209fa6-ef07-5bba-b757-45519025c21e",
       "permission": "manage_survey_form"
     },
     {
+      "id": "3d7e95b4-b636-5657-a06f-ff36234833f7",
       "role_id": "c1209fa6-ef07-5bba-b757-45519025c21e",
       "permission": "manage_sub_user"
     },
     {
+      "id": "ba0c040b-871e-5f7e-9a02-c06707b09607",
       "role_id": "c1209fa6-ef07-5bba-b757-45519025c21e",
       "permission": "approve"
     },
     {
+      "id": "2dceaabe-cde9-5f18-81d0-f427b69f3a77",
       "role_id": "9d35db90-07bd-5420-8a2b-c84977910d09",
       "permission": "manage_dashboard"
     },
     {
+      "id": "e9a6ae61-8474-5d8a-a5f3-7cd1cc6def4b",
       "role_id": "9d35db90-07bd-5420-8a2b-c84977910d09",
       "permission": "manage_event"
     },
     {
+      "id": "45fe81f1-7adb-5bde-931a-872aa8cca385",
       "role_id": "9d35db90-07bd-5420-8a2b-c84977910d09",
       "permission": "manage_registration_form"
     },
     {
+      "id": "bbb0b908-54e6-5539-8125-c8feb4d60b81",
       "role_id": "9d35db90-07bd-5420-8a2b-c84977910d09",
       "permission": "manage_survey_form"
     },
     {
+      "id": "eb4d37ba-515f-55a4-b772-b4545b1ce765",
       "role_id": "9d35db90-07bd-5420-8a2b-c84977910d09",
       "permission": "manage_sub_user"
     },
     {
+      "id": "b5b47cb6-06bb-5689-ae57-c6983e22bc2f",
       "role_id": "9d35db90-07bd-5420-8a2b-c84977910d09",
       "permission": "approve"
     },
     {
+      "id": "c9b427da-6664-5933-a177-512e2ff15bb8",
       "role_id": "9d35db90-07bd-5420-8a2b-c84977910d09",
       "permission": "view_unmasked_pii"
     }
