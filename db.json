@@ -89,6 +89,96 @@
       "created_at": "2026-10-01T02:00:00Z",
       "updated_at": "2026-10-01T04:00:00Z",
       "removed_at": null
+    },
+    {
+      "id": "0f1e3523-057a-4186-9a62-91db66ccc637",
+      "email": "thanawatketiya@gmail.com",
+      "password": "SM6gU3HYQfoby3Fks3BWlzw6",
+      "display_name": "thanawat2",
+      "system_role": "event_user",
+      "platform_role_id": null,
+      "event_id": "3d16dcb4-142a-4e4a-bb49-aecfae67ec00",
+      "role_id": "ea1150b2-abc5-42e4-9582-c1de0dbff7ac",
+      "role_assigned_by_user_id": "cf4f56ab-fe37-58d1-ac73-e833abdd2561",
+      "role_assigned_at": "2026-11-07T08:38:28.208Z",
+      "status": "invited",
+      "invited_by_user_id": "cf4f56ab-fe37-58d1-ac73-e833abdd2561",
+      "joined_at": null,
+      "created_at": "2026-11-07T08:38:28.208Z",
+      "updated_at": "2026-11-07T08:38:28.208Z",
+      "removed_at": null
+    },
+    {
+      "id": "098ca6ad-ca21-4494-b88b-a1495a13fe75",
+      "email": "debug-owner-1794041133@example.com",
+      "password": "Peyrdlw3-STQQC9EHPAYoCh2",
+      "display_name": "Debug Owner",
+      "system_role": "event_user",
+      "platform_role_id": null,
+      "event_id": "85167e11-d9ed-4ba1-930e-e09b8d400f2e",
+      "role_id": "30012dbb-b1eb-4480-8ed4-8fca8bf3b75d",
+      "role_assigned_by_user_id": "cf4f56ab-fe37-58d1-ac73-e833abdd2561",
+      "role_assigned_at": "2026-11-07T08:45:33.603Z",
+      "status": "active",
+      "invited_by_user_id": "cf4f56ab-fe37-58d1-ac73-e833abdd2561",
+      "joined_at": "2026-11-07T08:50:00Z",
+      "created_at": "2026-11-07T08:45:33.603Z",
+      "updated_at": "2026-11-07T08:45:33.603Z",
+      "removed_at": null
+    },
+    {
+      "id": "d4fd6744-7c71-46ba-8305-afefeef31601",
+      "email": "owner+mailfail@1794041320.example.com",
+      "password": "cfnaNAiAmMtcQy-2_ItX0ffX",
+      "display_name": "Mail Fail Owner",
+      "system_role": "event_user",
+      "platform_role_id": null,
+      "event_id": "d97f91ee-388b-4298-933f-a163999ed14b",
+      "role_id": "5cff88dd-b72f-4c74-9559-7b9d2ea3857e",
+      "role_assigned_by_user_id": "cf4f56ab-fe37-58d1-ac73-e833abdd2561",
+      "role_assigned_at": "2026-11-07T08:48:40.191Z",
+      "status": "invited",
+      "invited_by_user_id": "cf4f56ab-fe37-58d1-ac73-e833abdd2561",
+      "joined_at": null,
+      "created_at": "2026-11-07T08:48:40.191Z",
+      "updated_at": "2026-11-07T08:48:40.191Z",
+      "removed_at": null
+    },
+    {
+      "id": "db645405-4cb7-4300-8f69-93c7149aa0fa",
+      "email": "verify-ok-1794041377@example.com",
+      "password": "Ll_2MhtfcHSFQ5bVCWeSsgET",
+      "display_name": "Verify Owner",
+      "system_role": "event_user",
+      "platform_role_id": null,
+      "event_id": "01332417-8ac5-4908-a96d-5884dff2b83a",
+      "role_id": "c93e6845-ebda-4a98-b403-37409287248d",
+      "role_assigned_by_user_id": "cf4f56ab-fe37-58d1-ac73-e833abdd2561",
+      "role_assigned_at": "2026-11-07T08:49:37.153Z",
+      "status": "invited",
+      "invited_by_user_id": "cf4f56ab-fe37-58d1-ac73-e833abdd2561",
+      "joined_at": null,
+      "created_at": "2026-11-07T08:49:37.153Z",
+      "updated_at": "2026-11-07T08:49:37.153Z",
+      "removed_at": null
+    },
+    {
+      "id": "78521e7d-9180-4206-8022-628582365708",
+      "email": "thanawatketiya9@gmail.com",
+      "password": "123456789",
+      "display_name": "thanawat",
+      "system_role": "event_user",
+      "platform_role_id": null,
+      "event_id": "e74d8cd9-e90e-4579-b978-6f920ee568ba",
+      "role_id": "f7f7ce97-58ae-44c6-9c85-9cde9c8e332d",
+      "role_assigned_by_user_id": "cf4f56ab-fe37-58d1-ac73-e833abdd2561",
+      "role_assigned_at": "2026-11-07T08:53:29.533Z",
+      "status": "active",
+      "invited_by_user_id": "cf4f56ab-fe37-58d1-ac73-e833abdd2561",
+      "joined_at": "2026-11-07T08:56:23.531Z",
+      "created_at": "2026-11-07T08:53:29.533Z",
+      "updated_at": "2026-11-07T08:56:23.531Z",
+      "removed_at": null
     }
   ],
   "platform_roles": [
@@ -167,6 +257,72 @@
       "created_at": "2026-10-01T04:00:00Z",
       "created_by": "cf4f56ab-fe37-58d1-ac73-e833abdd2561",
       "updated_at": "2026-10-01T04:00:00Z",
+      "updated_by": "cf4f56ab-fe37-58d1-ac73-e833abdd2561",
+      "deleted_at": null
+    },
+    {
+      "id": "e7acb022-b93b-49d6-a789-7d67b7070b32",
+      "event_id": "724d5420-7cb0-4468-8bee-88c5c721f10a",
+      "name": "Event Admin",
+      "description": "Full access for event admin",
+      "created_at": "2026-11-07T08:34:28.102Z",
+      "created_by": "cf4f56ab-fe37-58d1-ac73-e833abdd2561",
+      "updated_at": "2026-11-07T08:34:28.102Z",
+      "updated_by": "cf4f56ab-fe37-58d1-ac73-e833abdd2561",
+      "deleted_at": null
+    },
+    {
+      "id": "ea1150b2-abc5-42e4-9582-c1de0dbff7ac",
+      "event_id": "3d16dcb4-142a-4e4a-bb49-aecfae67ec00",
+      "name": "Event Admin",
+      "description": "Full access for event admin",
+      "created_at": "2026-11-07T08:38:28.232Z",
+      "created_by": "cf4f56ab-fe37-58d1-ac73-e833abdd2561",
+      "updated_at": "2026-11-07T08:38:28.232Z",
+      "updated_by": "cf4f56ab-fe37-58d1-ac73-e833abdd2561",
+      "deleted_at": null
+    },
+    {
+      "id": "30012dbb-b1eb-4480-8ed4-8fca8bf3b75d",
+      "event_id": "85167e11-d9ed-4ba1-930e-e09b8d400f2e",
+      "name": "Event Admin",
+      "description": "Full access for event admin",
+      "created_at": "2026-11-07T08:45:33.621Z",
+      "created_by": "cf4f56ab-fe37-58d1-ac73-e833abdd2561",
+      "updated_at": "2026-11-07T08:45:33.621Z",
+      "updated_by": "cf4f56ab-fe37-58d1-ac73-e833abdd2561",
+      "deleted_at": null
+    },
+    {
+      "id": "5cff88dd-b72f-4c74-9559-7b9d2ea3857e",
+      "event_id": "d97f91ee-388b-4298-933f-a163999ed14b",
+      "name": "Event Admin",
+      "description": "Full access for event admin",
+      "created_at": "2026-11-07T08:48:40.209Z",
+      "created_by": "cf4f56ab-fe37-58d1-ac73-e833abdd2561",
+      "updated_at": "2026-11-07T08:48:40.209Z",
+      "updated_by": "cf4f56ab-fe37-58d1-ac73-e833abdd2561",
+      "deleted_at": null
+    },
+    {
+      "id": "c93e6845-ebda-4a98-b403-37409287248d",
+      "event_id": "01332417-8ac5-4908-a96d-5884dff2b83a",
+      "name": "Event Admin",
+      "description": "Full access for event admin",
+      "created_at": "2026-11-07T08:49:37.171Z",
+      "created_by": "cf4f56ab-fe37-58d1-ac73-e833abdd2561",
+      "updated_at": "2026-11-07T08:49:37.171Z",
+      "updated_by": "cf4f56ab-fe37-58d1-ac73-e833abdd2561",
+      "deleted_at": null
+    },
+    {
+      "id": "f7f7ce97-58ae-44c6-9c85-9cde9c8e332d",
+      "event_id": "e74d8cd9-e90e-4579-b978-6f920ee568ba",
+      "name": "Event Admin",
+      "description": "Full access for event admin",
+      "created_at": "2026-11-07T08:53:29.561Z",
+      "created_by": "cf4f56ab-fe37-58d1-ac73-e833abdd2561",
+      "updated_at": "2026-11-07T08:53:29.561Z",
       "updated_by": "cf4f56ab-fe37-58d1-ac73-e833abdd2561",
       "deleted_at": null
     }
@@ -261,6 +417,156 @@
       "id": "eb4d37ba-515f-55a4-b772-b4545b1ce765",
       "role_id": "9d35db90-07bd-5420-8a2b-c84977910d09",
       "permission": "manage_sub_user"
+    },
+    {
+      "id": "44696d6d-b45f-49a4-b1e3-e1fb1aa26d88",
+      "role_id": "e7acb022-b93b-49d6-a789-7d67b7070b32",
+      "permission": "manage_dashboard"
+    },
+    {
+      "id": "c86f387b-f84f-4970-a6f4-6b1a5bec76d8",
+      "role_id": "e7acb022-b93b-49d6-a789-7d67b7070b32",
+      "permission": "manage_event"
+    },
+    {
+      "id": "b91d14a8-a907-4717-b188-7a891624f169",
+      "role_id": "e7acb022-b93b-49d6-a789-7d67b7070b32",
+      "permission": "manage_registration_form"
+    },
+    {
+      "id": "3e60984d-8683-412f-8e94-fbd348916d3f",
+      "role_id": "e7acb022-b93b-49d6-a789-7d67b7070b32",
+      "permission": "manage_survey_form"
+    },
+    {
+      "id": "838984ab-1856-4191-b51c-321176add2e0",
+      "role_id": "e7acb022-b93b-49d6-a789-7d67b7070b32",
+      "permission": "manage_sub_user"
+    },
+    {
+      "id": "32527ec8-f288-4dd6-b79d-fd4c8bbd71e3",
+      "role_id": "ea1150b2-abc5-42e4-9582-c1de0dbff7ac",
+      "permission": "manage_dashboard"
+    },
+    {
+      "id": "c3c765a0-07ba-41f3-9840-b22f0f0417bc",
+      "role_id": "ea1150b2-abc5-42e4-9582-c1de0dbff7ac",
+      "permission": "manage_event"
+    },
+    {
+      "id": "6a228ff1-a3c4-4a62-bce6-97a6534af4f6",
+      "role_id": "ea1150b2-abc5-42e4-9582-c1de0dbff7ac",
+      "permission": "manage_registration_form"
+    },
+    {
+      "id": "b01e6a2f-f2db-4ef7-8b4e-f31d28723c1b",
+      "role_id": "ea1150b2-abc5-42e4-9582-c1de0dbff7ac",
+      "permission": "manage_survey_form"
+    },
+    {
+      "id": "2abc1f8b-195d-4401-b9a1-a35e4664be81",
+      "role_id": "ea1150b2-abc5-42e4-9582-c1de0dbff7ac",
+      "permission": "manage_sub_user"
+    },
+    {
+      "id": "bf7c11ae-6c12-4f3e-9261-75bbfe2c6f48",
+      "role_id": "30012dbb-b1eb-4480-8ed4-8fca8bf3b75d",
+      "permission": "manage_dashboard"
+    },
+    {
+      "id": "b3ce9b2d-efb3-4cd4-82a2-d0d6e01625f3",
+      "role_id": "30012dbb-b1eb-4480-8ed4-8fca8bf3b75d",
+      "permission": "manage_event"
+    },
+    {
+      "id": "6ac65315-3e38-4ab1-8da7-e275c254654f",
+      "role_id": "30012dbb-b1eb-4480-8ed4-8fca8bf3b75d",
+      "permission": "manage_registration_form"
+    },
+    {
+      "id": "8fa0b7e8-83d3-415e-995e-3fd88a133b46",
+      "role_id": "30012dbb-b1eb-4480-8ed4-8fca8bf3b75d",
+      "permission": "manage_survey_form"
+    },
+    {
+      "id": "fb06058b-2662-4322-a364-f9afd7015792",
+      "role_id": "30012dbb-b1eb-4480-8ed4-8fca8bf3b75d",
+      "permission": "manage_sub_user"
+    },
+    {
+      "id": "899e5a64-480b-4c8e-a45f-0158429e12bc",
+      "role_id": "5cff88dd-b72f-4c74-9559-7b9d2ea3857e",
+      "permission": "manage_dashboard"
+    },
+    {
+      "id": "9a947d3c-2ed2-4532-92e6-4b9acaadd9fb",
+      "role_id": "5cff88dd-b72f-4c74-9559-7b9d2ea3857e",
+      "permission": "manage_event"
+    },
+    {
+      "id": "32d498f3-3c70-4dc8-80d9-9ea9dda40140",
+      "role_id": "5cff88dd-b72f-4c74-9559-7b9d2ea3857e",
+      "permission": "manage_registration_form"
+    },
+    {
+      "id": "d227ae90-68a0-4878-828a-55318bf8556a",
+      "role_id": "5cff88dd-b72f-4c74-9559-7b9d2ea3857e",
+      "permission": "manage_survey_form"
+    },
+    {
+      "id": "dc2c1c8f-4f88-40f0-a862-83c76fa7f497",
+      "role_id": "5cff88dd-b72f-4c74-9559-7b9d2ea3857e",
+      "permission": "manage_sub_user"
+    },
+    {
+      "id": "37b36721-7f8d-4989-acff-fa3330347821",
+      "role_id": "c93e6845-ebda-4a98-b403-37409287248d",
+      "permission": "manage_dashboard"
+    },
+    {
+      "id": "e4566c89-0298-4eee-b2a6-0be191328b84",
+      "role_id": "c93e6845-ebda-4a98-b403-37409287248d",
+      "permission": "manage_event"
+    },
+    {
+      "id": "18b1a326-3d6e-46e0-b4aa-92c6511b45fa",
+      "role_id": "c93e6845-ebda-4a98-b403-37409287248d",
+      "permission": "manage_registration_form"
+    },
+    {
+      "id": "61b8e36b-9f52-4ad9-b011-8d629b5a23c8",
+      "role_id": "c93e6845-ebda-4a98-b403-37409287248d",
+      "permission": "manage_survey_form"
+    },
+    {
+      "id": "fb07d54b-7976-4dff-b7f0-eb346cc64e7d",
+      "role_id": "c93e6845-ebda-4a98-b403-37409287248d",
+      "permission": "manage_sub_user"
+    },
+    {
+      "id": "57ccffab-d643-46bf-9029-8b4ab1915849",
+      "role_id": "f7f7ce97-58ae-44c6-9c85-9cde9c8e332d",
+      "permission": "manage_dashboard"
+    },
+    {
+      "id": "96a123b0-3d5c-46da-8354-aa719efe8a29",
+      "role_id": "f7f7ce97-58ae-44c6-9c85-9cde9c8e332d",
+      "permission": "manage_event"
+    },
+    {
+      "id": "d029c7a4-7e7b-4c36-80de-5d39b95756f9",
+      "role_id": "f7f7ce97-58ae-44c6-9c85-9cde9c8e332d",
+      "permission": "manage_registration_form"
+    },
+    {
+      "id": "6f22e5e9-3073-4d85-89dc-d6bb10846b95",
+      "role_id": "f7f7ce97-58ae-44c6-9c85-9cde9c8e332d",
+      "permission": "manage_survey_form"
+    },
+    {
+      "id": "e94a2c3d-f1d7-4b9b-ad38-84c62e460ad4",
+      "role_id": "f7f7ce97-58ae-44c6-9c85-9cde9c8e332d",
+      "permission": "manage_sub_user"
     }
   ],
   "events": [
@@ -302,21 +608,111 @@
     },
     {
       "id": "550267c4-98f1-5ffc-94c6-81155429cd03",
-      "slug": "community-meetup-draft",
-      "status": "draft",
+      "slug": "community-meetup-draft-edited",
+      "status": "closed",
       "default_locale": "th",
-      "start_at": "2027-01-20T03:00:00Z",
+      "start_at": "2020-01-01T00:00:00Z",
       "end_at": "2027-01-20T08:00:00Z",
       "is_private": false,
       "has_registration": true,
       "has_survey": false,
       "survey_access": null,
-      "opens_at": null,
-      "closes_at": null,
+      "opens_at": "2026-11-07T08:46:22.883Z",
+      "closes_at": "2026-11-07T08:46:22.915Z",
       "created_at": "2026-10-05T03:00:00Z",
       "created_by": "cf4f56ab-fe37-58d1-ac73-e833abdd2561",
-      "updated_at": "2026-10-20T03:00:00Z",
-      "updated_by": "2fe6a003-59af-5f7d-a768-e8539b43f837"
+      "updated_at": "2026-11-07T08:46:22.915Z",
+      "updated_by": "cf4f56ab-fe37-58d1-ac73-e833abdd2561"
+    },
+    {
+      "id": "3d16dcb4-142a-4e4a-bb49-aecfae67ec00",
+      "slug": "test-2026",
+      "status": "draft",
+      "default_locale": "th",
+      "start_at": null,
+      "end_at": null,
+      "is_private": false,
+      "has_registration": false,
+      "has_survey": false,
+      "survey_access": null,
+      "opens_at": null,
+      "closes_at": null,
+      "created_at": "2026-11-07T08:38:28.208Z",
+      "created_by": "cf4f56ab-fe37-58d1-ac73-e833abdd2561",
+      "updated_at": "2026-11-07T08:38:28.208Z",
+      "updated_by": "cf4f56ab-fe37-58d1-ac73-e833abdd2561"
+    },
+    {
+      "id": "85167e11-d9ed-4ba1-930e-e09b8d400f2e",
+      "slug": "debug-create-1794041133",
+      "status": "scheduled",
+      "default_locale": "th",
+      "start_at": "2026-12-01T00:00:00Z",
+      "end_at": "2026-12-02T00:00:00Z",
+      "is_private": false,
+      "has_registration": false,
+      "has_survey": false,
+      "survey_access": null,
+      "opens_at": null,
+      "closes_at": null,
+      "created_at": "2026-11-07T08:45:33.603Z",
+      "created_by": "cf4f56ab-fe37-58d1-ac73-e833abdd2561",
+      "updated_at": "2026-11-07T08:48:40.315Z",
+      "updated_by": "098ca6ad-ca21-4494-b88b-a1495a13fe75"
+    },
+    {
+      "id": "d97f91ee-388b-4298-933f-a163999ed14b",
+      "slug": "mail-fail-1794041320",
+      "status": "draft",
+      "default_locale": "th",
+      "start_at": null,
+      "end_at": null,
+      "is_private": false,
+      "has_registration": false,
+      "has_survey": false,
+      "survey_access": null,
+      "opens_at": null,
+      "closes_at": null,
+      "created_at": "2026-11-07T08:48:40.191Z",
+      "created_by": "cf4f56ab-fe37-58d1-ac73-e833abdd2561",
+      "updated_at": "2026-11-07T08:48:40.191Z",
+      "updated_by": "cf4f56ab-fe37-58d1-ac73-e833abdd2561"
+    },
+    {
+      "id": "01332417-8ac5-4908-a96d-5884dff2b83a",
+      "slug": "verify-ok-1794041377",
+      "status": "draft",
+      "default_locale": "th",
+      "start_at": null,
+      "end_at": null,
+      "is_private": false,
+      "has_registration": false,
+      "has_survey": false,
+      "survey_access": null,
+      "opens_at": null,
+      "closes_at": null,
+      "created_at": "2026-11-07T08:49:37.153Z",
+      "created_by": "cf4f56ab-fe37-58d1-ac73-e833abdd2561",
+      "updated_at": "2026-11-07T08:49:37.153Z",
+      "updated_by": "cf4f56ab-fe37-58d1-ac73-e833abdd2561"
+    },
+    {
+      "id": "e74d8cd9-e90e-4579-b978-6f920ee568ba",
+      "slug": "test-2027",
+      "status": "draft",
+      "default_locale": "th",
+      "start_at": null,
+      "end_at": null,
+      "is_private": false,
+      "has_registration": false,
+      "has_survey": false,
+      "survey_access": null,
+      "opens_at": null,
+      "closes_at": null,
+      "created_at": "2026-11-07T08:53:29.533Z",
+      "created_by": "cf4f56ab-fe37-58d1-ac73-e833abdd2561",
+      "updated_at": "2026-11-07T08:53:29.533Z",
+      "updated_by": "cf4f56ab-fe37-58d1-ac73-e833abdd2561"
     }
   ],
   "event_translations": [
@@ -377,13 +773,13 @@
       "event_id": "550267c4-98f1-5ffc-94c6-81155429cd03",
       "locale_code": "th",
       "display_order": 1,
-      "title": "มีตอัปชุมชน (ร่าง)",
+      "title": "มีตอัปชุมชน (ร่าง) debug",
       "summary": "ร่างอีเวนต์สำหรับทดสอบสถานะ draft",
-      "description": "รายละเอียดยังไม่เผยแพร่",
-      "location_name": "Co-working Space ย่านอารีย์",
-      "address_text": "พหลโยธิน กรุงเทพมหานคร",
+      "description": "sched",
+      "location_name": "A",
+      "address_text": "B",
       "created_at": "2026-10-05T03:00:00Z",
-      "updated_at": "2026-10-20T03:00:00Z"
+      "updated_at": "2026-11-07T08:46:06.380Z"
     },
     {
       "id": "c6854d9c-e499-5db7-9b41-1731997ba088",
@@ -396,7 +792,127 @@
       "location_name": "Ari Co-working Space",
       "address_text": "Phahonyothin, Bangkok",
       "created_at": "2026-10-05T03:00:00Z",
-      "updated_at": "2026-10-20T03:00:00Z"
+      "updated_at": "2026-11-07T08:45:19.507Z"
+    },
+    {
+      "id": "51d94d11-ef11-448a-b59b-acdfe7f36432",
+      "event_id": "3d16dcb4-142a-4e4a-bb49-aecfae67ec00",
+      "locale_code": "th",
+      "display_order": 1,
+      "title": "ทดสอบ 2026",
+      "description": null,
+      "location_name": null,
+      "address_text": null,
+      "created_at": "2026-11-07T08:38:28.208Z",
+      "updated_at": "2026-11-07T08:38:28.208Z"
+    },
+    {
+      "id": "ebfc0ccb-ae4a-4849-869b-308250d370c4",
+      "event_id": "3d16dcb4-142a-4e4a-bb49-aecfae67ec00",
+      "locale_code": "en",
+      "display_order": 2,
+      "title": "test 2026",
+      "description": null,
+      "location_name": null,
+      "address_text": null,
+      "created_at": "2026-11-07T08:38:28.208Z",
+      "updated_at": "2026-11-07T08:38:28.208Z"
+    },
+    {
+      "id": "e647b93a-834e-4f69-b88f-402b8fde3d1d",
+      "event_id": "85167e11-d9ed-4ba1-930e-e09b8d400f2e",
+      "locale_code": "th",
+      "display_order": 1,
+      "title": "ดีบักสร้าง",
+      "description": null,
+      "location_name": null,
+      "address_text": null,
+      "created_at": "2026-11-07T08:45:33.603Z",
+      "updated_at": "2026-11-07T08:48:40.315Z"
+    },
+    {
+      "id": "ba7907b6-67f4-4877-a2f2-45938d0ccec9",
+      "event_id": "85167e11-d9ed-4ba1-930e-e09b8d400f2e",
+      "locale_code": "en",
+      "display_order": 2,
+      "title": "Debug Create",
+      "description": null,
+      "location_name": null,
+      "address_text": null,
+      "created_at": "2026-11-07T08:45:33.603Z",
+      "updated_at": "2026-11-07T08:45:33.603Z"
+    },
+    {
+      "id": "ff36145d-ca4d-4582-82c3-852f73c018af",
+      "event_id": "d97f91ee-388b-4298-933f-a163999ed14b",
+      "locale_code": "th",
+      "display_order": 1,
+      "title": "เมลล้ม",
+      "description": null,
+      "location_name": null,
+      "address_text": null,
+      "created_at": "2026-11-07T08:48:40.191Z",
+      "updated_at": "2026-11-07T08:48:40.191Z"
+    },
+    {
+      "id": "a06ba961-2fee-4cd3-9cf4-4918b36807d5",
+      "event_id": "d97f91ee-388b-4298-933f-a163999ed14b",
+      "locale_code": "en",
+      "display_order": 2,
+      "title": "Mail Fail",
+      "description": null,
+      "location_name": null,
+      "address_text": null,
+      "created_at": "2026-11-07T08:48:40.191Z",
+      "updated_at": "2026-11-07T08:48:40.191Z"
+    },
+    {
+      "id": "7f11c1f0-dae0-49fc-9095-3f144d67cdff",
+      "event_id": "01332417-8ac5-4908-a96d-5884dff2b83a",
+      "locale_code": "th",
+      "display_order": 1,
+      "title": "ยืนยัน",
+      "description": null,
+      "location_name": null,
+      "address_text": null,
+      "created_at": "2026-11-07T08:49:37.153Z",
+      "updated_at": "2026-11-07T08:49:37.153Z"
+    },
+    {
+      "id": "c2669cdd-f050-47c3-8a42-e9191e40d4ad",
+      "event_id": "01332417-8ac5-4908-a96d-5884dff2b83a",
+      "locale_code": "en",
+      "display_order": 2,
+      "title": "Verify",
+      "description": null,
+      "location_name": null,
+      "address_text": null,
+      "created_at": "2026-11-07T08:49:37.153Z",
+      "updated_at": "2026-11-07T08:49:37.153Z"
+    },
+    {
+      "id": "ee069a9f-3d50-4404-b01a-7dffc86eccc3",
+      "event_id": "e74d8cd9-e90e-4579-b978-6f920ee568ba",
+      "locale_code": "th",
+      "display_order": 1,
+      "title": "ทดสอบ 2027",
+      "description": null,
+      "location_name": null,
+      "address_text": null,
+      "created_at": "2026-11-07T08:53:29.533Z",
+      "updated_at": "2026-11-07T08:53:29.533Z"
+    },
+    {
+      "id": "8b57c7bb-4a54-4d8c-981e-79cc0f28baa9",
+      "event_id": "e74d8cd9-e90e-4579-b978-6f920ee568ba",
+      "locale_code": "en",
+      "display_order": 2,
+      "title": "test 2027",
+      "description": null,
+      "location_name": null,
+      "address_text": null,
+      "created_at": "2026-11-07T08:53:29.533Z",
+      "updated_at": "2026-11-07T08:53:29.533Z"
     }
   ],
   "event_form_settings": [

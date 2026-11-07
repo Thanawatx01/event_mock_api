@@ -1,0 +1,387 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><title>Data Dictionary — Event & Survey</title>
+<style>body{font-family:Arial,Helvetica,sans-serif;max-width:980px;margin:24px auto;padding:0 16px;line-height:1.45;color:#222}
+h1,h2,h3{color:#111} table{border-collapse:collapse;width:100%;margin:12px 0 24px} th,td{border:1px solid #ccc;padding:6px 8px;vertical-align:top;font-size:13px}
+th{background:#f3f4f6;text-align:left} code{background:#f3f4f6;padding:1px 4px;border-radius:3px} pre{background:#f8fafc;padding:12px;overflow:auto;font-size:12px}</style></head><body>
+<h1>Data Dictionary — Event &amp; Survey Platform</h1>
+<table>
+<tr><th></th><th></th></tr>
+<tr><td>**แหล่งอ้างอิง**</td><td>`database-schema.dbml`</td></tr>
+<tr><td>**เวอร์ชันอ้างอิง**</td><td>SRS Draft v2.1.0 — 22 ตุลาคม 2026</td></tr>
+<tr><td>**ฐานข้อมูลเป้าหมาย**</td><td>PostgreSQL (production) / json-server mock (`db.json`)</td></tr>
+<tr><td>**ภาษาเอกสาร**</td><td>ไทย</td></tr>
+</table>
+<h3>สัญลักษณ์คอลัมน์ “Key”</h3>
+<table>
+<tr><th>สัญลักษณ์</th><th>ความหมาย</th></tr>
+<tr><td>**PK**</td><td>Primary Key</td></tr>
+<tr><td>**FK**</td><td>Foreign Key (อ้างอิงตารางอื่น)</td></tr>
+<tr><td>**UK**</td><td>Unique / Unique composite</td></tr>
+<tr><td>**NN**</td><td>Not Null (บังคับใส่ค่า)</td></tr>
+</table>
+<h3>ภาพรวมความสัมพันธ์หลัก</h3>
+<pre><code>users ──► platform_roles / roles
+events ──► event_translations, event_form_settings, event_banners, whitelist_entries
+events ──► forms ──► form_fields ──► field_options
+forms ──► form_submissions ──► submission_answers ──► answer_option_selections
+form_submissions ──► registrations ──► whitelist_entries
+events ──► dashboard_layouts ──► dashboard_widgets</code></pre>
+<p>เส้นทางข้อมูลผู้เข้าร่วม:   <code>forms → form_submissions → submission_answers → answer_option_selections</code>   (ลงทะเบียนมีแถว <code>registrations</code> เพิ่ม)</p>
+<hr>
+<h2>0) Enum / ค่าคงที่</h2>
+<h3>`system_role`</h3>
+<table>
+<tr><th>ค่า</th><th>ความหมาย</th></tr>
+<tr><td>`platform_admin`</td><td>ผู้ดูแลแพลตฟอร์ม</td></tr>
+<tr><td>`event_user`</td><td>ผู้ใช้ในอีเวนต์ (มี role ภายในอีเวนต์)</td></tr>
+</table>
+<h3>`permission_code` (สิทธิ์ระดับอีเวนต์)</h3>
+<table>
+<tr><th>ค่า</th><th>ความหมาย</th></tr>
+<tr><td>`manage_dashboard`</td><td>จัดการ Dashboard</td></tr>
+<tr><td>`manage_event`</td><td>จัดการข้อมูลอีเวนต์</td></tr>
+<tr><td>`manage_registration_form`</td><td>จัดการฟอร์มลงทะเบียน</td></tr>
+<tr><td>`manage_survey_form`</td><td>จัดการแบบสอบถาม</td></tr>
+<tr><td>`manage_sub_user`</td><td>สร้าง/มอบ Role ให้ผู้ใช้ในอีเวนต์</td></tr>
+</table>
+<h3>`platform_permission_code` (สิทธิ์ระดับแพลตฟอร์ม)</h3>
+<table>
+<tr><th>ค่า</th><th>ความหมาย</th></tr>
+<tr><td>`manage_platform_users`</td><td>จัดการผู้ใช้แพลตฟอร์ม</td></tr>
+<tr><td>`manage_all_events`</td><td>จัดการอีเวนต์ทั้งหมด</td></tr>
+<tr><td>`view_platform_overview`</td><td>ดูภาพรวมแพลตฟอร์ม</td></tr>
+<tr><td>`impersonate_event_user`</td><td>สวมสิทธิ์เข้าใช้งานในฐานะ Event User</td></tr>
+</table>
+<h3>`account_status`</h3>
+<table>
+<tr><th>ค่า</th><th>ความหมาย</th></tr>
+<tr><td>`invited`</td><td>เชิญแล้ว ยังไม่ตั้งรหัสผ่าน/เข้าระบบ</td></tr>
+<tr><td>`active`</td><td>ใช้งานได้</td></tr>
+<tr><td>`suspended`</td><td>ระงับชั่วคราว</td></tr>
+<tr><td>`removed`</td><td>ลบบัญชีแล้ว (คง id ไว้)</td></tr>
+</table>
+<h3>`event_status`</h3>
+<table>
+<tr><th>ค่า</th><th>ความหมาย</th></tr>
+<tr><td>`draft`</td><td>ร่าง</td></tr>
+<tr><td>`scheduled`</td><td>ตั้งเวลาไว้</td></tr>
+<tr><td>`open`</td><td>เปิดใช้งาน</td></tr>
+<tr><td>`closed`</td><td>ปิดแล้ว (หยุดลงทะเบียน)</td></tr>
+</table>
+<h3>`survey_access`</h3>
+<table>
+<tr><th>ค่า</th><th>ความหมาย</th></tr>
+<tr><td>`public`</td><td>ใครก็ตอบแบบสอบถามได้</td></tr>
+<tr><td>`registered_only`</td><td>ต้องลงทะเบียนก่อน</td></tr>
+</table>
+<h3>`form_type` / `form_status`</h3>
+<table>
+<tr><th>Enum</th><th>ค่า</th><th>ความหมาย</th></tr>
+<tr><td>`form_type`</td><td>`registration`</td><td>ฟอร์มลงทะเบียน</td></tr>
+<tr><td>`form_type`</td><td>`survey`</td><td>แบบสอบถาม</td></tr>
+<tr><td>`form_status`</td><td>`draft` / `scheduled` / `open` / `closed`</td><td>สถานะวงจรชีวิตฟอร์ม</td></tr>
+</table>
+<h3>`field_type`</h3>
+<table>
+<tr><th>ค่า</th><th>ความหมาย</th></tr>
+<tr><td>`short_text`</td><td>ข้อความสั้น</td></tr>
+<tr><td>`long_text`</td><td>ข้อความยาว</td></tr>
+<tr><td>`single_choice`</td><td>เลือกได้หนึ่งข้อ</td></tr>
+<tr><td>`multiple_choice`</td><td>เลือกได้หลายข้อ</td></tr>
+<tr><td>`dropdown`</td><td>รายการแบบเลื่อน</td></tr>
+<tr><td>`date` / `time` / `number` / `email`</td><td>ตามชนิด</td></tr>
+<tr><td>`rating`</td><td>ให้คะแนน (ไอคอนหรือสเกล)</td></tr>
+</table>
+<h3>`rating_display` / `rating_icon`</h3>
+<table>
+<tr><th>Enum</th><th>ค่า</th><th>ความหมาย</th></tr>
+<tr><td>`rating_display`</td><td>`icon`</td><td>แสดงเป็นดาว/หัวใจ/ไลก์</td></tr>
+<tr><td>`rating_display`</td><td>`linear_scale`</td><td>สเกลตัวเลข + ป้ายปลายสเกล</td></tr>
+<tr><td>`rating_icon`</td><td>`star` / `heart` / `like`</td><td>ชุดไอคอนเมื่อเป็นโหมด icon</td></tr>
+</table>
+<h3>`submission_status` / `whitelist_entry_status`</h3>
+<table>
+<tr><th>Enum</th><th>ค่า</th><th>ความหมาย</th></tr>
+<tr><td>`submission_status`</td><td>`submitted`</td><td>ส่งแล้ว (นับความจุ)</td></tr>
+<tr><td>`submission_status`</td><td>`cancelled`</td><td>ยกเลิกแล้ว (คืนที่นั่ง)</td></tr>
+<tr><td>`whitelist_entry_status`</td><td>`available`</td><td>ยังไม่ใช้โค้ดลงทะเบียน</td></tr>
+<tr><td>`whitelist_entry_status`</td><td>`joined`</td><td>ใช้โค้ดลงทะเบียนแล้ว</td></tr>
+</table>
+<h3>Dashboard enums</h3>
+<table>
+<tr><th>Enum</th><th>ค่า</th><th>ความหมาย</th></tr>
+<tr><td>`dashboard_widget_type`</td><td>`number`</td><td>ตัวเลขเดี่ยว</td></tr>
+<tr><td></td><td>`comparison`</td><td>ตัวเลขเทียบกับช่วงก่อน/เป้า/ความจุ</td></tr>
+<tr><td></td><td>`chart`</td><td>กราฟ</td></tr>
+<tr><td>`dashboard_aggregation`</td><td>`count` / `sum` / `average` / `minimum` / `maximum` / `percentage`</td><td>วิธีสรุป</td></tr>
+<tr><td>`dashboard_chart_type`</td><td>`bar` / `line` / `pie` / `donut`</td><td>ชนิดกราฟ</td></tr>
+<tr><td>`dashboard_comparison_mode`</td><td>`previous_period`</td><td>เทียบช่วงก่อน</td></tr>
+<tr><td></td><td>`target`</td><td>เทียบเป้า (`target_value`)</td></tr>
+<tr><td></td><td>`capacity`</td><td>เทียบที่นั่งจาก `event_form_settings`</td></tr>
+<tr><td>`display_size`</td><td>`small` = 1×1, `medium` = 2×2, `large` = 3×3, `custom` = ใช้ `grid_w`/`grid_h`</td><td>ขนาด widget</td></tr>
+<tr><td>`text_align`</td><td>`left` / `center` / `right`</td><td>จัดข้อความ</td></tr>
+<tr><td>`date_type`</td><td>`day` / `week` / `month` / `three_months`</td><td>ช่วงวันที่ของ widget</td></tr>
+</table>
+<hr>
+<h2>1) สิทธิ์และบัญชี</h2>
+<h3>`users` — บัญชีผู้ดูแล (ผู้เข้าร่วมไม่มีบัญชี)</h3>
+<table>
+<tr><th>Field</th><th>Type</th><th>Key</th><th>ความหมาย</th></tr>
+<tr><td>`id`</td><td>uuid</td><td>PK</td><td>รหัสผู้ใช้</td></tr>
+<tr><td>`email`</td><td>varchar(320)</td><td>UK</td><td>อีเมลล็อกอิน (ตั้ง null เมื่อ removed)</td></tr>
+<tr><td>`password`</td><td>varchar(255)</td><td>NN</td><td>รหัสผ่าน (mock/demo)</td></tr>
+<tr><td>`display_name`</td><td>varchar(160)</td><td>NN</td><td>ชื่อที่แสดง</td></tr>
+<tr><td>`system_role`</td><td>system_role</td><td>NN</td><td>`platform_admin` หรือ `event_user`</td></tr>
+<tr><td>`platform_role_id`</td><td>uuid</td><td>FK → platform_roles</td><td>ใช้เฉพาะ platform_admin</td></tr>
+<tr><td>`event_id`</td><td>uuid</td><td>FK → events</td><td>ใช้เฉพาะ event_user (สังกัดอีเวนต์เดียว)</td></tr>
+<tr><td>`role_id`</td><td>uuid</td><td>FK → roles</td><td>Custom Role ในอีเวนต์</td></tr>
+<tr><td>`role_assigned_by_user_id`</td><td>uuid</td><td>FK → users</td><td>ผู้มอบ Role</td></tr>
+<tr><td>`role_assigned_at`</td><td>timestamptz</td><td></td><td>เวลามอบ Role</td></tr>
+<tr><td>`status`</td><td>account_status</td><td>NN</td><td>สถานะบัญชี</td></tr>
+<tr><td>`invited_by_user_id`</td><td>uuid</td><td>FK → users</td><td>ผู้เชิญ</td></tr>
+<tr><td>`joined_at`</td><td>timestamptz</td><td></td><td>เวลาเข้าระบบครั้งแรก</td></tr>
+<tr><td>`created_at` / `updated_at`</td><td>timestamptz</td><td>NN</td><td>เวลาสร้าง/แก้</td></tr>
+<tr><td>`removed_at`</td><td>timestamptz</td><td></td><td>เวลาลบบัญชี</td></tr>
+</table>
+<p><strong>กฎ:</strong> platform_admin → มี <code>platform_role_id</code>, <code>event_id</code>/<code>role_id</code> เป็น null   event_user → มี <code>event_id</code>+<code>role_id</code>, <code>platform_role_id</code> เป็น null</p>
+<h3>`platform_roles` — Role ระดับแพลตฟอร์ม</h3>
+<table>
+<tr><th>Field</th><th>Type</th><th>Key</th><th>ความหมาย</th></tr>
+<tr><td>`id`</td><td>uuid</td><td>PK</td><td>รหัส Role</td></tr>
+<tr><td>`name`</td><td>varchar(160)</td><td>UK, NN</td><td>ชื่อ Role</td></tr>
+<tr><td>`description`</td><td>text</td><td></td><td>คำอธิบาย</td></tr>
+<tr><td>`created_at` / `updated_at`</td><td>timestamptz</td><td>NN</td><td>เวลาสร้าง/แก้</td></tr>
+<tr><td>`created_by` / `updated_by`</td><td>uuid</td><td>FK → users</td><td>ผู้สร้าง/ผู้แก้</td></tr>
+<tr><td>`deleted_at`</td><td>timestamptz</td><td></td><td>soft delete</td></tr>
+</table>
+<h3>`platform_role_permissions`</h3>
+<table>
+<tr><th>Field</th><th>Type</th><th>Key</th><th>ความหมาย</th></tr>
+<tr><td>`id`</td><td>uuid</td><td>PK</td><td>รหัสแถว</td></tr>
+<tr><td>`platform_role_id`</td><td>uuid</td><td>FK, UK(ร่วม)</td><td>Role แม่</td></tr>
+<tr><td>`permission`</td><td>platform_permission_code</td><td>NN, UK(ร่วม)</td><td>สิทธิ์หนึ่งรายการ</td></tr>
+</table>
+<h3>`roles` — Custom Role ในอีเวนต์</h3>
+<table>
+<tr><th>Field</th><th>Type</th><th>Key</th><th>ความหมาย</th></tr>
+<tr><td>`id`</td><td>uuid</td><td>PK</td><td>รหัส Role</td></tr>
+<tr><td>`event_id`</td><td>uuid</td><td>FK, UK(ร่วม name)</td><td>อีเวนต์เจ้าของ Role</td></tr>
+<tr><td>`name`</td><td>varchar(160)</td><td>NN, UK(ร่วม)</td><td>ชื่อ Role ในอีเวนต์</td></tr>
+<tr><td>`description`</td><td>text</td><td></td><td>คำอธิบาย</td></tr>
+<tr><td>`created_at` / `updated_at`</td><td>timestamptz</td><td>NN</td><td>เวลาสร้าง/แก้</td></tr>
+<tr><td>`created_by` / `updated_by`</td><td>uuid</td><td>FK → users, NN</td><td>ผู้สร้าง/ผู้แก้</td></tr>
+<tr><td>`deleted_at`</td><td>timestamptz</td><td></td><td>soft delete</td></tr>
+</table>
+<h3>`role_permissions`</h3>
+<table>
+<tr><th>Field</th><th>Type</th><th>Key</th><th>ความหมาย</th></tr>
+<tr><td>`id`</td><td>uuid</td><td>PK</td><td>รหัสแถว</td></tr>
+<tr><td>`role_id`</td><td>uuid</td><td>FK, UK(ร่วม)</td><td>Event Role</td></tr>
+<tr><td>`permission`</td><td>permission_code</td><td>NN, UK(ร่วม)</td><td>สิทธิ์หนึ่งรายการ</td></tr>
+</table>
+<hr>
+<h2>2) อีเวนต์และเนื้อหา</h2>
+<h3>`events`</h3>
+<table>
+<tr><th>Field</th><th>Type</th><th>Key</th><th>ความหมาย</th></tr>
+<tr><td>`id`</td><td>uuid</td><td>PK</td><td>รหัสอีเวนต์</td></tr>
+<tr><td>`slug`</td><td>varchar(160)</td><td>UK, NN</td><td>URL slug (แก้ไม่ได้หลัง publish)</td></tr>
+<tr><td>`status`</td><td>event_status</td><td>NN</td><td>สถานะอีเวนต์</td></tr>
+<tr><td>`default_locale`</td><td>varchar(35)</td><td>NN</td><td>ภาษาเนื้อหาเริ่มต้น (เช่น `th`)</td></tr>
+<tr><td>`start_at` / `end_at`</td><td>timestamptz</td><td></td><td>วัน–เวลาเริ่ม/จบงาน</td></tr>
+<tr><td>`is_private`</td><td>boolean</td><td>NN</td><td>อีเวนต์ส่วนตัว (บังคับลงทะเบียน+whitelist)</td></tr>
+<tr><td>`has_registration`</td><td>boolean</td><td>NN</td><td>เปิดฟอร์มลงทะเบียน</td></tr>
+<tr><td>`has_survey`</td><td>boolean</td><td>NN</td><td>เปิดแบบสอบถาม</td></tr>
+<tr><td>`survey_access`</td><td>survey_access</td><td></td><td>ใครตอบแบบสอบถามได้ (null ถ้าไม่มี survey)</td></tr>
+<tr><td>`opens_at` / `closes_at`</td><td>timestamptz</td><td></td><td>ช่วงเปิดรับโดยรวมของอีเวนต์</td></tr>
+<tr><td>`created_at` / `updated_at`</td><td>timestamptz</td><td>NN</td><td>เวลาสร้าง/แก้</td></tr>
+<tr><td>`created_by` / `updated_by`</td><td>uuid</td><td>FK → users, NN</td><td>ผู้สร้าง/ผู้แก้</td></tr>
+</table>
+<p><strong>กฎสำคัญ</strong> - <code>is_private = true</code> → ต้อง <code>has_registration = true</code> + มี <code>whitelist_entries</code> - <code>survey_access = registered_only</code> → ต้อง <code>has_registration = true</code> - ความจุไม่เก็บที่นี่ → ดู <code>event_form_settings</code></p>
+<h3>`event_translations` — เนื้อหาหลายภาษา</h3>
+<table>
+<tr><th>Field</th><th>Type</th><th>Key</th><th>ความหมาย</th></tr>
+<tr><td>`id`</td><td>uuid</td><td>PK</td><td>รหัสแถว</td></tr>
+<tr><td>`event_id`</td><td>uuid</td><td>FK, UK(ร่วม locale)</td><td>อีเวนต์แม่</td></tr>
+<tr><td>`locale_code`</td><td>varchar(5)</td><td>NN, UK(ร่วม)</td><td>รหัสภาษา เช่น `th`, `en`</td></tr>
+<tr><td>`display_order`</td><td>int</td><td>NN, UK(ร่วม event)</td><td>ลำดับภาษา</td></tr>
+<tr><td>`title`</td><td>varchar(240)</td><td>NN</td><td>ชื่องาน</td></tr>
+<tr><td>`description`</td><td>text</td><td></td><td>รายละเอียด</td></tr>
+<tr><td>`location_name`</td><td>varchar(240)</td><td></td><td>ชื่อสถานที่</td></tr>
+<tr><td>`address_text`</td><td>text</td><td></td><td>ที่อยู่</td></tr>
+<tr><td>`created_at` / `updated_at`</td><td>timestamptz</td><td>NN</td><td>เวลาสร้าง/แก้</td></tr>
+</table>
+<h3>`event_form_settings` — ความจุต่อโฟลว์ (ตั้งตอนสร้างอีเวนต์)</h3>
+<table>
+<tr><th>Field</th><th>Type</th><th>Key</th><th>ความหมาย</th></tr>
+<tr><td>`id`</td><td>uuid</td><td>PK</td><td>รหัสแถว</td></tr>
+<tr><td>`event_id`</td><td>uuid</td><td>FK, UK(ร่วม form_type)</td><td>อีเวนต์</td></tr>
+<tr><td>`form_type`</td><td>form_type</td><td>NN, UK(ร่วม)</td><td>`registration` หรือ `survey`</td></tr>
+<tr><td>`is_unlimited`</td><td>boolean</td><td>NN</td><td>true = ไม่จำกัดที่นั่ง</td></tr>
+<tr><td>`capacity`</td><td>int</td><td></td><td>จำนวนที่นั่ง (null ถ้า unlimited)</td></tr>
+<tr><td>`created_at` / `updated_at`</td><td>timestamptz</td><td>NN</td><td>เวลาสร้าง/แก้</td></tr>
+</table>
+<p><strong>การนับที่นั่ง:</strong> นับ <code>form_submissions</code> ที่ <code>status = submitted</code> ของฟอร์มชนิดนั้น   ยกเลิกคำตอบ (<code>cancelled</code>) = คืนที่นั่ง</p>
+<h3>`event_banners`</h3>
+<table>
+<tr><th>Field</th><th>Type</th><th>Key</th><th>ความหมาย</th></tr>
+<tr><td>`id`</td><td>uuid</td><td>PK</td><td>รหัสแบนเนอร์</td></tr>
+<tr><td>`event_id`</td><td>uuid</td><td>FK, UK</td><td>อีเวนต์ (อีเวนต์ละหนึ่งแถวตาม schema ปัจจุบัน)</td></tr>
+<tr><td>`banner_url`</td><td>varchar(2048)</td><td>NN</td><td>URL รูปแบนเนอร์</td></tr>
+<tr><td>`created_at` / `updated_at`</td><td>timestamptz</td><td>NN</td><td>เวลาสร้าง/แก้</td></tr>
+</table>
+<hr>
+<h2>3) Form Builder</h2>
+<h3>`forms`</h3>
+<table>
+<tr><th>Field</th><th>Type</th><th>Key</th><th>ความหมาย</th></tr>
+<tr><td>`id`</td><td>uuid</td><td>PK</td><td>รหัสฟอร์ม</td></tr>
+<tr><td>`event_id`</td><td>uuid</td><td>FK, UK(ร่วม type)</td><td>อีเวนต์เจ้าของ</td></tr>
+<tr><td>`type`</td><td>form_type</td><td>NN, UK(ร่วม)</td><td>registration / survey (อย่างละไม่เกิน 1)</td></tr>
+<tr><td>`status`</td><td>form_status</td><td>NN</td><td>สถานะฟอร์ม</td></tr>
+<tr><td>`opens_at` / `closes_at`</td><td>timestamptz</td><td></td><td>ช่วงเปิด/ปิดรับคำตอบ</td></tr>
+<tr><td>`created_at` / `updated_at`</td><td>timestamptz</td><td>NN</td><td>เวลาสร้าง/แก้</td></tr>
+<tr><td>`created_by` / `updated_by`</td><td>uuid</td><td>FK → users, NN</td><td>ผู้สร้าง/ผู้แก้</td></tr>
+<tr><td>`deleted_at`</td><td>timestamptz</td><td></td><td>soft delete</td></tr>
+</table>
+<h3>`form_translations`</h3>
+<table>
+<tr><th>Field</th><th>Type</th><th>Key</th><th>ความหมาย</th></tr>
+<tr><td>`id`</td><td>uuid</td><td>PK</td><td>รหัสแถว</td></tr>
+<tr><td>`form_id`</td><td>uuid</td><td>FK, UK(ร่วม locale)</td><td>ฟอร์มแม่</td></tr>
+<tr><td>`locale_code`</td><td>varchar(35)</td><td>NN</td><td>ภาษา</td></tr>
+<tr><td>`title`</td><td>varchar(240)</td><td>NN</td><td>ชื่อฟอร์ม</td></tr>
+<tr><td>`description`</td><td>text</td><td></td><td>คำอธิบายฟอร์ม</td></tr>
+<tr><td>`created_at` / `updated_at`</td><td>timestamptz</td><td>NN</td><td>เวลาสร้าง/แก้</td></tr>
+</table>
+<h3>`form_fields`</h3>
+<table>
+<tr><th>Field</th><th>Type</th><th>Key</th><th>ความหมาย</th></tr>
+<tr><td>`id`</td><td>uuid</td><td>PK</td><td>รหัสคำถาม</td></tr>
+<tr><td>`form_id`</td><td>uuid</td><td>FK</td><td>ฟอร์มแม่</td></tr>
+<tr><td>`type`</td><td>field_type</td><td>NN</td><td>ชนิดคำถาม</td></tr>
+<tr><td>`display_order`</td><td>int</td><td>NN, UK(ร่วม form)</td><td>ลำดับแสดง</td></tr>
+<tr><td>`is_required`</td><td>boolean</td><td>NN</td><td>บังคับตอบ</td></tr>
+<tr><td>`min_number` / `max_number`</td><td>decimal</td><td></td><td>ขอบเขตตัวเลข / ปลายสเกล</td></tr>
+<tr><td>`min_length` / `max_length`</td><td>int</td><td></td><td>ความยาวข้อความ</td></tr>
+<tr><td>`validation_pattern`</td><td>varchar(500)</td><td></td><td>regex ตรวจค่า</td></tr>
+<tr><td>`rating_display`</td><td>rating_display</td><td></td><td>โหมด rating (null ถ้าไม่ใช่ rating)</td></tr>
+<tr><td>`rating_icon`</td><td>rating_icon</td><td></td><td>ไอคอน (เฉพาะโหมด icon)</td></tr>
+<tr><td>`rating_max`</td><td>int</td><td></td><td>คะแนนสูงสุดโหมด icon (min = 1)</td></tr>
+<tr><td>`created_at` / `updated_at`</td><td>timestamptz</td><td>NN</td><td>เวลาสร้าง/แก้</td></tr>
+<tr><td>`deleted_at`</td><td>timestamptz</td><td></td><td>soft delete</td></tr>
+</table>
+<h3>`field_translations`</h3>
+<table>
+<tr><th>Field</th><th>Type</th><th>Key</th><th>ความหมาย</th></tr>
+<tr><td>`id`</td><td>uuid</td><td>PK</td><td>รหัสแถว</td></tr>
+<tr><td>`field_id`</td><td>uuid</td><td>FK, UK(ร่วม locale)</td><td>คำถามแม่</td></tr>
+<tr><td>`locale_code`</td><td>varchar(35)</td><td>NN</td><td>ภาษา</td></tr>
+<tr><td>`label`</td><td>varchar(500)</td><td>NN</td><td>ข้อความคำถาม</td></tr>
+<tr><td>`placeholder`</td><td>varchar(500)</td><td></td><td>ข้อความตัวอย่างในช่อง</td></tr>
+<tr><td>`scale_min_label` / `scale_max_label`</td><td>varchar(240)</td><td></td><td>ป้ายปลายสเกล (linear_scale)</td></tr>
+</table>
+<h3>`field_options` / `field_option_translations`</h3>
+<table>
+<tr><th>ตาราง</th><th>Field</th><th>Type</th><th>Key</th><th>ความหมาย</th></tr>
+<tr><td>`field_options`</td><td>`id`</td><td>uuid</td><td>PK</td><td>รหัสตัวเลือก</td></tr>
+<tr><td></td><td>`field_id`</td><td>uuid</td><td>FK</td><td>คำถามแม่</td></tr>
+<tr><td></td><td>`display_order`</td><td>int</td><td>NN, UK(ร่วม)</td><td>ลำดับ</td></tr>
+<tr><td></td><td>`created_at`</td><td>timestamptz</td><td>NN</td><td>เวลาสร้าง</td></tr>
+<tr><td></td><td>`deleted_at`</td><td>timestamptz</td><td></td><td>soft delete</td></tr>
+<tr><td>`field_option_translations`</td><td>`id`</td><td>uuid</td><td>PK</td><td>รหัสแถว</td></tr>
+<tr><td></td><td>`option_id`</td><td>uuid</td><td>FK, UK(ร่วม locale)</td><td>ตัวเลือกแม่</td></tr>
+<tr><td></td><td>`locale_code`</td><td>varchar(35)</td><td>NN</td><td>ภาษา</td></tr>
+<tr><td></td><td>`label`</td><td>varchar(240)</td><td>NN</td><td>ข้อความตัวเลือก</td></tr>
+</table>
+<hr>
+<h2>4) ไวท์ลิสต์ (ระดับอีเวนต์)</h2>
+<h3>`whitelist_entries`</h3>
+<table>
+<tr><th>Field</th><th>Type</th><th>Key</th><th>ความหมาย</th></tr>
+<tr><td>`id`</td><td>uuid</td><td>PK</td><td>รหัสรายการ</td></tr>
+<tr><td>`event_id`</td><td>uuid</td><td>FK</td><td>อีเวนต์เจ้าของ (ไม่ผูกฟอร์ม)</td></tr>
+<tr><td>`access_code`</td><td>varchar(32)</td><td>NN, UK(ร่วม event)</td><td>โค้ดที่ระบบเจน ให้ผู้เข้าร่วมกรอก</td></tr>
+<tr><td>`username`</td><td>varchar(240)</td><td>NN</td><td>ชื่อ/ป้ายฝั่งแอดมิน (ไม่ใช้จับคู่)</td></tr>
+<tr><td>`status`</td><td>whitelist_entry_status</td><td>NN</td><td>`available` / `joined`</td></tr>
+<tr><td>`joined_at`</td><td>timestamptz</td><td></td><td>เวลาที่ใช้โค้ดลงทะเบียนสำเร็จ</td></tr>
+<tr><td>`created_at`</td><td>timestamptz</td><td>NN</td><td>เวลาสร้าง</td></tr>
+<tr><td>`deleted_at`</td><td>timestamptz</td><td></td><td>soft delete</td></tr>
+</table>
+<p><strong>โฟลว์:</strong> Admin เพิ่มคน → ได้ <code>access_code</code> → ผู้เข้าร่วมกรอกตอนลงทะเบียน → <code>available</code> → <code>joined</code></p>
+<hr>
+<h2>5) การส่งคำตอบ</h2>
+<h3>`form_submissions`</h3>
+<table>
+<tr><th>Field</th><th>Type</th><th>Key</th><th>ความหมาย</th></tr>
+<tr><td>`id`</td><td>uuid</td><td>PK</td><td>รหัสการส่ง</td></tr>
+<tr><td>`form_id`</td><td>uuid</td><td>FK</td><td>ฟอร์มที่ส่ง</td></tr>
+<tr><td>`status`</td><td>submission_status</td><td>NN</td><td>submitted / cancelled</td></tr>
+<tr><td>`submitted_at`</td><td>timestamptz</td><td>NN</td><td>เวลาส่ง</td></tr>
+<tr><td>`cancelled_by_user_id`</td><td>uuid</td><td>FK → users</td><td>ผู้ยกเลิก</td></tr>
+<tr><td>`cancelled_at`</td><td>timestamptz</td><td></td><td>เวลายกเลิก</td></tr>
+</table>
+<h3>`registrations` — ส่วนขยายเมื่อเป็นฟอร์มลงทะเบียน</h3>
+<table>
+<tr><th>Field</th><th>Type</th><th>Key</th><th>ความหมาย</th></tr>
+<tr><td>`submission_id`</td><td>uuid</td><td>PK, FK → form_submissions (1:1)</td><td>ชี้การส่ง</td></tr>
+<tr><td>`whitelist_entry_id`</td><td>uuid</td><td>FK, UK</td><td>รายการไวท์ลิสต์ที่ใช้ (null ถ้าสาธารณะ)</td></tr>
+<tr><td>`confirmation_code`</td><td>varchar(6)</td><td>NN</td><td>รหัสยืนยันหลังส่งสำเร็จ (คนละตัวกับ access_code)</td></tr>
+</table>
+<h3>`submission_answers`</h3>
+<table>
+<tr><th>Field</th><th>Type</th><th>Key</th><th>ความหมาย</th></tr>
+<tr><td>`id`</td><td>uuid</td><td>PK</td><td>รหัสคำตอบ</td></tr>
+<tr><td>`submission_id`</td><td>uuid</td><td>FK, UK(ร่วม field)</td><td>การส่งแม่</td></tr>
+<tr><td>`field_id`</td><td>uuid</td><td>FK, UK(ร่วม)</td><td>คำถามที่ตอบ</td></tr>
+<tr><td>`value_text`</td><td>text</td><td></td><td>ค่าข้อความ</td></tr>
+<tr><td>`value_number`</td><td>decimal</td><td></td><td>ค่าตัวเลข / rating</td></tr>
+<tr><td>`value_boolean`</td><td>boolean</td><td></td><td>ค่าบูลีน</td></tr>
+<tr><td>`value_date`</td><td>date</td><td></td><td>ค่าวันที่</td></tr>
+<tr><td>`value_time`</td><td>time</td><td></td><td>ค่าเวลา</td></tr>
+<tr><td>`created_at`</td><td>timestamptz</td><td>NN</td><td>เวลาบันทึก</td></tr>
+</table>
+<p>ใช้<strong>เพียงหนึ่ง</strong>คอลัมน์ค่า ตามชนิดฟิลด์ — ตัวเลือกเก็บที่ <code>answer_option_selections</code></p>
+<h3>`answer_option_selections`</h3>
+<table>
+<tr><th>Field</th><th>Type</th><th>Key</th><th>ความหมาย</th></tr>
+<tr><td>`answer_id`</td><td>uuid</td><td>PK(ร่วม), FK → submission_answers</td><td>คำตอบแม่</td></tr>
+<tr><td>`option_id`</td><td>uuid</td><td>PK(ร่วม), FK → field_options</td><td>ตัวเลือกที่เลือก</td></tr>
+</table>
+<hr>
+<h2>6) Dashboard</h2>
+<h3>`dashboard_layouts`</h3>
+<table>
+<tr><th>Field</th><th>Type</th><th>Key</th><th>ความหมาย</th></tr>
+<tr><td>`id`</td><td>uuid</td><td>PK</td><td>รหัสเลย์เอาต์</td></tr>
+<tr><td>`event_id`</td><td>uuid</td><td>FK, UK</td><td>อีเวนต์ละหนึ่งเลย์เอาต์</td></tr>
+<tr><td>`updated_by_user_id`</td><td>uuid</td><td>FK → users, NN</td><td>ผู้แก้ล่าสุด</td></tr>
+<tr><td>`updated_at`</td><td>timestamptz</td><td>NN</td><td>เวลาแก้</td></tr>
+</table>
+<h3>`dashboard_widgets`</h3>
+<table>
+<tr><th>Field</th><th>Type</th><th>Key</th><th>ความหมาย</th></tr>
+<tr><td>`id`</td><td>uuid</td><td>PK</td><td>รหัส widget</td></tr>
+<tr><td>`layout_id`</td><td>uuid</td><td>FK</td><td>เลย์เอาต์แม่</td></tr>
+<tr><td>`widget_type`</td><td>dashboard_widget_type</td><td>NN</td><td>number / comparison / chart</td></tr>
+<tr><td>`title`</td><td>varchar(240)</td><td>NN</td><td>ชื่อที่แสดง</td></tr>
+<tr><td>`source_form_id`</td><td>uuid</td><td>FK → forms</td><td>แหล่งฟอร์ม (null = ทั้งอีเวนต์)</td></tr>
+<tr><td>`source_field_id`</td><td>uuid</td><td>FK → form_fields</td><td>แหล่งคำถาม (ถ้าต้อง)</td></tr>
+<tr><td>`aggregation`</td><td>dashboard_aggregation</td><td>NN</td><td>วิธีสรุป</td></tr>
+<tr><td>`chart_type`</td><td>dashboard_chart_type</td><td></td><td>ชนิดกราฟ (ต้องมีเมื่อเป็น chart)</td></tr>
+<tr><td>`comparison_mode`</td><td>dashboard_comparison_mode</td><td></td><td>โหมดเทียบ (ต้องมีเมื่อเป็น comparison)</td></tr>
+<tr><td>`target_value`</td><td>decimal</td><td></td><td>เป้า (เมื่อ comparison = target)</td></tr>
+<tr><td>`text_align`</td><td>text_align</td><td>NN</td><td>จัดข้อความ</td></tr>
+<tr><td>`date_type`</td><td>date_type</td><td></td><td>ช่วงวันที่สำเร็จรูป</td></tr>
+<tr><td>`start_date` / `end_date`</td><td>date</td><td></td><td>ช่วงวันที่กำหนดเอง</td></tr>
+<tr><td>`display_size`</td><td>display_size</td><td>NN</td><td>ขนาด preset / custom</td></tr>
+<tr><td>`grid_w` / `grid_h`</td><td>int</td><td></td><td>กว้าง×สูง (1–3) เมื่อ custom</td></tr>
+<tr><td>`display_order`</td><td>int</td><td>NN, UK(ร่วม layout)</td><td>ลำดับบน Dashboard</td></tr>
+<tr><td>`updated_at`</td><td>timestamptz</td><td>NN</td><td>เวลาแก้</td></tr>
+</table>
+<p><strong>หมายเหตุ:</strong> Widget เก็บแค่ config — ค่าจริงคำนวณจาก submissions ตอนแสดงผล</p>
+<hr>
+<h2>ภาคผนวก — วิธีนำเข้า Google Docs</h2>
+<p>ตอนนี้ยังไม่มี Google Docs API เชื่อมกับ Cursor โดยตรง แนะนำดังนี้:</p>
+<p>1. เปิดไฟล์นี้ใน GitHub / โปรแกรมแก้ไข 2. คัดลอกทั้งเอกสาร 3. ไปที่ [Google Docs](https://docs.google.com/document/create) → วาง (Paste) 4. หรืออัปโหลดไฟล์ <code>DATA_DICTIONARY.md</code> ผ่าน Google Drive → เปิดด้วย Google Docs      (Drive อาจแปลง Markdown เป็นเอกสารที่จัดรูปแบบได้)</p>
+<p>ไฟล์ต้นทางใน repo: <code>DATA_DICTIONARY.md</code>   Schema ต้นทาง: <code>database-schema.dbml</code>   แผนภาพ: <code>database-schema.dbdiagram</code> / <code>database-schema.png</code></p>
+</body></html>
