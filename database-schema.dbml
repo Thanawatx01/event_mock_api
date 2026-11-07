@@ -467,6 +467,7 @@ Table form_fields [headercolor: #8B5CF6] {
   type field_type [not null]
   display_order int [not null]
   is_required boolean [not null, default: false]
+  is_unique boolean [not null, default: false]
 
   /// ขอบเขตตัวเลขร่วม (ใช้กับ type=number ด้วย)
   min_number decimal
