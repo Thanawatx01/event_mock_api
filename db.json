@@ -2508,7 +2508,7 @@
         "overview": "can_edit",
         "events": "can_edit",
         "users": "can_edit",
-        "activity": "can_edit",
+        "canViewActivity": true,
         "canInspection": true,
         "canViewUnmaskedPii": false
       },
@@ -2530,7 +2530,8 @@
         "dashboard": "can_edit",
         "canViewSubmissions": true,
         "canManageSubmissions": true,
-        "canExport": true
+        "canExport": true,
+        "canViewActivity": true
       },
       "created_at": "2026-09-15T04:00:00Z",
       "updated_at": "2026-09-15T04:00:00Z"
@@ -2548,7 +2549,8 @@
         "dashboard": "view_only",
         "canViewSubmissions": false,
         "canManageSubmissions": false,
-        "canExport": false
+        "canExport": false,
+        "canViewActivity": false
       },
       "created_at": "2026-11-19T08:37:49.601Z",
       "updated_at": "2026-11-19T08:37:49.601Z"
@@ -2566,7 +2568,8 @@
         "dashboard": "can_edit",
         "canViewSubmissions": true,
         "canManageSubmissions": true,
-        "canExport": true
+        "canExport": true,
+        "canViewActivity": true
       },
       "created_at": "2026-09-20T04:00:00Z",
       "updated_at": "2026-09-20T04:00:00Z"
@@ -2584,7 +2587,8 @@
         "dashboard": "can_edit",
         "canViewSubmissions": true,
         "canManageSubmissions": true,
-        "canExport": true
+        "canExport": true,
+        "canViewActivity": true
       },
       "created_at": "2026-10-01T04:00:00Z",
       "updated_at": "2026-10-01T04:00:00Z"
@@ -2602,7 +2606,8 @@
         "dashboard": "can_edit",
         "canViewSubmissions": true,
         "canManageSubmissions": true,
-        "canExport": true
+        "canExport": true,
+        "canViewActivity": true
       },
       "created_at": "2026-11-07T08:38:28.232Z",
       "updated_at": "2026-11-07T08:38:28.208Z"
@@ -2620,7 +2625,8 @@
         "dashboard": "can_edit",
         "canViewSubmissions": true,
         "canManageSubmissions": true,
-        "canExport": true
+        "canExport": true,
+        "canViewActivity": true
       },
       "created_at": "2026-11-07T08:45:33.621Z",
       "updated_at": "2026-11-07T08:45:33.603Z"
@@ -2638,7 +2644,8 @@
         "dashboard": "can_edit",
         "canViewSubmissions": true,
         "canManageSubmissions": true,
-        "canExport": true
+        "canExport": true,
+        "canViewActivity": true
       },
       "created_at": "2026-11-07T08:48:40.209Z",
       "updated_at": "2026-11-07T08:48:40.191Z"
@@ -2656,7 +2663,8 @@
         "dashboard": "can_edit",
         "canViewSubmissions": true,
         "canManageSubmissions": true,
-        "canExport": true
+        "canExport": true,
+        "canViewActivity": true
       },
       "created_at": "2026-11-07T08:49:37.171Z",
       "updated_at": "2026-11-07T08:49:37.153Z"
@@ -2674,10 +2682,165 @@
         "dashboard": "can_edit",
         "canViewSubmissions": true,
         "canManageSubmissions": true,
-        "canExport": true
+        "canExport": true,
+        "canViewActivity": true
       },
       "created_at": "2026-11-07T08:53:29.561Z",
       "updated_at": "2026-11-07T08:56:23.531Z"
+    }
+  ],
+  "audit_logs": [
+    {
+      "id": "a1000000-0000-4000-8000-000000000001",
+      "event_id": "452ac247-5c88-59ca-8de7-c5a329c71317",
+      "actor_user_id": "6f682b3b-8200-5ae3-a1f8-0158dca1ee61",
+      "action": "update",
+      "resource_type": "form",
+      "resource_id": "89e426a3-3b34-50f1-821f-d485abab001b",
+      "module": "Survey Builder",
+      "description": "แก้ไขแบบสอบถาม",
+      "metadata": {
+        "field": "title"
+      },
+      "includes_unmasked_pii": false,
+      "occurred_at": "2026-11-19T10:07:51.417Z"
+    },
+    {
+      "id": "a1000000-0000-4000-8000-000000000002",
+      "event_id": "452ac247-5c88-59ca-8de7-c5a329c71317",
+      "actor_user_id": "dff5877d-7b9d-5a71-b9cd-dfce68f0de89",
+      "action": "update",
+      "resource_type": "event_setup",
+      "resource_id": "452ac247-5c88-59ca-8de7-c5a329c71317",
+      "module": "Event Setup",
+      "description": "บันทึกฉบับร่างอีเวนต์",
+      "metadata": null,
+      "includes_unmasked_pii": false,
+      "occurred_at": "2026-11-19T09:42:51.417Z"
+    },
+    {
+      "id": "a1000000-0000-4000-8000-000000000003",
+      "event_id": "452ac247-5c88-59ca-8de7-c5a329c71317",
+      "actor_user_id": "dff5877d-7b9d-5a71-b9cd-dfce68f0de89",
+      "action": "create",
+      "resource_type": "sub_user",
+      "resource_id": "6f682b3b-8200-5ae3-a1f8-0158dca1ee61",
+      "module": "User Management",
+      "description": "เชิญผู้ใช้ย่อย",
+      "metadata": {
+        "email": "kittisak@example.com"
+      },
+      "includes_unmasked_pii": false,
+      "occurred_at": "2026-11-19T08:57:51.417Z"
+    },
+    {
+      "id": "a1000000-0000-4000-8000-000000000004",
+      "event_id": "452ac247-5c88-59ca-8de7-c5a329c71317",
+      "actor_user_id": "dff5877d-7b9d-5a71-b9cd-dfce68f0de89",
+      "action": "update",
+      "resource_type": "event_access",
+      "resource_id": "6f682b3b-8200-5ae3-a1f8-0158dca1ee61",
+      "module": "User Management",
+      "description": "แก้ไขสิทธิ์ผู้ใช้ย่อย",
+      "metadata": {
+        "before": {
+          "registrationForm": "can_edit"
+        },
+        "after": {
+          "registrationForm": "view_only"
+        }
+      },
+      "includes_unmasked_pii": false,
+      "occurred_at": "2026-11-19T08:27:51.417Z"
+    },
+    {
+      "id": "a1000000-0000-4000-8000-000000000005",
+      "event_id": null,
+      "actor_user_id": "cf4f56ab-fe37-58d1-ac73-e833abdd2561",
+      "action": "create",
+      "resource_type": "event",
+      "resource_id": "550267c4-98f1-5ffc-94c6-81155429cd03",
+      "module": "Event Management",
+      "description": "สร้างอีเวนต์ใหม่",
+      "metadata": {
+        "slug": "community-meetup-draft-edited"
+      },
+      "includes_unmasked_pii": false,
+      "occurred_at": "2026-11-19T07:27:51.417Z"
+    },
+    {
+      "id": "a1000000-0000-4000-8000-000000000006",
+      "event_id": "550267c4-98f1-5ffc-94c6-81155429cd03",
+      "actor_user_id": "cf4f56ab-fe37-58d1-ac73-e833abdd2561",
+      "action": "update",
+      "resource_type": "event",
+      "resource_id": "550267c4-98f1-5ffc-94c6-81155429cd03",
+      "module": "Event Management",
+      "description": "แก้ไขชื่อและ slug อีเวนต์",
+      "metadata": {
+        "before": {
+          "slug": "community-meetup-draft"
+        },
+        "after": {
+          "slug": "community-meetup-draft-edited"
+        }
+      },
+      "includes_unmasked_pii": false,
+      "occurred_at": "2026-11-19T07:57:51.417Z"
+    },
+    {
+      "id": "a1000000-0000-4000-8000-000000000007",
+      "event_id": "dbc642a1-efd7-5ba1-ab44-956b212f0c2f",
+      "actor_user_id": "a4472b2b-9581-52a5-899d-fd94ed85bfc3",
+      "action": "update",
+      "resource_type": "whitelist",
+      "resource_id": "dbc642a1-efd7-5ba1-ab44-956b212f0c2f",
+      "module": "Event Setup",
+      "description": "อัปเดตรายชื่ออนุญาต",
+      "metadata": {
+        "count": 12
+      },
+      "includes_unmasked_pii": false,
+      "occurred_at": "2026-11-19T06:27:51.417Z"
+    },
+    {
+      "id": "a1000000-0000-4000-8000-000000000008",
+      "event_id": "452ac247-5c88-59ca-8de7-c5a329c71317",
+      "actor_user_id": "6f682b3b-8200-5ae3-a1f8-0158dca1ee61",
+      "action": "delete",
+      "resource_type": "form",
+      "resource_id": null,
+      "module": "Survey Builder",
+      "description": "ลบแบบฟอร์มร่าง",
+      "metadata": null,
+      "includes_unmasked_pii": false,
+      "occurred_at": "2026-11-19T05:27:51.417Z"
+    },
+    {
+      "id": "a1000000-0000-4000-8000-000000000009",
+      "event_id": null,
+      "actor_user_id": "cf4f56ab-fe37-58d1-ac73-e833abdd2561",
+      "action": "update",
+      "resource_type": "platform_user",
+      "resource_id": "dff5877d-7b9d-5a71-b9cd-dfce68f0de89",
+      "module": "User Management",
+      "description": "ดูโปรไฟล์ผู้ใช้แพลตฟอร์ม",
+      "metadata": null,
+      "includes_unmasked_pii": false,
+      "occurred_at": "2026-11-19T04:27:51.417Z"
+    },
+    {
+      "id": "a1000000-0000-4000-8000-000000000010",
+      "event_id": "452ac247-5c88-59ca-8de7-c5a329c71317",
+      "actor_user_id": "dff5877d-7b9d-5a71-b9cd-dfce68f0de89",
+      "action": "create",
+      "resource_type": "form",
+      "resource_id": null,
+      "module": "Registration Builder",
+      "description": "สร้างฟอร์มลงทะเบียน",
+      "metadata": null,
+      "includes_unmasked_pii": false,
+      "occurred_at": "2026-11-19T03:47:51.417Z"
     }
   ]
 }

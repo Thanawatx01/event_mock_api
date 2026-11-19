@@ -626,12 +626,14 @@ Table hard_delete_requests [headercolor: #DC2626] {
 
 Table audit_logs [headercolor: #DC2626] {
   id uuid [pk]
-  event_id uuid [ref: > events.id]
+  event_id uuid [ref: > events.id, note: 'Nullable for platform-only admin actions']
   actor_user_id uuid [ref: > users.id]
-  action varchar(160) [not null]
+  action varchar(160) [not null, note: 'create | update | delete | or domain action code']
   resource_type varchar(100) [not null]
   resource_id uuid
+  module varchar(100) [note: 'UI module label e.g. Event Setup, User Management']
   description text
+  metadata json [note: 'Non-PII before/after or counts; never participant answers']
   includes_unmasked_pii boolean [not null, default: false]
   occurred_at timestamptz [not null]
 
@@ -641,7 +643,7 @@ Table audit_logs [headercolor: #DC2626] {
     (resource_type, resource_id, occurred_at)
   }
 
-  Note: 'Audit data must not copy participant answers or PII values.'
+  Note: 'Audit data must not copy participant answers or PII values. event_id may be null for admin platform actions.'
 }
 
 ////////////////////////////////////////////////////
