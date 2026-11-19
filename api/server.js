@@ -1,6 +1,7 @@
 const fs = require("fs");
 const path = require("path");
 const jsonServer = require("json-server");
+const { Redis } = require("@upstash/redis");
 
 const server = jsonServer.create();
 const dbPath = path.join(process.cwd(), "db.json");
@@ -10,13 +11,66 @@ const middlewares = jsonServer.defaults({
 
 /**
  * Vercel / Lambda filesystems are read-only — FileSync writes throw EROFS.
- * Load db.json into memory so POST/PUT/PATCH/DELETE work for the instance lifetime.
+ * On serverless, keep the working copy in memory and (when configured) mirror
+ * it to Upstash Redis so mutations survive cold starts.
  */
 const isServerless = Boolean(
   process.env.VERCEL || process.env.AWS_LAMBDA_FUNCTION_NAME,
 );
 const seed = JSON.parse(fs.readFileSync(dbPath, "utf8"));
-const router = jsonServer.router(isServerless ? seed : dbPath);
+const router = jsonServer.router(
+  isServerless ? structuredClone(seed) : dbPath,
+);
+
+const REDIS_KEY = process.env.MOCK_DB_REDIS_KEY || "eventmockapi:db:v1";
+
+function getRedis() {
+  if (
+    !process.env.UPSTASH_REDIS_REST_URL ||
+    !process.env.UPSTASH_REDIS_REST_TOKEN
+  ) {
+    return null;
+  }
+  return Redis.fromEnv();
+}
+
+function cloneState(value) {
+  return structuredClone(value);
+}
+
+async function hydrateFromRedis() {
+  const redis = getRedis();
+  if (!redis) return { redis: null, persisted: false };
+
+  try {
+    const stored = await redis.get(REDIS_KEY);
+    if (stored && typeof stored === "object" && !Array.isArray(stored)) {
+      router.db.setState(cloneState(stored));
+      return { redis, persisted: true };
+    }
+    // First deploy / empty key — seed Redis from db.json.
+    const initial = cloneState(seed);
+    await redis.set(REDIS_KEY, initial);
+    router.db.setState(initial);
+    return { redis, persisted: true };
+  } catch (error) {
+    console.error("[mock-api] Redis hydrate failed:", error);
+    return { redis, persisted: false };
+  }
+}
+
+async function persistToRedis(redis) {
+  if (!redis) return;
+  try {
+    await redis.set(REDIS_KEY, cloneState(router.db.getState()));
+  } catch (error) {
+    console.error("[mock-api] Redis persist failed:", error);
+  }
+}
+
+function isMutatingMethod(method) {
+  return ["POST", "PUT", "PATCH", "DELETE"].includes(method);
+}
 
 server.use((req, res, next) => {
   res.header("Access-Control-Allow-Origin", "*");
@@ -28,6 +82,10 @@ server.use((req, res, next) => {
     "Access-Control-Allow-Headers",
     "Origin, X-Requested-With, Content-Type, Accept, Authorization",
   );
+  res.header(
+    "X-Mock-Persist",
+    getRedis() ? "redis" : isServerless ? "memory" : "file",
+  );
 
   if (req.method === "OPTIONS") {
     return res.sendStatus(204);
@@ -36,8 +94,35 @@ server.use((req, res, next) => {
   return next();
 });
 
+// Reload shared state before every serverless request so instances converge.
+server.use(async (req, res, next) => {
+  if (!isServerless) return next();
+  const { redis, persisted } = await hydrateFromRedis();
+  req.mockRedis = redis;
+  req.mockPersisted = persisted;
+  return next();
+});
+
 server.use(middlewares);
 server.use(jsonServer.bodyParser);
+
+// After json-server mutates the in-memory db, write the snapshot back to Redis
+// before the response is flushed (so the Lambda does not freeze mid-save).
+server.use((req, res, next) => {
+  if (!isServerless || !isMutatingMethod(req.method) || !req.mockRedis) {
+    return next();
+  }
+
+  const wrap = (fn) =>
+    function wrapped(body) {
+      return persistToRedis(req.mockRedis).then(() => fn.call(this, body));
+    };
+
+  res.json = wrap(res.json.bind(res));
+  res.send = wrap(res.send.bind(res));
+  return next();
+});
+
 server.use(router);
 
 module.exports = server;

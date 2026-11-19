@@ -103,12 +103,31 @@ curl "https://your-project.vercel.app/events?status=published"
 curl "https://your-project.vercel.app/event_translations?locale_code=th"
 ```
 
-### ข้อจำกัดบน Vercel
-- **GET** ใช้งานได้ปกติ
-- **POST / PUT / PATCH / DELETE** อาจไม่ถาวรบน serverless filesystem
+### ให้ POST/PUT/PATCH/DELETE ถาวรบน Vercel (Upstash Redis)
+
+Filesystem บน Vercel เขียนไม่ได้ — mock จึงเก็บ snapshot ทั้งก้อน `db.json` ลง Redis
+
+1. สร้าง Redis ฟรีที่ [Upstash](https://upstash.com/) → สร้าง database → คัดลอก REST credentials
+2. ใน Vercel project ของ mock API ตั้ง Environment Variables (Production + Preview):
+
+| ตัวแปร | ค่า |
+|---|---|
+| `UPSTASH_REDIS_REST_URL` | จาก Upstash |
+| `UPSTASH_REDIS_REST_TOKEN` | จาก Upstash |
+| `MOCK_DB_REDIS_KEY` | (ทางเลือก) คีย์เก็บ snapshot ค่าเริ่มต้น `eventmockapi:db:v1` |
+
+3. Redeploy mock API
+4. ตรวจว่า response มี header `X-Mock-Persist: redis` (ถ้าเป็น `memory` แปลว่ายังไม่ได้ตั้ง Redis)
+
+ครั้งแรกที่ hydrate จะ seed จาก `db.json` ลง Redis จากนั้น mutation จะอัปเดต Redis ก่อนส่ง response
+
+รีเซ็ตข้อมูล: ลบ key ใน Upstash console (หรือเปลี่ยน `MOCK_DB_REDIS_KEY`) แล้วเรียก API อีกครั้งเพื่อ seed ใหม่
+
+ถ้าไม่ตั้ง Redis บน Vercel จะกลับไปโหมด memory เดิม (หายหลัง cold start)
 
 ## หมายเหตุ
 - JSON Server ให้ CRUD ตาม array ใน `db.json`
 - ความสัมพันธ์อ้างด้วย id ไม่บังคับ foreign key
 - ข้อมูลตัวอย่างเท่านั้น อย่าใช้ใน production
 - แผนสคีมาต้นทาง: `db.md`
+- Local (`npm start`) ยังเขียน `db.json` ตรงๆ ไม่ต้องใช้ Redis

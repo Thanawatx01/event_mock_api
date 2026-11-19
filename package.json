@@ -9,6 +9,7 @@
     "seed": "node scripts/generate-db.js"
   },
   "dependencies": {
+    "@upstash/redis": "^1.41.0",
     "json-server": "0.17.4"
   }
 }
