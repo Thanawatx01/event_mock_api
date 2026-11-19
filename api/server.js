@@ -22,7 +22,9 @@ const router = jsonServer.router(
   isServerless ? structuredClone(seed) : dbPath,
 );
 
-const REDIS_KEY = process.env.MOCK_DB_REDIS_KEY || "eventmockapi:db:v1";
+// Bump the default key when seed schema changes so Vercel Redis rehydrates
+ // from db.json instead of keeping a stale snapshot (e.g. bilingual audit_logs).
+const REDIS_KEY = process.env.MOCK_DB_REDIS_KEY || "eventmockapi:db:v2";
 
 function getRedis() {
   if (

@@ -114,7 +114,7 @@ Filesystem บน Vercel เขียนไม่ได้ — mock จึงเ
 |---|---|
 | `UPSTASH_REDIS_REST_URL` | จาก Upstash |
 | `UPSTASH_REDIS_REST_TOKEN` | จาก Upstash |
-| `MOCK_DB_REDIS_KEY` | (ทางเลือก) คีย์เก็บ snapshot ค่าเริ่มต้น `eventmockapi:db:v1` |
+| `MOCK_DB_REDIS_KEY` | (ทางเลือก) คีย์เก็บ snapshot ค่าเริ่มต้น `eventmockapi:db:v2` |
 
 3. Redeploy mock API
 4. ตรวจว่า response มี header `X-Mock-Persist: redis` (ถ้าเป็น `memory` แปลว่ายังไม่ได้ตั้ง Redis)
