@@ -46,7 +46,7 @@ Enum platform_permission_code {
   manage_platform_users
   manage_all_events
   view_platform_overview
-  impersonate_event_user
+  inspect_event
 }
 
 Enum account_status {

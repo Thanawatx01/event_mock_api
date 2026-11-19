@@ -259,7 +259,7 @@ const PLATFORM_PERMISSIONS = [
   "manage_platform_users",
   "manage_all_events",
   "view_platform_overview",
-  "impersonate_event_user",
+  "inspect_event",
 ];
 
 const platform_role_permissions = PLATFORM_PERMISSIONS.map((permission) => ({
