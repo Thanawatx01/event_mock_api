@@ -38,6 +38,23 @@ function cloneState(value) {
   return structuredClone(value);
 }
 
+/**
+ * Older Redis snapshots may predate new collections (e.g. audit_logs).
+ * Keep persisted rows, but fill any missing top-level keys from db.json
+ * so POSTs to new resources do not 404 after a seed deploy.
+ */
+function mergeMissingCollections(stored) {
+  const next = cloneState(stored);
+  let changed = false;
+  for (const [key, value] of Object.entries(seed)) {
+    if (!(key in next)) {
+      next[key] = cloneState(value);
+      changed = true;
+    }
+  }
+  return { state: next, changed };
+}
+
 async function hydrateFromRedis() {
   const redis = getRedis();
   if (!redis) return { redis: null, persisted: false };
@@ -45,7 +62,11 @@ async function hydrateFromRedis() {
   try {
     const stored = await redis.get(REDIS_KEY);
     if (stored && typeof stored === "object" && !Array.isArray(stored)) {
-      router.db.setState(cloneState(stored));
+      const { state, changed } = mergeMissingCollections(stored);
+      router.db.setState(state);
+      if (changed) {
+        await redis.set(REDIS_KEY, state);
+      }
       return { redis, persisted: true };
     }
     // First deploy / empty key — seed Redis from db.json.
