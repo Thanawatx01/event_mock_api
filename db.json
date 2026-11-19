@@ -2697,8 +2697,9 @@
       "action": "update",
       "resource_type": "form",
       "resource_id": "89e426a3-3b34-50f1-821f-d485abab001b",
-      "module": "Survey Builder",
-      "description": "แก้ไขแบบสอบถาม",
+      "module": "survey_builder",
+      "description_th": "แก้ไขแบบสอบถาม",
+      "description_en": "Updated survey form",
       "metadata": {
         "field": "title"
       },
@@ -2712,8 +2713,9 @@
       "action": "update",
       "resource_type": "event_setup",
       "resource_id": "452ac247-5c88-59ca-8de7-c5a329c71317",
-      "module": "Event Setup",
-      "description": "บันทึกฉบับร่างอีเวนต์",
+      "module": "event_setup",
+      "description_th": "บันทึกฉบับร่างอีเวนต์",
+      "description_en": "Saved event draft",
       "metadata": null,
       "includes_unmasked_pii": false,
       "occurred_at": "2026-11-19T09:42:51.417Z"
@@ -2725,8 +2727,9 @@
       "action": "create",
       "resource_type": "sub_user",
       "resource_id": "6f682b3b-8200-5ae3-a1f8-0158dca1ee61",
-      "module": "User Management",
-      "description": "เชิญผู้ใช้ย่อย",
+      "module": "user_management",
+      "description_th": "เชิญผู้ใช้ย่อย",
+      "description_en": "Invited a sub-user",
       "metadata": {
         "email": "kittisak@example.com"
       },
@@ -2740,8 +2743,9 @@
       "action": "update",
       "resource_type": "event_access",
       "resource_id": "6f682b3b-8200-5ae3-a1f8-0158dca1ee61",
-      "module": "User Management",
-      "description": "แก้ไขสิทธิ์ผู้ใช้ย่อย",
+      "module": "user_management",
+      "description_th": "แก้ไขสิทธิ์ผู้ใช้ย่อย",
+      "description_en": "Updated sub-user permissions",
       "metadata": {
         "before": {
           "registrationForm": "can_edit"
@@ -2760,8 +2764,9 @@
       "action": "create",
       "resource_type": "event",
       "resource_id": "550267c4-98f1-5ffc-94c6-81155429cd03",
-      "module": "Event Management",
-      "description": "สร้างอีเวนต์ใหม่",
+      "module": "event_management",
+      "description_th": "สร้างอีเวนต์ใหม่",
+      "description_en": "Created a new event",
       "metadata": {
         "slug": "community-meetup-draft-edited"
       },
@@ -2775,8 +2780,9 @@
       "action": "update",
       "resource_type": "event",
       "resource_id": "550267c4-98f1-5ffc-94c6-81155429cd03",
-      "module": "Event Management",
-      "description": "แก้ไขชื่อและ slug อีเวนต์",
+      "module": "event_management",
+      "description_th": "แก้ไขชื่อและ slug อีเวนต์",
+      "description_en": "Updated event name and slug",
       "metadata": {
         "before": {
           "slug": "community-meetup-draft"
@@ -2795,8 +2801,9 @@
       "action": "update",
       "resource_type": "whitelist",
       "resource_id": "dbc642a1-efd7-5ba1-ab44-956b212f0c2f",
-      "module": "Event Setup",
-      "description": "อัปเดตรายชื่ออนุญาต",
+      "module": "event_setup",
+      "description_th": "อัปเดตรายชื่ออนุญาต",
+      "description_en": "Updated whitelist",
       "metadata": {
         "count": 12
       },
@@ -2810,8 +2817,9 @@
       "action": "delete",
       "resource_type": "form",
       "resource_id": null,
-      "module": "Survey Builder",
-      "description": "ลบแบบฟอร์มร่าง",
+      "module": "survey_builder",
+      "description_th": "ลบแบบฟอร์มร่าง",
+      "description_en": "Deleted a draft form",
       "metadata": null,
       "includes_unmasked_pii": false,
       "occurred_at": "2026-11-19T05:27:51.417Z"
@@ -2823,8 +2831,9 @@
       "action": "update",
       "resource_type": "platform_user",
       "resource_id": "dff5877d-7b9d-5a71-b9cd-dfce68f0de89",
-      "module": "User Management",
-      "description": "ดูโปรไฟล์ผู้ใช้แพลตฟอร์ม",
+      "module": "user_management",
+      "description_th": "แก้ไขสิทธิ์แพลตฟอร์ม",
+      "description_en": "Updated platform access",
       "metadata": null,
       "includes_unmasked_pii": false,
       "occurred_at": "2026-11-19T04:27:51.417Z"
@@ -2836,8 +2845,9 @@
       "action": "create",
       "resource_type": "form",
       "resource_id": null,
-      "module": "Registration Builder",
-      "description": "สร้างฟอร์มลงทะเบียน",
+      "module": "registration_builder",
+      "description_th": "สร้างฟอร์มลงทะเบียน",
+      "description_en": "Created registration form",
       "metadata": null,
       "includes_unmasked_pii": false,
       "occurred_at": "2026-11-19T03:47:51.417Z"

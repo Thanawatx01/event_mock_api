@@ -631,8 +631,9 @@ Table audit_logs [headercolor: #DC2626] {
   action varchar(160) [not null, note: 'create | update | delete | or domain action code']
   resource_type varchar(100) [not null]
   resource_id uuid
-  module varchar(100) [note: 'UI module label e.g. Event Setup, User Management']
-  description text
+  module varchar(100) [not null, note: 'Stable i18n key: event_setup | user_management | event_management | registration_builder | survey_builder | dashboard']
+  description_th text [not null]
+  description_en text [not null]
   metadata json [note: 'Non-PII before/after or counts; never participant answers']
   includes_unmasked_pii boolean [not null, default: false]
   occurred_at timestamptz [not null]
@@ -643,7 +644,7 @@ Table audit_logs [headercolor: #DC2626] {
     (resource_type, resource_id, occurred_at)
   }
 
-  Note: 'Audit data must not copy participant answers or PII values. event_id may be null for admin platform actions.'
+  Note: 'Audit data must not copy participant answers or PII values. event_id may be null for admin platform actions. UI translates module keys; descriptions are stored in both locales.'
 }
 
 ////////////////////////////////////////////////////
